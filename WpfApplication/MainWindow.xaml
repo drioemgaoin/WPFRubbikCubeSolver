@@ -1,0 +1,9 @@
+﻿<Window x:Class="WpfApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:rubikCube="clr-namespace:WpfApplication"
+        Height="635" Width="585"
+        Background="Beige">
+    <rubikCube:RubbikCube x:Name="RubbikCube"></rubikCube:RubbikCube>
+    
+</Window> 

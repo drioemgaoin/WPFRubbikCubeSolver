@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +10,7 @@ using WpfApplication.Annotations;
 using WpfApplication.Domain;
 using WpfApplication.Domain.Enum;
 using WpfApplication.Domain.Factory;
+using WpfApplication.Domain.Service;
 using Point = System.Windows.Point;
 
 namespace WpfApplication
@@ -24,13 +27,15 @@ namespace WpfApplication
     {
         private readonly IFaceService faceService;
         private readonly IPositionsFactory positionsFactory;
+        private readonly IAxisService axisService;
 
         private double abscisseAngle;
         private double ordinateAngle;
 
         public RubbikCube()
         {
-            faceService = new FaceService();
+            axisService = new AxisService();
+            faceService = new FaceService(axisService);
             positionsFactory = new PositionsFactory();
             DataContext = this;
 
@@ -68,12 +73,14 @@ namespace WpfApplication
         
         public void RotateRowRight()
         {
-            faceService.RotateRowRight(1);
+            faceService.RotateRowRight(0);
+            RotateFacies();
         }
 
         public void RotateRowLeft()
         {
-            faceService.RotateRowLeft(1);
+            faceService.RotateRowLeft(0);
+            RotateFacies();
         }
 
         public void RotateColumnUp()
@@ -89,26 +96,32 @@ namespace WpfApplication
         public void RotateUp()
         {
             faceService.RotateUp();
+            Rotate();
         }
 
         public void RotateDown()
         {
             faceService.RotateDown();
+            Rotate();
         }
 
         public void RotateLeft()
         {
             faceService.RotateLeft();
+            Rotate();
         }
 
         public void RotateRight()
         {
             faceService.RotateRight();
+            Rotate();
         }
 
         private void Initialize()
         {
             group.Children.Clear();
+
+            axisService.Create(FaceType.None, FaciePositionType.None);
 
             InitializeFace(FaceType.Front);
             InitializeFace(FaceType.Top);
@@ -123,40 +136,32 @@ namespace WpfApplication
             var face = faceService.CreateFace(type);
             foreach (var subFace in face.Facies)
             {
-                var shape = CreateShape(subFace);
+                var shape = CreateFacie(subFace);
                 group.Children.Add(shape);
             }
 
-            var transform = new Transform3DGroup();
-            transform.Children.Add(CreateRotation(face, "OrdinateAngle", true));
-            transform.Children.Add(CreateRotation(face, "AbscisseAngle", false));
-            group.Transform = transform;
+            var matrix = new Matrix3D();
+            matrix.Translate(new Vector3D(-0.5, -0.5, +0.5));
+            group.Transform = new MatrixTransform3D(matrix);
         }
 
-        private GeometryModel3D CreateShape(Face face)
+        private GeometryModel3D CreateFacie(Face face)
         {
-            var transform = new Transform3DGroup();
-            transform.Children.Add(new TranslateTransform3D(-0.5, -0.5, +0.5));
-            transform.Children.Add(CreateRotation(face, "OrdinateAngle", true));
-            transform.Children.Add(CreateRotation(face, "AbscisseAngle", false));
-            transform.Children.Add(CreateRotationZ(face, "DepthAngle"));
-
             var label = new Label
-                {
-                    Background = new SolidColorBrush(face.Color),
-                    BorderBrush = new SolidColorBrush(Colors.Black),
-                    BorderThickness = new Thickness(1)
-                };
-
-            var binding = new Binding
             {
-                Source = face,
-                Path = new PropertyPath("Type1"),
-                Mode = BindingMode.OneWay
+                Background = new SolidColorBrush(face.Color),
+                BorderBrush = new SolidColorBrush(Colors.Black),
+                BorderThickness = new Thickness(1)
             };
-            BindingOperations.SetBinding(label, Label.ContentProperty, binding);
 
-            return new GeometryModel3D
+            var axes = axisService.Create(face.Type, face.FaciePositionType);
+
+            var matrix = new Matrix3D();
+            matrix.Rotate(new Quaternion(axes.AxisX.Vector, axes.AxisX.Angle));
+            matrix.Rotate(new Quaternion(axes.AxisY.Vector * matrix, axes.AxisY.Angle));
+            matrix.Rotate(new Quaternion(axes.AxisZ.Vector * matrix, axes.AxisZ.Angle));
+
+            var geometry = new GeometryModel3D
             {
                 Geometry = new MeshGeometry3D
                 {
@@ -168,60 +173,42 @@ namespace WpfApplication
                 {
                     Visual = label
                 }),
-                Transform = transform//new MatrixTransform3D(CreateMatrix3D(face.))
+                Transform = new MatrixTransform3D(matrix)
             };
+
+            geometry.SetValue(NameProperty, String.Format("{0}dash{1}", face.Type, face.FaciePositionType));
+
+            return geometry;
         }
 
-        private static RotateTransform3D CreateRotation(Face face, string path, bool isRow)
+        private void Rotate()
         {
-            var rotation = new RotateTransform3D
-            {
-                Rotation = new AxisAngleRotation3D
-                {
-                    Axis = new Vector3D(isRow ? 0 : 1, isRow ? 1 : 0, 0),
-                }
-            };
+            var axes = axisService.Get(FaceType.None, FaciePositionType.None);
 
-            var binding = new Binding
-            {
-                Source = face, 
-                Path = new PropertyPath(path), 
-                Mode = BindingMode.OneWay
-            };
-            BindingOperations.SetBinding(rotation.Rotation, AxisAngleRotation3D.AngleProperty, binding);
-
-            return rotation;
-        }
-
-        private static RotateTransform3D CreateRotationZ(Face face, string path)
-        {
-            var rotation = new RotateTransform3D
-            {
-                Rotation = new AxisAngleRotation3D
-                {
-                    Axis = new Vector3D(0, 0, 1),
-                }
-            };
-
-            var binding = new Binding
-            {
-                Source = face,
-                Path = new PropertyPath(path),
-                Mode = BindingMode.OneWay
-            };
-            BindingOperations.SetBinding(rotation.Rotation, AxisAngleRotation3D.AngleProperty, binding);
-
-            return rotation;
-        }
-
-        private Matrix3D CreateMatrix3D()
-        {
             var matrix = new Matrix3D();
-            //matrix.Rotate(new Quaternion(new Vector3D(1, 0, 0), x));
-            //matrix.Rotate(new Quaternion(new Vector3D(0, 1, 0) * matrix, y));
-            //matrix.Rotate(new Quaternion(new Vector3D(0, 0, 1) * matrix, z));
+            matrix.Translate(new Vector3D(-0.5, -0.5, +0.5));
+            matrix.Rotate(new Quaternion(axes.AxisX.Vector, axes.AxisX.Angle));
+            matrix.Rotate(new Quaternion(axes.AxisY.Vector * matrix, axes.AxisY.Angle));
+            matrix.Rotate(new Quaternion(axes.AxisZ.Vector * matrix, axes.AxisZ.Angle));
+            group.Transform = new MatrixTransform3D(matrix);
+        }
 
-            return matrix;
+        private void RotateFacies()
+        {
+            foreach (var geometry in group.Children.Cast<GeometryModel3D>())
+            {
+                var name = geometry.GetValue(NameProperty).ToString().Replace("dash", " ").Split(' ');
+                var faceType = (FaceType)Enum.Parse(typeof (FaceType), name[0]);
+                var faciePositionType = (FaciePositionType)Enum.Parse(typeof (FaciePositionType), name[1]);
+
+                var axes = axisService.Get(faceType, faciePositionType);
+
+                var matrix = new Matrix3D();
+                matrix.Rotate(new Quaternion(axes.AxisX.Vector, axes.AxisX.Angle));
+                matrix.Rotate(new Quaternion(axes.AxisY.Vector * matrix, axes.AxisY.Angle));
+                matrix.Rotate(new Quaternion(axes.AxisZ.Vector * matrix, axes.AxisZ.Angle));
+                geometry.Transform = new MatrixTransform3D(matrix);
+            }
         }
 
         [NotifyPropertyChangedInvocator]

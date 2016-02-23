@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media.Media3D;
 using WpfApplication.Domain.Enum;
 using WpfApplication.Domain.Factory;
+using WpfApplication.Domain.Service;
 
 namespace WpfApplication.Domain
 {
@@ -27,31 +26,19 @@ namespace WpfApplication.Domain
 
         void RotateColumnDown(int index);
     }
-
-    public enum MoveType
-    {
-        None,
-        Right,
-        Left,
-        Up,
-        Down,
-        RowRight,
-        RowLeft,
-        ColumnUp,
-        ColumnDown
-    }
-
+  
     public class FaceService : IFaceService
     {
         private readonly IFaceFactory faceFactory;
+        private readonly IAxisService axisService;
         private readonly IList<Face> faces;
-        private FaceType currentFace;
 
-        public FaceService()
+        public FaceService(IAxisService axisService)
         {
             faceFactory = new FaceFactory();
             faces = new List<Face>();
-            currentFace = FaceType.Front;
+
+            this.axisService = axisService;
         }
 
         public Face CreateFace(FaceType type)
@@ -63,170 +50,54 @@ namespace WpfApplication.Domain
 
         public void RotateRight()
         {
-            //foreach (var face in faces)
-            //{
-            //    face.AbscisseAngle += 45;
-            //}
-        }
-
-        private Matrix3D CalculateRotationMatrix(double x, double y, double z)
-        {
-            var matrix = new Matrix3D();
-
-            matrix.Rotate(new Quaternion(new Vector3D(1, 0, 0), x));
-            matrix.Rotate(new Quaternion(new Vector3D(0, 1, 0) * matrix, y));
-            matrix.Rotate(new Quaternion(new Vector3D(0, 0, 1) * matrix, z));
-
-            return matrix;
+            var axes = axisService.Get(FaceType.None, FaciePositionType.None);
+            axes.AxisX.Angle += 45;
         }
 
         public void RotateLeft()
         {
-            //foreach (var face in faces)
-            //{
-            //    face.AbscisseAngle -= 45;
-            //}
+            var axes = axisService.Get(FaceType.None, FaciePositionType.None);
+            axes.AxisX.Angle -= 45;
         }
 
         public void RotateUp()
         {
-            //foreach (var face in faces)
-            //{
-            //    face.OrdinateAngle += 45;
-            //}
+            var axes = axisService.Get(FaceType.None, FaciePositionType.None);
+            axes.AxisY.Angle += 45;
         }
 
         public void RotateDown()
         {
-            //foreach (var face in faces)
-            //{
-            //    face.OrdinateAngle -= 45;
-            //}
+            var axes = axisService.Get(FaceType.None, FaciePositionType.None);
+            axes.AxisY.Angle -= 45;
         }
 
         public void RotateRowRight(int index)
         {
-            //var facies = new List<Face>();
-            //foreach (var face in faces)
-            //{
-            //    facies.AddRange(face.GetRow(index).Where(x => x.Type != FaceType.Top && x.Type != FaceType.Bottom));
-            //}
-
-            //foreach (var facie in facies)
-            //{
-            //    facie.AbscisseAngle += 90;
-            //    facie.Type = GetNewFaceType(facie.Type, MoveType.RowRight);
-            //}
+            var axes = axisService.GetAxis(FaciePositionType.LeftTop | FaciePositionType.MiddleTop | FaciePositionType.RightTop);
+            foreach (var axis in axes.Where(x => x.Item1 != FaceType.Top && x.Item1 != FaceType.Bottom))
+            {
+                axis.Item2.AxisX.Angle += 45;
+            }
         }
 
         public void RotateRowLeft(int index)
         {
-            //var facies = new List<Face>();
-            //foreach (var face in faces)
+            //var axes = axisService.GetAxis(FaciePositionType.LeftTop | FaciePositionType.MiddleTop | FaciePositionType.RightTop);
+            //foreach (var axis in axes)
             //{
-            //    facies.AddRange(face.GetRow(index).Where(x => x.Type != FaceType.Top && x.Type != FaceType.Bottom));
-            //}
-
-            //foreach (var facie in facies)
-            //{
-            //    facie.AbscisseAngle -= 90;
-            //    facie.Type = GetNewFaceType(facie.Type, MoveType.RowLeft);
+            //    axis.AxisX.Angle -= 45;
             //}
         }
 
         public void RotateColumnUp(int index)
         {
-            //var facies = new List<Face>();
-            //foreach (var face in faces)
-            //{
-            //    facies.AddRange(face.GetColumn(index).Where(x => x.Type != FaceType.Left && x.Type != FaceType.Right));
-            //}
-
-            //foreach (var facie in facies)
-            //{
-            //    facie.OrdinateAngle += 90;
-            //    facie.Type = GetNewFaceType(facie.Type, MoveType.ColumnUp);
-            //}
+            
         }
 
         public void RotateColumnDown(int index)
         {
-            //var facies = new List<Face>();
-            //foreach (var face in faces)
-            //{
-            //    facies.AddRange(face.GetColumn(index).Where(x => x.Type != FaceType.Left && x.Type != FaceType.Right));
-            //}
-
-            //foreach (var facie in facies)
-            //{
-            //    facie.OrdinateAngle -= 90;
-            //    facie.Type = GetNewFaceType(facie.Type, MoveType.ColumnDown);
-            //}
-        }
-
-        private static FaceType GetNewFaceType(FaceType faceType, MoveType moveType)
-        {
-            if (moveType == MoveType.RowRight || moveType == MoveType.Right)
-            {
-                switch (faceType)
-                {
-                    case FaceType.Front:
-                        return FaceType.Right;
-                    case FaceType.Right:
-                        return FaceType.Back;
-                    case FaceType.Back:
-                        return FaceType.Left;
-                    case FaceType.Left:
-                        return FaceType.Front;
-                }
-            }
-
-            if (moveType == MoveType.RowLeft || moveType == MoveType.Left)
-            {
-                switch (faceType)
-                {
-                    case FaceType.Front:
-                        return FaceType.Left;
-                    case FaceType.Left:
-                        return FaceType.Back;
-                    case FaceType.Back:
-                        return FaceType.Right;
-                    case FaceType.Right:
-                        return FaceType.Front;
-                }
-            }
-
-            if (moveType == MoveType.ColumnUp)
-            {
-                switch (faceType)
-                {
-                    case FaceType.Front:
-                        return FaceType.Top;
-                    case FaceType.Top:
-                        return FaceType.Back;
-                    case FaceType.Back:
-                        return FaceType.Bottom;
-                    case FaceType.Bottom:
-                        return FaceType.Front;
-                }
-            }
-
-            if (moveType == MoveType.ColumnDown)
-            {
-                switch (faceType)
-                {
-                    case FaceType.Front:
-                        return FaceType.Bottom;
-                    case FaceType.Bottom:
-                        return FaceType.Back;
-                    case FaceType.Back:
-                        return FaceType.Top;
-                    case FaceType.Top:
-                        return FaceType.Front;
-                }
-            }
-
-            return faceType;
+            
         }
     }
 }

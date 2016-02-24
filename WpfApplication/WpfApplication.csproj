@@ -55,13 +55,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\LookbackConverter.cs" />
-    <Compile Include="Domain\Face.cs" />
+    <Compile Include="Domain\Entity\Face.cs" />
     <Compile Include="Domain\Factory\FaceFactory.cs" />
-    <Compile Include="Domain\FaceService.cs" />
+    <Compile Include="Domain\Service\FaceService.cs" />
     <Compile Include="Domain\Enum\FaceType.cs" />
     <Compile Include="Domain\Enum\PointPositionType.cs" />
     <Compile Include="Domain\Factory\PositionsFactory.cs" />
     <Compile Include="Domain\Enum\FaciePositionType.cs" />
+    <Compile Include="Domain\Factory\RotationFactory.cs" />
+    <Compile Include="Domain\Service\RotationService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RubbikCube.xaml.cs">
       <DependentUpon>RubbikCube.xaml</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using WpfApplication.Domain.Entity;
 using WpfApplication.Domain.Enum;
 
 namespace WpfApplication.Domain.Factory

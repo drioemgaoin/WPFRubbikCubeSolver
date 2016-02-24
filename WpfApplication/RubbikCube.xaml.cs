@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using RubbikCubeDomain.Entity;
+using RubbikCubeDomain.Enums;
+using RubbikCubeDomain.Factory;
+using RubbikCubeDomain.Service;
 using WpfApplication.Annotations;
-using WpfApplication.Domain.Entity;
-using WpfApplication.Domain.Enum;
-using WpfApplication.Domain.Factory;
-using WpfApplication.Domain.Service;
 using Point = System.Windows.Point;
 
 namespace WpfApplication
@@ -112,11 +113,13 @@ namespace WpfApplication
                 BorderThickness = new Thickness(1)
             };
 
+            var positions = positionsFactory.CreatePositions(face.Type, face.FaciePositionType);
+
             var geometry = new GeometryModel3D
             {
                 Geometry = new MeshGeometry3D
                 {
-                    Positions = positionsFactory.CreatePoints(face.Type, face.FaciePositionType),
+                    Positions = CreatePoints(positions, face.FaciePositionType),
                     TriangleIndices = new Int32Collection { 2, 1, 3, 2, 0, 1 },
                     TextureCoordinates = new PointCollection { new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(1,1)}
                 },
@@ -150,6 +153,28 @@ namespace WpfApplication
             matrix3D.OffsetY = matrix[1, 3]();
             matrix3D.OffsetZ = matrix[2, 3]();
             return matrix3D;
+        }
+
+        private static Point3DCollection CreatePoints(IDictionary<FaciePositionType, string> positions, FaciePositionType positionType)
+        {
+            var points = new Point3DCollection();
+
+            var position = System.Text.RegularExpressions.Regex.Split(positions[positionType], @"\s{2}");
+
+            for (var i = 0; i < position.Length; i++)
+            {
+                var values = position[i].Split(' ');
+
+                var point = new Point3D(
+                    Convert.ToDouble(values[0]),
+                    Convert.ToDouble(values[1]),
+                    Convert.ToDouble(values[2])
+                );
+
+                points.Add(point);
+            }
+
+            return points;
         }
 
         [NotifyPropertyChangedInvocator]

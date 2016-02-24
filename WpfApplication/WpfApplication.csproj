@@ -55,15 +55,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\LookbackConverter.cs" />
-    <Compile Include="Domain\Entity\Face.cs" />
-    <Compile Include="Domain\Factory\FaceFactory.cs" />
-    <Compile Include="Domain\Service\FaceService.cs" />
-    <Compile Include="Domain\Enum\FaceType.cs" />
-    <Compile Include="Domain\Enum\PointPositionType.cs" />
-    <Compile Include="Domain\Factory\PositionsFactory.cs" />
-    <Compile Include="Domain\Enum\FaciePositionType.cs" />
-    <Compile Include="Domain\Factory\RotationFactory.cs" />
-    <Compile Include="Domain\Service\RotationService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RubbikCube.xaml.cs">
       <DependentUpon>RubbikCube.xaml</DependentUpon>
@@ -111,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RubbikCubeDomain\RubbikCubeDomain.csproj">
+      <Project>{a70b4745-594f-4672-81c9-f09eb9e4cb20}</Project>
+      <Name>RubbikCubeDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -60,25 +60,25 @@ namespace WpfApplication
 
         public void RotateLeft()
         {
-            var matrix = rotationService.RotationRow(-45);
+            var matrix = rotationService.RotationRow(-Math.PI / 4);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateRight()
         {
-            var matrix = rotationService.RotationRow(45);
+            var matrix = rotationService.RotationRow(Math.PI / 4);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateUp()
         {
-            var matrix = rotationService.RotationColumn(45);
+            var matrix = rotationService.RotationColumn(Math.PI / 4);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateDown()
         {
-            var matrix = rotationService.RotationColumn(-45);
+            var matrix = rotationService.RotationColumn(-Math.PI / 4);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
@@ -126,6 +126,12 @@ namespace WpfApplication
                 Material = new DiffuseMaterial(new VisualBrush
                 {
                     Visual = label
+                }),
+                Transform = new MatrixTransform3D(new Matrix3D()
+                {
+                    OffsetX = -0.5,
+                    OffsetY = -0.5,
+                    OffsetZ = 0.5
                 })
             };
 

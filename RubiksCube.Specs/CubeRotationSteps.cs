@@ -10,7 +10,7 @@ namespace RubiksCube.Specs
         [Given(@"a cube with a visable ""(.*)"" face")]
         public void GivenACubeWithAVisableFace(string color)
         {
-            ScenarioContext.Current.Pending();
+            Assert.Fail();
         }
         
         [When(@"the cube turns ""(.*)"" (.*)")]

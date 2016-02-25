@@ -78,7 +78,7 @@ namespace WpfApplication
 
         public void RotateDown()
         {
-            var matrix = rotationService.RotationColumn(45);
+            var matrix = rotationService.RotationColumn(-45);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
@@ -113,7 +113,7 @@ namespace WpfApplication
                 BorderThickness = new Thickness(1)
             };
 
-            var positions = positionsFactory.CreatePositions(face.Type, face.FaciePositionType);
+            var positions = positionsFactory.CreatePositions(face.Type);
 
             var geometry = new GeometryModel3D
             {

@@ -5,12 +5,12 @@ namespace RubbikCubeDomain.Factory
 {
     public interface IPositionsFactory
     {
-        IDictionary<FaciePositionType, string> CreatePositions(FaceType faceType, FaciePositionType positionType);
+        IDictionary<FaciePositionType, string> CreatePositions(FaceType faceType);
     }
 
     public class PositionsFactory : IPositionsFactory
     {
-        public IDictionary<FaciePositionType, string> CreatePositions(FaceType faceType, FaciePositionType positionType)
+        public IDictionary<FaciePositionType, string> CreatePositions(FaceType faceType)
         {
             switch (faceType)
             {

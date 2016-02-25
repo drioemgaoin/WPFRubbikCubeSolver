@@ -60,25 +60,25 @@ namespace WpfApplication
 
         public void RotateLeft()
         {
-            var matrix = rotationService.RotationLeft(-45);
+            var matrix = rotationService.RotationRow(-45);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateRight()
         {
-            var matrix = rotationService.RotationRight(45);
+            var matrix = rotationService.RotationRow(45);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateUp()
         {
-            var matrix = rotationService.RotationUp(45);
+            var matrix = rotationService.RotationColumn(45);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateDown()
         {
-            var matrix = rotationService.RotationDown(45);
+            var matrix = rotationService.RotationColumn(45);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 

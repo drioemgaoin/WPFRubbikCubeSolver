@@ -1,8 +1,8 @@
 ﻿using System.Windows.Media;
-using RubbikCubeDomain.Entity;
-using RubbikCubeDomain.Enums;
+using RubiksCube.Entity;
+using RubiksCube.Enums;
 
-namespace RubbikCubeDomain.Factory
+namespace RubiksCube.Factory
 {
     public interface IFaceFactory
     {

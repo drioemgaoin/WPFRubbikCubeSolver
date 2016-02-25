@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
-using RubbikCubeDomain.Enums;
+using RubiksCube.Enums;
 
-namespace RubbikCubeDomain.Entity
+namespace RubiksCube.Entity
 {
     public class Face
     {

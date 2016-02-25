@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using RubbikCubeDomain.Enums;
+using RubiksCube.Enums;
 
-namespace RubbikCubeDomain.Factory
+namespace RubiksCube.Factory
 {
     public interface IPositionsFactory
     {

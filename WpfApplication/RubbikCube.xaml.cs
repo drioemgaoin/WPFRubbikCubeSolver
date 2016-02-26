@@ -5,10 +5,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
-using RubbikCubeDomain.Entity;
-using RubbikCubeDomain.Enums;
-using RubbikCubeDomain.Factory;
-using RubbikCubeDomain.Service;
+using RubiksCube.Entity;
+using RubiksCube.Enums;
+using RubiksCube.Factory;
+using RubiksCube.Service;
 using WpfApplication.Annotations;
 using Point = System.Windows.Point;
 

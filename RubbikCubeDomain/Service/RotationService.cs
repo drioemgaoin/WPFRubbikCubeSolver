@@ -1,7 +1,7 @@
 ﻿using System;
-using RubbikCubeDomain.Factory;
+using RubiksCube.Factory;
 
-namespace RubbikCubeDomain.Service
+namespace RubiksCube.Service
 {
     public interface IRotationService
     {

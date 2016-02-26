@@ -7,8 +7,8 @@
     <ProjectGuid>{64CCB483-BCC7-41F7-9020-E41D4992B718}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RubbikCubeDomain.Tests</RootNamespace>
-    <AssemblyName>RubbikCubeDomain.Tests</AssemblyName>
+    <RootNamespace>RubbikCube.Tests</RootNamespace>
+    <AssemblyName>RubbikCube.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -60,9 +60,9 @@
     <Compile Include="Service\RotationServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RubbikCubeDomain.csproj">
+    <ProjectReference Include="..\RubiksCube.csproj">
       <Project>{a70b4745-594f-4672-81c9-f09eb9e4cb20}</Project>
-      <Name>RubbikCubeDomain</Name>
+      <Name>RubiksCube</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

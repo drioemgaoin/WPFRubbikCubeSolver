@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubbikCubeDomain.Enums;
-using RubbikCubeDomain.Service;
+using RubiksCube.Enums;
+using RubiksCube.Service;
 
-namespace RubbikCubeDomain.Tests.Service
+namespace RubbikCube.Tests.Service
 {
     [TestFixture]
     public class FaceServiceTests

@@ -1,4 +1,4 @@
-﻿namespace RubbikCubeDomain.Enums
+﻿namespace RubiksCube.Enums
 {
     public enum FaceType
     {

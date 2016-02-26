@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using RubbikCubeDomain.Entity;
-using RubbikCubeDomain.Enums;
-using RubbikCubeDomain.Factory;
+using RubiksCube.Entity;
+using RubiksCube.Enums;
+using RubiksCube.Factory;
 
-namespace RubbikCubeDomain.Service
+namespace RubiksCube.Service
 {
     public interface IFaceService
     {

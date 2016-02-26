@@ -1,9 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubbikCubeDomain.Factory;
+using RubiksCube.Factory;
 
-namespace RubbikCubeDomain.Tests.Factory
+namespace RubbikCube.Tests.Factory
 {
     [TestFixture]
     public class RotationFactoryTests

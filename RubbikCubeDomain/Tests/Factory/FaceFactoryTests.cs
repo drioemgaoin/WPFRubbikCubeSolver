@@ -3,11 +3,11 @@ using System.Linq;
 using System.Windows.Media;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubbikCubeDomain.Entity;
-using RubbikCubeDomain.Enums;
-using RubbikCubeDomain.Factory;
+using RubiksCube.Entity;
+using RubiksCube.Enums;
+using RubiksCube.Factory;
 
-namespace RubbikCubeDomain.Tests.Factory
+namespace RubbikCube.Tests.Factory
 {
     [TestFixture]
     public class FaceFactoryTests

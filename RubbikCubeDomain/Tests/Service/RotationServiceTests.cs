@@ -1,9 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubbikCubeDomain.Service;
+using RubiksCube.Service;
 
-namespace RubbikCubeDomain.Tests.Service
+namespace RubbikCube.Tests.Service
 {
     [TestFixture]
     public class RotationServiceTests

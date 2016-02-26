@@ -12,7 +12,7 @@ using RubiksCube.Service;
 using WpfApplication.Annotations;
 using Point = System.Windows.Point;
 
-namespace WpfApplication
+namespace RubiksCube.UI
 {
     public interface IRubbikCube
     {
@@ -24,15 +24,15 @@ namespace WpfApplication
 
     public partial class RubbikCube : IRubbikCube, INotifyPropertyChanged
     {
-        private readonly IFaceService faceService;
         private readonly IPositionsFactory positionsFactory;
         private readonly IRotationService rotationService;
+        private readonly ICubeFactory cubeFactory;
 
         public RubbikCube()
         {
             rotationService = new RotationService();
-            faceService = new FaceService();
             positionsFactory = new PositionsFactory();
+            cubeFactory = new CubeFactory();
             DataContext = this;
 
             InitializeComponent();
@@ -86,17 +86,17 @@ namespace WpfApplication
         {
             group.Children.Clear();
 
-            InitializeFace(FaceType.Front);
-            InitializeFace(FaceType.Top);
-            InitializeFace(FaceType.Bottom);
-            InitializeFace(FaceType.Left);
-            InitializeFace(FaceType.Right);
-            InitializeFace(FaceType.Back);
+            var cube = cubeFactory.Create();
+            InitializeFace(cube.FrontFace);
+            InitializeFace(cube.LeftFace);
+            InitializeFace(cube.RightFace);
+            InitializeFace(cube.BottomFace);
+            InitializeFace(cube.TopFace);
+            InitializeFace(cube.BackFace);
         }
 
-        private void InitializeFace(FaceType type)
+        private void InitializeFace(Face face)
         {
-            var face = faceService.CreateFace(type);
             foreach (var subFace in face.Facies)
             {
                 var shape = CreateFacie(subFace);

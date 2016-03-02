@@ -2,6 +2,8 @@
 {
     public class Cube
     {
+        public double[,] Rotations { get; set; }
+         
         public Face FrontFace { get; set; }
         public Face LeftFace { get; set; }
         public Face RightFace { get; set; }

@@ -1,35 +1,30 @@
-﻿using System;
-using RubiksCube.Factory;
+﻿using RubiksCube.Factory;
 
 namespace RubiksCube.Service
 {
     public interface IRotationService
     {
-        Func<double>[,] RotationRow(double angle);
-        Func<double>[,] RotationColumn(double angle);
+        double[,] RotationRow(double angle);
+        double[,] RotationColumn(double angle);
     }
 
     public class RotationService : IRotationService
     {
         private readonly IRotationFactory rotationFactory;
-        private double angleX;
-        private double angleY;
 
         public RotationService()
         {
             rotationFactory = new RotationFactory();
         }
 
-        public Func<double>[,] RotationRow(double angle)
+        public double[,] RotationRow(double angle)
         {
-            angleX += angle;
-            return rotationFactory.RotateX(angleX);
+            return rotationFactory.RotateX(angle);
         }
 
-        public Func<double>[,] RotationColumn(double angle)
+        public double[,] RotationColumn(double angle)
         {
-            angleY += angle;
-            return rotationFactory.RotateY(angleY);
+            return rotationFactory.RotateY(angle);
         }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Factory\PositionsFactory.cs" />
     <Compile Include="Factory\RotationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CubeService.cs" />
     <Compile Include="Service\FaceService.cs" />
     <Compile Include="Service\RotationService.cs" />
   </ItemGroup>

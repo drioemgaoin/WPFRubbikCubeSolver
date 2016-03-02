@@ -25,14 +25,15 @@ namespace RubiksCube.UI
     public partial class RubbikCube : IRubbikCube, INotifyPropertyChanged
     {
         private readonly IPositionsFactory positionsFactory;
-        private readonly IRotationService rotationService;
         private readonly ICubeFactory cubeFactory;
+        private readonly ICubeService cubeService;
+        private Cube cube;
 
         public RubbikCube()
         {
-            rotationService = new RotationService();
             positionsFactory = new PositionsFactory();
             cubeFactory = new CubeFactory();
+            cubeService = new CubeService();
             DataContext = this;
 
             InitializeComponent();
@@ -43,7 +44,6 @@ namespace RubiksCube.UI
         
         public void RotateRowRight()
         {
-            
         }
 
         public void RotateRowLeft()
@@ -60,25 +60,25 @@ namespace RubiksCube.UI
 
         public void RotateLeft()
         {
-            var matrix = rotationService.RotationRow(-Math.PI / 4);
+            var matrix = cubeService.RotateRowOnLeftSide(cube);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateRight()
         {
-            var matrix = rotationService.RotationRow(Math.PI / 4);
+            var matrix = cubeService.RotateRowOnRightSide(cube);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateUp()
         {
-            var matrix = rotationService.RotationColumn(Math.PI / 4);
+            var matrix = cubeService.RotateRowOnUpSide(cube);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
         public void RotateDown()
         {
-            var matrix = rotationService.RotationColumn(-Math.PI / 4);
+            var matrix = cubeService.RotateRowOnDownSide(cube);
             group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
         }
 
@@ -86,7 +86,7 @@ namespace RubiksCube.UI
         {
             group.Children.Clear();
 
-            var cube = cubeFactory.Create();
+            cube = cubeFactory.Create();
             InitializeFace(cube.FrontFace);
             InitializeFace(cube.LeftFace);
             InitializeFace(cube.RightFace);
@@ -138,26 +138,26 @@ namespace RubiksCube.UI
             return geometry;
         }
 
-        private static Matrix3D CreateMatrix3D(Func<double>[,] matrix)
+        private static Matrix3D CreateMatrix3D(double[,] matrix)
         {
             var matrix3D = new Matrix3D();
-            matrix3D.M11 = matrix[0, 0]();
-            matrix3D.M12 = matrix[0, 1]();
-            matrix3D.M13 = matrix[0, 2]();
-            matrix3D.M21 = matrix[1, 0]();
-            matrix3D.M22 = matrix[1, 1]();
-            matrix3D.M23 = matrix[1, 2]();
-            matrix3D.M31 = matrix[2, 0]();
-            matrix3D.M32 = matrix[2, 1]();
-            matrix3D.M33 = matrix[2, 2]();
+            matrix3D.M11 = matrix[0, 0];
+            matrix3D.M12 = matrix[0, 1];
+            matrix3D.M13 = matrix[0, 2];
+            matrix3D.M21 = matrix[1, 0];
+            matrix3D.M22 = matrix[1, 1];
+            matrix3D.M23 = matrix[1, 2];
+            matrix3D.M31 = matrix[2, 0];
+            matrix3D.M32 = matrix[2, 1];
+            matrix3D.M33 = matrix[2, 2];
 
-            matrix3D.M14 = matrix[3, 0]();
-            matrix3D.M24 = matrix[3, 1]();
-            matrix3D.M34 = matrix[3, 2]();
+            matrix3D.M14 = matrix[3, 0];
+            matrix3D.M24 = matrix[3, 1];
+            matrix3D.M34 = matrix[3, 2];
 
-            matrix3D.OffsetX = matrix[0, 3]();
-            matrix3D.OffsetY = matrix[1, 3]();
-            matrix3D.OffsetZ = matrix[2, 3]();
+            matrix3D.OffsetX = matrix[0, 3];
+            matrix3D.OffsetY = matrix[1, 3];
+            matrix3D.OffsetZ = matrix[2, 3];
             return matrix3D;
         }
 

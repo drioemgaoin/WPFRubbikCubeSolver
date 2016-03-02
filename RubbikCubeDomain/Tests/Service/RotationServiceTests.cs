@@ -25,22 +25,22 @@ namespace RubbikCube.Tests.Service
 
             var result = subject.RotationRow(angle);
 
-            Assert.That(result[0, 0](), Is.EqualTo(1));
-            Assert.That(result[0, 1](), Is.EqualTo(0));
-            Assert.That(result[0, 2](), Is.EqualTo(0));
-            Assert.That(result[0, 3](), Is.EqualTo(0));
-            Assert.That(result[1, 0](), Is.EqualTo(0));
-            Assert.That(result[1, 1](), Is.EqualTo(Math.Cos(angle)));
-            Assert.That(result[1, 2](), Is.EqualTo(Math.Sin(angle)));
-            Assert.That(result[1, 3](), Is.EqualTo(0));
-            Assert.That(result[2, 0](), Is.EqualTo(0));
-            Assert.That(result[2, 1](), Is.EqualTo(-Math.Sin(angle)));
-            Assert.That(result[2, 2](), Is.EqualTo(Math.Cos(angle)));
-            Assert.That(result[2, 3](), Is.EqualTo(0));
-            Assert.That(result[3, 0](), Is.EqualTo(0));
-            Assert.That(result[3, 1](), Is.EqualTo(0));
-            Assert.That(result[3, 2](), Is.EqualTo(0));
-            Assert.That(result[3, 3](), Is.EqualTo(1));
+            Assert.That(result[0, 0], Is.EqualTo(1));
+            Assert.That(result[0, 1], Is.EqualTo(0));
+            Assert.That(result[0, 2], Is.EqualTo(0));
+            Assert.That(result[0, 3], Is.EqualTo(0));
+            Assert.That(result[1, 0], Is.EqualTo(0));
+            Assert.That(result[1, 1], Is.EqualTo(Math.Cos(angle)));
+            Assert.That(result[1, 2], Is.EqualTo(Math.Sin(angle)));
+            Assert.That(result[1, 3], Is.EqualTo(0));
+            Assert.That(result[2, 0], Is.EqualTo(0));
+            Assert.That(result[2, 1], Is.EqualTo(-Math.Sin(angle)));
+            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(angle)));
+            Assert.That(result[2, 3], Is.EqualTo(0));
+            Assert.That(result[3, 0], Is.EqualTo(0));
+            Assert.That(result[3, 1], Is.EqualTo(0));
+            Assert.That(result[3, 2], Is.EqualTo(0));
+            Assert.That(result[3, 3], Is.EqualTo(1));
         }
 
         [Test]
@@ -52,22 +52,22 @@ namespace RubbikCube.Tests.Service
 
             var result = subject.RotationRow(angle);
 
-            Assert.That(result[0, 0](), Is.EqualTo(1));
-            Assert.That(result[0, 1](), Is.EqualTo(0));
-            Assert.That(result[0, 2](), Is.EqualTo(0));
-            Assert.That(result[0, 3](), Is.EqualTo(0));
-            Assert.That(result[1, 0](), Is.EqualTo(0));
-            Assert.That(result[1, 1](), Is.EqualTo(Math.Cos(angle)));
-            Assert.That(result[1, 2](), Is.EqualTo(Math.Sin(angle)));
-            Assert.That(result[1, 3](), Is.EqualTo(0));
-            Assert.That(result[2, 0](), Is.EqualTo(0));
-            Assert.That(result[2, 1](), Is.EqualTo(-Math.Sin(angle)));
-            Assert.That(result[2, 2](), Is.EqualTo(Math.Cos(angle)));
-            Assert.That(result[2, 3](), Is.EqualTo(0));
-            Assert.That(result[3, 0](), Is.EqualTo(0));
-            Assert.That(result[3, 1](), Is.EqualTo(0));
-            Assert.That(result[3, 2](), Is.EqualTo(0));
-            Assert.That(result[3, 3](), Is.EqualTo(1));
+            Assert.That(result[0, 0], Is.EqualTo(1));
+            Assert.That(result[0, 1], Is.EqualTo(0));
+            Assert.That(result[0, 2], Is.EqualTo(0));
+            Assert.That(result[0, 3], Is.EqualTo(0));
+            Assert.That(result[1, 0], Is.EqualTo(0));
+            Assert.That(result[1, 1], Is.EqualTo(Math.Cos(angle)));
+            Assert.That(result[1, 2], Is.EqualTo(Math.Sin(angle)));
+            Assert.That(result[1, 3], Is.EqualTo(0));
+            Assert.That(result[2, 0], Is.EqualTo(0));
+            Assert.That(result[2, 1], Is.EqualTo(-Math.Sin(angle)));
+            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(angle)));
+            Assert.That(result[2, 3], Is.EqualTo(0));
+            Assert.That(result[3, 0], Is.EqualTo(0));
+            Assert.That(result[3, 1], Is.EqualTo(0));
+            Assert.That(result[3, 2], Is.EqualTo(0));
+            Assert.That(result[3, 3], Is.EqualTo(1));
         }
 
         [Test]
@@ -79,22 +79,22 @@ namespace RubbikCube.Tests.Service
 
             var result = subject.RotationColumn(angle);
 
-            Assert.That(result[0, 0](), Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
-            Assert.That(result[0, 1](), Is.EqualTo(0));
-            Assert.That(result[0, 2](), Is.EqualTo(Math.Sin(2 * Math.PI - angle)));
-            Assert.That(result[0, 3](), Is.EqualTo(0));
-            Assert.That(result[1, 0](), Is.EqualTo(0));
-            Assert.That(result[1, 1](), Is.EqualTo(1));
-            Assert.That(result[1, 2](), Is.EqualTo(0));
-            Assert.That(result[1, 3](), Is.EqualTo(0));
-            Assert.That(result[2, 0](), Is.EqualTo(-Math.Sin(2 * Math.PI - angle)));
-            Assert.That(result[2, 1](), Is.EqualTo(0));
-            Assert.That(result[2, 2](), Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
-            Assert.That(result[2, 3](), Is.EqualTo(0));
-            Assert.That(result[3, 0](), Is.EqualTo(0));
-            Assert.That(result[3, 1](), Is.EqualTo(0));
-            Assert.That(result[3, 2](), Is.EqualTo(0));
-            Assert.That(result[3, 3](), Is.EqualTo(1));
+            Assert.That(result[0, 0], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[0, 1], Is.EqualTo(0));
+            Assert.That(result[0, 2], Is.EqualTo(Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[0, 3], Is.EqualTo(0));
+            Assert.That(result[1, 0], Is.EqualTo(0));
+            Assert.That(result[1, 1], Is.EqualTo(1));
+            Assert.That(result[1, 2], Is.EqualTo(0));
+            Assert.That(result[1, 3], Is.EqualTo(0));
+            Assert.That(result[2, 0], Is.EqualTo(-Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[2, 1], Is.EqualTo(0));
+            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[2, 3], Is.EqualTo(0));
+            Assert.That(result[3, 0], Is.EqualTo(0));
+            Assert.That(result[3, 1], Is.EqualTo(0));
+            Assert.That(result[3, 2], Is.EqualTo(0));
+            Assert.That(result[3, 3], Is.EqualTo(1));
         }
 
         [Test]
@@ -106,22 +106,22 @@ namespace RubbikCube.Tests.Service
 
             var result = subject.RotationColumn(angle);
 
-            Assert.That(result[0, 0](), Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
-            Assert.That(result[0, 1](), Is.EqualTo(0));
-            Assert.That(result[0, 2](), Is.EqualTo(Math.Sin(2 * Math.PI - angle)));
-            Assert.That(result[0, 3](), Is.EqualTo(0));
-            Assert.That(result[1, 0](), Is.EqualTo(0));
-            Assert.That(result[1, 1](), Is.EqualTo(1));
-            Assert.That(result[1, 2](), Is.EqualTo(0));
-            Assert.That(result[1, 3](), Is.EqualTo(0));
-            Assert.That(result[2, 0](), Is.EqualTo(-Math.Sin(2 * Math.PI - angle)));
-            Assert.That(result[2, 1](), Is.EqualTo(0));
-            Assert.That(result[2, 2](), Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
-            Assert.That(result[2, 3](), Is.EqualTo(0));
-            Assert.That(result[3, 0](), Is.EqualTo(0));
-            Assert.That(result[3, 1](), Is.EqualTo(0));
-            Assert.That(result[3, 2](), Is.EqualTo(0));
-            Assert.That(result[3, 3](), Is.EqualTo(1));
+            Assert.That(result[0, 0], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[0, 1], Is.EqualTo(0));
+            Assert.That(result[0, 2], Is.EqualTo(Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[0, 3], Is.EqualTo(0));
+            Assert.That(result[1, 0], Is.EqualTo(0));
+            Assert.That(result[1, 1], Is.EqualTo(1));
+            Assert.That(result[1, 2], Is.EqualTo(0));
+            Assert.That(result[1, 3], Is.EqualTo(0));
+            Assert.That(result[2, 0], Is.EqualTo(-Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[2, 1], Is.EqualTo(0));
+            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[2, 3], Is.EqualTo(0));
+            Assert.That(result[3, 0], Is.EqualTo(0));
+            Assert.That(result[3, 1], Is.EqualTo(0));
+            Assert.That(result[3, 2], Is.EqualTo(0));
+            Assert.That(result[3, 3], Is.EqualTo(1));
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Cube
     {
-        public double[,] Rotations { get; set; }
+        public double[,] Matrix { get; set; }
          
         public Face FrontFace { get; set; }
         public Face LeftFace { get; set; }

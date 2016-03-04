@@ -9,15 +9,15 @@
     <UserControl.Resources>
         <converter:LookBackConverter x:Key="lookBackConverter" />
     </UserControl.Resources>
-        <Viewport3D Name="mainViewport">
+    <Viewport3D Name="mainViewport">
         <Viewport3D.Camera>
             <PerspectiveCamera x:Name="camera"
-                FieldOfView="45"
-                FarPlaneDistance="150"
-                NearPlaneDistance="0"
-                UpDirection="1,0,0"
-                Position="0 0 10" 
-                LookDirection="{Binding RelativeSource={RelativeSource Self}, Path=Position, Converter={StaticResource lookBackConverter}}">
+                    FieldOfView="45"
+                    FarPlaneDistance="150"
+                    NearPlaneDistance="0"
+                    UpDirection="1,0,0"
+                    Position="0 0 10" 
+                    LookDirection="{Binding RelativeSource={RelativeSource Self}, Path=Position, Converter={StaticResource lookBackConverter}}">
             </PerspectiveCamera>
         </Viewport3D.Camera>
         <ModelVisual3D>

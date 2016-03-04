@@ -49,6 +49,7 @@
     <Compile Include="Factory\FaceFactory.cs" />
     <Compile Include="Factory\PositionsFactory.cs" />
     <Compile Include="Factory\RotationFactory.cs" />
+    <Compile Include="MatrixHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CubeService.cs" />
     <Compile Include="Service\FaceService.cs" />

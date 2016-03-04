@@ -11,6 +11,8 @@ namespace RubiksCube.Entity
             Facies = new List<Face>();
         }
 
+        public double[,] Rotation { get; set; }
+
         public FaceType Type { get; set; }
 
         public FaciePositionType FaciePositionType { get; set; }

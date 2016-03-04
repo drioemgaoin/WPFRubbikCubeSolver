@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -44,42 +46,66 @@ namespace RubiksCube.UI
         
         public void RotateRowRight()
         {
+            var facies = cubeService.RotateRowOnRightSide(cube, 1);
+            Rotate(facies);
         }
 
         public void RotateRowLeft()
         {
+            var facies = cubeService.RotateRowOnLeftSide(cube, 1);
+            Rotate(facies);
         }
 
         public void RotateColumnUp()
         {
+            var facies = cubeService.RotateColumnOnUpSide(cube, 1);
+            Rotate(facies);
         }
 
         public void RotateColumnDown()
         {
+            var facies = cubeService.RotateColumnOnDownSide(cube, 1);
+            Rotate(facies);
         }
 
         public void RotateLeft()
         {
             var matrix = cubeService.RotateRowOnLeftSide(cube);
-            group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
+            group.Transform = CreateTransformations(matrix);
         }
 
         public void RotateRight()
         {
             var matrix = cubeService.RotateRowOnRightSide(cube);
-            group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
+            group.Transform = CreateTransformations(matrix);
         }
 
         public void RotateUp()
         {
             var matrix = cubeService.RotateRowOnUpSide(cube);
-            group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
+            group.Transform = CreateTransformations(matrix);
         }
 
         public void RotateDown()
         {
             var matrix = cubeService.RotateRowOnDownSide(cube);
-            group.Transform = new MatrixTransform3D(CreateMatrix3D(matrix));
+            group.Transform = CreateTransformations(matrix);
+        }
+
+        private void Rotate(IEnumerable<Face> facies)
+        {
+            var center = GetCenter(false);
+            var negateCenter = GetCenter(true);
+
+            foreach (var facie in facies)
+            {
+                var key = GetKey(facie);
+                var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == key);
+                if (geometry != null)
+                {
+                    geometry.Transform = CreateTransformations(facie.Rotation, center, negateCenter);
+                }
+            }
         }
 
         private void Initialize()
@@ -97,43 +123,40 @@ namespace RubiksCube.UI
 
         private void InitializeFace(Face face)
         {
-            foreach (var subFace in face.Facies)
+            foreach (var facie in face.Facies)
             {
-                var shape = CreateFacie(subFace);
+                var shape = CreateFacie(facie);
                 group.Children.Add(shape);
             }
         }
 
-        private GeometryModel3D CreateFacie(Face face)
+        private GeometryModel3D CreateFacie(Face facie)
         {
             var label = new Label
             {
-                Background = new SolidColorBrush(face.Color),
+                Background = new SolidColorBrush(facie.Color),
                 BorderBrush = new SolidColorBrush(Colors.Black),
-                BorderThickness = new Thickness(1)
+                BorderThickness = new Thickness(0.3)
             };
 
-            var positions = positionsFactory.CreatePositions(face.Type);
+            var positions = positionsFactory.CreatePositions(facie.Type);
 
             var geometry = new GeometryModel3D
             {
                 Geometry = new MeshGeometry3D
                 {
-                    Positions = CreatePoints(positions, face.FaciePositionType),
+                    Positions = CreatePoints(positions, facie.FaciePositionType),
                     TriangleIndices = new Int32Collection { 2, 1, 3, 2, 0, 1 },
-                    TextureCoordinates = new PointCollection { new Point(0, 0), new Point(1, 0), new Point(0, 1), new Point(1,1)}
+                    TextureCoordinates = new PointCollection { new Point(-0.5, -0.5), new Point(0.5, -0.5), new Point(-0.5, 0.5), new Point(0.5, 0.5) }
                 },
                 Material = new DiffuseMaterial(new VisualBrush
                 {
                     Visual = label
-                }),
-                Transform = new MatrixTransform3D(new Matrix3D()
-                {
-                    OffsetX = -0.5,
-                    OffsetY = -0.5,
-                    OffsetZ = 0.5
                 })
             };
+
+            var key = GetKey(facie);
+            geometry.SetValue(NameProperty, key);
 
             return geometry;
         }
@@ -158,6 +181,9 @@ namespace RubiksCube.UI
             matrix3D.OffsetX = matrix[0, 3];
             matrix3D.OffsetY = matrix[1, 3];
             matrix3D.OffsetZ = matrix[2, 3];
+
+            matrix3D.M44 = matrix[3, 3];
+            
             return matrix3D;
         }
 
@@ -183,6 +209,34 @@ namespace RubiksCube.UI
             return points;
         }
 
+        private Vector3D GetCenter(bool isNegate)
+        {
+            var bounds = group.Bounds;
+            var center = new Vector3D(bounds.X + (bounds.SizeX / 2),
+                                      bounds.Y + (bounds.SizeY / 2),
+                                      bounds.Z + (bounds.SizeZ / 2));
+            if (isNegate)
+            {
+                center.Negate();
+            }
+
+            return center;
+        }
+
+        private Transform3DGroup CreateTransformations(double[,] rotation)
+        {
+            return CreateTransformations(rotation, GetCenter(false), GetCenter(true));
+        }
+
+        private static Transform3DGroup CreateTransformations(double[,] rotation, Vector3D center, Vector3D negateCenter)
+        {
+            var transformGroup = new Transform3DGroup();
+            transformGroup.Children.Add(new TranslateTransform3D(negateCenter));
+            transformGroup.Children.Add(new MatrixTransform3D(CreateMatrix3D(rotation)));
+            transformGroup.Children.Add(new TranslateTransform3D(center));
+            return transformGroup;
+        }
+
         [NotifyPropertyChangedInvocator]
         protected void NotifyPropertyChanged(string propertyName)
         {
@@ -191,6 +245,11 @@ namespace RubiksCube.UI
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private static string GetKey(Face facie)
+        {
+            return String.Format("{0}{1}", facie.Type, facie.FaciePositionType);
         }
     }
 }

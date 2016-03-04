@@ -8,15 +8,15 @@ namespace RubiksCube.Service
 {
     public interface ICubeService
     {
-        IList<Face> RotateRowOnRightSide(Cube cube, int indexRow);
-        IList<Face> RotateRowOnLeftSide(Cube cube, int indexRow);
-        IList<Face> RotateColumnOnUpSide(Cube cube, int indexColumn);
-        IList<Face> RotateColumnOnDownSide(Cube cube, int indexColumn);
+        IList<Face> RotateOnRightSide(Cube cube, RotationType rotationType);
+        IList<Face> RotateOnLeftSide(Cube cube, RotationType rotationType);
+        IList<Face> RotateOnUpSide(Cube cube, RotationType rotationType);
+        IList<Face> RotateOnDownSide(Cube cube, RotationType rotationType);
 
-        double[,] RotateRowOnRightSide(Cube cube);
-        double[,] RotateRowOnLeftSide(Cube cube);
-        double[,] RotateRowOnUpSide(Cube cube);
-        double[,] RotateRowOnDownSide(Cube cube);
+        //double[,] RotateOnRightSide(Cube cube);
+        //double[,] RotateOnLeftSide(Cube cube);
+        //double[,] RotateOnUpSide(Cube cube);
+        //double[,] RotateOnDownSide(Cube cube);
     }
 
     public class CubeService : ICubeService
@@ -28,61 +28,87 @@ namespace RubiksCube.Service
             rotationService = new RotationService();
         }
 
-        public IList<Face> RotateRowOnRightSide(Cube cube, int indexRow)
+        public IList<Face> RotateOnRightSide(Cube cube, RotationType rotationType)
         {
-            return RotateRow(cube, Math.PI / 4);
+            return RotateRow(cube, rotationType, Math.PI / 4);
         }
 
-        public IList<Face> RotateRowOnLeftSide(Cube cube, int indexRow)
+        public IList<Face> RotateOnLeftSide(Cube cube, RotationType rotationType)
         {
-            return RotateRow(cube, -Math.PI / 4);
+            return RotateRow(cube, rotationType, -Math.PI / 4);
         }
 
-        public IList<Face> RotateColumnOnUpSide(Cube cube, int indexColumn)
+        public IList<Face> RotateOnUpSide(Cube cube, RotationType rotationType)
         {
-            return RotateColumn(cube, Math.PI / 4);
+            return RotateColumn(cube, rotationType, Math.PI / 4);
         }
 
-        public IList<Face> RotateColumnOnDownSide(Cube cube, int indexColumn)
+        public IList<Face> RotateOnDownSide(Cube cube, RotationType rotationType)
         {
-            return RotateColumn(cube, -Math.PI / 4);
+            return RotateColumn(cube, rotationType, -Math.PI / 4);
         }
 
-        public double[,] RotateRowOnRightSide(Cube cube)
+        private IList<Face> RotateRow(Cube cube, RotationType rotationType, double angle)
         {
-            var matrix = rotationService.RotationRow(Math.PI / 4);
-            cube.Matrix = cube.Matrix == null ? matrix : MatrixHelper.Multiply(cube.Matrix, matrix);
-            return cube.Matrix;
+            switch (rotationType)
+            {
+                case RotationType.All:
+                    var faces = new List<Face>();
+                    faces.AddRange(RotateFirstRow(cube, angle));
+                    faces.AddRange(RotateSecondRow(cube, angle));
+                    faces.AddRange(RotateThirdRow(cube, angle));
+                    return faces;
+                case RotationType.First:
+                    return RotateFirstRow(cube, angle);
+            }
+
+            return new Face[0];
         }
 
-        public double[,] RotateRowOnLeftSide(Cube cube)
+        private IList<Face> RotateColumn(Cube cube, RotationType rotationType, double angle)
         {
-            var rotations = rotationService.RotationRow(-Math.PI / 4);
-            cube.Matrix = cube.Matrix == null ? rotations : MatrixHelper.Multiply(cube.Matrix, rotations);
-            return cube.Matrix;
+            switch (rotationType)
+            {
+                case RotationType.All:
+                    var faces = new List<Face>();
+                    faces.AddRange(RotateFirstColumn(cube, angle));
+                    faces.AddRange(RotateSecondColumn(cube, angle));
+                    faces.AddRange(RotateThirdColumn(cube, angle));
+                    return faces;
+                case RotationType.First:
+                    return RotateFirstColumn(cube, angle);
+            }
+
+            return new Face[0];
         }
 
-        public double[,] RotateRowOnUpSide(Cube cube)
-        {
-            var rotations = rotationService.RotationColumn(Math.PI / 4);
-            cube.Matrix = cube.Matrix == null ? rotations : MatrixHelper.Multiply(cube.Matrix, rotations);
-            return cube.Matrix;
-        }
-
-        public double[,] RotateRowOnDownSide(Cube cube)
-        {
-            var rotations = rotationService.RotationColumn(-Math.PI / 4);
-            cube.Matrix = cube.Matrix == null ? rotations : MatrixHelper.Multiply(cube.Matrix, rotations);
-            return cube.Matrix;
-        }
-
-        private IList<Face> RotateRow(Cube cube, double angle)
+        private IList<Face> RotateFirstRow(Cube cube, double angle)
         {
             var facies = new List<Face>();
             facies.AddRange(RotateFirstRow(cube.FrontFace, angle));
             facies.AddRange(RotateFirstRow(cube.RightFace, angle));
             facies.AddRange(RotateFirstRow(cube.BackFace, angle));
             facies.AddRange(RotateFirstRow(cube.LeftFace, angle));
+            return facies;
+        }
+
+        private IList<Face> RotateSecondRow(Cube cube, double angle)
+        {
+            var facies = new List<Face>();
+            facies.AddRange(RotateSecondRow(cube.FrontFace, angle));
+            facies.AddRange(RotateSecondRow(cube.RightFace, angle));
+            facies.AddRange(RotateSecondRow(cube.BackFace, angle));
+            facies.AddRange(RotateSecondRow(cube.LeftFace, angle));
+            return facies;
+        }
+
+        private IList<Face> RotateThirdRow(Cube cube, double angle)
+        {
+            var facies = new List<Face>();
+            facies.AddRange(RotateThirdRow(cube.FrontFace, angle));
+            facies.AddRange(RotateThirdRow(cube.RightFace, angle));
+            facies.AddRange(RotateThirdRow(cube.BackFace, angle));
+            facies.AddRange(RotateThirdRow(cube.LeftFace, angle));
             return facies;
         }
 
@@ -101,13 +127,63 @@ namespace RubiksCube.Service
             }
         }
 
-        private IList<Face> RotateColumn(Cube cube, double angle)
+        private IEnumerable<Face> RotateSecondRow(Face face, double angle)
+        {
+            var rotation = rotationService.RotationRow(angle);
+
+            var facies = face.Facies.Where(x =>
+                x.FaciePositionType == FaciePositionType.LeftMiddle ||
+                x.FaciePositionType == FaciePositionType.Middle ||
+                x.FaciePositionType == FaciePositionType.RightMiddle);
+            foreach (var facie in facies)
+            {
+                facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                yield return facie;
+            }
+        }
+
+        private IEnumerable<Face> RotateThirdRow(Face face, double angle)
+        {
+            var rotation = rotationService.RotationRow(angle);
+
+            var facies = face.Facies.Where(x =>
+                x.FaciePositionType == FaciePositionType.LeftBottom ||
+                x.FaciePositionType == FaciePositionType.MiddleBottom ||
+                x.FaciePositionType == FaciePositionType.RightBottom);
+            foreach (var facie in facies)
+            {
+                facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                yield return facie;
+            }
+        }
+
+        private IList<Face> RotateFirstColumn(Cube cube, double angle)
         {
             var facies = new List<Face>();
             facies.AddRange(RotateFirstColumn(cube.FrontFace, angle));
             facies.AddRange(RotateFirstColumn(cube.TopFace, angle));
             facies.AddRange(RotateFirstColumn(cube.BackFace, angle));
             facies.AddRange(RotateFirstColumn(cube.BottomFace, angle));
+            return facies;
+        }
+
+        private IList<Face> RotateSecondColumn(Cube cube, double angle)
+        {
+            var facies = new List<Face>();
+            facies.AddRange(RotateSecondColumn(cube.FrontFace, angle));
+            facies.AddRange(RotateSecondColumn(cube.TopFace, angle));
+            facies.AddRange(RotateSecondColumn(cube.BackFace, angle));
+            facies.AddRange(RotateSecondColumn(cube.BottomFace, angle));
+            return facies;
+        }
+
+        private IList<Face> RotateThirdColumn(Cube cube, double angle)
+        {
+            var facies = new List<Face>();
+            facies.AddRange(RotateThirdColumn(cube.FrontFace, angle));
+            facies.AddRange(RotateThirdColumn(cube.TopFace, angle));
+            facies.AddRange(RotateThirdColumn(cube.BackFace, angle));
+            facies.AddRange(RotateThirdColumn(cube.BottomFace, angle));
             return facies;
         }
 
@@ -119,6 +195,36 @@ namespace RubiksCube.Service
                 x.FaciePositionType == FaciePositionType.LeftTop ||
                 x.FaciePositionType == FaciePositionType.LeftMiddle ||
                 x.FaciePositionType == FaciePositionType.LeftBottom);
+            foreach (var facie in facies)
+            {
+                facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                yield return facie;
+            }
+        }
+
+        private IEnumerable<Face> RotateSecondColumn(Face face, double angle)
+        {
+            var rotation = rotationService.RotationColumn(angle);
+
+            var facies = face.Facies.Where(x =>
+                x.FaciePositionType == FaciePositionType.MiddleTop ||
+                x.FaciePositionType == FaciePositionType.Middle ||
+                x.FaciePositionType == FaciePositionType.MiddleBottom);
+            foreach (var facie in facies)
+            {
+                facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                yield return facie;
+            }
+        }
+
+        private IEnumerable<Face> RotateThirdColumn(Face face, double angle)
+        {
+            var rotation = rotationService.RotationColumn(angle);
+
+            var facies = face.Facies.Where(x =>
+                x.FaciePositionType == FaciePositionType.RightMiddle ||
+                x.FaciePositionType == FaciePositionType.RightMiddle ||
+                x.FaciePositionType == FaciePositionType.RightBottom);
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);

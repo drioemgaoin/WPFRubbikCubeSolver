@@ -45,6 +45,7 @@
     <Compile Include="Enums\FaceType.cs" />
     <Compile Include="Enums\FaciePositionType.cs" />
     <Compile Include="Enums\PointPositionType.cs" />
+    <Compile Include="Enums\RotationType.cs" />
     <Compile Include="Factory\CubeFactory.cs" />
     <Compile Include="Factory\FaceFactory.cs" />
     <Compile Include="Factory\PositionsFactory.cs" />

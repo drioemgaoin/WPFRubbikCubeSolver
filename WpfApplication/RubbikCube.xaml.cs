@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -46,50 +45,50 @@ namespace RubiksCube.UI
         
         public void RotateRowRight()
         {
-            var facies = cubeService.RotateRowOnRightSide(cube, 1);
+            var facies = cubeService.RotateOnRightSide(cube, RotationType.First);
             Rotate(facies);
         }
 
         public void RotateRowLeft()
         {
-            var facies = cubeService.RotateRowOnLeftSide(cube, 1);
+            var facies = cubeService.RotateOnLeftSide(cube, RotationType.First);
             Rotate(facies);
         }
 
         public void RotateColumnUp()
         {
-            var facies = cubeService.RotateColumnOnUpSide(cube, 1);
+            var facies = cubeService.RotateOnUpSide(cube, RotationType.First);
             Rotate(facies);
         }
 
         public void RotateColumnDown()
         {
-            var facies = cubeService.RotateColumnOnDownSide(cube, 1);
+            var facies = cubeService.RotateOnDownSide(cube, RotationType.First);
             Rotate(facies);
         }
 
         public void RotateLeft()
         {
-            var matrix = cubeService.RotateRowOnLeftSide(cube);
-            group.Transform = CreateTransformations(matrix);
+            var face = cubeService.RotateOnLeftSide(cube, RotationType.All).First();
+            group.Transform = CreateTransformations(face.Rotation);
         }
 
         public void RotateRight()
         {
-            var matrix = cubeService.RotateRowOnRightSide(cube);
-            group.Transform = CreateTransformations(matrix);
+            var face = cubeService.RotateOnRightSide(cube, RotationType.All).First();
+            group.Transform = CreateTransformations(face.Rotation);
         }
 
         public void RotateUp()
         {
-            var matrix = cubeService.RotateRowOnUpSide(cube);
-            group.Transform = CreateTransformations(matrix);
+            var face = cubeService.RotateOnUpSide(cube, RotationType.All).First();
+            group.Transform = CreateTransformations(face.Rotation);
         }
 
         public void RotateDown()
         {
-            var matrix = cubeService.RotateRowOnDownSide(cube);
-            group.Transform = CreateTransformations(matrix);
+            var face = cubeService.RotateOnDownSide(cube, RotationType.All).First();
+            group.Transform = CreateTransformations(face.Rotation);
         }
 
         private void Rotate(IEnumerable<Face> facies)

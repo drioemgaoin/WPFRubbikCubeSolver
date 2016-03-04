@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using RubiksCube.Entity;
 using RubiksCube.Enums;
 
@@ -12,11 +13,6 @@ namespace RubiksCube.Service
         IList<Face> RotateOnLeftSide(Cube cube, RotationType rotationType);
         IList<Face> RotateOnUpSide(Cube cube, RotationType rotationType);
         IList<Face> RotateOnDownSide(Cube cube, RotationType rotationType);
-
-        //double[,] RotateOnRightSide(Cube cube);
-        //double[,] RotateOnLeftSide(Cube cube);
-        //double[,] RotateOnUpSide(Cube cube);
-        //double[,] RotateOnDownSide(Cube cube);
     }
 
     public class CubeService : ICubeService
@@ -57,6 +53,7 @@ namespace RubiksCube.Service
                     faces.AddRange(RotateFirstRow(cube, angle));
                     faces.AddRange(RotateSecondRow(cube, angle));
                     faces.AddRange(RotateThirdRow(cube, angle));
+
                     return faces;
                 case RotationType.First:
                     return RotateFirstRow(cube, angle);
@@ -123,6 +120,7 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetRowType(facie.Type, angle > 0);
                 yield return facie;
             }
         }
@@ -138,6 +136,7 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetRowType(facie.Type, angle > 0);
                 yield return facie;
             }
         }
@@ -153,6 +152,7 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetRowType(facie.Type, angle > 0);
                 yield return facie;
             }
         }
@@ -198,6 +198,7 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetColumnType(facie.Type, angle > 0);
                 yield return facie;
             }
         }
@@ -213,6 +214,7 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetColumnType(facie.Type, angle > 0);
                 yield return facie;
             }
         }
@@ -228,8 +230,45 @@ namespace RubiksCube.Service
             foreach (var facie in facies)
             {
                 facie.Rotation = facie.Rotation == null ? rotation : MatrixHelper.Multiply(facie.Rotation, rotation);
+                facie.Type = GetColumnType(facie.Type, angle > 0);
                 yield return facie;
             }
+        }
+
+        private static FaceType GetRowType(FaceType faceType, bool moveRight)
+        {
+            switch (faceType)
+            {
+                case FaceType.Front:
+                    return moveRight ? FaceType.Right : FaceType.Left;
+                case FaceType.Right:
+                    return moveRight ? FaceType.Back : FaceType.Front;
+                case FaceType.Back:
+                    return moveRight ? FaceType.Left : FaceType.Right;
+                case FaceType.Left:
+                    return moveRight ? FaceType.Front : FaceType.Back;
+
+            }
+
+            return faceType;
+        }
+
+        private static FaceType GetColumnType(FaceType faceType, bool moveUp)
+        {
+            switch (faceType)
+            {
+                case FaceType.Front:
+                    return moveUp ? FaceType.Bottom : FaceType.Top;
+                case FaceType.Bottom:
+                    return moveUp ? FaceType.Back : FaceType.Front;
+                case FaceType.Back:
+                    return moveUp ? FaceType.Top : FaceType.Bottom;
+                case FaceType.Top:
+                    return moveUp ? FaceType.Front : FaceType.Back;
+
+            }
+
+            return faceType;
         }
     }
 }

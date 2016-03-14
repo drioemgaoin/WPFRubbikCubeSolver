@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Entity;
@@ -69,26 +70,26 @@ namespace RubiksCube.UI
 
         public void RotateLeft()
         {
-            var face = cubeService.RotateOnLeftSide(cube, RotationType.All).First();
-            group.Transform = CreateTransformations(face.Rotation);
+            var facies = cubeService.RotateOnLeftSide(cube, RotationType.All);
+            Rotate(facies);
         }
 
         public void RotateRight()
         {
-            var face = cubeService.RotateOnRightSide(cube, RotationType.All).First();
-            group.Transform = CreateTransformations(face.Rotation);
+            var facies = cubeService.RotateOnRightSide(cube, RotationType.All);
+            Rotate(facies);
         }
 
         public void RotateUp()
         {
-            var face = cubeService.RotateOnUpSide(cube, RotationType.All).First();
-            group.Transform = CreateTransformations(face.Rotation);
+            var facies = cubeService.RotateOnUpSide(cube, RotationType.All);
+            Rotate(facies);
         }
 
         public void RotateDown()
         {
-            var face = cubeService.RotateOnDownSide(cube, RotationType.All).First();
-            group.Transform = CreateTransformations(face.Rotation);
+            var facies = cubeService.RotateOnDownSide(cube, RotationType.All);
+            Rotate(facies);
         }
 
         private void Rotate(IEnumerable<Face> facies)
@@ -98,8 +99,7 @@ namespace RubiksCube.UI
 
             foreach (var facie in facies)
             {
-                var key = GetKey(facie);
-                var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == key);
+                var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == facie.Key);
                 if (geometry != null)
                 {
                     geometry.Transform = CreateTransformations(facie.Rotation, center, negateCenter);
@@ -138,6 +138,10 @@ namespace RubiksCube.UI
                 BorderThickness = new Thickness(0.3)
             };
 
+            var binding = new Binding("Type2");
+            binding.Source = facie;
+            label.SetBinding(Label.ContentProperty, binding);
+
             var positions = positionsFactory.CreatePositions(facie.Type);
 
             var geometry = new GeometryModel3D
@@ -154,8 +158,7 @@ namespace RubiksCube.UI
                 })
             };
 
-            var key = GetKey(facie);
-            geometry.SetValue(NameProperty, key);
+            geometry.SetValue(NameProperty, facie.Key);
 
             return geometry;
         }
@@ -244,11 +247,6 @@ namespace RubiksCube.UI
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        private static string GetKey(Face facie)
-        {
-            return String.Format("{0}{1}", facie.Type, facie.FaciePositionType);
         }
     }
 }

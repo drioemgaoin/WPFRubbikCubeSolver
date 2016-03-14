@@ -1,4 +1,7 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Media;
 using RubiksCube.Entity;
 using RubiksCube.Enums;
 
@@ -38,7 +41,7 @@ namespace RubiksCube.Factory
             {
                 Type = faceType, 
                 Color = color,
-                Facies = new[] {
+                Facies = new List<Face> {
                     CreateSubFace(faceType, FaciePositionType.Middle, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleTop, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleBottom, color),        
@@ -56,6 +59,7 @@ namespace RubiksCube.Factory
         {
             return new Face
             {
+                Key = String.Format("{0}{1}", faceType, faciePositionType),
                 Type = faceType,
                 Color = color,
                 FaciePositionType = faciePositionType

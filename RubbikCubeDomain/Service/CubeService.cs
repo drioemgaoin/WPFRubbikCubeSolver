@@ -14,8 +14,6 @@ namespace RubiksCube.Service
         IList<Face> RotateOnDownSide(Cube cube, RotationType rotationType);
     }
 
-    public 
-
     public class CubeService : ICubeService
     {
         private readonly IRotationService rotationService;

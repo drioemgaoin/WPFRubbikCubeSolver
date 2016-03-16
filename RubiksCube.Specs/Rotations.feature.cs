@@ -65,14 +65,29 @@ namespace RubiksCube.Specs
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("White", "Right", "1", "Green", new string[0])]
-        public virtual void FaceRotations(string initial_Color, string direction, string times, string expected_Color, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Right", "1", "Green", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Up", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Left", "1", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Down", "1", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Right", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Up", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Left", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Down", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Right", "3", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Up", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Left", "3", "Green", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Down", "3", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Right", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Up", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Left", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Down", "4", "White", new string[0])]
+        public virtual void FaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Face Rotations", exampleTags);
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
- testRunner.Given(string.Format("a cube with a visible \"{0}\" face", initial_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
  testRunner.When(string.Format("the cube turns \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6

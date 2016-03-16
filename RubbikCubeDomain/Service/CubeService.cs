@@ -26,28 +26,28 @@ namespace RubiksCube.Service
             rotationService = new RotationService();
         }
 
-        public void Rotate(Cube cube, FaceRotation faceRotation)
+        public void Rotate(Cube cube, Rotation rotation)
         {
             Action rorateAction;
-            switch (faceRotation.Direction)
+            switch (rotation.Direction)
             {
-                case FaceRotation.Up:
+                case Rotation.Up:
                     rorateAction = () => RotateOnUpSide(cube, RotationType.All);
                     break;
-                case FaceRotation.Right:
+                case Rotation.Right:
                     rorateAction = () => RotateOnRightSide(cube, RotationType.All);
                     break;
-                case FaceRotation.Left:
+                case Rotation.Left:
                     rorateAction = () => RotateOnLeftSide(cube, RotationType.All);
                     break;
-                case FaceRotation.Down:
+                case Rotation.Down:
                     rorateAction = () => RotateOnDownSide(cube, RotationType.All);
                     break;
                 default:
                     throw new InvalidOperationException();
             }
 
-            for (int i = 0; i < faceRotation.Times; i++)
+            for (int i = 0; i < rotation.Times; i++)
             {
                 rorateAction();
             }

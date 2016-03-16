@@ -22,7 +22,7 @@ namespace RubiksCube.Specs
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var rotation = new FaceRotation(direction, times);
+            var rotation = new Rotation(direction, times);
             cubeService.Rotate(cube, rotation);
         }
         

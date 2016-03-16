@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\FaceRotation.cs" />
+    <Compile Include="Rotation.cs" />
     <Compile Include="Entity\Cube.cs" />
     <Compile Include="Entity\Face.cs" />
     <Compile Include="Enums\FaceType.cs" />

@@ -65,17 +65,18 @@ namespace RubiksCube.Specs
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Face Rotations")]
-        public virtual void FaceRotations()
+        [NUnit.Framework.TestCaseAttribute("White", "Right", "1", "Green", new string[0])]
+        public virtual void FaceRotations(string initial_Color, string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Face Rotations", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Face Rotations", exampleTags);
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
- testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("a cube with a visible \"{0}\" face", initial_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.When("the cube turns \"Right\" 1 times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the cube turns \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
- testRunner.Then("then the \"Green\" face is visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("then the \"{0}\" face is visible", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

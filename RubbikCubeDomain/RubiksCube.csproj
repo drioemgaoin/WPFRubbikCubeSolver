@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\FaceRotation.cs" />
     <Compile Include="Entity\Cube.cs" />
     <Compile Include="Entity\Face.cs" />
     <Compile Include="Enums\FaceType.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Factory\FaceFactory.cs" />
     <Compile Include="Factory\PositionsFactory.cs" />
     <Compile Include="Factory\RotationFactory.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CubeService.cs" />

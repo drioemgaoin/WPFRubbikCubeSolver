@@ -49,7 +49,7 @@ namespace RubiksCube.Entity
             }
         }
 
-        public Color Color { get; set; }
+        public Color Color { get; set; } // TODO: Replace with new model type to protect integrity and break the UI dependency
 
         public IList<Face> Facies { get; set; }
 

@@ -1,7 +1,7 @@
-﻿Feature: Cube Rotation
+﻿Feature: Rotations
 
 Scenario: Face Rotations
-	Given a cube with a visable "white" face
-	When the cube turns "right" 1
-	Then then the "green" face is visible
+	Given a cube with a visible "White" face
+	When the cube turns "Right" 1 times
+	Then then the "Green" face is visible
 	

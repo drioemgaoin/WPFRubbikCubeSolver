@@ -2,6 +2,8 @@
 {
     public class Cube
     {
+        // TODO: The cube should protect its integrity and initialize all faces on creation
+
         public double[,] Matrix { get; set; }
          
         public Face FrontFace { get; set; }

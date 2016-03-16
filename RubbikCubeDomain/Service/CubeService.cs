@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using RubiksCube.Entity;
 using RubiksCube.Enums;
@@ -19,10 +20,37 @@ namespace RubiksCube.Service
         private readonly IRotationService rotationService;
         private double currentAngleX;
         private double currentAngleY;
-
+        
         public CubeService()
         {
             rotationService = new RotationService();
+        }
+
+        public void Rotate(Cube cube, FaceRotation faceRotation)
+        {
+            Action rorateAction;
+            switch (faceRotation.Direction)
+            {
+                case FaceRotation.Up:
+                    rorateAction = () => RotateOnUpSide(cube, RotationType.All);
+                    break;
+                case FaceRotation.Right:
+                    rorateAction = () => RotateOnRightSide(cube, RotationType.All);
+                    break;
+                case FaceRotation.Left:
+                    rorateAction = () => RotateOnLeftSide(cube, RotationType.All);
+                    break;
+                case FaceRotation.Down:
+                    rorateAction = () => RotateOnDownSide(cube, RotationType.All);
+                    break;
+                default:
+                    throw new InvalidOperationException();
+            }
+
+            for (int i = 0; i < faceRotation.Times; i++)
+            {
+                rorateAction();
+            }
         }
 
         public IList<Face> RotateOnRightSide(Cube cube, RotationType rotationType)

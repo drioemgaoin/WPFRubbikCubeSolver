@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Media;
 using RubiksCube.Enums;
 
@@ -25,9 +26,11 @@ namespace RubiksCube.Entity
         {
             get
             {
-                return Type.ToString();//String.Format("{0} {1}", Type, FaciePositionType); 
+                return FaciePositionType.ToString();//String.Format("{0} {1}", Type, FaciePositionType)); 
             }
         }
+
+        public MoveType Move { get; set; }
 
         public FaceType Type
         {
@@ -59,6 +62,18 @@ namespace RubiksCube.Entity
         {
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override string ToString()
+        {
+            var buffer = new StringBuilder();
+            buffer.AppendLine(Type + "-" + faciePositionType + "-" + Color + "=" + Facies.Count);
+            foreach (var face in Facies)
+            {
+                buffer.AppendLine("-->" + face);
+            }
+
+            return buffer.ToString();
         }
     }
 }

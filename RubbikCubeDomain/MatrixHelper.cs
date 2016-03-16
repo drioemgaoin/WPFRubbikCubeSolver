@@ -120,7 +120,6 @@ namespace RubiksCube
             //    }
             //}
 
-
             return result;
         }
 
@@ -136,6 +135,22 @@ namespace RubiksCube
             }
 
             return result;
+        }
+
+        public static bool Equal(double[,] rotation1, double[,] rotation2)
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                for (var j = 0; j < 4; j++)
+                {
+                    if (Math.Round(rotation1[i, j], 2) != Math.Round(rotation2[i, j], 2))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

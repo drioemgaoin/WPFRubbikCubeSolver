@@ -18,17 +18,17 @@ namespace RubiksCube.Factory
             switch (type)
             {
                 case FaceType.Front:
-                    return CreateFace(type, Colors.Red);
-                case FaceType.Top:
-                    return CreateFace(type, Colors.Blue);
-                case FaceType.Bottom:
-                    return CreateFace(type, Colors.Green);
-                case FaceType.Left:
                     return CreateFace(type, Colors.White);
-                case FaceType.Right:
-                    return CreateFace(type, Colors.Yellow);
-                case FaceType.Back:
+                case FaceType.Top:
                     return CreateFace(type, Colors.Orange);
+                case FaceType.Bottom:
+                    return CreateFace(type, Colors.Red);
+                case FaceType.Left:
+                    return CreateFace(type, Colors.Green);
+                case FaceType.Right:
+                    return CreateFace(type, Colors.Blue);
+                case FaceType.Back:
+                    return CreateFace(type, Colors.Yellow);
             }
 
             return null;

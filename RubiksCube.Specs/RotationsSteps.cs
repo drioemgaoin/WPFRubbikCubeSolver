@@ -1,10 +1,8 @@
-﻿using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using RubiksCube.Entity;
-using RubiksCube.Enums;
+﻿using RubiksCube.Entity;
 using RubiksCube.Service;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
+using RubiksCube.Factory;
 
 namespace RubiksCube.Specs
 {
@@ -17,7 +15,8 @@ namespace RubiksCube.Specs
         [Given(@"a cube with a visible ""(.*)"" face")]
         public void GivenACubeWithAVisableFace(string visibleColor)
         {
-            cube = new Cube();
+            var cubeFactory = new CubeFactory();
+            cube = cubeFactory.Create();
             cubeService = new CubeService();
         }
         
@@ -33,7 +32,7 @@ namespace RubiksCube.Specs
         {
             foreach (var facie in cube.FrontFace.Facies)
             {
-                Assert.AreEqual(facie.ColorName, Is.EqualTo(visibleColor));    
+                Assert.AreEqual(facie.ColorName, visibleColor);    
             }
         }
     }

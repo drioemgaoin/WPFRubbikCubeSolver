@@ -50,14 +50,14 @@ namespace RubiksCube.Factory
         {
             var positions = new Dictionary<FaciePositionType, string>();
             positions[FaciePositionType.Middle] = "-1 0 -1  -1 0 0  -1 1 -1  -1 1 0";
-            positions[FaciePositionType.MiddleTop] = "-1 0 0  -1 0 1  -1 1 0  -1 1 1";
-            positions[FaciePositionType.MiddleBottom] = "-1 0 -2  -1 0 -1  -1 1 -2  -1 1 -1";
+            positions[FaciePositionType.MiddleBottom] = "-1 0 0  -1 0 1  -1 1 0  -1 1 1";
+            positions[FaciePositionType.MiddleTop] = "-1 0 -2  -1 0 -1  -1 1 -2  -1 1 -1";
             positions[FaciePositionType.RightMiddle] = "-1 -1 -1  -1 -1 0  -1 0 -1  -1 0 0";
-            positions[FaciePositionType.RightTop] = "-1 -1 0  -1 -1 1  -1 0 0  -1 0 1";
-            positions[FaciePositionType.RightBottom] = "-1 -1 -2  -1 -1 -1  -1 0 -2  -1 0 -1";
+            positions[FaciePositionType.RightBottom] = "-1 -1 0  -1 -1 1  -1 0 0  -1 0 1";
+            positions[FaciePositionType.RightTop] = "-1 -1 -2  -1 -1 -1  -1 0 -2  -1 0 -1";
             positions[FaciePositionType.LeftMiddle] = "-1 1 -1  -1 1 0  -1 2 -1  -1 2 0";
-            positions[FaciePositionType.LeftTop] = "-1 1 0  -1 1 1  -1 2 0  -1 2 1";
-            positions[FaciePositionType.LeftBottom] = "-1 1 -2  -1 1 -1  -1 2 -2  -1 2 -1";
+            positions[FaciePositionType.LeftBottom] = "-1 1 0  -1 1 1  -1 2 0  -1 2 1";
+            positions[FaciePositionType.LeftTop] = "-1 1 -2  -1 1 -1  -1 2 -2  -1 2 -1";
             return positions;
         }
 
@@ -67,12 +67,12 @@ namespace RubiksCube.Factory
             positions[FaciePositionType.Middle] = "1 0 -2  0 0 -2  1 1 -2  0 1 -2";
             positions[FaciePositionType.MiddleTop] = "2 0 -2  1 0 -2  2 1 -2  1 1 -2";
             positions[FaciePositionType.MiddleBottom] = "0 0 -2  -1 0 -2  0 1 -2  -1 1 -2";
-            positions[FaciePositionType.LeftMiddle] = "1 -1 -2  0 -1 -2  1 0 -2  0 0 -2";
-            positions[FaciePositionType.LeftTop] = "2 -1 -2  1 -1 -2  2 0 -2  1 0 -2";
-            positions[FaciePositionType.LeftBottom] = "0 -1 -2  -1 -1 -2  0 0 -2  -1 0 -2";
-            positions[FaciePositionType.RightMiddle] = "1 1 -2  0 1 -2  1 2 -2  0 2 -2";
-            positions[FaciePositionType.RightTop] = "2 1 -2  1 1 -2  2 2 -2  1 2 -2";
-            positions[FaciePositionType.RightBottom] = "0 1 -2  -1 1 -2  0 2 -2  -1 2 -2";
+            positions[FaciePositionType.RightMiddle] = "1 -1 -2  0 -1 -2  1 0 -2  0 0 -2";
+            positions[FaciePositionType.RightTop] = "2 -1 -2  1 -1 -2  2 0 -2  1 0 -2";
+            positions[FaciePositionType.RightBottom] = "0 -1 -2  -1 -1 -2  0 0 -2  -1 0 -2";
+            positions[FaciePositionType.LeftMiddle] = "1 1 -2  0 1 -2  1 2 -2  0 2 -2";
+            positions[FaciePositionType.LeftTop] = "2 1 -2  1 1 -2  2 2 -2  1 2 -2";
+            positions[FaciePositionType.LeftBottom] = "0 1 -2  -1 1 -2  0 2 -2  -1 2 -2";
             return positions;
         }
 

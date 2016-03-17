@@ -138,9 +138,9 @@ namespace RubiksCube.UI
                 BorderThickness = new Thickness(0.3)
             };
 
-            var binding = new Binding("Type2");
-            binding.Source = facie;
-            label.SetBinding(Label.ContentProperty, binding);
+            //var binding = new Binding("Type2");
+            //binding.Source = facie;
+            //label.SetBinding(Label.ContentProperty, binding);
 
             var positions = positionsFactory.CreatePositions(facie.Type);
 

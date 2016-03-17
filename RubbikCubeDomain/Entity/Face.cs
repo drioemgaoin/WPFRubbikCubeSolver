@@ -90,44 +90,6 @@ namespace RubiksCube.Entity
             }
         }
 
-        public string ColorName
-        {
-            get
-            {
-                if (Color == Colors.Blue)
-                {
-                    return "Blue";
-                }
-
-                if (Color == Colors.Red)
-                {
-                    return "Red";
-                }
-
-                if (Color == Colors.Green)
-                {
-                    return "Green";
-                }
-
-                if (Color == Colors.Orange)
-                {
-                    return "Orange";
-                }
-
-                if (Color == Colors.White)
-                {
-                    return "White";
-                }
-
-                if (Color == Colors.Yellow)
-                {
-                    return "Yellow";
-                }
-
-                return "NA";
-            }
-        }
-
         public IList<Face> Facies { get; set; }
 
         public IList<Face> RotateRow(double[,] matrix, RotationType rotationType)

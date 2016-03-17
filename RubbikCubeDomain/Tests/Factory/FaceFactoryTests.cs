@@ -28,8 +28,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Front);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Front));
-            Assert.That(result.Color, Is.EqualTo(Colors.Red));
-            Asserts(result.Facies, FaceType.Front, Colors.Red);
+            Assert.That(result.Color, Is.EqualTo(Colors.White));
+            Asserts(result.Facies, FaceType.Front, Colors.White);
         }
 
         [Test]
@@ -40,8 +40,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Left);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Left));
-            Assert.That(result.Color, Is.EqualTo(Colors.White));
-            Asserts(result.Facies, FaceType.Left, Colors.White);
+            Assert.That(result.Color, Is.EqualTo(Colors.Green));
+            Asserts(result.Facies, FaceType.Left, Colors.Green);
         }
 
         [Test]
@@ -52,8 +52,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Right);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Right));
-            Assert.That(result.Color, Is.EqualTo(Colors.Yellow));
-            Asserts(result.Facies, FaceType.Right, Colors.Yellow);
+            Assert.That(result.Color, Is.EqualTo(Colors.Blue));
+            Asserts(result.Facies, FaceType.Right, Colors.Blue);
         }
 
         [Test]
@@ -64,8 +64,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Top);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Top));
-            Assert.That(result.Color, Is.EqualTo(Colors.Blue));
-            Asserts(result.Facies, FaceType.Top, Colors.Blue);
+            Assert.That(result.Color, Is.EqualTo(Colors.Orange));
+            Asserts(result.Facies, FaceType.Top, Colors.Orange);
         }
 
         [Test]
@@ -76,8 +76,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Bottom);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Bottom));
-            Assert.That(result.Color, Is.EqualTo(Colors.Green));
-            Asserts(result.Facies, FaceType.Bottom, Colors.Green);
+            Assert.That(result.Color, Is.EqualTo(Colors.Red));
+            Asserts(result.Facies, FaceType.Bottom, Colors.Red);
         }
 
         [Test]
@@ -88,8 +88,8 @@ namespace RubbikCube.Tests.Factory
             var result = subject.CreateFace(FaceType.Back);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Back));
-            Assert.That(result.Color, Is.EqualTo(Colors.Orange));
-            Asserts(result.Facies, FaceType.Back, Colors.Orange);
+            Assert.That(result.Color, Is.EqualTo(Colors.Yellow));
+            Asserts(result.Facies, FaceType.Back, Colors.Yellow);
         }
 
         private void Asserts(IList<Face> facies, FaceType faceType, Color color)

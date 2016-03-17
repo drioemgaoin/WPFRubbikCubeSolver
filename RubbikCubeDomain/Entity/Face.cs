@@ -50,7 +50,45 @@ namespace RubiksCube.Entity
             }
         }
 
-        public Color Color { get; set; }
+        public Color Color { get; set; } // TODO: Replace with new model type to protect integrity and break the UI dependency
+
+        public string ColorName
+        {
+            get
+            {
+                if (Color == Colors.Blue)
+                {
+                    return "Blue";
+                }
+
+                if (Color == Colors.Red)
+                {
+                    return "Red";
+                }
+
+                if (Color == Colors.Green)
+                {
+                    return "Green";
+                }
+
+                if (Color == Colors.Orange)
+                {
+                    return "Orange";
+                }
+
+                if (Color == Colors.White)
+                {
+                    return "White";
+                }
+
+                if (Color == Colors.Yellow)
+                {
+                    return "Yellow";
+                }
+
+                return "NA";
+            }
+        }
 
         public string ColorName
         {

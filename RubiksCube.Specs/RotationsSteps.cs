@@ -1,4 +1,6 @@
-﻿using RubiksCube.Entity;
+﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using RubiksCube.Entity;
 using RubiksCube.Enums;
 using RubiksCube.Service;
 using TechTalk.SpecFlow;
@@ -29,7 +31,10 @@ namespace RubiksCube.Specs
         [Then(@"then the ""(.*)"" face is visible")]
         public void ThenThenTheFaceIsVisible(string visibleColor)
         {
-            Assert.AreEqual(visibleColor, cube.FrontFace.Color);
+            foreach (var facie in cube.FrontFace.Facies)
+            {
+                Assert.AreEqual(facie.ColorName, Is.EqualTo(visibleColor));    
+            }
         }
     }
 }

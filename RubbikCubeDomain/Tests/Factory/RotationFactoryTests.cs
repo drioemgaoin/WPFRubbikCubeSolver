@@ -17,7 +17,7 @@ namespace RubbikCube.Tests.Factory
         }
 
         [Test]
-        public void GivenAnAngle_WhenRotateRow_ShouldReturnTheRightMatrix()
+        public void GivenAnAngle_WhenRotateX_ShouldReturnTheRightMatrix()
         {
             var angle = fixture.Create<double>();
 
@@ -52,17 +52,17 @@ namespace RubbikCube.Tests.Factory
 
             var result = subject.RotateY(angle);
 
-            Assert.That(result[0, 0], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[0, 0], Is.EqualTo(Math.Cos(angle)));
             Assert.That(result[0, 1], Is.EqualTo(0));
-            Assert.That(result[0, 2], Is.EqualTo(Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[0, 2], Is.EqualTo(-Math.Sin(angle)));
             Assert.That(result[0, 3], Is.EqualTo(0));
             Assert.That(result[1, 0], Is.EqualTo(0));
             Assert.That(result[1, 1], Is.EqualTo(1));
             Assert.That(result[1, 2], Is.EqualTo(0));
             Assert.That(result[1, 3], Is.EqualTo(0));
-            Assert.That(result[2, 0], Is.EqualTo(-Math.Sin(2 * Math.PI - angle)));
+            Assert.That(result[2, 0], Is.EqualTo(Math.Sin(angle)));
             Assert.That(result[2, 1], Is.EqualTo(0));
-            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(2 * Math.PI - angle)));
+            Assert.That(result[2, 2], Is.EqualTo(Math.Cos(angle)));
             Assert.That(result[2, 3], Is.EqualTo(0));
             Assert.That(result[3, 0], Is.EqualTo(0));
             Assert.That(result[3, 1], Is.EqualTo(0));

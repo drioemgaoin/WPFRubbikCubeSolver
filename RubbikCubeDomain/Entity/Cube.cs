@@ -7,6 +7,16 @@ namespace RubiksCube.Entity
 {
     public class Cube
     {
+        public Cube()
+        {
+            FrontFace = new Face();
+            LeftFace = new Face();
+            RightFace = new Face();
+            BottomFace = new Face();
+            TopFace = new Face();
+            BackFace = new Face();
+        }
+
         public Face FrontFace { get; set; }
         public Face LeftFace { get; set; }
         public Face RightFace { get; set; }

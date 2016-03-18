@@ -56,8 +56,6 @@
     <Compile Include="Factory\FaceFactoryTests.cs" />
     <Compile Include="Factory\RotationFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\FaceServiceTests.cs" />
-    <Compile Include="Service\RotationServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RubiksCube.Core.csproj">

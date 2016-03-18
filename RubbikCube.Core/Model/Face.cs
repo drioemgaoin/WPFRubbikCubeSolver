@@ -54,6 +54,7 @@ namespace RubiksCube.Core.Model
 
         public IList<Face> Facies { get; set; }
 
+        // TODO: put in place a abstraction
         public void Move(FaceType target)
         {
             if ((Type == FaceType.Back && target == FaceType.Top) ||

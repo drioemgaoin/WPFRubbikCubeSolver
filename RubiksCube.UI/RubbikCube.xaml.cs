@@ -41,7 +41,7 @@ namespace RubiksCube.UI
         
         public void RotateRowRight()
         {
-            var movements = cube.Rotate(new Rotation(Rotation.Right));
+            var movements = cube.Rotate(new Rotation(Rotation.Right, RotationType.First));
             foreach(var facie in movements)
             {
                 Rotate(facie);
@@ -50,7 +50,7 @@ namespace RubiksCube.UI
 
         public void RotateRowLeft()
         {
-            var movements = cube.Rotate(new Rotation(Rotation.Left));
+            var movements = cube.Rotate(new Rotation(Rotation.Left, RotationType.First));
             foreach (var facie in movements)
             {
                 Rotate(facie);
@@ -59,7 +59,7 @@ namespace RubiksCube.UI
 
         public void RotateColumnUp()
         {
-            var movements = cube.Rotate(new Rotation(Rotation.Up));
+            var movements = cube.Rotate(new Rotation(Rotation.Up, RotationType.First));
             foreach (var facie in movements)
             {
                 Rotate(facie);
@@ -68,7 +68,7 @@ namespace RubiksCube.UI
 
         public void RotateColumnDown()
         {
-            var movements = cube.Rotate(new Rotation(Rotation.Down));
+            var movements = cube.Rotate(new Rotation(Rotation.Down, RotationType.First));
             foreach (var facie in movements)
             {
                 Rotate(facie);

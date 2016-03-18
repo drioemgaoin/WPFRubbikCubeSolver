@@ -15,6 +15,12 @@
 
         }
 
+        public Rotation(string direction, RotationType type)
+            : this(direction, 1, type)
+        {
+
+        }
+
         public Rotation(string direction, uint times)
             : this(direction, times, RotationType.All)
         {

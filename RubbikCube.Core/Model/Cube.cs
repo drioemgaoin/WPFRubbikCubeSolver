@@ -38,16 +38,16 @@ namespace RubiksCube.Core.Model
                 switch (rotation.Direction)
                 {
                     case Rotation.Up:
-                        facies[i].AddRange(RotateUp(RotationType.All));
+                        facies[i].AddRange(RotateUp(rotation.Type));
                         break;
                     case Rotation.Right:
-                        facies[i].AddRange(RotateRight(RotationType.All));
+                        facies[i].AddRange(RotateRight(rotation.Type));
                         break;
                     case Rotation.Left:
-                        facies[i].AddRange(RotateLeft(RotationType.All));
+                        facies[i].AddRange(RotateLeft(rotation.Type));
                         break;
                     case Rotation.Down:
-                        facies[i].AddRange(RotateDown(RotationType.All));
+                        facies[i].AddRange(RotateDown(rotation.Type));
                         break;
                 }
             }

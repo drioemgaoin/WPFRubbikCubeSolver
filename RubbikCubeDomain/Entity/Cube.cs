@@ -1,14 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RubiksCube.Enums;
+using RubiksCube.Service;
 
 namespace RubiksCube.Entity
 {
     public class Cube
     {
+        private readonly IRotationService rotationService;
+
         public Cube()
         {
+            rotationService = new RotationService();
+
             FrontFace = new Face();
             LeftFace = new Face();
             RightFace = new Face();
@@ -24,8 +30,36 @@ namespace RubiksCube.Entity
         public Face TopFace { get; set; }
         public Face BackFace { get; set; }
 
-        public IList<Face> RotateOnRightSide(double[,] matrix, RotationType rotationType)
+        public IList<List<Face>> Rotate(Rotation rotation)
         {
+            var facies = new List<List<Face>>();
+            for (var i = 0; i < rotation.Times; i++)
+            {
+                facies.Add(new List<Face>());
+                switch (rotation.Direction)
+                {
+                    case Rotation.Up:
+                        facies[i].AddRange(RotateOnUpSide(RotationType.All));
+                        break;
+                    case Rotation.Right:
+                        facies[i].AddRange(RotateOnRightSide(RotationType.All));
+                        break;
+                    case Rotation.Left:
+                        facies[i].AddRange(RotateOnLeftSide(RotationType.All));
+                        break;
+                    case Rotation.Down:
+                        facies[i].AddRange(RotateOnDownSide(RotationType.All));
+                        break;
+                }
+            }
+
+            return facies;
+        }
+
+        private IList<Face> RotateOnRightSide(RotationType rotationType)
+        {
+            var matrix = rotationService.RotationRow(Math.PI / 2);
+
             var frontFacies = FrontFace.RotateRow(matrix, rotationType).ToList();
             var leftFacies = LeftFace.RotateRow(matrix, rotationType).ToList();
             var rightFacies = RightFace.RotateRow(matrix, rotationType).ToList();
@@ -44,8 +78,10 @@ namespace RubiksCube.Entity
                 .Union(backFacies).ToList();
         }
 
-        public IList<Face> RotateOnLeftSide(double[,] matrix, RotationType rotationType)
+        private IList<Face> RotateOnLeftSide(RotationType rotationType)
         {
+            var matrix = rotationService.RotationRow(-Math.PI / 2);
+
             var frontFacies = FrontFace.RotateRow(matrix, rotationType).ToList();
             var leftFacies = LeftFace.RotateRow(matrix, rotationType).ToList();
             var rightFacies = RightFace.RotateRow(matrix, rotationType).ToList();
@@ -64,8 +100,10 @@ namespace RubiksCube.Entity
                 .Union(backFacies).ToList();
         }
 
-        public IList<Face> RotateOnUpSide(double[,] matrix, RotationType rotationType)
+        private IList<Face> RotateOnUpSide(RotationType rotationType)
         {
+            var matrix = rotationService.RotationColumn(Math.PI / 2);
+
             var frontFacies = FrontFace.RotateColumn(matrix, rotationType).ToList();
             var bottomFacies = BottomFace.RotateColumn(matrix, rotationType).ToList();
             var topFacies = TopFace.RotateColumn(matrix, rotationType).ToList();
@@ -84,8 +122,10 @@ namespace RubiksCube.Entity
                 .Union(backFacies).ToList();
         }
 
-        public IList<Face> RotateOnDownSide(double[,] matrix, RotationType rotationType)
+        private IList<Face> RotateOnDownSide(RotationType rotationType)
         {
+            var matrix = rotationService.RotationColumn(-Math.PI / 2);
+
             var frontFacies = FrontFace.RotateColumn(matrix, rotationType).ToList();
             var bottomFacies = BottomFace.RotateColumn(matrix, rotationType).ToList();
             var topFacies = TopFace.RotateColumn(matrix, rotationType).ToList();

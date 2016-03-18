@@ -8,8 +8,6 @@ namespace RubiksCube.Service
 {
     public interface IFaceService
     {
-        IReadOnlyCollection<Face> Faces { get; }
-
         Face CreateFace(FaceType type);
     }
   
@@ -22,11 +20,6 @@ namespace RubiksCube.Service
         {
             faceFactory = new FaceFactory();
             faces = new List<Face>();
-        }
-
-        public IReadOnlyCollection<Face> Faces
-        {
-            get { return new ReadOnlyCollection<Face>(faces); }
         }
 
         public Face CreateFace(FaceType type)

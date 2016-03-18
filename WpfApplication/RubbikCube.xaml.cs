@@ -9,7 +9,6 @@ using System.Windows.Media.Media3D;
 using RubiksCube.Entity;
 using RubiksCube.Enums;
 using RubiksCube.Factory;
-using RubiksCube.Service;
 using WpfApplication.Annotations;
 using Point = System.Windows.Point;
 
@@ -27,14 +26,12 @@ namespace RubiksCube.UI
     {
         private readonly IPositionsFactory positionsFactory;
         private readonly ICubeFactory cubeFactory;
-        private readonly ICubeService cubeService;
         private Cube cube;
 
         public RubbikCube()
         {
             positionsFactory = new PositionsFactory();
             cubeFactory = new CubeFactory();
-            cubeService = new CubeService();
             DataContext = this;
 
             InitializeComponent();
@@ -45,50 +42,74 @@ namespace RubiksCube.UI
         
         public void RotateRowRight()
         {
-            var facies = cubeService.RotateOnRightSide(cube, RotationType.First);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Right));
+            foreach(var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateRowLeft()
         {
-            var facies = cubeService.RotateOnLeftSide(cube, RotationType.First);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Left));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateColumnUp()
         {
-            var facies = cubeService.RotateOnUpSide(cube, RotationType.First);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Up));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateColumnDown()
         {
-            var facies = cubeService.RotateOnDownSide(cube, RotationType.First);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Down));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateLeft()
         {
-            var facies = cubeService.RotateOnLeftSide(cube, RotationType.All);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Left));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateRight()
         {
-            var facies = cubeService.RotateOnRightSide(cube, RotationType.All);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Right));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateUp()
         {
-            var facies = cubeService.RotateOnUpSide(cube, RotationType.All);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Up));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         public void RotateDown()
         {
-            var facies = cubeService.RotateOnDownSide(cube, RotationType.All);
-            Rotate(facies);
+            var movements = cube.Rotate(new Rotation(Rotation.Down));
+            foreach (var facie in movements)
+            {
+                Rotate(facie);
+            }
         }
 
         private void Rotate(IEnumerable<Face> facies)
@@ -102,6 +123,25 @@ namespace RubiksCube.UI
                 if (geometry != null)
                 {
                     geometry.Transform = CreateTransformations(facie.Rotation, center, negateCenter);
+
+                    //var matrixTransform = new MatrixTransform();
+                    //geometry.RenderTransform = matrixTransform;
+
+                    //var anim = new MatrixAnimationUsingKeyFrames();
+                    //anim.KeyFrames = new MatrixKeyFrameCollection();
+                    //anim.Duration = TimeSpan.FromSeconds(4);
+
+                    //var fromMatrix = new Matrix(1, 0, 0, 1, 0, 0);
+                    //var toMatrix = new Matrix(1, 0, 0, 1, 0, 0);
+
+                    //anim.FillBehavior = FillBehavior.HoldEnd;
+                    //var start = new DiscreteMatrixKeyFrame(fromMatrix, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)));
+                    //var end = new DiscreteMatrixKeyFrame(toMatrix, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(4)));
+
+                    //anim.KeyFrames.Add(start);
+                    //anim.KeyFrames.Add(end);
+
+                    //matrixTransform.BeginAnimation(MatrixTransform.MatrixProperty, anim);
                 }
             }
         }
@@ -117,6 +157,33 @@ namespace RubiksCube.UI
             InitializeFace(cube.BottomFace);
             InitializeFace(cube.TopFace);
             InitializeFace(cube.BackFace);
+
+            //var matrixTransform = new MatrixTransform();
+            //mainViewport.RenderTransform = matrixTransform;
+
+            //var anim = new MatrixAnimationUsingKeyFrames();
+            //anim.KeyFrames = new MatrixKeyFrameCollection();
+            //anim.Duration = TimeSpan.FromSeconds(4);
+
+            //var fromMatrix = new Matrix(1, 0, 0, 1, 0, 0);
+            //var toMatrix = new Matrix(1, 0, 0, 1, 0, 0);
+
+            //anim.FillBehavior = FillBehavior.HoldEnd;
+            //var start = new DiscreteMatrixKeyFrame(fromMatrix, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0)));
+            //var end = new DiscreteMatrixKeyFrame(toMatrix, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(4)));
+
+            //anim.KeyFrames.Add(start);
+            //anim.KeyFrames.Add(end);
+
+            //matrixTransform.BeginAnimation(MatrixTransform.MatrixProperty, anim);
+
+            //var cardAnimation = new DoubleAnimation();
+            //cardAnimation.From = 0;
+            //cardAnimation.To = 0.3;
+            //cardAnimation.Duration = new Duration(TimeSpan.FromSeconds(2));
+            //cardAnimation.AutoReverse = true;
+
+            //group.BeginAnimation(MatrixTransform3D.MatrixProperty, cardAnimation);
         }
 
         private void InitializeFace(Face face)
@@ -222,11 +289,6 @@ namespace RubiksCube.UI
             }
 
             return center;
-        }
-
-        private Transform3DGroup CreateTransformations(double[,] rotation)
-        {
-            return CreateTransformations(rotation, GetCenter(false), GetCenter(true));
         }
 
         private static Transform3DGroup CreateTransformations(double[,] rotation, Vector3D center, Vector3D negateCenter)

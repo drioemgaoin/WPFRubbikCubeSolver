@@ -1,7 +1,8 @@
-﻿using RubiksCube.Entity;
+﻿using RubiksCube.Core.Model;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-using RubiksCube.Factory;
+using RubiksCube.Core;
+using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Specs
 {

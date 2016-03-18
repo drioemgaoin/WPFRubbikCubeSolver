@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.UI", "WpfApplication\RubiksCube.UI.csproj", "{81F104F7-C2A9-4BC1-A34D-1B3F3036BF18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.UI", "RubiksCube.UI\RubiksCube.UI.csproj", "{81F104F7-C2A9-4BC1-A34D-1B3F3036BF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube", "RubbikCubeDomain\RubiksCube.csproj", "{A70B4745-594F-4672-81C9-F09EB9E4CB20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Core", "RubbikCube.Core\RubiksCube.Core.csproj", "{A70B4745-594F-4672-81C9-F09EB9E4CB20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Specs", "RubiksCube.Specs\RubiksCube.Specs.csproj", "{BBAA2C74-4EE9-4308-8D4E-685F48536367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubbikCube.Tests", "RubbikCubeDomain\Tests\RubbikCube.Tests.csproj", "{64CCB483-BCC7-41F7-9020-E41D4992B718}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubbikCube.Core.Tests", "RubbikCube.Core\Tests\RubbikCube.Core.Tests.csproj", "{64CCB483-BCC7-41F7-9020-E41D4992B718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.UI.Tests", "RubiksCube.UI\Tests\RubiksCube.UI.Tests.csproj", "{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{64CCB483-BCC7-41F7-9020-E41D4992B718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64CCB483-BCC7-41F7-9020-E41D4992B718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64CCB483-BCC7-41F7-9020-E41D4992B718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

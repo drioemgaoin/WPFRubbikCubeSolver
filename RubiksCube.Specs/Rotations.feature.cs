@@ -91,7 +91,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 5
  testRunner.When(string.Format("the cube turns \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
- testRunner.Then(string.Format("then the \"{0}\" face is visible", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"{0}\" face is visible", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -212,17 +212,17 @@ namespace RubiksCube.Core.Model
                 case RotationType.All:
                     return true;
                 case RotationType.First:
-                    return facie.FaciePositionType == FaciePositionType.LeftTop ||
-                           facie.FaciePositionType == FaciePositionType.MiddleTop ||
-                           facie.FaciePositionType == FaciePositionType.RightTop;
+                    return facie.FaciePosition == FaciePositionType.LeftTop ||
+                           facie.FaciePosition == FaciePositionType.MiddleTop ||
+                           facie.FaciePosition == FaciePositionType.RightTop;
                 case RotationType.Second:
-                    return facie.FaciePositionType == FaciePositionType.LeftMiddle ||
-                           facie.FaciePositionType == FaciePositionType.Middle ||
-                           facie.FaciePositionType == FaciePositionType.RightMiddle;
+                    return facie.FaciePosition == FaciePositionType.LeftMiddle ||
+                           facie.FaciePosition == FaciePositionType.Middle ||
+                           facie.FaciePosition == FaciePositionType.RightMiddle;
                 case RotationType.Third:
-                    return facie.FaciePositionType == FaciePositionType.LeftBottom ||
-                           facie.FaciePositionType == FaciePositionType.MiddleBottom ||
-                           facie.FaciePositionType == FaciePositionType.RightBottom;
+                    return facie.FaciePosition == FaciePositionType.LeftBottom ||
+                           facie.FaciePosition == FaciePositionType.MiddleBottom ||
+                           facie.FaciePosition == FaciePositionType.RightBottom;
             }
 
             return false;
@@ -235,17 +235,17 @@ namespace RubiksCube.Core.Model
                 case RotationType.All:
                     return true;
                 case RotationType.First:
-                    return facie.FaciePositionType == FaciePositionType.LeftTop ||
-                           facie.FaciePositionType == FaciePositionType.LeftMiddle ||
-                           facie.FaciePositionType == FaciePositionType.LeftBottom;
+                    return facie.FaciePosition == FaciePositionType.LeftTop ||
+                           facie.FaciePosition == FaciePositionType.LeftMiddle ||
+                           facie.FaciePosition == FaciePositionType.LeftBottom;
                 case RotationType.Second:
-                    return facie.FaciePositionType == FaciePositionType.MiddleTop ||
-                           facie.FaciePositionType == FaciePositionType.Middle ||
-                           facie.FaciePositionType == FaciePositionType.MiddleBottom;
+                    return facie.FaciePosition == FaciePositionType.MiddleTop ||
+                           facie.FaciePosition == FaciePositionType.Middle ||
+                           facie.FaciePosition == FaciePositionType.MiddleBottom;
                 case RotationType.Third:
-                    return facie.FaciePositionType == FaciePositionType.RightTop ||
-                           facie.FaciePositionType == FaciePositionType.RightMiddle ||
-                           facie.FaciePositionType == FaciePositionType.RightBottom;
+                    return facie.FaciePosition == FaciePositionType.RightTop ||
+                           facie.FaciePosition == FaciePositionType.RightMiddle ||
+                           facie.FaciePosition == FaciePositionType.RightBottom;
             }
 
             return false;

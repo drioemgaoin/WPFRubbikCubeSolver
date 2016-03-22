@@ -60,7 +60,7 @@ namespace RubiksCube.Core.Factory
                 Key = String.Format("{0}{1}", faceType, faciePositionType),
                 Type = faceType,
                 Color = color,
-                FaciePositionType = faciePositionType
+                FaciePosition = faciePositionType
             };
         }
     }

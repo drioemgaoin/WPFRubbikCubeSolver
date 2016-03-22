@@ -1,7 +1,8 @@
-﻿using RubiksCube.Core.Model;
+﻿using System;
+using System.Linq;
+using RubiksCube.Core.Model;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
-using RubiksCube.Core;
 using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Specs
@@ -25,13 +26,27 @@ namespace RubiksCube.Specs
             cube.Rotate(rotation);
         }
         
-        [Then(@"then the ""(.*)"" face is visible")]
+        [Then(@"the ""(.*)"" face is visible")]
         public void ThenThenTheFaceIsVisible(string visibleColor)
         {
             foreach (var facie in cube.FrontFace.Facies)
             {
                 Assert.AreEqual(facie.ColorName, visibleColor);    
             }
+        }
+
+        [When(@"row (.*) turns ""(.*)"" (.*) times")]
+        public void WhenTheRowTurns(int position, string direction, uint times)
+        {
+            var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
+            var rotation = new Rotation(direction, times, rotationType);
+            cube.Rotate(rotation);
+        }
+
+        [Then(@"row (.*) is ""(.*)""")]
+        public void ThenTheRowsIsVisible(int position, string visibleColor)
+        {
+           
         }
     }
 }

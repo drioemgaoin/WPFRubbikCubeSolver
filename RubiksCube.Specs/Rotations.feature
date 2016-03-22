@@ -3,7 +3,7 @@
 Scenario Outline: Face Rotations
 	Given a cube with a visible "White" face
 	When the cube turns "<direction>" <times> times
-	Then then the "<expected_color>" face is visible
+	Then the "<expected_color>" face is visible
 	
 	Examples:
 	| direction | times | expected_color |
@@ -23,3 +23,17 @@ Scenario Outline: Face Rotations
 	| Up        | 4     | White          |
 	| Left      | 4     | White          |
 	| Down      | 4     | White          |
+
+Scenario Outline: Row Rotations
+	Given a cube with a visible "White" face
+	When row <position> turns "<direction>" <times> times
+	Then row <position> is "<expected_color>"
+	
+	Examples:
+	| position	| direction | times | expected_color |
+	| 1			| Right     | 1     | Green          |
+	| 1			| Left      | 1     | Blue           |
+	| 2			| Right		| 1     | Green			 |
+	| 2			| Left		| 1     | Blue			 |
+	| 3			| Right     | 1     | Green          |
+	| 3			| Left      | 1	    | Blue           |

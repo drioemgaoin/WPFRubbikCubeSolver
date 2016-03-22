@@ -34,7 +34,7 @@ namespace RubiksCube.Core.Model
 
         public FaceType Type { get; set; }
 
-        public FaciePositionType FaciePositionType { get; set; }
+        public FaciePositionType FaciePosition { get; set; }
 
         public Color Color { get; set; } // TODO: Replace with new model type to protect integrity and break the UI dependency
 
@@ -47,25 +47,25 @@ namespace RubiksCube.Core.Model
                 (Type == FaceType.Bottom && target == FaceType.Front) ||
                 (Type == FaceType.Top && target == FaceType.Back))
             {
-                switch (FaciePositionType)
+                switch (FaciePosition)
                 {
                     case FaciePositionType.LeftTop:
-                        FaciePositionType = FaciePositionType.LeftBottom;
+                        FaciePosition = FaciePositionType.LeftBottom;
                         break;
                     case FaciePositionType.LeftBottom:
-                        FaciePositionType = FaciePositionType.LeftTop;
+                        FaciePosition = FaciePositionType.LeftTop;
                         break;
                     case FaciePositionType.MiddleTop:
-                        FaciePositionType = FaciePositionType.MiddleBottom;
+                        FaciePosition = FaciePositionType.MiddleBottom;
                         break;
                     case FaciePositionType.MiddleBottom:
-                        FaciePositionType = FaciePositionType.MiddleTop;
+                        FaciePosition = FaciePositionType.MiddleTop;
                         break;
                     case FaciePositionType.RightTop:
-                        FaciePositionType = FaciePositionType.RightBottom;
+                        FaciePosition = FaciePositionType.RightBottom;
                         break;
                     case FaciePositionType.RightBottom:
-                        FaciePositionType = FaciePositionType.RightTop;
+                        FaciePosition = FaciePositionType.RightTop;
                         break;
                 }
             }
@@ -75,25 +75,25 @@ namespace RubiksCube.Core.Model
                 (Type == FaceType.Back && target == FaceType.Right) ||
                 (Type == FaceType.Left && target == FaceType.Back))
             {
-                switch (FaciePositionType)
+                switch (FaciePosition)
                 {
                     case FaciePositionType.LeftTop:
-                        FaciePositionType = FaciePositionType.RightTop;
+                        FaciePosition = FaciePositionType.RightTop;
                         break;
                     case FaciePositionType.RightTop:
-                        FaciePositionType = FaciePositionType.LeftTop;
+                        FaciePosition = FaciePositionType.LeftTop;
                         break;
                     case FaciePositionType.LeftMiddle:
-                        FaciePositionType = FaciePositionType.RightMiddle;
+                        FaciePosition = FaciePositionType.RightMiddle;
                         break;
                     case FaciePositionType.RightMiddle:
-                        FaciePositionType = FaciePositionType.LeftMiddle;
+                        FaciePosition = FaciePositionType.LeftMiddle;
                         break;
                     case FaciePositionType.LeftBottom:
-                        FaciePositionType = FaciePositionType.RightBottom;
+                        FaciePosition = FaciePositionType.RightBottom;
                         break;
                     case FaciePositionType.RightBottom:
-                        FaciePositionType = FaciePositionType.LeftBottom;
+                        FaciePosition = FaciePositionType.LeftBottom;
                         break;
                 }
             }
@@ -142,7 +142,7 @@ namespace RubiksCube.Core.Model
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            buffer.AppendLine(Type + "-" + FaciePositionType + "-" + ColorName + "=" + Facies.Count);
+            buffer.AppendLine(Type + "-" + FaciePosition + "-" + ColorName + "=" + Facies.Count);
             foreach (var face in Facies)
             {
                 buffer.AppendLine("-->" + face);
@@ -159,7 +159,7 @@ namespace RubiksCube.Core.Model
                 Rotation = Rotation,
                 Key = Key,
                 Type = Type,
-                FaciePositionType = FaciePositionType,
+                FaciePosition = FaciePosition,
                 Color = Color,
             };
 

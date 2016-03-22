@@ -93,15 +93,15 @@ namespace RubbikCube.Core.Tests.Factory
 
         private void Asserts(IList<Face> facies, FaceType faceType, Color color)
         {
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.Middle), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.MiddleTop), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.MiddleBottom), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.RightMiddle), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.RightTop), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.RightBottom), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.LeftMiddle), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.LeftTop), faceType, color);
-            Asserts(facies.Single(x => x.FaciePositionType == FaciePositionType.LeftBottom), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.Middle), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.MiddleTop), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.MiddleBottom), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.RightMiddle), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.RightTop), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.RightBottom), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.LeftMiddle), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.LeftTop), faceType, color);
+            Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.LeftBottom), faceType, color);
 
         }
 

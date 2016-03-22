@@ -40,7 +40,6 @@ namespace RubiksCube.Core.Model
 
         public IList<Face> Facies { get; set; }
 
-        // TODO: put in place a abstraction
         public void Move(FaceType target)
         {
             if ((Type == FaceType.Back && target == FaceType.Top) ||
@@ -140,7 +139,6 @@ namespace RubiksCube.Core.Model
             }
         }
 
-        // TODO: extend new decorator for those methods and create debug factory
         public override string ToString()
         {
             var buffer = new StringBuilder();
@@ -152,7 +150,6 @@ namespace RubiksCube.Core.Model
 
             return buffer.ToString();
         }
-        // FOR TODO
 
         public object Clone()
         {
@@ -173,6 +170,5 @@ namespace RubiksCube.Core.Model
 
             return face;
         }
-
     }
 }

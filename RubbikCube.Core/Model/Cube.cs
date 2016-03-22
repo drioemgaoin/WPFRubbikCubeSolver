@@ -205,7 +205,6 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        // TODO: put in place a abstraction
         private static bool IsRowMatch(Face facie, RotationType rotationType)
         {
             switch (rotationType)
@@ -229,7 +228,6 @@ namespace RubiksCube.Core.Model
             return false;
         }
 
-        // TODO: put in place a abstraction
         private static bool IsColumnMatch(Face facie, RotationType rotationType)
         {
             switch (rotationType)

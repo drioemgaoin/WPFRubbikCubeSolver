@@ -39,15 +39,15 @@ namespace RubiksCube.UI
             {
                 RubbikCube.RotateRowLeft(RotationType.Third);
             }
-            else if (Keyboard.IsKeyDown(Key.A))
+            else if (Keyboard.IsKeyDown(Key.Q))
             {
                 RubbikCube.RotateColumnUp(RotationType.First);
             }
-            else if (Keyboard.IsKeyDown(Key.W))
+            else if (Keyboard.IsKeyDown(Key.Z))
             {
                 RubbikCube.RotateColumnDown(RotationType.First);
             }
-            else if (Keyboard.IsKeyDown(Key.Z))
+            else if (Keyboard.IsKeyDown(Key.W))
             {
                 RubbikCube.RotateColumnUp(RotationType.Second);
             }

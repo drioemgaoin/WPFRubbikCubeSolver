@@ -31,15 +31,6 @@
                 <Model3DGroup x:Name="group" />
             </ModelVisual3D.Content>
         </ModelVisual3D>
-        <Viewport3D.Triggers>
-            <EventTrigger RoutedEvent="Viewport3D.Loaded">
-                <BeginStoryboard>
-                    <Storyboard x:Name="Storyboard">
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </Viewport3D.Triggers>
     </Viewport3D>
-    
 </UserControl>
 

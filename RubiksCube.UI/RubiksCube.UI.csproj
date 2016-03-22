@@ -58,6 +58,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="LookbackConverter.cs" />
+    <Compile Include="Matrix3DAnimation.cs" />
+    <Compile Include="MatrixAnimationWrapper.cs" />
+    <Compile Include="MatrixMapper.cs" />
+    <Compile Include="Movement.cs" />
+    <Compile Include="Movements.cs" />
     <Compile Include="PositionsFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RubbikCube.xaml.cs">

@@ -1,7 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using RubiksCube.Core.Model;
 
-namespace WpfApplication
+namespace RubiksCube.UI
 {
     public partial class MainWindow : Window
     {
@@ -9,37 +10,74 @@ namespace WpfApplication
         {
             InitializeComponent();
 
-            KeyDown += OnKeyDown;
+            KeyDown += OnKeyUp;
         }
 
-        private void OnKeyDown(object sender, KeyEventArgs e)
+        private void OnKeyUp(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if(Keyboard.IsKeyDown(Key.NumPad9))
             {
-                case Key.M:
-                    RubbikCube.RotateRowRight();
-                    break;
-                case Key.K:
-                    RubbikCube.RotateRowLeft();
-                    break;
-                case Key.O:
-                    RubbikCube.RotateColumnUp();
-                    break;
-                case Key.L:
-                    RubbikCube.RotateColumnDown();
-                    break;
-                case Key.Left:
-                    RubbikCube.RotateLeft();
-                    break;
-                case Key.Right:
-                    RubbikCube.RotateRight();
-                    break;
-                case Key.Up:
-                    RubbikCube.RotateUp();
-                    break;
-                case Key.Down:
-                    RubbikCube.RotateDown();
-                    break;
+                RubbikCube.RotateRowRight(RotationType.First);
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad7))
+            {
+                RubbikCube.RotateRowLeft(RotationType.First);
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad6))
+            {
+                RubbikCube.RotateRowRight(RotationType.Second);
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad4))
+            {
+                RubbikCube.RotateRowLeft(RotationType.Second);
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad3))
+            {
+                RubbikCube.RotateRowRight(RotationType.Third);
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad1))
+            {
+                RubbikCube.RotateRowLeft(RotationType.Third);
+            }
+            else if (Keyboard.IsKeyDown(Key.A))
+            {
+                RubbikCube.RotateColumnUp(RotationType.First);
+            }
+            else if (Keyboard.IsKeyDown(Key.W))
+            {
+                RubbikCube.RotateColumnDown(RotationType.First);
+            }
+            else if (Keyboard.IsKeyDown(Key.Z))
+            {
+                RubbikCube.RotateColumnUp(RotationType.Second);
+            }
+            else if (Keyboard.IsKeyDown(Key.X))
+            {
+                RubbikCube.RotateColumnDown(RotationType.Second);
+            }
+            else if (Keyboard.IsKeyDown(Key.E))
+            {
+                RubbikCube.RotateColumnUp(RotationType.Third);
+            }
+            else if (Keyboard.IsKeyDown(Key.C))
+            {
+                RubbikCube.RotateColumnDown(RotationType.Third);
+            }
+            else if (Keyboard.IsKeyDown(Key.Left))
+            {
+                RubbikCube.RotateLeft();
+            }
+            else if (Keyboard.IsKeyDown(Key.Right))
+            {
+                RubbikCube.RotateRight();
+            }
+            else if (Keyboard.IsKeyDown(Key.Up))
+            {
+                RubbikCube.RotateUp();
+            }
+            else if (Keyboard.IsKeyDown(Key.Down))
+            {
+                RubbikCube.RotateDown();
             }
         }
     }

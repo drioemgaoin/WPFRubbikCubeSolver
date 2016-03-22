@@ -40,13 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListExtensions.cs" />
     <Compile Include="Model\Rotation.cs" />
     <Compile Include="Model\Cube.cs" />
     <Compile Include="Model\Face.cs" />
     <Compile Include="Model\FaceType.cs" />
     <Compile Include="Model\FaciePositionType.cs" />
-    <Compile Include="Model\MoveType.cs" />
-    <Compile Include="Model\PointPositionType.cs" />
     <Compile Include="Model\RotationType.cs" />
     <Compile Include="Factory\CubeFactory.cs" />
     <Compile Include="Factory\FaceFactory.cs" />

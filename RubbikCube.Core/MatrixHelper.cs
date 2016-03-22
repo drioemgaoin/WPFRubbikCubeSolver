@@ -152,5 +152,19 @@ namespace RubiksCube.Core
 
             return true;
         }
+
+        public static double[,] Copy(double[,] rotation)
+        {
+            var result = new double[4, 4];
+            for (var i = 0; i < 4; i++)
+            {
+                for (var j = 0; j < 4; j++)
+                {
+                    result[i, j] = rotation[i, j];
+                }
+            }
+
+            return result;
+        }
     }
 }

@@ -1,54 +1,40 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
-using RubiksCube.Core.Model;
 
 namespace RubiksCube.Core.Model
 {
-    public class Face : INotifyPropertyChanged
+    public class Face : ICloneable
     {
-        private FaceType type;
-        private FaciePositionType faciePositionType;
+        private double[,] rotation;
 
         public Face()
         {
             Facies = new List<Face>();
         }
 
-        public double[,] Rotation { get; set; }
+        public double[,] PreviousRotation { get; private set; }
+
+        public double[,] Rotation
+        {
+            get { return rotation; }
+            set
+            {
+                if (rotation != null)
+                {
+                    PreviousRotation = MatrixHelper.Copy(rotation);
+                }
+
+                rotation = value;
+            }
+        }
 
         public string Key { get; set; }
 
-        public string Type2
-        {
-            get
-            {
-                return FaciePositionType.ToString();
-            }
-        }
+        public FaceType Type { get; set; }
 
-        public FaceType Type
-        {
-            get { return type; }
-            set
-            {
-                type = value;
-                OnPropertyChanged("Type2");
-            }
-        }
-
-        public FaciePositionType FaciePositionType
-        {
-            get { return faciePositionType; }
-            set
-            {
-                faciePositionType = value;
-                OnPropertyChanged("Type2");
-            }
-        }
+        public FaciePositionType FaciePositionType { get; set; }
 
         public Color Color { get; set; } // TODO: Replace with new model type to protect integrity and break the UI dependency
 
@@ -116,9 +102,6 @@ namespace RubiksCube.Core.Model
             Type = target;
         }
 
-        // TODO: extend new decorator for those methods and create debug factory
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string ColorName
         {
             get
@@ -157,16 +140,11 @@ namespace RubiksCube.Core.Model
             }
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        // TODO: extend new decorator for those methods and create debug factory
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            buffer.AppendLine(Type + "-" + faciePositionType + "-" + ColorName + "=" + Facies.Count);
+            buffer.AppendLine(Type + "-" + FaciePositionType + "-" + ColorName + "=" + Facies.Count);
             foreach (var face in Facies)
             {
                 buffer.AppendLine("-->" + face);
@@ -175,5 +153,26 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
         // FOR TODO
+
+        public object Clone()
+        {
+            var face = new Face
+            {
+                PreviousRotation = PreviousRotation,
+                Rotation = Rotation,
+                Key = Key,
+                Type = Type,
+                FaciePositionType = FaciePositionType,
+                Color = Color,
+            };
+
+            foreach(var facie in Facies)
+            {
+                face.Facies.Add(facie.Clone() as Face);    
+            }
+
+            return face;
+        }
+
     }
 }

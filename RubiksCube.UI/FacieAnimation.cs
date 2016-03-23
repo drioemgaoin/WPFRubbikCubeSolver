@@ -14,7 +14,6 @@ namespace RubiksCube.UI
         private readonly AutoResetEvent completeLock;
         private readonly Vector3D center;
         private readonly Vector3D negateCenter;
-        private int nbComplete;
 
         public FacieAnimation(Vector3D center, Vector3D negateCenter)
         {
@@ -43,7 +42,7 @@ namespace RubiksCube.UI
                     animation.Item2.Transform = transformGroup;
 
                     var matrixAnimation = CreateAnimation(previousMatrix3D, newMatrix3D);
-                    matrixAnimation.Completed += OnComplete;
+                    matrixAnimation.Completed += delegate { Notify(animation); };
 
                     var transform = transformGroup.Children[1];
                     transform.BeginAnimation(MatrixTransform3D.MatrixProperty, matrixAnimation);
@@ -51,6 +50,16 @@ namespace RubiksCube.UI
             });
 
             return completeLock;
+        }
+
+        private void Notify(Tuple<Facie, Model3D> animation)
+        {
+            animations.Remove(animation);
+
+            if (animations.Count == 0)
+            {
+                completeLock.Set();
+            }
         }
 
         private static Matrix3DAnimation CreateAnimation(Matrix3D previousMatrix3D, Matrix3D newMatrix3D)
@@ -70,15 +79,6 @@ namespace RubiksCube.UI
             transformGroup.Children.Add(transform);
             transformGroup.Children.Add(new TranslateTransform3D(center));
             return transformGroup;
-        }
-
-        private void OnComplete(object sender, EventArgs args)
-        {
-            nbComplete++;
-            if(nbComplete == animations.Count)
-            {
-                completeLock.Set();
-            }
         }
     }
 }

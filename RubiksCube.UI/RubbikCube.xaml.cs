@@ -159,8 +159,7 @@ namespace RubiksCube.UI
                     }
                 }
 
-                movementEngine.Add(animations);
-                movementEngine.BeginAnimation();
+                movementEngine.BeginAnimation(animations);
             }
         }
 

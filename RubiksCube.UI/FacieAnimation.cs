@@ -14,7 +14,6 @@ namespace RubiksCube.UI
         private readonly AutoResetEvent completeLock;
         private readonly Vector3D center;
         private readonly Vector3D negateCenter;
-        private MatrixTransform3D transform;
         private int nbComplete;
 
         public FacieAnimation(Vector3D center, Vector3D negateCenter)
@@ -40,11 +39,13 @@ namespace RubiksCube.UI
                     var previousMatrix3D = animation.Item1.PreviousRotation == null ? Matrix3D.Identity : MatrixMapper.Map(animation.Item1.PreviousRotation);
                     var newMatrix3D = MatrixMapper.Map(animation.Item1.Rotation);
 
-                    animation.Item2.Transform = CreateTransformation(newMatrix3D);
+                    var transformGroup = CreateTransformation(newMatrix3D);
+                    animation.Item2.Transform = transformGroup;
 
                     var matrixAnimation = CreateAnimation(previousMatrix3D, newMatrix3D);
                     matrixAnimation.Completed += OnComplete;
-                    
+
+                    var transform = transformGroup.Children[1];
                     transform.BeginAnimation(MatrixTransform3D.MatrixProperty, matrixAnimation);
                 }
             });
@@ -64,7 +65,7 @@ namespace RubiksCube.UI
         private Transform3DGroup CreateTransformation(Matrix3D newMatrix3D)
         {
             var transformGroup = new Transform3DGroup();
-            transform = new MatrixTransform3D(newMatrix3D);
+            var transform = new MatrixTransform3D(newMatrix3D);
             transformGroup.Children.Add(new TranslateTransform3D(negateCenter));
             transformGroup.Children.Add(transform);
             transformGroup.Children.Add(new TranslateTransform3D(center));

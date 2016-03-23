@@ -1,12 +1,12 @@
 Overview
 --  
-The project was started to develop a solution in state of the art with DDD and SpecFlow for BDD. Our goal is to prove complex problems can be solved with simple practices.
+This project was started to develop a solution in the state of the art with DDD and SpecFlow for BDD. Our goal is to prove complex problems can be solved with simple practices.
 
-A Rubik's cube solvers a seemed like a good candidate to implement these practices with clear but still complex specifications.
+A Rubik's cube solver seemed like a good candidate to implement these practices with clear but still complex specifications.
 
-As enterprise .NET and WPF developers, that also seemed like a good introduction to 3D programming for discovering unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the technologies so it could be reused with any others ones as we would also like to experiment.
+As enterprise .NET developers, that also seemed like a good introduction to 3D programming for discovering unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the technologies so it could be reused with any others ones as we would also like to experiment.
 
-This is a work in progress but we are aiming to incrementally improve and simplify the implementation while incrementally developing new specifications.
+This is a work in progress but we are aiming to continously improve and simplify the implementation while incrementally developing new specifications.
 
 Features
 --  
@@ -28,5 +28,6 @@ Features
   * X: rotate the second column right
   * E: rotate the third column left
   * C: rotate the third column right
+  * M: mix up the cube
 * Random facies scrambling (WIP)
 * Automatic solving algorithm (WIP)

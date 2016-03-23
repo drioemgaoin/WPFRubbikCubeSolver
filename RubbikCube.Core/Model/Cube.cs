@@ -5,19 +5,9 @@ using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Core.Model
 {
-    public enum MoveType
-    {
-        None,
-        Right,
-        Left,
-        Up,
-        Down
-    }
-
     public class Cube
     {
         private readonly IRotationFactory rotationFactory;
-        private MoveType moveType;
 
         public Cube()
         {
@@ -81,8 +71,6 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, RightFace, frontFacies);
             }
 
-            System.Diagnostics.Debug.WriteLine(this);
-
             return frontFacies
                 .Union(leftFacies)
                 .Union(rightFacies)
@@ -105,8 +93,6 @@ namespace RubiksCube.Core.Model
                 Move(LeftFace, BackFace, leftFacies);
                 Move(FrontFace, LeftFace, frontFacies);
             }
-
-            System.Diagnostics.Debug.WriteLine(this);
 
             return frontFacies
                 .Union(leftFacies)
@@ -131,8 +117,6 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, TopFace, frontFacies);
             }
 
-            System.Diagnostics.Debug.WriteLine(this);
-
             return frontFacies
                 .Union(topFacies)
                 .Union(bottomFacies)
@@ -155,8 +139,6 @@ namespace RubiksCube.Core.Model
                 Move(BottomFace, BackFace, bottomFacies);
                 Move(FrontFace, BottomFace, frontFacies);
             }
-
-            System.Diagnostics.Debug.WriteLine(this);
 
             return frontFacies
                 .Union(topFacies)

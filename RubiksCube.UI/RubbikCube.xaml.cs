@@ -96,49 +96,27 @@ namespace RubiksCube.UI
 
         public void MixUp()
         {
+            var actions = new Action[]
+            {
+                () => RotateRowRight(RotationType.First),
+                () => RotateRowRight(RotationType.Second),
+                () => RotateRowRight(RotationType.Third),
+                () => RotateRowLeft(RotationType.First),
+                () => RotateRowLeft(RotationType.Second),
+                () => RotateRowLeft(RotationType.Third),
+                () => RotateColumnUp(RotationType.First),
+                () => RotateColumnUp(RotationType.Second),
+                () => RotateColumnUp(RotationType.Third),
+                () => RotateColumnDown(RotationType.First),
+                () => RotateColumnDown(RotationType.Second),
+                () => RotateColumnDown(RotationType.Third)
+            };
+
             var random = new Random();
             for(var i = 0; i < 50; i++)
             {
-                var action = random.Next(0, 8);
-                switch(action)
-                {
-                    case 0:
-                        RotateRowRight(RotationType.First);
-                        break;
-                    case 1:
-                        RotateRowRight(RotationType.Second);
-                        break;
-                    case 2:
-                        RotateRowRight(RotationType.Third);
-                        break;
-                    case 3:
-                        RotateRowLeft(RotationType.First);
-                        break;
-                    case 4:
-                        RotateRowLeft(RotationType.Second);
-                        break;
-                    case 5:
-                        RotateRowLeft(RotationType.Third);
-                        break;
-                    case 6:
-                        RotateColumnUp(RotationType.First);
-                        break;
-                    case 7:
-                        RotateColumnUp(RotationType.Second);
-                        break;
-                    case 8:
-                        RotateColumnUp(RotationType.Third);
-                        break;
-                    case 9:
-                        RotateColumnDown(RotationType.First);
-                        break;
-                    case 10:
-                        RotateColumnDown(RotationType.Second);
-                        break;
-                    case 11:
-                        RotateColumnDown(RotationType.Third);
-                        break;
-                }
+                var index = random.Next(0, actions.Count());
+                actions[index]();
             }
         }
 

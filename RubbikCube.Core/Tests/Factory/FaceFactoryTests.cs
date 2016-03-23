@@ -27,7 +27,6 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Front);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Front));
-            Assert.That(result.Color, Is.EqualTo(Colors.White));
             Asserts(result.Facies, FaceType.Front, Colors.White);
         }
 
@@ -39,7 +38,6 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Left);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Left));
-            Assert.That(result.Color, Is.EqualTo(Colors.Green));
             Asserts(result.Facies, FaceType.Left, Colors.Green);
         }
 
@@ -51,7 +49,6 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Right);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Right));
-            Assert.That(result.Color, Is.EqualTo(Colors.Blue));
             Asserts(result.Facies, FaceType.Right, Colors.Blue);
         }
 
@@ -63,7 +60,6 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Top);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Top));
-            Assert.That(result.Color, Is.EqualTo(Colors.Orange));
             Asserts(result.Facies, FaceType.Top, Colors.Orange);
         }
 
@@ -75,7 +71,6 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Bottom);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Bottom));
-            Assert.That(result.Color, Is.EqualTo(Colors.Red));
             Asserts(result.Facies, FaceType.Bottom, Colors.Red);
         }
 
@@ -87,11 +82,10 @@ namespace RubbikCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Back);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Back));
-            Assert.That(result.Color, Is.EqualTo(Colors.Yellow));
             Asserts(result.Facies, FaceType.Back, Colors.Yellow);
         }
 
-        private void Asserts(IList<Face> facies, FaceType faceType, Color color)
+        private void Asserts(IList<Facie> facies, FaceType faceType, Color color)
         {
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.Middle), faceType, color);
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.MiddleTop), faceType, color);
@@ -105,9 +99,8 @@ namespace RubbikCube.Core.Tests.Factory
 
         }
 
-        private void Asserts(Face facie, FaceType faceType, Color color)
+        private void Asserts(Facie facie, FaceType faceType, Color color)
         {
-            Assert.That(facie.Type, Is.EqualTo(faceType));
             Assert.That(facie.Color, Is.EqualTo(color));
         }
     }

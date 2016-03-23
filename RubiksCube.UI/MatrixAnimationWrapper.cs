@@ -8,11 +8,11 @@ namespace RubiksCube.UI
 {
     public class MatrixAnimationWrapper
     {
-        private readonly Face facie;
+        private readonly Facie facie;
         private readonly Model3D geometry;
         private MatrixTransform3D transform;
 
-        public MatrixAnimationWrapper(Face facie, Model3D geometry)
+        public MatrixAnimationWrapper(Facie facie, Model3D geometry)
         {
             this.facie = facie;
             this.geometry = geometry;

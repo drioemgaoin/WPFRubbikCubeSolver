@@ -83,7 +83,7 @@ namespace RubiksCube.UI
             Rotate(movements);
         }
 
-        private void Rotate(IEnumerable<List<Face>> items)
+        private void Rotate(IEnumerable<List<Facie>> items)
         {
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
@@ -124,12 +124,12 @@ namespace RubiksCube.UI
         {
             foreach (var facie in face.Facies)
             {
-                var shape = CreateFacie(facie);
+                var shape = CreateFacie(facie, face.Type);
                 group.Children.Add(shape);
             }
         }
 
-        private GeometryModel3D CreateFacie(Face facie)
+        private GeometryModel3D CreateFacie(Facie facie, FaceType type)
         {
             var label = new Label
             {
@@ -138,7 +138,7 @@ namespace RubiksCube.UI
                 BorderThickness = new Thickness(0.3)
             };
 
-            var positions = positionsFactory.CreatePositions(facie.Type);
+            var positions = positionsFactory.CreatePositions(type);
 
             var geometry = new GeometryModel3D
             {

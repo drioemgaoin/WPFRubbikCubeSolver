@@ -38,8 +38,7 @@ namespace RubiksCube.Core.Factory
             return new Face
             {
                 Type = faceType, 
-                Color = color,
-                Facies = new List<Face> {
+                Facies = new List<Facie> {
                     CreateSubFace(faceType, FaciePositionType.Middle, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleTop, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleBottom, color),        
@@ -53,12 +52,11 @@ namespace RubiksCube.Core.Factory
             };
         }
 
-        private static Face CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
+        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
         {
-            return new Face
+            return new Facie
             {
                 Key = String.Format("{0}{1}", faceType, faciePositionType),
-                Type = faceType,
                 Color = color,
                 FaciePosition = faciePositionType
             };

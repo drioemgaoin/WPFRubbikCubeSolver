@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RubiksCube.Core.Factory;
@@ -39,12 +38,12 @@ namespace RubiksCube.Core.Model
         public Face TopFace { get; set; }
         public Face BackFace { get; set; }
 
-        public IList<List<Face>> Rotate(Rotation rotation)
+        public IList<List<Facie>> Rotate(Rotation rotation)
         {
-            var facies = new List<List<Face>>();
+            var facies = new List<List<Facie>>();
             for (var i = 0; i < rotation.Times; i++)
             {
-                facies.Add(new List<Face>());
+                facies.Add(new List<Facie>());
                 switch (rotation.Direction)
                 {
                     case Rotation.Up:
@@ -65,7 +64,7 @@ namespace RubiksCube.Core.Model
             return facies;
         }
 
-        private IEnumerable<Face> RotateRight(Rotation rotation)
+        private IEnumerable<Facie> RotateRight(Rotation rotation)
         {
             var matrix = rotationFactory.RotateX(rotation.Angle);
 
@@ -82,13 +81,15 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, RightFace, frontFacies);
             }
 
+            System.Diagnostics.Debug.WriteLine(this);
+
             return frontFacies
                 .Union(leftFacies)
                 .Union(rightFacies)
                 .Union(backFacies).Clone();
         }
 
-        private IEnumerable<Face> RotateLeft(Rotation rotation)
+        private IEnumerable<Facie> RotateLeft(Rotation rotation)
         {
             var matrix = rotationFactory.RotateX(-rotation.Angle);
 
@@ -105,13 +106,15 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, LeftFace, frontFacies);
             }
 
+            System.Diagnostics.Debug.WriteLine(this);
+
             return frontFacies
                 .Union(leftFacies)
                 .Union(rightFacies)
                 .Union(backFacies).Clone();
         }
 
-        private IEnumerable<Face> RotateUp(Rotation rotation)
+        private IEnumerable<Facie> RotateUp(Rotation rotation)
         {
             var matrix = rotationFactory.RotateY(rotation.Angle);
 
@@ -128,13 +131,15 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, TopFace, frontFacies);
             }
 
+            System.Diagnostics.Debug.WriteLine(this);
+
             return frontFacies
                 .Union(topFacies)
                 .Union(bottomFacies)
                 .Union(backFacies).Clone();
         }
 
-        private IEnumerable<Face> RotateDown(Rotation rotation)
+        private IEnumerable<Facie> RotateDown(Rotation rotation)
         {
             var matrix = rotationFactory.RotateY(-rotation.Angle);
 
@@ -151,27 +156,29 @@ namespace RubiksCube.Core.Model
                 Move(FrontFace, BottomFace, frontFacies);
             }
 
+            System.Diagnostics.Debug.WriteLine(this);
+
             return frontFacies
                 .Union(topFacies)
                 .Union(bottomFacies)
                 .Union(backFacies).Clone();
         }
 
-        private IList<Face> RotateRow(Face face, double[,] matrix, RotationType rotationType)
+        private IList<Facie> RotateRow(Face face, double[,] matrix, RotationType rotationType)
         {
             var facies = face.Facies.Where(x => IsRowMatch(x, rotationType)).ToList();
             Rotate(facies, matrix);
             return facies.ToArray();
         }
 
-        private IList<Face> RotateColumn(Face face, double[,] matrix, RotationType rotationType)
+        private IList<Facie> RotateColumn(Face face, double[,] matrix, RotationType rotationType)
         {
             var facies = face.Facies.Where(x => IsColumnMatch(x, rotationType)).ToArray();
             Rotate(facies, matrix);
             return facies;
         }
 
-        private static void Rotate(IEnumerable<Face> facies, double[,] matrix)
+        private static void Rotate(IEnumerable<Facie> facies, double[,] matrix)
         {
             foreach (var facie in facies)
             {
@@ -179,17 +186,17 @@ namespace RubiksCube.Core.Model
             }
         }
 
-        private static void Move(Face source, Face target, IList<Face> facies)
+        private static void Move(Face faceSource, Face faceTarget, IList<Facie> facies)
         {
             foreach (var facie in facies)
             {
-                source.Facies.Remove(facie);
+                faceSource.Facies.Remove(facie);
             }
 
             foreach (var facie in facies)
             {
-                facie.Move(target.Type);
-                target.Facies.Add(facie);
+                faceTarget.Facies.Add(facie);
+                Move(faceSource.Type, faceTarget.Type, facie);
             }
         }
 
@@ -205,7 +212,7 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        private static bool IsRowMatch(Face facie, RotationType rotationType)
+        private static bool IsRowMatch(Facie facie, RotationType rotationType)
         {
             switch (rotationType)
             {
@@ -228,7 +235,7 @@ namespace RubiksCube.Core.Model
             return false;
         }
 
-        private static bool IsColumnMatch(Face facie, RotationType rotationType)
+        private static bool IsColumnMatch(Facie facie, RotationType rotationType)
         {
             switch (rotationType)
             {
@@ -249,6 +256,71 @@ namespace RubiksCube.Core.Model
             }
 
             return false;
+        }
+
+        public static void Move(FaceType source, FaceType target, Facie facie)
+        {
+            if ((source == FaceType.Back && target == FaceType.Top) ||
+                (source == FaceType.Front && target == FaceType.Bottom) ||
+                (source == FaceType.Bottom && target == FaceType.Front) ||
+                (source == FaceType.Top && target == FaceType.Back))
+            {
+                if(facie.FaciePosition == FaciePositionType.LeftTop)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftBottom;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftBottom)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftTop;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleTop)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleBottom;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleBottom)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleTop;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightTop)
+                {
+                    facie.FaciePosition = FaciePositionType.RightBottom;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightBottom)
+                {
+                    facie.FaciePosition = FaciePositionType.RightTop;
+                }
+
+            }
+            else if ((source == FaceType.Back && target == FaceType.Left) ||
+                    (source == FaceType.Right && target == FaceType.Back) ||
+                    (source == FaceType.Back && target == FaceType.Right) ||
+                    (source == FaceType.Left && target == FaceType.Back))
+            {
+                if (facie.FaciePosition == FaciePositionType.LeftTop)
+                {
+                    facie.FaciePosition = FaciePositionType.RightTop;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightTop)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftTop;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftBottom)
+                {
+                    facie.FaciePosition = FaciePositionType.RightBottom;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightBottom)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftBottom;
+                }
+            }
         }
     }
 }

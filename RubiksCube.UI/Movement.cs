@@ -17,7 +17,7 @@ namespace RubiksCube.UI
 
         public event EventHandler Complete;
 
-        public void CreateAnimation(Face facie, Model3D geometry)
+        public void CreateAnimation(Facie facie, Model3D geometry)
         {
             var animation = new MatrixAnimationWrapper(facie, geometry);
             animations.Add(animation);

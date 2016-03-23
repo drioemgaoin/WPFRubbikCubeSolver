@@ -1,4 +1,4 @@
-# WPFRubbikCubeSolverOverview
+Overview
 --  
 The project was started to develop a solution in state of the art with DDD and SpecFlow for BDD. Our goal is to prove complex problems can be solved with simple practices.
 

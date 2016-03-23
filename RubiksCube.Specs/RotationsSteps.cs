@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using NUnit.Framework;
 using RubiksCube.Core.Factory;
 using RubiksCube.Core.Model;
@@ -48,6 +47,24 @@ namespace RubiksCube.Specs
         {
             var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
             foreach(var facie in cube.FrontFace.GetRowFacies(rotationType))
+            {
+                Assert.AreEqual(facie.ColorName, visibleColor);
+            }
+        }
+
+        [When(@"column (.*) turns ""(.*)"" (.*) times")]
+        public void WhenTheColumnTurns(int position, string direction, uint times)
+        {
+            var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
+            var rotation = new Rotation(direction, times, rotationType);
+            cube.Rotate(rotation);
+        }
+
+        [Then(@"column (.*) is ""(.*)""")]
+        public void ThenTheColumnIsVisible(int position, string visibleColor)
+        {
+            var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
+            foreach (var facie in cube.FrontFace.GetColumnFacies(rotationType))
             {
                 Assert.AreEqual(facie.ColorName, visibleColor);
             }

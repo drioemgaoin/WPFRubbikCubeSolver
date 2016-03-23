@@ -55,3 +55,36 @@ Scenario Outline: Row Rotations
 	| 2			| Left		| 4     | White			 |
 	| 3			| Right     | 4     | White			 |
 	| 3			| Left      | 4	    | White          |
+
+
+Scenario Outline: Column Rotations
+	Given a cube with a visible "White" face
+	When column <position> turns "<direction>" <times> times
+	Then column <position> is "<expected_color>"
+	
+	Examples:
+	| position	| direction | times | expected_color |
+	| 1			| Up		| 1     | Red			 |
+	| 1			| Down      | 1     | Orange         |
+	| 2			| Up		| 1     | Red			 |
+	| 2			| Down		| 1     | Orange		 |
+	| 3			| Up		| 1     | Red		     |
+	| 3			| Down      | 1	    | Orange         |
+	| 1			| Up		| 2     | Yellow         |
+	| 1			| Down      | 2     | Yellow         |
+	| 2			| Up		| 2     | Yellow		 |
+	| 2			| Down		| 2     | Yellow		 |
+	| 3			| Up		| 2     | Yellow         |
+	| 3			| Down      | 2	    | Yellow         |
+	| 1			| Up		| 3     | Orange		 |
+	| 1			| Down      | 3     | Red			 |
+	| 2			| Up		| 3     | Orange		 |
+	| 2			| Down		| 3     | Red			 |
+	| 3			| Up		| 3     | Orange		 |
+	| 3			| Down      | 3	    | Red			 |
+	| 1			| Up		| 4     | White			 |
+	| 1			| Down      | 4     | White          |
+	| 2			| Up		| 4     | White			 |
+	| 2			| Down		| 4     | White			 |
+	| 3			| Up		| 4     | White			 |
+	| 3			| Down      | 4	    | White          |

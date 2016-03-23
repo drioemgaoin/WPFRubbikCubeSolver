@@ -136,6 +136,47 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Column Rotations")]
+        [NUnit.Framework.TestCaseAttribute("1", "Up", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Down", "1", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Up", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Down", "1", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Up", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Down", "1", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Up", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Down", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Up", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Down", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Up", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Down", "2", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Up", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Down", "3", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Up", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Down", "3", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Up", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Down", "3", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Up", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("1", "Down", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Up", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("2", "Down", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Up", "4", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("3", "Down", "4", "White", new string[0])]
+        public virtual void ColumnRotations(string position, string direction, string times, string expected_Color, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Column Rotations", exampleTags);
+#line 60
+this.ScenarioSetup(scenarioInfo);
+#line 61
+ testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 62
+ testRunner.When(string.Format("column {0} turns \"{1}\" {2} times", position, direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 63
+ testRunner.Then(string.Format("column {0} is \"{1}\"", position, expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

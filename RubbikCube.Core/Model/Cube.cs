@@ -166,14 +166,14 @@ namespace RubiksCube.Core.Model
 
         private IList<Facie> RotateRow(Face face, double[,] matrix, RotationType rotationType)
         {
-            var facies = face.Facies.Where(x => IsRowMatch(x, rotationType)).ToList();
+            var facies = face.GetRowFacies(rotationType).ToList();
             Rotate(facies, matrix);
             return facies.ToArray();
         }
 
         private IList<Facie> RotateColumn(Face face, double[,] matrix, RotationType rotationType)
         {
-            var facies = face.Facies.Where(x => IsColumnMatch(x, rotationType)).ToArray();
+            var facies = face.GetColumnFacies(rotationType).ToList();
             Rotate(facies, matrix);
             return facies;
         }
@@ -210,52 +210,6 @@ namespace RubiksCube.Core.Model
             buffer.Append(TopFace);
             buffer.Append(BottomFace);
             return buffer.ToString();
-        }
-
-        private static bool IsRowMatch(Facie facie, RotationType rotationType)
-        {
-            switch (rotationType)
-            {
-                case RotationType.All:
-                    return true;
-                case RotationType.First:
-                    return facie.FaciePosition == FaciePositionType.LeftTop ||
-                           facie.FaciePosition == FaciePositionType.MiddleTop ||
-                           facie.FaciePosition == FaciePositionType.RightTop;
-                case RotationType.Second:
-                    return facie.FaciePosition == FaciePositionType.LeftMiddle ||
-                           facie.FaciePosition == FaciePositionType.Middle ||
-                           facie.FaciePosition == FaciePositionType.RightMiddle;
-                case RotationType.Third:
-                    return facie.FaciePosition == FaciePositionType.LeftBottom ||
-                           facie.FaciePosition == FaciePositionType.MiddleBottom ||
-                           facie.FaciePosition == FaciePositionType.RightBottom;
-            }
-
-            return false;
-        }
-
-        private static bool IsColumnMatch(Facie facie, RotationType rotationType)
-        {
-            switch (rotationType)
-            {
-                case RotationType.All:
-                    return true;
-                case RotationType.First:
-                    return facie.FaciePosition == FaciePositionType.LeftTop ||
-                           facie.FaciePosition == FaciePositionType.LeftMiddle ||
-                           facie.FaciePosition == FaciePositionType.LeftBottom;
-                case RotationType.Second:
-                    return facie.FaciePosition == FaciePositionType.MiddleTop ||
-                           facie.FaciePosition == FaciePositionType.Middle ||
-                           facie.FaciePosition == FaciePositionType.MiddleBottom;
-                case RotationType.Third:
-                    return facie.FaciePosition == FaciePositionType.RightTop ||
-                           facie.FaciePosition == FaciePositionType.RightMiddle ||
-                           facie.FaciePosition == FaciePositionType.RightBottom;
-            }
-
-            return false;
         }
 
         public static void Move(FaceType source, FaceType target, Facie facie)

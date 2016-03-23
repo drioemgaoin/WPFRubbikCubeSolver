@@ -25,6 +25,11 @@ namespace RubiksCube.Core.Model
 
         }
 
+        public Rotation(string direction, uint times, RotationType type)
+            : this(direction, Math.PI / 2, times, type)
+        {
+        }
+
         public Rotation(string direction, double angle, RotationType type)
             : this(direction, angle, (uint)((Math.PI / 2) / angle), type)
         {

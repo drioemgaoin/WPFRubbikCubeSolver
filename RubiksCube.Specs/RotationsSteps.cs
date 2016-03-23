@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using RubiksCube.Core.Model;
-using TechTalk.SpecFlow;
 using NUnit.Framework;
 using RubiksCube.Core.Factory;
+using RubiksCube.Core.Model;
+using TechTalk.SpecFlow;
 
 namespace RubiksCube.Specs
 {
@@ -18,20 +18,20 @@ namespace RubiksCube.Specs
             var cubeFactory = new CubeFactory();
             cube = cubeFactory.Create();
         }
-        
+
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
             var rotation = new Rotation(direction, times);
             cube.Rotate(rotation);
         }
-        
+
         [Then(@"the ""(.*)"" face is visible")]
         public void ThenThenTheFaceIsVisible(string visibleColor)
         {
             foreach (var facie in cube.FrontFace.Facies)
             {
-                Assert.AreEqual(facie.ColorName, visibleColor);    
+                Assert.AreEqual(facie.ColorName, visibleColor);
             }
         }
 
@@ -46,7 +46,11 @@ namespace RubiksCube.Specs
         [Then(@"row (.*) is ""(.*)""")]
         public void ThenTheRowsIsVisible(int position, string visibleColor)
         {
-           
+            var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
+            foreach(var facie in cube.FrontFace.GetRowFacies(rotationType))
+            {
+                Assert.AreEqual(facie.ColorName, visibleColor);
+            }
         }
     }
 }

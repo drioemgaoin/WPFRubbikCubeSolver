@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace RubiksCube.Core.Model
@@ -30,6 +32,16 @@ namespace RubiksCube.Core.Model
             return face;
         }
 
+        public IList<Facie> GetRowFacies(RotationType rotation)
+        {
+            return Facies.Where(x => IsRowMatch(x, rotation)).ToArray();
+        }
+
+        public IList<Facie> GetColumnFacies(RotationType rotation)
+        {
+            return Facies.Where(x => IsColumnMatch(x, rotation)).ToArray();
+        }
+
         public override string ToString()
         {
             var buffer = new StringBuilder();
@@ -40,6 +52,18 @@ namespace RubiksCube.Core.Model
             }
 
             return buffer.ToString();
+        }
+
+        private static bool IsRowMatch(Facie facie, RotationType rotationType)
+        {
+            var attribute = RotationAttributeHelper.GetAttribute(facie.FaciePosition);
+            return attribute.Row == rotationType || rotationType == RotationType.All;
+        }
+
+        private static bool IsColumnMatch(Facie facie, RotationType rotationType)
+        {
+            var attribute = RotationAttributeHelper.GetAttribute(facie.FaciePosition);
+            return attribute.Column == rotationType || rotationType == RotationType.All;
         }
     }
 }

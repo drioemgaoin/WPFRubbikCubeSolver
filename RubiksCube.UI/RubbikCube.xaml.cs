@@ -11,20 +11,31 @@ using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
 {
-    public partial class RubbikCube
+    public partial class RubbikCube : IDisposable
     {
         private readonly IPositionsFactory positionsFactory;
         private readonly ICubeFactory cubeFactory;
+        private readonly AnimationEngine movementEngine;
         private Cube cube;
+        private bool disposed;
 
         public RubbikCube()
         {
             positionsFactory = new PositionsFactory();
             cubeFactory = new CubeFactory();
+            movementEngine = new AnimationEngine();
+
             DataContext = this;
 
             InitializeComponent();
             Initialize();
+
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            movementEngine.Start();    
         }
 
         public void RotateRowRight(RotationType type)
@@ -83,28 +94,74 @@ namespace RubiksCube.UI
             Rotate(movements);
         }
 
+        public void MixUp()
+        {
+            var random = new Random();
+            for(var i = 0; i < 50; i++)
+            {
+                var action = random.Next(0, 8);
+                switch(action)
+                {
+                    case 0:
+                        RotateRowRight(RotationType.First);
+                        break;
+                    case 1:
+                        RotateRowRight(RotationType.Second);
+                        break;
+                    case 2:
+                        RotateRowRight(RotationType.Third);
+                        break;
+                    case 3:
+                        RotateRowLeft(RotationType.First);
+                        break;
+                    case 4:
+                        RotateRowLeft(RotationType.Second);
+                        break;
+                    case 5:
+                        RotateRowLeft(RotationType.Third);
+                        break;
+                    case 6:
+                        RotateColumnUp(RotationType.First);
+                        break;
+                    case 7:
+                        RotateColumnUp(RotationType.Second);
+                        break;
+                    case 8:
+                        RotateColumnUp(RotationType.Third);
+                        break;
+                    case 9:
+                        RotateColumnDown(RotationType.First);
+                        break;
+                    case 10:
+                        RotateColumnDown(RotationType.Second);
+                        break;
+                    case 11:
+                        RotateColumnDown(RotationType.Third);
+                        break;
+                }
+            }
+        }
+
         private void Rotate(IEnumerable<List<Facie>> items)
         {
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
 
-            var movements = new Movements(center, negateCenter);
             foreach (var facies in items)
             {
-                var movement = new Movement();
+                var animations = new FacieAnimation(center, negateCenter);
                 foreach (var facie in facies)
                 {
                     var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == facie.Key);
                     if (geometry != null)
                     {
-                        movement.CreateAnimation(facie, geometry);
+                        animations.Add(facie, geometry);
                     }
                 }
 
-                movements.Add(movement);
+                movementEngine.Add(animations);
+                movementEngine.BeginAnimation();
             }
-
-            movements.BeginAnimation();
         }
 
         private void Initialize()
@@ -193,6 +250,30 @@ namespace RubiksCube.UI
             }
 
             return center;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    movementEngine.Stop();
+                }
+
+                disposed = true;
+            }
+        }
+
+        ~RubbikCube()
+        {
+            Dispose(false);
         }
     }
 }

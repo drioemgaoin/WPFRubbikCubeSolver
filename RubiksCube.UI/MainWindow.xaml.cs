@@ -79,6 +79,10 @@ namespace RubiksCube.UI
             {
                 RubbikCube.RotateDown();
             }
+            else if (Keyboard.IsKeyDown(Key.M))
+            {
+                RubbikCube.MixUp();
+            }
         }
     }
 }

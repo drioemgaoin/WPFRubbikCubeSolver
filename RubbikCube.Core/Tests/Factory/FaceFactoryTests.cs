@@ -3,7 +3,6 @@ using System.Linq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Core.Tests.Factory
 {

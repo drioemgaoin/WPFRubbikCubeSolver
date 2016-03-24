@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using RubiksCube.Core.Factory;
 using RubiksCube.Core.Model;
 using TechTalk.SpecFlow;
 
@@ -14,8 +13,7 @@ namespace RubiksCube.Specs
         [Given(@"a cube with a visible ""(.*)"" face")]
         public void GivenACubeWithAVisableFace(string visibleColor)
         {
-            var cubeFactory = new CubeFactory();
-            cube = cubeFactory.Create();
+            cube = new Cube();
         }
 
         [When(@"the cube turns ""(.*)"" (.*) times")]

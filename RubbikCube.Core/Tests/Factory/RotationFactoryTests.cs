@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubiksCube.Core.Factory;
+using RubiksCube.Core.Model;
 
 namespace RubiksCube.Core.Tests.Factory
 {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using RubiksCube.Core.Model;
 
-namespace RubiksCube.Core.Factory
+namespace RubiksCube.Core.Model
 {
     public interface IFaceFactory
     {

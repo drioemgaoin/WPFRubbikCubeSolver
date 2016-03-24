@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Factory;
 using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
@@ -14,7 +13,6 @@ namespace RubiksCube.UI
     public partial class RubiksCubeControl : IDisposable
     {
         private readonly IPositionsFactory positionsFactory;
-        private readonly ICubeFactory cubeFactory;
         private readonly AnimationEngine movementEngine;
         private Cube cube;
         private bool disposed;
@@ -22,7 +20,6 @@ namespace RubiksCube.UI
         public RubiksCubeControl()
         {
             positionsFactory = new PositionsFactory();
-            cubeFactory = new CubeFactory();
             movementEngine = new AnimationEngine();
 
             DataContext = this;
@@ -145,7 +142,7 @@ namespace RubiksCube.UI
         {
             group.Children.Clear();
 
-            cube = cubeFactory.Create();
+            cube = new Cube();
             InitializeFace(cube.FrontFace);
             InitializeFace(cube.LeftFace);
             InitializeFace(cube.RightFace);

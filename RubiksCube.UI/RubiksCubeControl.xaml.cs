@@ -167,7 +167,7 @@ namespace RubiksCube.UI
         {
             var label = new Label
             {
-                Background = new SolidColorBrush(ColorMapper.Map(facie.ColorName)),
+                Background = new SolidColorBrush(ColorMapper.Map(facie.Color)),
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 BorderThickness = new Thickness(0.3)
             };

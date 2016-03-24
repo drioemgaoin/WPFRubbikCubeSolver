@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListExtensions.cs" />
-    <Compile Include="Model\ColorType.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Model\Color.cs" />
     <Compile Include="Model\Facie.cs" />
     <Compile Include="Model\Rotation.cs" />
     <Compile Include="Model\Cube.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
-    <Compile Include="RotationAttributeHelper.cs" />
+    <Compile Include="ReflectionHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

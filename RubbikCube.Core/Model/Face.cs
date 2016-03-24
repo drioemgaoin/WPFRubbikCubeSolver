@@ -55,13 +55,13 @@ namespace RubiksCube.Core.Model
 
         private static bool IsRowMatch(Facie facie, RotationType rotationType)
         {
-            var attribute = RotationAttributeHelper.GetAttribute(facie.FaciePosition);
+            var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
             return attribute.Row == rotationType || rotationType == RotationType.All;
         }
 
         private static bool IsColumnMatch(Facie facie, RotationType rotationType)
         {
-            var attribute = RotationAttributeHelper.GetAttribute(facie.FaciePosition);
+            var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
             return attribute.Column == rotationType || rotationType == RotationType.All;
         }
     }

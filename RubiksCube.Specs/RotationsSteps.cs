@@ -30,7 +30,7 @@ namespace RubiksCube.Specs
         {
             foreach (var facie in cube.FrontFace.Facies)
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
 
@@ -48,7 +48,7 @@ namespace RubiksCube.Specs
             var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
             foreach(var facie in cube.FrontFace.GetRowFacies(rotationType))
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
 
@@ -66,7 +66,7 @@ namespace RubiksCube.Specs
             var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
             foreach (var facie in cube.FrontFace.GetColumnFacies(rotationType))
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
     }

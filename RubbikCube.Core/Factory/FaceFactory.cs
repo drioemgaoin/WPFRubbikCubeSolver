@@ -16,23 +16,23 @@ namespace RubiksCube.Core.Factory
             switch (type)
             {
                 case FaceType.Front:
-                    return CreateFace(type, ColorName.White);
+                    return CreateFace(type, Color.White);
                 case FaceType.Top:
-                    return CreateFace(type, ColorName.Orange);
+                    return CreateFace(type, Color.Orange);
                 case FaceType.Bottom:
-                    return CreateFace(type, ColorName.Red);
+                    return CreateFace(type, Color.Red);
                 case FaceType.Left:
-                    return CreateFace(type, ColorName.Green);
+                    return CreateFace(type, Color.Green);
                 case FaceType.Right:
-                    return CreateFace(type, ColorName.Blue);
+                    return CreateFace(type, Color.Blue);
                 case FaceType.Back:
-                    return CreateFace(type, ColorName.Yellow);
+                    return CreateFace(type, Color.Yellow);
             }
 
             return null;
         }
 
-        private static Face CreateFace(FaceType faceType, ColorName color)
+        private static Face CreateFace(FaceType faceType, Color color)
         {
             return new Face
             {
@@ -51,12 +51,12 @@ namespace RubiksCube.Core.Factory
             };
         }
 
-        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, ColorName color)
+        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
         {
             return new Facie
             {
                 Key = String.Format("{0}{1}", faceType, faciePositionType),
-                ColorName = color,
+                Color = color,
                 FaciePosition = faciePositionType
             };
         }

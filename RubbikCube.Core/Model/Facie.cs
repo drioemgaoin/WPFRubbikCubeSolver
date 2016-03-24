@@ -11,7 +11,7 @@ namespace RubiksCube.Core.Model
 
         public FaciePositionType FaciePosition { get; set; }
 
-        public ColorName ColorName { get; set; }
+        public Color Color { get; set; }
 
         public double[,] PreviousRotation { get; private set; }
 
@@ -37,14 +37,14 @@ namespace RubiksCube.Core.Model
                 rotation = Rotation,
                 Key = Key,
                 FaciePosition = FaciePosition,
-                ColorName = ColorName
+                Color = Color
             };
         }
 
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            buffer.AppendLine(FaciePosition + "-" + ColorName);
+            buffer.AppendLine(FaciePosition + "-" + Color);
             return buffer.ToString();
         }
     }

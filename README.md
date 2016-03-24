@@ -1,10 +1,10 @@
-Overview
+Introduction
 --  
 This project was started to develop a solution in the state of the art with Domain Driven Design and Behavioral Driven Design, also known as [Living Documentation] (https://leanpub.com/livingdocumentation). Our goal is to prove complex problems can be solved with simple practices.
 
 A Rubik's cube solver seemed like a good candidate to use these practices with clear but challenging specifications in a quest to improve our craft.
 
-As .NET developers, that also seemed like a good introduction to 3D programming to discover unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the framework for reusability with any others technologies as we would also like to experiment.
+As .NET developers, that also seemed like a good introduction to 3D programming to discover unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the framework to be reusable with any others technologies as we would also like to experiment.
 
 This is a work in progress but we are aiming to continuously improve and simplify the model to let the design emerge while incrementally implementing new specifications.
 
@@ -29,5 +29,6 @@ Features
   * E: rotate the third column left
   * C: rotate the third column right
   * M: mix up the cube
+* Mouse rotations (WIP)
 * Random facies scrambling (WIP)
 * Automatic solving algorithm (WIP)

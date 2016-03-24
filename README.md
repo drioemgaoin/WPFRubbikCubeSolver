@@ -30,5 +30,5 @@ Features
   * C: rotate the third column right
   * M: mix up the cube
 * Mouse rotations (WIP)
-* Random facies scrambling (WIP)
+* Random facies scrambling
 * Automatic solving algorithm (WIP)

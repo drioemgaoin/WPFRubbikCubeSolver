@@ -4,9 +4,9 @@ This project was started to develop a solution in the state of the art with Doma
 
 A Rubik's cube solver seemed like a good candidate to use these practices with clear but challenging specifications.
 
-As .NET developers, that also seemed like a good introduction to 3D programming to discover unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the framework to be reusable with any others technologies as we would also like to experiment.
+As .NET developers, that also seemed like a good introduction to 3D programming to discover unexplored WPF areas. Anyhow, the model and specifications will stay agnostic of the framework to be reusable as we would also like to repeat this exercise with other languages.
 
-This is a work in progress but we are aiming to continuously improve and simplify the model to let the design emerge while incrementally implementing new specifications.
+This is a work in progress but we are aiming to continuously improve and simplify the solution and let the design emerge while incrementally implementing new specifications.
 
 Features
 --  

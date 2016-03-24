@@ -1,12 +1,12 @@
 Overview
 --  
-This project was started to develop a solution in the state of the art with DDD and SpecFlow for BDD. Our goal is to prove complex problems can be solved with simple practices.
+This project was started to develop a solution in the state of the art with Domain Driven Design and Behavioral Driven Design, also known as [Living Documentation] (https://leanpub.com/livingdocumentation). Our goal is to prove complex problems can be solved with simple practices.
 
-A Rubik's cube solver seemed like a good candidate to implement these practices with clear but still complex specifications.
+A Rubik's cube solver seemed like a good candidate to use these practices with clear but challenging specifications in a quest to improve our craft.
 
-As enterprise .NET developers, that also seemed like a good introduction to 3D programming for discovering unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the technologies so it could be reused with any others ones as we would also like to experiment.
+As .NET developers, that also seemed like a good introduction to 3D programming to discover unexplored WPF areas. Anyhow, the model and specifications should stay agnostic of the framework for reusability with any others technologies as we would also like to experiment.
 
-This is a work in progress but we are aiming to continously improve and simplify the implementation while incrementally developing new specifications.
+This is a work in progress but we are aiming to continuously improve and simplify the model to let the design emerge while incrementally implementing new specifications.
 
 Features
 --  

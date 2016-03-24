@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Media;
 using RubiksCube.Core.Model;
 
 namespace RubiksCube.Core.Factory
@@ -17,23 +16,23 @@ namespace RubiksCube.Core.Factory
             switch (type)
             {
                 case FaceType.Front:
-                    return CreateFace(type, Colors.White);
+                    return CreateFace(type, ColorName.White);
                 case FaceType.Top:
-                    return CreateFace(type, Colors.Orange);
+                    return CreateFace(type, ColorName.Orange);
                 case FaceType.Bottom:
-                    return CreateFace(type, Colors.Red);
+                    return CreateFace(type, ColorName.Red);
                 case FaceType.Left:
-                    return CreateFace(type, Colors.Green);
+                    return CreateFace(type, ColorName.Green);
                 case FaceType.Right:
-                    return CreateFace(type, Colors.Blue);
+                    return CreateFace(type, ColorName.Blue);
                 case FaceType.Back:
-                    return CreateFace(type, Colors.Yellow);
+                    return CreateFace(type, ColorName.Yellow);
             }
 
             return null;
         }
 
-        private static Face CreateFace(FaceType faceType, Color color)
+        private static Face CreateFace(FaceType faceType, ColorName color)
         {
             return new Face
             {
@@ -52,12 +51,12 @@ namespace RubiksCube.Core.Factory
             };
         }
 
-        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
+        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, ColorName color)
         {
             return new Facie
             {
                 Key = String.Format("{0}{1}", faceType, faciePositionType),
-                Color = color,
+                ColorName = color,
                 FaciePosition = faciePositionType
             };
         }

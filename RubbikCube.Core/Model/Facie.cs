@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Media;
 
 namespace RubiksCube.Core.Model
 {
@@ -12,45 +11,7 @@ namespace RubiksCube.Core.Model
 
         public FaciePositionType FaciePosition { get; set; }
 
-        public string ColorName
-        {
-            get
-            {
-                if (Color == Colors.Blue)
-                {
-                    return "Blue";
-                }
-
-                if (Color == Colors.Red)
-                {
-                    return "Red";
-                }
-
-                if (Color == Colors.Green)
-                {
-                    return "Green";
-                }
-
-                if (Color == Colors.Orange)
-                {
-                    return "Orange";
-                }
-
-                if (Color == Colors.White)
-                {
-                    return "White";
-                }
-
-                if (Color == Colors.Yellow)
-                {
-                    return "Yellow";
-                }
-
-                return "NA";
-            }
-        }
-
-        public Color Color { get; set; } // TODO: Replace with new model type to protect integrity and break the UI dependency
+        public ColorName ColorName { get; set; }
 
         public double[,] PreviousRotation { get; private set; }
 
@@ -76,7 +37,7 @@ namespace RubiksCube.Core.Model
                 rotation = Rotation,
                 Key = Key,
                 FaciePosition = FaciePosition,
-                Color = Color
+                ColorName = ColorName
             };
         }
 

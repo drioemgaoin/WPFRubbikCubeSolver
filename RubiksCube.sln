@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Core", "RubbikCu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Specs", "RubiksCube.Specs\RubiksCube.Specs.csproj", "{BBAA2C74-4EE9-4308-8D4E-685F48536367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubbikCube.Core.Tests", "RubbikCube.Core\Tests\RubbikCube.Core.Tests.csproj", "{64CCB483-BCC7-41F7-9020-E41D4992B718}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Core.Tests", "RubbikCube.Core\Tests\RubiksCube.Core.Tests.csproj", "{64CCB483-BCC7-41F7-9020-E41D4992B718}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.UI.Tests", "RubiksCube.UI\Tests\RubiksCube.UI.Tests.csproj", "{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}"
 EndProject

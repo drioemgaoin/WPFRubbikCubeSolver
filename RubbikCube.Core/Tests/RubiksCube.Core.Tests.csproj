@@ -7,8 +7,8 @@
     <ProjectGuid>{64CCB483-BCC7-41F7-9020-E41D4992B718}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RubbikCube.Core.Tests</RootNamespace>
-    <AssemblyName>RubbikCube.Core.Tests</AssemblyName>
+    <RootNamespace>RubiksCube.Core.Tests</RootNamespace>
+    <AssemblyName>RubiksCube.Core.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using RubiksCube.Core.Factory;
 
-namespace RubbikCube.Core.Tests.Factory
+namespace RubiksCube.Core.Tests.Factory
 {
     [TestFixture]
     public class RotationFactoryTests

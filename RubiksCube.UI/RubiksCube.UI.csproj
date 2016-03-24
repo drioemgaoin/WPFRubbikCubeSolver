@@ -66,8 +66,8 @@
     <Compile Include="AnimationEngine.cs" />
     <Compile Include="PositionsFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="RubbikCube.xaml.cs">
-      <DependentUpon>RubbikCube.xaml</DependentUpon>
+    <Compile Include="RubiksCubeControl.xaml.cs">
+      <DependentUpon>RubiksCubeControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,7 +81,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RubbikCube.xaml">
+    <Page Include="RubiksCubeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

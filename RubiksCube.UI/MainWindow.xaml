@@ -4,5 +4,5 @@
         xmlns:ui="clr-namespace:RubiksCube.UI"
         Height="635" Width="585"
         Background="Transparent">
-    <ui:RubbikCube x:Name="RubbikCube"></ui:RubbikCube>
+    <ui:RubiksCubeControl x:Name="RubiksCube"></ui:RubiksCubeControl>
 </Window> 

@@ -17,71 +17,71 @@ namespace RubiksCube.UI
         {
             if(Keyboard.IsKeyDown(Key.NumPad9))
             {
-                RubbikCube.RotateRowRight(RotationType.First);
+                RubiksCube.RotateRowRight(RotationType.First);
             }
             else if (Keyboard.IsKeyDown(Key.NumPad7))
             {
-                RubbikCube.RotateRowLeft(RotationType.First);
+                RubiksCube.RotateRowLeft(RotationType.First);
             }
             else if (Keyboard.IsKeyDown(Key.NumPad6))
             {
-                RubbikCube.RotateRowRight(RotationType.Second);
+                RubiksCube.RotateRowRight(RotationType.Second);
             }
             else if (Keyboard.IsKeyDown(Key.NumPad4))
             {
-                RubbikCube.RotateRowLeft(RotationType.Second);
+                RubiksCube.RotateRowLeft(RotationType.Second);
             }
             else if (Keyboard.IsKeyDown(Key.NumPad3))
             {
-                RubbikCube.RotateRowRight(RotationType.Third);
+                RubiksCube.RotateRowRight(RotationType.Third);
             }
             else if (Keyboard.IsKeyDown(Key.NumPad1))
             {
-                RubbikCube.RotateRowLeft(RotationType.Third);
+                RubiksCube.RotateRowLeft(RotationType.Third);
             }
             else if (Keyboard.IsKeyDown(Key.Q))
             {
-                RubbikCube.RotateColumnUp(RotationType.First);
+                RubiksCube.RotateColumnUp(RotationType.First);
             }
             else if (Keyboard.IsKeyDown(Key.Z))
             {
-                RubbikCube.RotateColumnDown(RotationType.First);
+                RubiksCube.RotateColumnDown(RotationType.First);
             }
             else if (Keyboard.IsKeyDown(Key.W))
             {
-                RubbikCube.RotateColumnUp(RotationType.Second);
+                RubiksCube.RotateColumnUp(RotationType.Second);
             }
             else if (Keyboard.IsKeyDown(Key.X))
             {
-                RubbikCube.RotateColumnDown(RotationType.Second);
+                RubiksCube.RotateColumnDown(RotationType.Second);
             }
             else if (Keyboard.IsKeyDown(Key.E))
             {
-                RubbikCube.RotateColumnUp(RotationType.Third);
+                RubiksCube.RotateColumnUp(RotationType.Third);
             }
             else if (Keyboard.IsKeyDown(Key.C))
             {
-                RubbikCube.RotateColumnDown(RotationType.Third);
+                RubiksCube.RotateColumnDown(RotationType.Third);
             }
             else if (Keyboard.IsKeyDown(Key.Left))
             {
-                RubbikCube.RotateLeft();
+                RubiksCube.RotateLeft();
             }
             else if (Keyboard.IsKeyDown(Key.Right))
             {
-                RubbikCube.RotateRight();
+                RubiksCube.RotateRight();
             }
             else if (Keyboard.IsKeyDown(Key.Up))
             {
-                RubbikCube.RotateUp();
+                RubiksCube.RotateUp();
             }
             else if (Keyboard.IsKeyDown(Key.Down))
             {
-                RubbikCube.RotateDown();
+                RubiksCube.RotateDown();
             }
             else if (Keyboard.IsKeyDown(Key.M))
             {
-                RubbikCube.MixUp();
+                RubiksCube.MixUp();
             }
         }
     }

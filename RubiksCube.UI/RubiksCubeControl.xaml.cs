@@ -11,7 +11,7 @@ using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
 {
-    public partial class RubbikCube : IDisposable
+    public partial class RubiksCubeControl : IDisposable
     {
         private readonly IPositionsFactory positionsFactory;
         private readonly ICubeFactory cubeFactory;
@@ -19,7 +19,7 @@ namespace RubiksCube.UI
         private Cube cube;
         private bool disposed;
 
-        public RubbikCube()
+        public RubiksCubeControl()
         {
             positionsFactory = new PositionsFactory();
             cubeFactory = new CubeFactory();
@@ -248,7 +248,7 @@ namespace RubiksCube.UI
             }
         }
 
-        ~RubbikCube()
+        ~RubiksCubeControl()
         {
             Dispose(false);
         }

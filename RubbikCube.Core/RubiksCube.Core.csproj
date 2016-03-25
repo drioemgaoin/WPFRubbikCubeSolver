@@ -56,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
     <Compile Include="RotationAttributeHelper.cs" />
+    <Compile Include="RubiksCubeSolver.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

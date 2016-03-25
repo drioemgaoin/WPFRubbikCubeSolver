@@ -83,6 +83,10 @@ namespace RubiksCube.UI
             {
                 RubiksCube.MixUp();
             }
+            else if (Keyboard.IsKeyDown(Key.R))
+            {
+                RubiksCube.Resolve();
+            }
         }
     }
 }

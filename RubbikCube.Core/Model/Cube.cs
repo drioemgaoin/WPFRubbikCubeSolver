@@ -54,6 +54,34 @@ namespace RubiksCube.Core.Model
             return facies;
         }
 
+        public Face Find(ColorName color, FaciePositionType faciePosition)
+        {
+            var faces = new List<Face> { FrontFace, LeftFace, RightFace, BottomFace, TopFace, BackFace };
+            foreach (var face in faces)
+            {
+                if (face.Facies.Any(x => x.FaciePosition == faciePosition && x.ColorName == ColorName.White))
+                {
+                    return face;
+                }
+            }
+
+            return null;
+        }
+
+        public Face Find(ColorName color)
+        {
+            var faces = new List<Face> { FrontFace, LeftFace, RightFace, BottomFace, TopFace, BackFace };
+            foreach(var face in faces)
+            {
+                if (face.Facies.Any(x => x.FaciePosition == FaciePositionType.Middle && x.ColorName == ColorName.White))
+                {
+                    return face;
+                }
+            }
+
+            return null;
+        }
+
         private IEnumerable<Facie> RotateRight(Rotation rotation)
         {
             var matrix = rotationFactory.RotateX(rotation.Angle);

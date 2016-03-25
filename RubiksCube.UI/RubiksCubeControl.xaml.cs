@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using RubiksCube.Core;
 using RubiksCube.Core.Model;
 using RubiksCube.Core.Factory;
 using Point = System.Windows.Point;
@@ -15,12 +16,14 @@ namespace RubiksCube.UI
     {
         private readonly IPositionsFactory positionsFactory;
         private readonly ICubeFactory cubeFactory;
+        private readonly IRubiksCubeSolver cubeSolver;
         private readonly AnimationEngine movementEngine;
         private Cube cube;
         private bool disposed;
 
         public RubiksCubeControl()
         {
+            cubeSolver = new RubiksCubeSolver();
             positionsFactory = new PositionsFactory();
             cubeFactory = new CubeFactory();
             movementEngine = new AnimationEngine();
@@ -117,6 +120,24 @@ namespace RubiksCube.UI
             {
                 var index = random.Next(0, actions.Count());
                 actions[index]();
+            }
+        }
+
+        public void Resolve()
+        {
+            cubeSolver.Rotations -= OnRotations;
+            cubeSolver.Rotations += OnRotations;
+            cubeSolver.Solve(cube);
+        }
+
+        private void OnRotations(object sender, RotationsArgs e)
+        {
+            foreach(var rotation in e.Rotations)
+            {
+                var newRotation = new Rotation(rotation.Direction, (rotation.Angle > 0 ? 1 : -1) * (Math.PI / 4), rotation.Times * 2, rotation.Type);
+
+                var movements = cube.Rotate(newRotation);
+                Rotate(movements);
             }
         }
 
@@ -242,6 +263,7 @@ namespace RubiksCube.UI
                 if (disposing)
                 {
                     movementEngine.Stop();
+                    cubeSolver.Rotations -= OnRotations;
                 }
 
                 disposed = true;

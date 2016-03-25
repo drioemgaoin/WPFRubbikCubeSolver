@@ -31,6 +31,27 @@ namespace RubiksCube.Core.Model
             return face;
         }
 
+        public IList<RotationType> GetRows(Color color)
+        {
+            var rows = new List<RotationType>();
+            if(GetRowFacies(RotationType.First).Any(x => x.Color == color))
+            {
+                rows.Add(RotationType.First);
+            }
+
+            if (GetRowFacies(RotationType.Second).Any(x => x.Color == color))
+            {
+                rows.Add(RotationType.Second);
+            }
+
+            if (GetRowFacies(RotationType.Third).Any(x => x.Color == color))
+            {
+                rows.Add(RotationType.Third);
+            }
+
+            return rows;
+        }
+
         public IList<Facie> GetRowFacies(RotationType rotation)
         {
             return Facies.Where(x => IsRowMatch(x, rotation)).ToArray();

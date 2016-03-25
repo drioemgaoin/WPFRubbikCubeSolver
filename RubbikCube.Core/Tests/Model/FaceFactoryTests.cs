@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 using RubiksCube.Core.Model;
 
-namespace RubiksCube.Core.Tests.Factory
+namespace RubiksCube.Core.Tests.Model
 {
     [TestFixture]
     public class FaceFactoryTests

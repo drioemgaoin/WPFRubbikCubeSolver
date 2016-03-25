@@ -95,7 +95,7 @@ namespace RubiksCube.Core.Model
             var leftFacies = RotateRow(LeftFace, matrix, rotation.Type);
             var rightFacies = RotateRow(RightFace, matrix, rotation.Type);
             var backFacies = RotateRow(BackFace, matrix, rotation.Type);
-
+        
             if (rotation.IsMatchFace)
             {
                 Move(LeftFace, FrontFace, leftFacies);

@@ -29,23 +29,42 @@ namespace RubiksCube.Core
         public void Solve(Cube cube)
         {
             PositionToWhiteFace(cube);
+            //PositionTopMiddleWiteFace(cube);
+        }
 
+        private void PositionTopMiddleWiteFace(Cube cube)
+        {
             var rotations = new List<Rotation>();
-            var facies = cube.LeftFace.Facies.Where(x => x.Color == Color.White).ToArray();
-            foreach (var facie in facies)
+            var face = cube.Find(Color.White, FaciePositionType.MiddleTop);
+            if (face != null)
             {
-                if (facie.FaciePosition == FaciePositionType.LeftTop ||
-                    facie.FaciePosition == FaciePositionType.MiddleTop ||
-                    facie.FaciePosition == FaciePositionType.RightTop)
+                if (face.Type == FaceType.Left)
                 {
                     rotations.Add(new Rotation(Rotation.Right, 1, RotationType.First));
                 }
-
-                if (facie.FaciePosition == FaciePositionType.LeftBottom ||
-                    facie.FaciePosition == FaciePositionType.MiddleBottom ||
-                    facie.FaciePosition == FaciePositionType.RightBottom)
+                else if (face.Type == FaceType.Right)
                 {
-                    rotations.Add(new Rotation(Rotation.Right, 1, RotationType.Third));
+                    rotations.Add(new Rotation(Rotation.Left, 1, RotationType.First));
+                }
+                else if (face.Type == FaceType.Back)
+                {
+                    rotations.Add(new Rotation(Rotation.Left, 2, RotationType.First));
+                }
+                else if (face.Type == FaceType.Top)
+                {
+                    if (face.Facies.Any(x => x.FaciePosition == FaciePositionType.MiddleTop && x.Color == Color.White))
+                    {
+                        rotations.Add(new Rotation(Rotation.Left, 1, RotationType.Second));
+                        rotations.Add(new Rotation(Rotation.Down, 1, RotationType.Second));
+                        rotations.Add(new Rotation(Rotation.Right, 1, RotationType.Second));
+                    }
+                    else if (face.Facies.Any(x => x.FaciePosition == FaciePositionType.MiddleBottom && x.Color == Color.White))
+                    {
+                        rotations.Add(new Rotation(Rotation.Left, 2, RotationType.First));
+                        rotations.Add(new Rotation(Rotation.Left, 1, RotationType.Second));
+                        rotations.Add(new Rotation(Rotation.Down, 1, RotationType.Second));
+                        rotations.Add(new Rotation(Rotation.Right, 1, RotationType.Second));
+                    }
                 }
             }
 

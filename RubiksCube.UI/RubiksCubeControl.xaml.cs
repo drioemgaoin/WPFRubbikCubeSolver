@@ -24,6 +24,7 @@ namespace RubiksCube.UI
             cubeSolver = new RubiksCubeSolver();
             positionsFactory = new PositionsFactory();
             movementEngine = new AnimationEngine();
+            cube = new Cube();
 
             DataContext = this;
 

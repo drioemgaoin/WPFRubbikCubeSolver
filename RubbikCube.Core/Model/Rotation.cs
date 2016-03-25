@@ -10,7 +10,7 @@ namespace RubiksCube.Core.Model
         public const string Down = "Down";
 
         private static readonly string[] Directions = {Up, Left, Right, Down};
-        private double angle;
+        private readonly double angle;
         private double cumulativeRotation;
 
         public Rotation(string direction, uint times)
@@ -38,7 +38,7 @@ namespace RubiksCube.Core.Model
         public Rotation(string direction, double angle, uint times, RotationType type)
         {
             Guard.IsNotNullOrWhitespace(direction, "direction");
-            Guard.Contains(Directions, direction, String.Format("'{0}' is not a valid face rotation direction.", direction));
+            Guard.Contains(Directions, direction, string.Format("'{0}' is not a valid face rotation direction.", direction));
 
             this.angle = angle;
             Direction = direction;

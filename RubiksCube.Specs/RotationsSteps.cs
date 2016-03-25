@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using RubiksCube.Core.Factory;
 using RubiksCube.Core.Model;
 using TechTalk.SpecFlow;
 
@@ -14,8 +13,7 @@ namespace RubiksCube.Specs
         [Given(@"a cube with a visible ""(.*)"" face")]
         public void GivenACubeWithAVisableFace(string visibleColor)
         {
-            var cubeFactory = new CubeFactory();
-            cube = cubeFactory.Create();
+            cube = new Cube();
         }
 
         [When(@"the cube turns ""(.*)"" (.*) times")]
@@ -30,7 +28,7 @@ namespace RubiksCube.Specs
         {
             foreach (var facie in cube.FrontFace.Facies)
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
 
@@ -48,7 +46,7 @@ namespace RubiksCube.Specs
             var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
             foreach(var facie in cube.FrontFace.GetRowFacies(rotationType))
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
 
@@ -66,7 +64,7 @@ namespace RubiksCube.Specs
             var rotationType = (RotationType)Enum.Parse(typeof(RotationType), position.ToString());
             foreach (var facie in cube.FrontFace.GetColumnFacies(rotationType))
             {
-                Assert.AreEqual(facie.ColorName.ToString(), visibleColor);
+                Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
         }
     }

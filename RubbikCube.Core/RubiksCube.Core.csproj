@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListExtensions.cs" />
-    <Compile Include="Model\ColorType.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Model\Color.cs" />
     <Compile Include="Model\Facie.cs" />
     <Compile Include="Model\Rotation.cs" />
     <Compile Include="Model\Cube.cs" />
@@ -48,14 +48,13 @@
     <Compile Include="Model\FaceType.cs" />
     <Compile Include="Model\FaciePositionType.cs" />
     <Compile Include="Model\RotationType.cs" />
-    <Compile Include="Factory\CubeFactory.cs" />
-    <Compile Include="Factory\FaceFactory.cs" />
-    <Compile Include="Factory\RotationFactory.cs" />
+    <Compile Include="Model\FaceFactory.cs" />
+    <Compile Include="Model\RotationFactory.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
-    <Compile Include="RotationAttributeHelper.cs" />
+    <Compile Include="ReflectionHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

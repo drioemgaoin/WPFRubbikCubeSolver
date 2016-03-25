@@ -3,7 +3,6 @@ using System.Linq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Core.Tests.Factory
 {
@@ -26,7 +25,7 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Front);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Front));
-            Asserts(result.Facies, FaceType.Front, ColorName.White);
+            Asserts(result.Facies, FaceType.Front, Color.White);
         }
 
         [Test]
@@ -37,7 +36,7 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Left);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Left));
-            Asserts(result.Facies, FaceType.Left, ColorName.Green);
+            Asserts(result.Facies, FaceType.Left, Color.Green);
         }
 
         [Test]
@@ -48,7 +47,7 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Right);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Right));
-            Asserts(result.Facies, FaceType.Right, ColorName.Blue);
+            Asserts(result.Facies, FaceType.Right, Color.Blue);
         }
 
         [Test]
@@ -59,7 +58,7 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Top);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Top));
-            Asserts(result.Facies, FaceType.Top, ColorName.Orange);
+            Asserts(result.Facies, FaceType.Top, Color.Orange);
         }
 
         [Test]
@@ -70,7 +69,7 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Bottom);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Bottom));
-            Asserts(result.Facies, FaceType.Bottom, ColorName.Red);
+            Asserts(result.Facies, FaceType.Bottom, Color.Red);
         }
 
         [Test]
@@ -81,10 +80,10 @@ namespace RubiksCube.Core.Tests.Factory
             var result = subject.CreateFace(FaceType.Back);
 
             Assert.That(result.Type, Is.EqualTo(FaceType.Back));
-            Asserts(result.Facies, FaceType.Back, ColorName.Yellow);
+            Asserts(result.Facies, FaceType.Back, Color.Yellow);
         }
 
-        private void Asserts(IList<Facie> facies, FaceType faceType, ColorName color)
+        private void Asserts(IList<Facie> facies, FaceType faceType, Color color)
         {
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.Middle), faceType, color);
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.MiddleTop), faceType, color);
@@ -98,9 +97,9 @@ namespace RubiksCube.Core.Tests.Factory
 
         }
 
-        private void Asserts(Facie facie, FaceType faceType, ColorName color)
+        private void Asserts(Facie facie, FaceType faceType, Color color)
         {
-            Assert.That(facie.ColorName, Is.EqualTo(color));
+            Assert.That(facie.Color, Is.EqualTo(color));
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RubiksCube.Core.Factory;
 
 namespace RubiksCube.Core.Model
 {
@@ -13,20 +12,26 @@ namespace RubiksCube.Core.Model
         {
             rotationFactory = new RotationFactory();
 
-            FrontFace = new Face();
-            LeftFace = new Face();
-            RightFace = new Face();
-            BottomFace = new Face();
-            TopFace = new Face();
-            BackFace = new Face();
+            var faceFactory = new FaceFactory();
+            FrontFace = faceFactory.CreateFace(FaceType.Front);
+            LeftFace = faceFactory.CreateFace(FaceType.Left);
+            RightFace = faceFactory.CreateFace(FaceType.Right);
+            BottomFace = faceFactory.CreateFace(FaceType.Bottom);
+            TopFace = faceFactory.CreateFace(FaceType.Top);
+            BackFace = faceFactory.CreateFace(FaceType.Back);
         }
 
-        public Face FrontFace { get; set; }
-        public Face LeftFace { get; set; }
-        public Face RightFace { get; set; }
-        public Face BottomFace { get; set; }
-        public Face TopFace { get; set; }
-        public Face BackFace { get; set; }
+        public Face FrontFace { get; }
+
+        public Face LeftFace { get; }
+
+        public Face RightFace { get; }
+
+        public Face BottomFace { get; }
+
+        public Face TopFace { get; }
+
+        public Face BackFace { get; }
 
         public IList<List<Facie>> Rotate(Rotation rotation)
         {

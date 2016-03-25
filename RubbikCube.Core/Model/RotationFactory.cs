@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RubiksCube.Core.Factory
+namespace RubiksCube.Core.Model
 {
     public interface IRotationFactory
     {

@@ -1,25 +1,26 @@
 ﻿using System.Windows.Media;
 using RubiksCube.Core.Model;
+using Color = RubiksCube.Core.Model.Color;
 
 namespace RubiksCube.UI
 {
     public static class ColorMapper
     {
-        public static Color Map(ColorName colorName)
+        public static System.Windows.Media.Color Map(Color color)
         {
-            switch(colorName)
+            switch(color)
             {
-                case ColorName.White:
+                case Color.White:
                     return Colors.White;
-                case ColorName.Blue:
+                case Color.Blue:
                     return Colors.Blue;
-                case ColorName.Green:
+                case Color.Green:
                     return Colors.Green;
-                case ColorName.Orange:
+                case Color.Orange:
                     return Colors.Orange;
-                case ColorName.Red:
+                case Color.Red:
                     return Colors.Red;
-                case ColorName.Yellow:
+                case Color.Yellow:
                     return Colors.Yellow;
             }
 

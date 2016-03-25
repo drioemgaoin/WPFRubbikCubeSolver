@@ -66,6 +66,7 @@
     <Compile Include="AnimationEngine.cs" />
     <Compile Include="PositionsFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="RubikCubeSolver.cs" />
     <Compile Include="RubiksCubeControl.xaml.cs">
       <DependentUpon>RubiksCubeControl.xaml</DependentUpon>
     </Compile>

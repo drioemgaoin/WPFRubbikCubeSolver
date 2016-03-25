@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\CubeFactoryTests.cs" />
+    <Compile Include="Factory\CubeTests.cs" />
     <Compile Include="Factory\FaceFactoryTests.cs" />
     <Compile Include="Factory\RotationFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

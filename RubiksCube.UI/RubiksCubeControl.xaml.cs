@@ -7,7 +7,6 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Core;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Factory;
 using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
@@ -15,7 +14,6 @@ namespace RubiksCube.UI
     public partial class RubiksCubeControl : IDisposable
     {
         private readonly IPositionsFactory positionsFactory;
-        private readonly ICubeFactory cubeFactory;
         private readonly IRubiksCubeSolver cubeSolver;
         private readonly AnimationEngine movementEngine;
         private Cube cube;
@@ -25,7 +23,6 @@ namespace RubiksCube.UI
         {
             cubeSolver = new RubiksCubeSolver();
             positionsFactory = new PositionsFactory();
-            cubeFactory = new CubeFactory();
             movementEngine = new AnimationEngine();
 
             DataContext = this;
@@ -166,7 +163,6 @@ namespace RubiksCube.UI
         {
             group.Children.Clear();
 
-            cube = cubeFactory.Create();
             InitializeFace(cube.FrontFace);
             InitializeFace(cube.LeftFace);
             InitializeFace(cube.RightFace);
@@ -188,7 +184,7 @@ namespace RubiksCube.UI
         {
             var label = new Label
             {
-                Background = new SolidColorBrush(ColorMapper.Map(facie.ColorName)),
+                Background = new SolidColorBrush(ColorMapper.Map(facie.Color)),
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 BorderThickness = new Thickness(0.3)
             };

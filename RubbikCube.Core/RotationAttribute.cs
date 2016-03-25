@@ -12,8 +12,8 @@ namespace RubiksCube.Core
             Column = column;
         }
 
-        public RotationType Row { get; set; }
+        public RotationType Row { get; private set; }
 
-        public RotationType Column { get; set; }
+        public RotationType Column { get; private set; }
     }
 }

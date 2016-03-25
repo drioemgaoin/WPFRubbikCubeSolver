@@ -1,8 +1,7 @@
-﻿using System.Windows.Media;
-using WpfApplication.Domain.Entity;
-using WpfApplication.Domain.Enum;
+﻿using System;
+using System.Collections.Generic;
 
-namespace WpfApplication.Domain.Factory
+namespace RubiksCube.Core.Model
 {
     public interface IFaceFactory
     {
@@ -16,17 +15,17 @@ namespace WpfApplication.Domain.Factory
             switch (type)
             {
                 case FaceType.Front:
-                    return CreateFace(type, Colors.Red);
+                    return CreateFace(type, Color.White);
                 case FaceType.Top:
-                    return CreateFace(type, Colors.Blue);
+                    return CreateFace(type, Color.Orange);
                 case FaceType.Bottom:
-                    return CreateFace(type, Colors.Green);
+                    return CreateFace(type, Color.Red);
                 case FaceType.Left:
-                    return CreateFace(type, Colors.White);
+                    return CreateFace(type, Color.Green);
                 case FaceType.Right:
-                    return CreateFace(type, Colors.Yellow);
+                    return CreateFace(type, Color.Blue);
                 case FaceType.Back:
-                    return CreateFace(type, Colors.Orange);
+                    return CreateFace(type, Color.Yellow);
             }
 
             return null;
@@ -37,8 +36,7 @@ namespace WpfApplication.Domain.Factory
             return new Face
             {
                 Type = faceType, 
-                Color = color,
-                Facies = new[] {
+                Facies = new List<Facie> {
                     CreateSubFace(faceType, FaciePositionType.Middle, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleTop, color),        
                     CreateSubFace(faceType, FaciePositionType.MiddleBottom, color),        
@@ -52,13 +50,13 @@ namespace WpfApplication.Domain.Factory
             };
         }
 
-        private static Face CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
+        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
         {
-            return new Face
+            return new Facie
             {
-                Type = faceType,
+                Key = String.Format("{0}{1}", faceType, faciePositionType),
                 Color = color,
-                FaciePositionType = faciePositionType
+                FaciePosition = faciePositionType
             };
         }
     }

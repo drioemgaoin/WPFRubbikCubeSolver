@@ -1,6 +1,6 @@
 ﻿namespace RubiksCube.Core.Model
 {
-    public enum ColorName
+    public enum Color
     {
         None,
         White,

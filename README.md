@@ -22,12 +22,12 @@ Features
   * Arrow Right: rotate the current face right
   * Arrow Up: rotate the current face up
   * Arrow Down: rotate the current face down
-  * Q: rotate the first column left
-  * Z: rotate the first column right
-  * W: rotate the second column left
-  * X: rotate the second column right
-  * E: rotate the third column left
-  * C: rotate the third column right
+  * Q: rotate the first column up
+  * Z: rotate the first column down
+  * W: rotate the second column up
+  * X: rotate the second column down
+  * E: rotate the third column up
+  * C: rotate the third column down
   * M: mix up the cube
 * Mouse rotations (WIP)
 * Random facies scrambling

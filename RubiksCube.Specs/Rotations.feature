@@ -24,67 +24,66 @@ Scenario Outline: Face Rotations
 	| Left      | 4     | White          |
 	| Down      | 4     | White          |
 
-Scenario Outline: Row Rotations
+Scenario Outline: Top Face Rotations
 	Given a cube with a visible "White" face
-	When row <position> turns "<direction>" <times> times
-	Then row <position> is "<expected_color>"
+	When turns the top face in "<direction>" <times> times
+	Then top row is "<expected_color>"
 	
 	Examples:
-	| position	| direction | times | expected_color |
-	| 1			| Right     | 1     | Green          |
-	| 1			| Left      | 1     | Blue           |
-	| 2			| Right		| 1     | Green			 |
-	| 2			| Left		| 1     | Blue			 |
-	| 3			| Right     | 1     | Green          |
-	| 3			| Left      | 1	    | Blue           |
-	| 1			| Right     | 2     | Yellow         |
-	| 1			| Left      | 2     | Yellow         |
-	| 2			| Right		| 2     | Yellow		 |
-	| 2			| Left		| 2     | Yellow		 |
-	| 3			| Right     | 2     | Yellow         |
-	| 3			| Left      | 2	    | Yellow         |
-	| 1			| Right     | 3     | Blue			 |
-	| 1			| Left      | 3     | Green          |
-	| 2			| Right		| 3     | Blue			 |
-	| 2			| Left		| 3     | Green			 |
-	| 3			| Right     | 3     | Blue			 |
-	| 3			| Left      | 3	    | Green          |
-	| 1			| Right     | 4     | White			 |
-	| 1			| Left      | 4     | White          |
-	| 2			| Right		| 4     | White			 |
-	| 2			| Left		| 4     | White			 |
-	| 3			| Right     | 4     | White			 |
-	| 3			| Left      | 4	    | White          |
+	| direction			| times | expected_color |
+	| Clockwise			| 1     | Blue		     |
+	| CounterClockwise	| 1     | Green          |
+	| Clockwise			| 2     | Yellow         |
+	| CounterClockwise	| 2     | Yellow         |
+	| Clockwise			| 3     | Green          |
+	| CounterClockwise	| 3     | Blue           |
+	| Clockwise			| 4     | White          |
+	| CounterClockwise	| 4     | White          |
 
-
-Scenario Outline: Column Rotations
+Scenario Outline: Bottom Face Rotations
 	Given a cube with a visible "White" face
-	When column <position> turns "<direction>" <times> times
-	Then column <position> is "<expected_color>"
+	When turns the bottom face in "<direction>" <times> times
+	Then bottom row is "<expected_color>"
 	
 	Examples:
-	| position	| direction | times | expected_color |
-	| 1			| Up		| 1     | Red			 |
-	| 1			| Down      | 1     | Orange         |
-	| 2			| Up		| 1     | Red			 |
-	| 2			| Down		| 1     | Orange		 |
-	| 3			| Up		| 1     | Red		     |
-	| 3			| Down      | 1	    | Orange         |
-	| 1			| Up		| 2     | Yellow         |
-	| 1			| Down      | 2     | Yellow         |
-	| 2			| Up		| 2     | Yellow		 |
-	| 2			| Down		| 2     | Yellow		 |
-	| 3			| Up		| 2     | Yellow         |
-	| 3			| Down      | 2	    | Yellow         |
-	| 1			| Up		| 3     | Orange		 |
-	| 1			| Down      | 3     | Red			 |
-	| 2			| Up		| 3     | Orange		 |
-	| 2			| Down		| 3     | Red			 |
-	| 3			| Up		| 3     | Orange		 |
-	| 3			| Down      | 3	    | Red			 |
-	| 1			| Up		| 4     | White			 |
-	| 1			| Down      | 4     | White          |
-	| 2			| Up		| 4     | White			 |
-	| 2			| Down		| 4     | White			 |
-	| 3			| Up		| 4     | White			 |
-	| 3			| Down      | 4	    | White          |
+	| direction			| times | expected_color |
+	| Clockwise			| 1     | Blue		     |
+	| CounterClockwise	| 1     | Green          |
+	| Clockwise			| 2     | Yellow         |
+	| CounterClockwise	| 2     | Yellow         |
+	| Clockwise			| 3     | Green          |
+	| CounterClockwise	| 3     | Blue           |
+	| Clockwise			| 4     | White          |
+	| CounterClockwise	| 4     | White          |
+
+Scenario Outline: Left Face Rotations
+	Given a cube with a visible "White" face
+	When turns the left face in "<direction>" <times> times
+	Then left column is "<expected_color>"
+	
+	Examples:
+	| direction			| times | expected_color |
+	| Clockwise			| 1     | Orange		 |
+	| CounterClockwise	| 1     | Red			 |
+	| Clockwise			| 2     | Yellow         |
+	| CounterClockwise	| 2     | Yellow         |
+	| Clockwise			| 3     | Red			 |
+	| CounterClockwise	| 3     | Orange         |
+	| Clockwise			| 4     | White          |
+	| CounterClockwise	| 4     | White          |
+
+Scenario Outline: Right Face Rotations
+	Given a cube with a visible "White" face
+	When turns the right face in "<direction>" <times> times
+	Then right column is "<expected_color>"
+	
+	Examples:
+	| direction			| times | expected_color |
+	| Clockwise			| 1     | Orange		 |
+	| CounterClockwise	| 1     | Red			 |
+	| Clockwise			| 2     | Yellow         |
+	| CounterClockwise	| 2     | Yellow         |
+	| Clockwise			| 3     | Red			 |
+	| CounterClockwise	| 3     | Orange         |
+	| Clockwise			| 4     | White          |
+	| CounterClockwise	| 4     | White          |

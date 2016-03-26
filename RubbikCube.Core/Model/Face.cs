@@ -62,6 +62,11 @@ namespace RubiksCube.Core.Model
             return Facies.Where(x => IsColumnMatch(x, rotation)).ToArray();
         }
 
+        public void Add(Facie facie)
+        {
+            Facies.Add(facie);
+        }
+
         public override string ToString()
         {
             var buffer = new StringBuilder();

@@ -13,18 +13,13 @@ namespace RubiksCube.Core.Model
 
         public Color Color { get; set; }
 
-        public double[,] PreviousRotation { get; private set; }
+        public double[,] PreviousRotation { get; set; }
 
         public double[,] Rotation
         {
             get { return rotation; }
             set
             {
-                if (rotation != null)
-                {
-                    PreviousRotation = MatrixHelper.Copy(rotation);
-                }
-
                 rotation = value;
             }
         }

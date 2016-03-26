@@ -4,13 +4,12 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
-using RubiksCube.Core.Model;
 
 namespace RubiksCube.UI
 {
     public class FacieAnimation
     {
-        private readonly IList<Tuple<Facie, Model3D>> animations;
+        private readonly IList<Tuple<Tuple<Matrix3D, Matrix3D>, Model3D>> animations;
         private readonly AutoResetEvent completeLock;
         private readonly Vector3D center;
         private readonly Vector3D negateCenter;
@@ -20,13 +19,13 @@ namespace RubiksCube.UI
             this.center = center;
             this.negateCenter = negateCenter;
 
-            animations = new List<Tuple<Facie, Model3D>>();
+            animations = new List<Tuple<Tuple<Matrix3D, Matrix3D>, Model3D>>();
             completeLock = new AutoResetEvent(false);
         }
 
-        public void Add(Facie facie, Model3D geometry)
+        public void Add(Matrix3D previousMatrix, Matrix3D matrix, Model3D geometry)
         {
-            animations.Add(new Tuple<Facie, Model3D>(facie, geometry));
+            animations.Add(new Tuple<Tuple<Matrix3D, Matrix3D>, Model3D>(new Tuple<Matrix3D, Matrix3D>(previousMatrix, matrix), geometry));
         }
 
         public AutoResetEvent BeginAnimation()
@@ -35,8 +34,8 @@ namespace RubiksCube.UI
             {
                 foreach(var animation in animations)
                 {
-                    var previousMatrix3D = animation.Item1.PreviousRotation == null ? Matrix3D.Identity : MatrixMapper.Map(animation.Item1.PreviousRotation);
-                    var newMatrix3D = MatrixMapper.Map(animation.Item1.Rotation);
+                    var previousMatrix3D = animation.Item1.Item1 == null ? Matrix3D.Identity : animation.Item1.Item1;
+                    var newMatrix3D = animation.Item1.Item2;
 
                     var transformGroup = CreateTransformation(newMatrix3D);
                     animation.Item2.Transform = transformGroup;
@@ -52,7 +51,7 @@ namespace RubiksCube.UI
             return completeLock;
         }
 
-        private void Notify(Tuple<Facie, Model3D> animation)
+        private void Notify(Tuple<Tuple<Matrix3D, Matrix3D>, Model3D> animation)
         {
             animations.Remove(animation);
 

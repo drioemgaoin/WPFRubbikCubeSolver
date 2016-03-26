@@ -7,8 +7,6 @@ namespace RubiksCube.UI
     public interface IAppDomainSetup
     {
         void Start();
-
-        void Stop();
     }
 
     public class AnimationEngine : IAppDomainSetup
@@ -16,45 +14,13 @@ namespace RubiksCube.UI
         private readonly IList<FacieAnimation> movements;
         private readonly AutoResetEvent movementAvailable;
         private readonly ReaderWriterLockSlim movementLock;
-        private readonly ReaderWriterLockSlim stoppingLock;
         private Thread thread;
-        private bool isStopping;
 
         public AnimationEngine()
         {
             movements = new List<FacieAnimation>();
             movementAvailable = new AutoResetEvent(false);
             movementLock = new ReaderWriterLockSlim();
-            stoppingLock = new ReaderWriterLockSlim();
-        }
-
-        private bool IsStopping
-        {
-            get
-            {
-                try
-                {
-                    stoppingLock.EnterReadLock();
-                    return isStopping;
-                }
-                finally
-                {
-                    stoppingLock.ExitReadLock();
-                }
-            }
-
-            set
-            {
-                try
-                {
-                    stoppingLock.EnterWriteLock();
-                    isStopping = true;
-                }
-                finally
-                {
-                    stoppingLock.ExitWriteLock();
-                }
-            }
         }
 
         public void Start()
@@ -63,23 +29,21 @@ namespace RubiksCube.UI
             thread.Start();
         }
 
-        public void Stop()
+        public void BeginAnimation(IEnumerable<FacieAnimation> animations)
         {
-            IsStopping = true;
-        }
+            foreach(var movement in animations)
+            {
+                Push(movement);
+            }
 
-        public void BeginAnimation(FacieAnimation movement)
-        {
-            Push(movement);
             movementAvailable.Set();
         }
 
         private void Core()
         {
-            while(!IsStopping)
+            while(true)
             {
                 var movement = Pop();
-
                 if (movement != null)
                 {
                     var animationLock = movement.BeginAnimation();

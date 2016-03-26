@@ -4,77 +4,49 @@ namespace RubiksCube.Core.Model
 {
     public interface IRotationFactory
     {
-        double[,] RotateX(double angle);
-        double[,] RotateY(double angle);
-        double[,] RotateZ(double angle);
+        FaceRotation CreateRotation(string direction, uint times);
+
+        FaceRotation CreateRotation(string direction, string way, uint times);
     }
 
     public class RotationFactory : IRotationFactory
     {
-        public double[,] RotateX(double angle)
+        private const double Angle = Math.PI / 2;
+
+        public FaceRotation CreateRotation(string direction, uint times)
         {
-            var matrix = new double[4, 4];
-            matrix[0, 0] = 1;
-            matrix[0, 1] = 0;
-            matrix[0, 2] = 0;
-            matrix[0, 3] = 0;
-            matrix[1, 0] = 0;
-            matrix[1, 1] = Math.Cos(angle);
-            matrix[1, 2] = Math.Sin(angle);
-            matrix[1, 3] = 0;
-            matrix[2, 0] = 0;
-            matrix[2, 1] = -Math.Sin(angle);
-            matrix[2, 2] = Math.Cos(angle);
-            matrix[2, 3] = 0;
-            matrix[3, 0] = 0;
-            matrix[3, 1] = 0;
-            matrix[3, 2] = 0;
-            matrix[3, 3] = 1;
-            return matrix;
+            switch (direction)
+            {
+                case FaceRotation.LeftWhole:
+                    return new LeftWholeFaceRotation(Angle, times);
+                case FaceRotation.RightWhole:
+                    return new RightWholeFaceRotation(Angle, times);
+                case FaceRotation.UpWhole:
+                    return new UpWholeFaceRotation(Angle, times);
+                case FaceRotation.DownWhole:
+                    return new DownWholeFaceRotation(Angle, times);
+            }
+
+            return null;
         }
 
-        public double[,] RotateY(double angle)
+        public FaceRotation CreateRotation(string direction, string way, uint times)
         {
-            var matrix = new double[4, 4];
-            matrix[0, 0] = Math.Cos(angle);
-            matrix[0, 1] = 0;
-            matrix[0, 2] = -Math.Sin(angle);
-            matrix[0, 3] = 0;
-            matrix[1, 0] = 0;
-            matrix[1, 1] = 1;
-            matrix[1, 2] = 0;
-            matrix[1, 3] = 0;
-            matrix[2, 0] = Math.Sin(angle);
-            matrix[2, 1] = 0;
-            matrix[2, 2] = Math.Cos(angle);
-            matrix[2, 3] = 0;
-            matrix[3, 0] = 0;
-            matrix[3, 1] = 0;
-            matrix[3, 2] = 0;
-            matrix[3, 3] = 1;
-            return matrix;
-        }
+            switch(direction)
+            {
+                case FaceRotation.Right:
+                    return new RightFaceRotation(way, Angle, times);
+                case FaceRotation.Left:
+                    return new LeftFaceRotation(way, Angle, times);
+                case FaceRotation.Up:
+                    return new TopFaceRotation(way, Angle, times);
+                case FaceRotation.Down:
+                    return new BottomFaceRotation(way, Angle, times);
+                case FaceRotation.Forward:
+                    return new ForwardFaceRotation(way, Angle, times);
+            }
 
-        public double[,] RotateZ(double angle)
-        {
-            var matrix = new double[4, 4];
-            matrix[0, 0] = Math.Cos(angle);
-            matrix[0, 1] = Math.Sin(angle);
-            matrix[0, 2] = 0;
-            matrix[0, 3] = 0;
-            matrix[1, 0] = -Math.Sin(angle);
-            matrix[1, 1] = Math.Cos(angle);
-            matrix[1, 2] = 0;
-            matrix[1, 3] = 0;
-            matrix[2, 0] = 0;
-            matrix[2, 1] = 0;
-            matrix[2, 2] = 1;
-            matrix[2, 3] = 0;
-            matrix[3, 0] = 0;
-            matrix[3, 1] = 0;
-            matrix[3, 2] = 0;
-            matrix[3, 3] = 1;
-            return matrix;
+            return null;
         }
     }
 }

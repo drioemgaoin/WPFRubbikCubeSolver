@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using RubiksCube.Core.Model;
 
 namespace RubiksCube.UI
 {
@@ -15,77 +14,65 @@ namespace RubiksCube.UI
 
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
-            if(Keyboard.IsKeyDown(Key.NumPad9))
+            if (Keyboard.IsKeyDown(Key.Left))
             {
-                RubiksCube.RotateRowRight(RotationType.First);
-            }
-            else if (Keyboard.IsKeyDown(Key.NumPad7))
-            {
-                RubiksCube.RotateRowLeft(RotationType.First);
-            }
-            else if (Keyboard.IsKeyDown(Key.NumPad6))
-            {
-                RubiksCube.RotateRowRight(RotationType.Second);
-            }
-            else if (Keyboard.IsKeyDown(Key.NumPad4))
-            {
-                RubiksCube.RotateRowLeft(RotationType.Second);
-            }
-            else if (Keyboard.IsKeyDown(Key.NumPad3))
-            {
-                RubiksCube.RotateRowRight(RotationType.Third);
-            }
-            else if (Keyboard.IsKeyDown(Key.NumPad1))
-            {
-                RubiksCube.RotateRowLeft(RotationType.Third);
-            }
-            else if (Keyboard.IsKeyDown(Key.Q))
-            {
-                RubiksCube.RotateColumnUp(RotationType.First);
-            }
-            else if (Keyboard.IsKeyDown(Key.Z))
-            {
-                RubiksCube.RotateColumnDown(RotationType.First);
-            }
-            else if (Keyboard.IsKeyDown(Key.W))
-            {
-                RubiksCube.RotateColumnUp(RotationType.Second);
-            }
-            else if (Keyboard.IsKeyDown(Key.X))
-            {
-                RubiksCube.RotateColumnDown(RotationType.Second);
-            }
-            else if (Keyboard.IsKeyDown(Key.E))
-            {
-                RubiksCube.RotateColumnUp(RotationType.Third);
-            }
-            else if (Keyboard.IsKeyDown(Key.C))
-            {
-                RubiksCube.RotateColumnDown(RotationType.Third);
-            }
-            else if (Keyboard.IsKeyDown(Key.Left))
-            {
-                RubiksCube.RotateLeft();
+                RubiksCube.RotateLeftWholeFace();
             }
             else if (Keyboard.IsKeyDown(Key.Right))
             {
-                RubiksCube.RotateRight();
+                RubiksCube.RotateRightWholeFace();
             }
             else if (Keyboard.IsKeyDown(Key.Up))
             {
-                RubiksCube.RotateUp();
+                RubiksCube.RotateUpWholeFace();
             }
             else if (Keyboard.IsKeyDown(Key.Down))
             {
-                RubiksCube.RotateDown();
+                RubiksCube.RotateDownWholeFace();
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad7))
+            {
+                RubiksCube.RotateLeftFace();
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad1))
+            {
+                RubiksCube.RotateLeftFaceBackward();
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad9))
+            {
+                RubiksCube.RotateRightFace();
+            }
+            else if (Keyboard.IsKeyDown(Key.NumPad3))
+            {
+                RubiksCube.RotateRightFaceBackward();
+            }
+            else if (Keyboard.IsKeyDown(Key.Q))
+            {
+                RubiksCube.RotateTopFaceBackward();
+            }
+            else if (Keyboard.IsKeyDown(Key.W))
+            {
+                RubiksCube.RotateTopFace();
+            }
+            else if (Keyboard.IsKeyDown(Key.A))
+            {
+                RubiksCube.RotateBottomFaceBackward();
+            }
+            else if (Keyboard.IsKeyDown(Key.S))
+            {
+                RubiksCube.RotateBottomFace();
+            }
+            else if (Keyboard.IsKeyDown(Key.E))
+            {
+                RubiksCube.RotateForwardFaceBackward();
+            }
+            else if (Keyboard.IsKeyDown(Key.R))
+            {
+                RubiksCube.RotateForwardFace();
             }
             else if (Keyboard.IsKeyDown(Key.M))
             {
                 RubiksCube.MixUp();
-            }
-            else if (Keyboard.IsKeyDown(Key.R))
-            {
-                RubiksCube.Resolve();
             }
         }
     }

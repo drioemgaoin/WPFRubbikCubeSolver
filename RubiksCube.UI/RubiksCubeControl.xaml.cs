@@ -13,10 +13,13 @@ namespace RubiksCube.UI
 {
     public partial class RubiksCubeControl : IDisposable
     {
+        private const double Angle = Math.PI / 4;
+
         private readonly IPositionsFactory positionsFactory;
         private readonly IRubiksCubeSolver cubeSolver;
+        private readonly IRotationFactory rotationFactory;
         private readonly AnimationEngine movementEngine;
-        private Cube cube;
+        private readonly Cube cube;
         private bool disposed;
 
         public RubiksCubeControl()
@@ -24,6 +27,7 @@ namespace RubiksCube.UI
             cubeSolver = new RubiksCubeSolver();
             positionsFactory = new PositionsFactory();
             movementEngine = new AnimationEngine();
+            rotationFactory = new RotationFactory();
             cube = new Cube();
 
             DataContext = this;
@@ -39,82 +43,102 @@ namespace RubiksCube.UI
             movementEngine.Start();    
         }
 
-        public void RotateRowRight(RotationType type)
+        public void RotateRightFace()
         {
-            var rotation = new Rotation(Rotation.Right, Math.PI / 4, type);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Right, FaceRotation.CounterClockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateRowLeft(RotationType type)
+        public void RotateRightFaceBackward()
         {
-            var rotation = new Rotation(Rotation.Left, Math.PI / 4, type);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Right, FaceRotation.Clockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateColumnUp(RotationType type)
+        public void RotateLeftFace()
         {
-            var rotation = new Rotation(Rotation.Up, Math.PI / 4, type);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Left, FaceRotation.CounterClockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateColumnDown(RotationType type)
+        public void RotateLeftFaceBackward()
         {
-            var rotation = new Rotation(Rotation.Down, Math.PI / 4, type);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Left, FaceRotation.Clockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateLeft()
+        public void RotateTopFace()
         {
-            var rotation = new Rotation(Rotation.Left, Math.PI / 4);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Up, FaceRotation.CounterClockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateRight()
+        public void RotateTopFaceBackward()
         {
-            var rotation = new Rotation(Rotation.Right, Math.PI / 4);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Up, FaceRotation.Clockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateUp()
+        public void RotateBottomFace()
         {
-            var rotation = new Rotation(Rotation.Up, Math.PI / 4);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Down, FaceRotation.CounterClockwise, 1);
+            Rotate(rotation);
         }
 
-        public void RotateDown()
+        public void RotateBottomFaceBackward()
         {
-            var rotation = new Rotation(Rotation.Down, Math.PI / 4);
-            var movements = cube.Rotate(rotation);
-            Rotate(movements);
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Down, FaceRotation.Clockwise, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateForwardFace()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Forward, FaceRotation.CounterClockwise, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateForwardFaceBackward()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.Forward, FaceRotation.Clockwise, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateLeftWholeFace()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.LeftWhole, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateRightWholeFace()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.RightWhole, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateUpWholeFace()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.UpWhole, 1);
+            Rotate(rotation);
+        }
+
+        public void RotateDownWholeFace()
+        {
+            var rotation = rotationFactory.CreateRotation(FaceRotation.DownWhole, 1);
+            Rotate(rotation);
         }
 
         public void MixUp()
         {
             var actions = new Action[]
             {
-                () => RotateRowRight(RotationType.First),
-                () => RotateRowRight(RotationType.Second),
-                () => RotateRowRight(RotationType.Third),
-                () => RotateRowLeft(RotationType.First),
-                () => RotateRowLeft(RotationType.Second),
-                () => RotateRowLeft(RotationType.Third),
-                () => RotateColumnUp(RotationType.First),
-                () => RotateColumnUp(RotationType.Second),
-                () => RotateColumnUp(RotationType.Third),
-                () => RotateColumnDown(RotationType.First),
-                () => RotateColumnDown(RotationType.Second),
-                () => RotateColumnDown(RotationType.Third)
+                () => RotateRightFace(),
+                () => RotateLeftFace(),
+                () => RotateTopFace(),
+                () => RotateBottomFace(),
             };
 
             var random = new Random();
-            for(var i = 0; i < 50; i++)
+            for (var i = 0; i < 50; i++)
             {
                 var index = random.Next(0, actions.Count());
                 actions[index]();
@@ -130,31 +154,47 @@ namespace RubiksCube.UI
 
         private void OnRotations(object sender, RotationsArgs e)
         {
-            foreach(var rotation in e.Rotations)
-            {
-                var newRotation = new Rotation(rotation.Direction, (rotation.Angle > 0 ? 1 : -1) * (Math.PI / 4), rotation.Times * 2, rotation.Type);
+            //foreach(var rotation in e.Rotations)
+            //{
+            //    var newRotation = new FaceRotation(rotation.Direction, (rotation.Angle > 0 ? 1 : -1) * (Math.PI / 4), rotation.Times * 2, rotation.Type);
 
-                var movements = cube.Rotate(newRotation);
-                Rotate(movements);
-            }
+            //    var movements = cube.Rotate(newRotation);
+            //    Rotate(movements);
+            //}
         }
 
-        private void Rotate(IEnumerable<List<Facie>> items)
+        private void Rotate(FaceRotation rotation)
         {
+            cube.Rotate(rotation);
+
+            var matrix = rotation.GetRotationMatrix(rotation.Way == FaceRotation.CounterClockwise ? Angle : -Angle);
+
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
-
-            foreach (var facies in items)
+            foreach (var facies in rotation.Movements)
             {
-                var animations = new FacieAnimation(center, negateCenter);
+                var animations = new List<FacieAnimation>();
+                var animations1 = new FacieAnimation(center, negateCenter);
+                var animations2 = new FacieAnimation(center, negateCenter);
                 foreach (var facie in facies)
                 {
                     var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == facie.Key);
                     if (geometry != null)
                     {
-                        animations.Add(facie, geometry);
+                        var intermediaryMatrix = facie.PreviousRotation == null ? matrix : MatrixHelper.Multiply(facie.PreviousRotation, matrix);
+
+                        var previousMatrix3D = facie.PreviousRotation == null ? Matrix3D.Identity : MatrixMapper.Map(facie.PreviousRotation);
+                        var newMatrix3D = MatrixMapper.Map(intermediaryMatrix);
+                        animations1.Add(previousMatrix3D, newMatrix3D, geometry);
+
+                        previousMatrix3D = MatrixMapper.Map(intermediaryMatrix);
+                        newMatrix3D = MatrixMapper.Map(facie.Rotation);
+                        animations2.Add(previousMatrix3D, newMatrix3D, geometry);
                     }
                 }
+
+                animations.Add(animations1);
+                animations.Add(animations2);
 
                 movementEngine.BeginAnimation(animations);
             }
@@ -259,17 +299,11 @@ namespace RubiksCube.UI
             {
                 if (disposing)
                 {
-                    movementEngine.Stop();
                     cubeSolver.Rotations -= OnRotations;
                 }
 
                 disposed = true;
             }
-        }
-
-        ~RubiksCubeControl()
-        {
-            Dispose(false);
         }
     }
 }

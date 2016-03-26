@@ -21,9 +21,9 @@ namespace RubiksCube.Core.Tests.Model
         {
             var angle = fixture.Create<double>();
 
-            var subject = fixture.Create<RotationFactory>();
+            var subject = fixture.Create<RotationMatrixFactory>();
 
-            var result = subject.RotateX(angle);
+            var result = subject.CreateXRotationMatrix(angle);
 
             Assert.That(result[0, 0], Is.EqualTo(1));
             Assert.That(result[0, 1], Is.EqualTo(0));
@@ -48,9 +48,9 @@ namespace RubiksCube.Core.Tests.Model
         {
             var angle = fixture.Create<double>();
 
-            var subject = fixture.Create<RotationFactory>();
+            var subject = fixture.Create<RotationMatrixFactory>();
 
-            var result = subject.RotateY(angle);
+            var result = subject.CreateYRotationMatrix(angle);
 
             Assert.That(result[0, 0], Is.EqualTo(Math.Cos(angle)));
             Assert.That(result[0, 1], Is.EqualTo(0));
@@ -75,9 +75,9 @@ namespace RubiksCube.Core.Tests.Model
         {
             var angle = fixture.Create<double>();
 
-            var subject = fixture.Create<RotationFactory>();
+            var subject = fixture.Create<RotationMatrixFactory>();
 
-            var result = subject.RotateZ(angle);
+            var result = subject.CreateZRotationMatrix(angle);
 
             Assert.That(result[0, 0], Is.EqualTo(Math.Cos(angle)));
             Assert.That(result[0, 1], Is.EqualTo(Math.Sin(angle)));

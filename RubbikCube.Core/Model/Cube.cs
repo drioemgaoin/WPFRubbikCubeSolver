@@ -6,12 +6,8 @@ namespace RubiksCube.Core.Model
 {
     public class Cube
     {
-        private readonly IRotationFactory rotationFactory;
-
         public Cube()
         {
-            rotationFactory = new RotationFactory();
-
             var faceFactory = new FaceFactory();
             FrontFace = faceFactory.CreateFace(FaceType.Front);
             LeftFace = faceFactory.CreateFace(FaceType.Left);
@@ -33,30 +29,30 @@ namespace RubiksCube.Core.Model
 
         public Face BackFace { get; }
 
-        public IList<List<Facie>> Rotate(Rotation rotation)
+        public void Rotate(FaceRotation rotation)
         {
-            var facies = new List<List<Facie>>();
-            for (var i = 0; i < rotation.Times; i++)
+            rotation.Apply(this);
+        }
+
+        public Face Find(FaceType faceType)
+        {
+            switch(faceType)
             {
-                facies.Add(new List<Facie>());
-                switch (rotation.Direction)
-                {
-                    case Rotation.Up:
-                        facies[i].AddRange(RotateUp(rotation));
-                        break;
-                    case Rotation.Right:
-                        facies[i].AddRange(RotateRight(rotation));
-                        break;
-                    case Rotation.Left:
-                        facies[i].AddRange(RotateLeft(rotation));
-                        break;
-                    case Rotation.Down:
-                        facies[i].AddRange(RotateDown(rotation));
-                        break;
-                }
+                case FaceType.Bottom:
+                    return BottomFace;
+                case FaceType.Back:
+                    return BackFace;
+                case FaceType.Front:
+                    return FrontFace;
+                case FaceType.Left:
+                    return LeftFace;
+                case FaceType.Right:
+                    return RightFace;
+                case FaceType.Top:
+                    return TopFace;
             }
 
-            return facies;
+            return null;
         }
 
         public Face Find(Color color, FaciePositionType faciePosition)
@@ -85,134 +81,6 @@ namespace RubiksCube.Core.Model
             }
 
             return null;
-        }
-
-        private IEnumerable<Facie> RotateRight(Rotation rotation)
-        {
-            var matrix = rotationFactory.RotateX(rotation.Angle);
-
-            var frontFacies = RotateRow(FrontFace, matrix, rotation.Type);
-            var leftFacies = RotateRow(LeftFace, matrix, rotation.Type);
-            var rightFacies = RotateRow(RightFace, matrix, rotation.Type);
-            var backFacies = RotateRow(BackFace, matrix, rotation.Type);
-        
-            if (rotation.IsMatchFace)
-            {
-                Move(LeftFace, FrontFace, leftFacies);
-                Move(BackFace, LeftFace, backFacies);
-                Move(RightFace, BackFace, rightFacies);
-                Move(FrontFace, RightFace, frontFacies);
-            }
-
-            return frontFacies
-                .Union(leftFacies)
-                .Union(rightFacies)
-                .Union(backFacies).Clone();
-        }
-
-        private IEnumerable<Facie> RotateLeft(Rotation rotation)
-        {
-            var matrix = rotationFactory.RotateX(-rotation.Angle);
-
-            var frontFacies = RotateRow(FrontFace, matrix, rotation.Type);
-            var leftFacies = RotateRow(LeftFace, matrix, rotation.Type);
-            var rightFacies = RotateRow(RightFace, matrix, rotation.Type);
-            var backFacies = RotateRow(BackFace, matrix, rotation.Type);
-
-            if (rotation.IsMatchFace)
-            {
-                Move(RightFace, FrontFace, rightFacies);
-                Move(BackFace, RightFace, backFacies);
-                Move(LeftFace, BackFace, leftFacies);
-                Move(FrontFace, LeftFace, frontFacies);
-            }
-
-            return frontFacies
-                .Union(leftFacies)
-                .Union(rightFacies)
-                .Union(backFacies).Clone();
-        }
-
-        private IEnumerable<Facie> RotateUp(Rotation rotation)
-        {
-            var matrix = rotationFactory.RotateY(rotation.Angle);
-
-            var frontFacies = RotateColumn(FrontFace, matrix, rotation.Type);
-            var bottomFacies = RotateColumn(BottomFace, matrix, rotation.Type);
-            var topFacies = RotateColumn(TopFace, matrix, rotation.Type);
-            var backFacies = RotateColumn(BackFace, matrix, rotation.Type);
-
-            if (rotation.IsMatchFace)
-            {
-                Move(BottomFace, FrontFace, bottomFacies);
-                Move(BackFace, BottomFace, backFacies);
-                Move(TopFace, BackFace, topFacies);
-                Move(FrontFace, TopFace, frontFacies);
-            }
-
-            return frontFacies
-                .Union(topFacies)
-                .Union(bottomFacies)
-                .Union(backFacies).Clone();
-        }
-
-        private IEnumerable<Facie> RotateDown(Rotation rotation)
-        {
-            var matrix = rotationFactory.RotateY(-rotation.Angle);
-
-            var frontFacies = RotateColumn(FrontFace, matrix, rotation.Type);
-            var bottomFacies = RotateColumn(BottomFace, matrix, rotation.Type);
-            var topFacies = RotateColumn(TopFace, matrix, rotation.Type);
-            var backFacies = RotateColumn(BackFace, matrix, rotation.Type);
-
-            if (rotation.IsMatchFace)
-            {
-                Move(TopFace, FrontFace, topFacies);
-                Move(BackFace, TopFace, backFacies);
-                Move(BottomFace, BackFace, bottomFacies);
-                Move(FrontFace, BottomFace, frontFacies);
-            }
-
-            return frontFacies
-                .Union(topFacies)
-                .Union(bottomFacies)
-                .Union(backFacies).Clone();
-        }
-
-        private IList<Facie> RotateRow(Face face, double[,] matrix, RotationType rotationType)
-        {
-            var facies = face.GetRowFacies(rotationType).ToList();
-            Rotate(facies, matrix);
-            return facies.ToArray();
-        }
-
-        private IList<Facie> RotateColumn(Face face, double[,] matrix, RotationType rotationType)
-        {
-            var facies = face.GetColumnFacies(rotationType).ToList();
-            Rotate(facies, matrix);
-            return facies;
-        }
-
-        private static void Rotate(IEnumerable<Facie> facies, double[,] matrix)
-        {
-            foreach (var facie in facies)
-            {
-                facie.Rotation = facie.Rotation == null ? matrix : MatrixHelper.Multiply(facie.Rotation, matrix);
-            }
-        }
-
-        private static void Move(Face faceSource, Face faceTarget, IList<Facie> facies)
-        {
-            foreach (var facie in facies)
-            {
-                faceSource.Facies.Remove(facie);
-            }
-
-            foreach (var facie in facies)
-            {
-                faceTarget.Facies.Add(facie);
-                Move(faceSource.Type, faceTarget.Type, facie);
-            }
         }
 
         public override string ToString()

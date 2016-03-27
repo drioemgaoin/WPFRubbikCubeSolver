@@ -23,15 +23,15 @@ namespace RubiksCube.Core.Model.Rotations
         {
             if(face.Type == FaceType.Left)
             {
-                return face.GetColumnFacies(RotationType.First);
+                return face.GetColumnFacies(CubeLayerType.First);
             }
 
             if(face.Type == FaceType.Right)
             {
-                return face.GetColumnFacies(RotationType.Third);
+                return face.GetColumnFacies(CubeLayerType.Third);
             }
 
-            return face.GetRowFacies(RotationType.First);
+            return face.GetRowFacies(CubeLayerType.First);
         }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)

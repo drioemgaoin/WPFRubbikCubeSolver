@@ -21,7 +21,7 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected override IEnumerable<Facie> GetImpactedFacies(Face face)
         {
-            return face.GetRowFacies(RotationType.First);
+            return face.GetRowFacies(CubeLayerType.First);
         }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)

@@ -5,23 +5,23 @@ namespace RubiksCube.Core.Model
     public enum FaciePositionType
     {
         None = 0,
-        [Rotation(RotationType.Second, RotationType.Second)]
+        [Rotation(CubeLayerType.Second, CubeLayerType.Second)]
         Middle,
-        [Rotation(RotationType.First, RotationType.Second)]
+        [Rotation(CubeLayerType.First, CubeLayerType.Second)]
         MiddleTop,
-        [Rotation(RotationType.Third, RotationType.Second)]
+        [Rotation(CubeLayerType.Third, CubeLayerType.Second)]
         MiddleBottom,
-        [Rotation(RotationType.Second, RotationType.First)]
+        [Rotation(CubeLayerType.Second, CubeLayerType.First)]
         LeftMiddle,
-        [Rotation(RotationType.First, RotationType.First)]
+        [Rotation(CubeLayerType.First, CubeLayerType.First)]
         LeftTop,
-        [Rotation(RotationType.Third, RotationType.First)]
+        [Rotation(CubeLayerType.Third, CubeLayerType.First)]
         LeftBottom,
-        [Rotation(RotationType.Second, RotationType.Third)]
+        [Rotation(CubeLayerType.Second, CubeLayerType.Third)]
         RightMiddle,
-        [Rotation(RotationType.First, RotationType.Third)]
+        [Rotation(CubeLayerType.First, CubeLayerType.Third)]
         RightTop,
-        [Rotation(RotationType.Third, RotationType.Third)]
+        [Rotation(CubeLayerType.Third, CubeLayerType.Third)]
         RightBottom
     }
 }

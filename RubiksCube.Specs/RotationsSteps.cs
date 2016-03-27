@@ -44,7 +44,7 @@ namespace RubiksCube.Specs
         [Then(@"top row is ""(.*)""")]
         public void ThenTheFirstRowIsVisible(string visibleColor)
         {
-            foreach (var facie in cube.FrontFace.GetRowFacies(RotationType.First))
+            foreach (var facie in cube.FrontFace.GetRowFacies(CubeLayerType.First))
             {
                 Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
@@ -60,7 +60,7 @@ namespace RubiksCube.Specs
         [Then(@"bottom row is ""(.*)""")]
         public void ThenTheThirdRowIsVisible(string visibleColor)
         {
-            foreach (var facie in cube.FrontFace.GetRowFacies(RotationType.Third))
+            foreach (var facie in cube.FrontFace.GetRowFacies(CubeLayerType.Third))
             {
                 Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
@@ -76,7 +76,7 @@ namespace RubiksCube.Specs
         [Then(@"left column is ""(.*)""")]
         public void ThenTheLeftColumnIsVisible(string visibleColor)
         {
-            foreach (var facie in cube.FrontFace.GetColumnFacies(RotationType.First))
+            foreach (var facie in cube.FrontFace.GetColumnFacies(CubeLayerType.First))
             {
                 Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }
@@ -92,7 +92,7 @@ namespace RubiksCube.Specs
         [Then(@"right column is ""(.*)""")]
         public void ThenTheRightColumnIsVisible(string visibleColor)
         {
-            foreach (var facie in cube.FrontFace.GetColumnFacies(RotationType.Third))
+            foreach (var facie in cube.FrontFace.GetColumnFacies(CubeLayerType.Third))
             {
                 Assert.AreEqual(facie.Color.ToString(), visibleColor);
             }

@@ -55,7 +55,7 @@
     <Compile Include="Model\FaceType.cs" />
     <Compile Include="Model\FaciePositionType.cs" />
     <Compile Include="Model\Rotations\RightFaceRotation.cs" />
-    <Compile Include="Model\Rotations\RotationType.cs" />
+    <Compile Include="Model\CubeLayerType.cs" />
     <Compile Include="Model\FaceFactory.cs" />
     <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Guard.cs" />

@@ -1,6 +1,6 @@
-﻿namespace RubiksCube.Core.Model.Rotations
+﻿namespace RubiksCube.Core.Model
 {
-    public enum RotationType
+    public enum CubeLayerType
     {
         All,
         First,

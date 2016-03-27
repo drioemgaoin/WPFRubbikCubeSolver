@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core.Model
 {
@@ -32,35 +31,35 @@ namespace RubiksCube.Core.Model
             return face;
         }
 
-        public IList<RotationType> GetRows(Color color)
+        public IList<CubeLayerType> GetRows(Color color)
         {
-            var rows = new List<RotationType>();
-            if(GetRowFacies(RotationType.First).Any(x => x.Color == color))
+            var rows = new List<CubeLayerType>();
+            if(GetRowFacies(CubeLayerType.First).Any(x => x.Color == color))
             {
-                rows.Add(RotationType.First);
+                rows.Add(CubeLayerType.First);
             }
 
-            if (GetRowFacies(RotationType.Second).Any(x => x.Color == color))
+            if (GetRowFacies(CubeLayerType.Second).Any(x => x.Color == color))
             {
-                rows.Add(RotationType.Second);
+                rows.Add(CubeLayerType.Second);
             }
 
-            if (GetRowFacies(RotationType.Third).Any(x => x.Color == color))
+            if (GetRowFacies(CubeLayerType.Third).Any(x => x.Color == color))
             {
-                rows.Add(RotationType.Third);
+                rows.Add(CubeLayerType.Third);
             }
 
             return rows;
         }
 
-        public IList<Facie> GetRowFacies(RotationType rotation)
+        public IList<Facie> GetRowFacies(CubeLayerType layerType)
         {
-            return Facies.Where(x => IsRowMatch(x, rotation)).ToArray();
+            return Facies.Where(x => IsRowMatch(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetColumnFacies(RotationType rotation)
+        public IList<Facie> GetColumnFacies(CubeLayerType layerType)
         {
-            return Facies.Where(x => IsColumnMatch(x, rotation)).ToArray();
+            return Facies.Where(x => IsColumnMatch(x, layerType)).ToArray();
         }
 
         public void Add(Facie facie)
@@ -80,16 +79,16 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        private static bool IsRowMatch(Facie facie, RotationType rotationType)
+        private static bool IsRowMatch(Facie facie, CubeLayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Row == rotationType || rotationType == RotationType.All;
+            return attribute.Row == layerType || layerType == CubeLayerType.All;
         }
 
-        private static bool IsColumnMatch(Facie facie, RotationType rotationType)
+        private static bool IsColumnMatch(Facie facie, CubeLayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Column == rotationType || rotationType == RotationType.All;
+            return attribute.Column == layerType || layerType == CubeLayerType.All;
         }
     }
 }

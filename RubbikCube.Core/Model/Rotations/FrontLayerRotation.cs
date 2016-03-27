@@ -37,7 +37,7 @@ namespace RubiksCube.Core.Model.Rotations
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)
         {
             var sourceFace = cube.Find(faceType);
-            sourceFace.Facies.Remove(facie);
+            sourceFace.Remove(facie);
 
             switch (faceType)
             {
@@ -45,41 +45,41 @@ namespace RubiksCube.Core.Model.Rotations
                     if (isPositiveRotation)
                     {
                         FlipPosition(facie);
-                        cube.TopFace.Facies.Add(facie);
+                        cube.TopFace.Add(facie);
                     }
                     else
                     {
-                        cube.BottomFace.Facies.Add(facie);
+                        cube.BottomFace.Add(facie);
                     }
                     break;
                 case FaceType.Top:
                     if (isPositiveRotation)
                     {
-                        cube.RightFace.Facies.Add(facie);
+                        cube.RightFace.Add(facie);
                     }
                     else
                     {
-                        cube.FrontFace.Facies.Add(facie);
+                        cube.FrontFace.Add(facie);
                     }
                     break;
                 case FaceType.Right:
                     if (isPositiveRotation)
                     {
-                        cube.BottomFace.Facies.Add(facie);
+                        cube.BottomFace.Add(facie);
                     }
                     else
                     {
-                        cube.TopFace.Facies.Add(facie);
+                        cube.TopFace.Add(facie);
                     }
                     break;
                 case FaceType.Bottom:
                     if (isPositiveRotation)
                     {
-                        cube.FrontFace.Facies.Add(facie);
+                        cube.FrontFace.Add(facie);
                     }
                     else
                     {
-                        cube.RightFace.Facies.Add(facie);
+                        cube.RightFace.Add(facie);
                     }
                     break;
             }

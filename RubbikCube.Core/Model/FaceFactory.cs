@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RubiksCube.Core.Model
 {
@@ -33,28 +32,27 @@ namespace RubiksCube.Core.Model
 
         private static Face CreateFace(FaceType faceType, Color color)
         {
-            return new Face
+            var facies = new List<Facie>
             {
-                Type = faceType, 
-                Facies = new List<Facie> {
-                    CreateSubFace(faceType, FaciePositionType.Middle, color),        
-                    CreateSubFace(faceType, FaciePositionType.MiddleTop, color),        
-                    CreateSubFace(faceType, FaciePositionType.MiddleBottom, color),        
-                    CreateSubFace(faceType, FaciePositionType.RightMiddle, color),        
-                    CreateSubFace(faceType, FaciePositionType.RightTop, color),        
-                    CreateSubFace(faceType, FaciePositionType.RightBottom, color),        
-                    CreateSubFace(faceType, FaciePositionType.LeftMiddle, color),        
-                    CreateSubFace(faceType, FaciePositionType.LeftTop, color),        
-                    CreateSubFace(faceType, FaciePositionType.LeftBottom, color)
-                }
+                CreateFacie(faceType, FaciePositionType.Middle, color),
+                CreateFacie(faceType, FaciePositionType.MiddleTop, color),
+                CreateFacie(faceType, FaciePositionType.MiddleBottom, color),
+                CreateFacie(faceType, FaciePositionType.RightMiddle, color),
+                CreateFacie(faceType, FaciePositionType.RightTop, color),
+                CreateFacie(faceType, FaciePositionType.RightBottom, color),
+                CreateFacie(faceType, FaciePositionType.LeftMiddle, color),
+                CreateFacie(faceType, FaciePositionType.LeftTop, color),
+                CreateFacie(faceType, FaciePositionType.LeftBottom, color)
             };
+
+            return new Face(facies, faceType);
         }
 
-        private static Facie CreateSubFace(FaceType faceType, FaciePositionType faciePositionType, Color color)
+        private static Facie CreateFacie(FaceType faceType, FaciePositionType faciePositionType, Color color)
         {
             return new Facie
             {
-                Key = String.Format("{0}{1}", faceType, faciePositionType),
+                Key = string.Format("{0}{1}", faceType, faciePositionType),
                 Color = color,
                 FaciePosition = faciePositionType
             };

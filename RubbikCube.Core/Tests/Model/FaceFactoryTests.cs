@@ -83,7 +83,7 @@ namespace RubiksCube.Core.Tests.Model
             Asserts(result.Facies, FaceType.Back, Color.Yellow);
         }
 
-        private void Asserts(IList<Facie> facies, FaceType faceType, Color color)
+        private void Asserts(IEnumerable<Facie> facies, FaceType faceType, Color color)
         {
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.Middle), faceType, color);
             Asserts(facies.Single(x => x.FaciePosition == FaciePositionType.MiddleTop), faceType, color);

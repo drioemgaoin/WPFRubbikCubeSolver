@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -7,49 +8,25 @@ namespace RubiksCube.Core.Model
 {
     public class Face : ICloneable
     {
-        public Face()
+        private readonly IList<Facie> facies;
+
+        public Face(IList<Facie> facies, FaceType type)
         {
-            Facies = new List<Facie>();
+            this.facies = facies;
+
+            Facies = new ReadOnlyCollection<Facie>(facies);
+            Type = type;
         }
 
-        public FaceType Type { get; set; }
+        public FaceType Type { get; }
 
-        public IList<Facie> Facies { get; set; }
+        public IReadOnlyCollection<Facie> Facies { get; }
 
         public object Clone()
         {
-            var face = new Face
-            {
-                Type = Type
-            };
+            var faciesClone = Facies.Select(facie => (Facie) facie.Clone()).ToList();
 
-            foreach(var facie in Facies)
-            {
-                face.Facies.Add((Facie)facie.Clone());    
-            }
-
-            return face;
-        }
-
-        public IList<CubeLayerType> GetRows(Color color)
-        {
-            var rows = new List<CubeLayerType>();
-            if(GetRowFacies(CubeLayerType.First).Any(x => x.Color == color))
-            {
-                rows.Add(CubeLayerType.First);
-            }
-
-            if (GetRowFacies(CubeLayerType.Second).Any(x => x.Color == color))
-            {
-                rows.Add(CubeLayerType.Second);
-            }
-
-            if (GetRowFacies(CubeLayerType.Third).Any(x => x.Color == color))
-            {
-                rows.Add(CubeLayerType.Third);
-            }
-
-            return rows;
+            return new Face(faciesClone, Type);            
         }
 
         public IList<Facie> GetRowFacies(CubeLayerType layerType)
@@ -64,7 +41,12 @@ namespace RubiksCube.Core.Model
 
         public void Add(Facie facie)
         {
-            Facies.Add(facie);
+            facies.Add(facie);
+        }
+
+        public void Remove(Facie facie)
+        {
+            facies.Remove(facie);
         }
 
         public override string ToString()

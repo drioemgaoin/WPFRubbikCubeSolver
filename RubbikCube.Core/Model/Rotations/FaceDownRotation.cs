@@ -22,23 +22,23 @@ namespace RubiksCube.Core.Model.Rotations
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)
         {
             var sourceFace = cube.Find(faceType);
-            sourceFace.Facies.Remove(facie);
+            sourceFace.Remove(facie);
 
             switch (faceType)
             {
                 case FaceType.Front:
                     FlipPosition(facie);
-                    cube.BottomFace.Facies.Add(facie);
+                    cube.BottomFace.Add(facie);
                     break;
                 case FaceType.Top:
-                    cube.FrontFace.Facies.Add(facie);
+                    cube.FrontFace.Add(facie);
                     break;
                 case FaceType.Back:
                     FlipPosition(facie);
-                    cube.TopFace.Facies.Add(facie);
+                    cube.TopFace.Add(facie);
                     break;
                 case FaceType.Bottom:
-                    cube.BackFace.Facies.Add(facie);
+                    cube.BackFace.Add(facie);
                     break;
             }
         }

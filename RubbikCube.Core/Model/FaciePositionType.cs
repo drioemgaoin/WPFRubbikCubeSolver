@@ -1,6 +1,4 @@
-﻿using RubiksCube.Core.Model.Rotations;
-
-namespace RubiksCube.Core.Model
+﻿namespace RubiksCube.Core.Model
 {
     public enum FaciePositionType
     {

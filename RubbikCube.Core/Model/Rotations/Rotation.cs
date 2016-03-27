@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public abstract class FaceRotation
+    public abstract class Rotation
     {
         public const string Up = "Up";
         public const string Left = "Left";
@@ -21,7 +21,7 @@ namespace RubiksCube.Core.Model.Rotations
         private readonly double angle;
         private readonly uint times;
 
-        protected FaceRotation(string way, double angle, uint times)
+        protected Rotation(string way, double angle, uint times)
         {
             this.angle = way == CounterClockwise ? angle : -angle;
             this.times = times;

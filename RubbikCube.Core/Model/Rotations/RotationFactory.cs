@@ -4,46 +4,46 @@ namespace RubiksCube.Core.Model.Rotations
 {
     public interface IRotationFactory
     {
-        FaceRotation CreateRotation(string direction, uint times);
+        Rotation CreateFaceRotation(string direction, uint times);
 
-        FaceRotation CreateRotation(string direction, string way, uint times);
+        Rotation CreateLayerRotation(string direction, string way, uint times);
     }
 
     public class RotationFactory : IRotationFactory
     {
         private const double Angle = Math.PI / 2;
 
-        public FaceRotation CreateRotation(string direction, uint times)
+        public Rotation CreateFaceRotation(string direction, uint times)
         {
             switch (direction)
             {
-                case FaceRotation.LeftWhole:
-                    return new LeftWholeFaceRotation(Angle, times);
-                case FaceRotation.RightWhole:
-                    return new RightWholeFaceRotation(Angle, times);
-                case FaceRotation.UpWhole:
-                    return new UpWholeFaceRotation(Angle, times);
-                case FaceRotation.DownWhole:
-                    return new DownWholeFaceRotation(Angle, times);
+                case Rotation.LeftWhole:
+                    return new FaceLeftRotation(Angle, times);
+                case Rotation.RightWhole:
+                    return new FaceRightRotation(Angle, times);
+                case Rotation.UpWhole:
+                    return new FaceUpRotation(Angle, times);
+                case Rotation.DownWhole:
+                    return new FaceDownRotation(Angle, times);
             }
 
             return null;
         }
 
-        public FaceRotation CreateRotation(string direction, string way, uint times)
+        public Rotation CreateLayerRotation(string direction, string way, uint times)
         {
             switch(direction)
             {
-                case FaceRotation.Right:
-                    return new RightFaceRotation(way, Angle, times);
-                case FaceRotation.Left:
-                    return new LeftFaceRotation(way, Angle, times);
-                case FaceRotation.Up:
-                    return new TopFaceRotation(way, Angle, times);
-                case FaceRotation.Down:
-                    return new BottomFaceRotation(way, Angle, times);
-                case FaceRotation.Forward:
-                    return new ForwardFaceRotation(way, Angle, times);
+                case Rotation.Right:
+                    return new RightLayerRotation(way, Angle, times);
+                case Rotation.Left:
+                    return new LeftLayerRotation(way, Angle, times);
+                case Rotation.Up:
+                    return new TopLayerRotation(way, Angle, times);
+                case Rotation.Down:
+                    return new BottomLayerRotation(way, Angle, times);
+                case Rotation.Forward:
+                    return new FrontLayerRotation(way, Angle, times);
             }
 
             return null;

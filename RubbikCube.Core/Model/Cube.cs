@@ -30,7 +30,7 @@ namespace RubiksCube.Core.Model
 
         public Face BackFace { get; }
 
-        public void Rotate(FaceRotation rotation)
+        public void Rotate(Rotation rotation)
         {
             rotation.Apply(this);
         }

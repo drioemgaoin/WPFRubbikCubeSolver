@@ -2,9 +2,9 @@
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public class DownWholeFaceRotation : FaceRotation
+    public class FaceDownRotation : Rotation
     {
-        public DownWholeFaceRotation(double angle, uint times)
+        public FaceDownRotation(double angle, uint times)
             : base(Clockwise, angle, times)
         {
         }

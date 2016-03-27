@@ -21,7 +21,7 @@ namespace RubiksCube.Specs
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(string.Format("{0}Whole", direction), times);
+            var rotation = rotationFactory.CreateFaceRotation(string.Format("{0}Whole", direction), times);
             cube.Rotate(rotation);
         }
 
@@ -37,7 +37,7 @@ namespace RubiksCube.Specs
         [When(@"turns the top face in ""(.*)"" (.*) times")]
         public void WhenTheTopFaceTurns(string way, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(FaceRotation.Up, way, times);
+            var rotation = rotationFactory.CreateLayerRotation(Rotation.Up, way, times);
             cube.Rotate(rotation);
         }
 
@@ -53,7 +53,7 @@ namespace RubiksCube.Specs
         [When(@"turns the bottom face in ""(.*)"" (.*) times")]
         public void WhenTheBottomFaceTurns(string way, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(FaceRotation.Down, way, times);
+            var rotation = rotationFactory.CreateLayerRotation(Rotation.Down, way, times);
             cube.Rotate(rotation);
         }
 
@@ -69,7 +69,7 @@ namespace RubiksCube.Specs
         [When(@"turns the left face in ""(.*)"" (.*) times")]
         public void WhenTheLeftFaceTurns(string way, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(FaceRotation.Left, way, times);
+            var rotation = rotationFactory.CreateLayerRotation(Rotation.Left, way, times);
             cube.Rotate(rotation);
         }
 
@@ -85,7 +85,7 @@ namespace RubiksCube.Specs
         [When(@"turns the right face in ""(.*)"" (.*) times")]
         public void WhenTheRightFaceTurns(string way, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(FaceRotation.Right, way, times);
+            var rotation = rotationFactory.CreateLayerRotation(Rotation.Right, way, times);
             cube.Rotate(rotation);
         }
 

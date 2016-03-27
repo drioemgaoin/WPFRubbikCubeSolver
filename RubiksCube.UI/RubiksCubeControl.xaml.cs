@@ -12,7 +12,7 @@ using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
 {
-    public partial class RubiksCubeControl : IDisposable
+    public partial class RubiksCubeControl
     {
         private const double Angle = Math.PI / 4;
 
@@ -21,7 +21,6 @@ namespace RubiksCube.UI
         private readonly IRotationFactory rotationFactory;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
-        private bool disposed;
 
         public RubiksCubeControl()
         {
@@ -273,24 +272,6 @@ namespace RubiksCube.UI
             }
 
             return center;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                }
-
-                disposed = true;
-            }
         }
     }
 }

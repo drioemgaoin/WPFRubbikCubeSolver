@@ -1,6 +1,5 @@
 ﻿using System;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core
 {

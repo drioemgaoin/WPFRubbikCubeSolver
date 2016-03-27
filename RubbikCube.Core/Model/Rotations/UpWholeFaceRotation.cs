@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model
+namespace RubiksCube.Core.Model.Rotations
 {
-    public class RightFaceRotation : FaceRotation
+    public class UpWholeFaceRotation : FaceRotation
     {
-        public RightFaceRotation(string way, double angle, uint times) 
-            : base(way, angle, times)
+        public UpWholeFaceRotation(double angle, uint times)
+            : base(CounterClockwise, angle, times)
         {
         }
 
         public override double[,] GetRotationMatrix(double angle)
         {
-            return rotationMatrixFactory.CreateYRotationMatrix(angle);
+            return RotationMatrixFactory.CreateYRotationMatrix(angle);
         }
 
         protected override IEnumerable<FaceType> GetImpactedFaceTypes()
@@ -21,7 +21,7 @@ namespace RubiksCube.Core.Model
 
         protected override IEnumerable<Facie> GetImpactedFacies(Face face)
         {
-            return face.GetColumnFacies(RotationType.Third);
+            return face.GetColumnFacies(RotationType.All);
         }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)
@@ -29,51 +29,21 @@ namespace RubiksCube.Core.Model
             var sourceFace = cube.Find(faceType);
             sourceFace.Facies.Remove(facie);
 
-            switch(faceType)
+            switch (faceType)
             {
                 case FaceType.Front:
-                    if (isPositiveRotation)
-                    {
-                        cube.TopFace.Facies.Add(facie);
-                    }
-                    else
-                    {
-                        FlipPosition(facie);
-                        cube.BottomFace.Facies.Add(facie);
-                    }
+                    cube.TopFace.Facies.Add(facie);
                     break;
                 case FaceType.Top:
-                    if (isPositiveRotation)
-                    {
-                        FlipPosition(facie);
-                        cube.BackFace.Facies.Add(facie);
-                    }
-                    else
-                    {
-                        cube.FrontFace.Facies.Add(facie);
-                    }
+                    FlipPosition(facie);
+                    cube.BackFace.Facies.Add(facie);
                     break;
                 case FaceType.Back:
-                    if (isPositiveRotation)
-                    {
-                        cube.BottomFace.Facies.Add(facie);
-                    }
-                    else
-                    {
-                        FlipPosition(facie);
-                        cube.TopFace.Facies.Add(facie);
-                    }
+                    cube.BottomFace.Facies.Add(facie);
                     break;
                 case FaceType.Bottom:
-                    if (isPositiveRotation)
-                    {
-                        FlipPosition(facie);
-                        cube.FrontFace.Facies.Add(facie);
-                    }
-                    else
-                    {
-                        cube.BackFace.Facies.Add(facie);
-                    }
+                    FlipPosition(facie);
+                    cube.FrontFace.Facies.Add(facie);
                     break;
             }
         }

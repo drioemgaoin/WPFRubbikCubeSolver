@@ -1,6 +1,6 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using RubiksCube.Core.Model;
+using RubiksCube.Core.Model.Rotations;
 using TechTalk.SpecFlow;
 
 namespace RubiksCube.Specs
@@ -8,8 +8,6 @@ namespace RubiksCube.Specs
     [Binding]
     public class RotationsSteps
     {
-        private const double Angle = Math.PI / 2;
-
         private IRotationFactory rotationFactory;
         private Cube cube;
 
@@ -23,7 +21,7 @@ namespace RubiksCube.Specs
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var rotation = rotationFactory.CreateRotation(String.Format("{0}Whole", direction), times);
+            var rotation = rotationFactory.CreateRotation(string.Format("{0}Whole", direction), times);
             cube.Rotate(rotation);
         }
 

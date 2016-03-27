@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Core;
 using RubiksCube.Core.Model;
+using RubiksCube.Core.Model.Rotations;
 using Point = System.Windows.Point;
 
 namespace RubiksCube.UI

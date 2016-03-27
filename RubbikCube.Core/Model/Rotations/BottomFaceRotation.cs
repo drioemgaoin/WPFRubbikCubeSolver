@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model
+namespace RubiksCube.Core.Model.Rotations
 {
-    public class TopFaceRotation : FaceRotation
+    public class BottomFaceRotation : FaceRotation
     {
-        public TopFaceRotation(string way, double angle, uint times)
+        public BottomFaceRotation(string way, double angle, uint times)
             : base(way, angle, times)
         {
         }
 
         public override double[,] GetRotationMatrix(double angle)
         {
-            return rotationMatrixFactory.CreateXRotationMatrix(angle);
+            return RotationMatrixFactory.CreateXRotationMatrix(angle);
         }
 
         protected override IEnumerable<FaceType> GetImpactedFaceTypes()
@@ -21,7 +21,7 @@ namespace RubiksCube.Core.Model
 
         protected override IEnumerable<Facie> GetImpactedFacies(Face face)
         {
-            return face.GetRowFacies(RotationType.First);
+            return face.GetRowFacies(RotationType.Third);
         }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)

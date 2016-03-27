@@ -1,4 +1,4 @@
-﻿namespace RubiksCube.Core.Model
+﻿namespace RubiksCube.Core.Model.Rotations
 {
     public enum RotationType
     {

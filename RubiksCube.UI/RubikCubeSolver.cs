@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RubiksCube.Core.Model;
+using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core
 {

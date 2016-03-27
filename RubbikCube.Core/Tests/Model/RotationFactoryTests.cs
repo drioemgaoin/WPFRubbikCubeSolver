@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using RubiksCube.Core.Model;
+using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core.Tests.Model
 {

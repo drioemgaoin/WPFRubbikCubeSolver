@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace RubiksCube.Core.Model
+namespace RubiksCube.Core.Model.Rotations
 {
     public abstract class FaceRotation
     {
@@ -18,9 +18,8 @@ namespace RubiksCube.Core.Model
         public const string CounterClockwise = "CounterClockwise";
         public const string Clockwise = "Clockwise";
 
-        protected readonly IRotationMatrixFactory rotationMatrixFactory;
         private readonly double angle;
-        protected readonly uint times;
+        private readonly uint times;
 
         protected FaceRotation(string way, double angle, uint times)
         {
@@ -30,12 +29,14 @@ namespace RubiksCube.Core.Model
 
             Movements = new List<List<Facie>>();
 
-            rotationMatrixFactory = new RotationMatrixFactory();
+            RotationMatrixFactory = new RotationMatrixFactory();
         }
 
         public IList<List<Facie>> Movements { get; }
 
         public string Way { get; }
+
+        protected IRotationMatrixFactory RotationMatrixFactory { get; }
 
         public void Apply(Cube cube)
         {

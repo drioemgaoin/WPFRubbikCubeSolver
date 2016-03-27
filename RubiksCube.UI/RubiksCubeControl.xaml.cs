@@ -148,20 +148,7 @@ namespace RubiksCube.UI
 
         public void Resolve()
         {
-            cubeSolver.Rotations -= OnRotations;
-            cubeSolver.Rotations += OnRotations;
             cubeSolver.Solve(cube);
-        }
-
-        private void OnRotations(object sender, RotationsArgs e)
-        {
-            //foreach(var rotation in e.Rotations)
-            //{
-            //    var newRotation = new FaceRotation(rotation.Direction, (rotation.Angle > 0 ? 1 : -1) * (Math.PI / 4), rotation.Times * 2, rotation.Type);
-
-            //    var movements = cube.Rotate(newRotation);
-            //    Rotate(movements);
-            //}
         }
 
         private void Rotate(FaceRotation rotation)
@@ -300,7 +287,6 @@ namespace RubiksCube.UI
             {
                 if (disposing)
                 {
-                    cubeSolver.Rotations -= OnRotations;
                 }
 
                 disposed = true;

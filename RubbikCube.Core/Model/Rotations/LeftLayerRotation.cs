@@ -14,12 +14,12 @@ namespace RubiksCube.Core.Model.Rotations
             return RotationMatrixFactory.CreateYRotationMatrix(angle);
         }
 
-        protected override IEnumerable<FaceType> GetImpactedFaceTypes()
+        protected override IEnumerable<FaceType> GetMovingFaceTypes()
         {
             return new[] { FaceType.Front, FaceType.Top, FaceType.Back, FaceType.Bottom };
         }
 
-        protected override IEnumerable<Facie> GetImpactedFacies(Face face)
+        protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
             return face.GetColumnFacies(CubeLayerType.First);
         }

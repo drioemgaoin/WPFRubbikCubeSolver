@@ -2,7 +2,7 @@
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public class FaceRightRotation : Rotation
+    public class FaceRightRotation : FaceRotation
     {
         public FaceRightRotation(double angle, uint times) 
             : base(CounterClockwise, angle, times)
@@ -14,14 +14,9 @@ namespace RubiksCube.Core.Model.Rotations
             return RotationMatrixFactory.CreateXRotationMatrix(angle);
         }
 
-        protected override IEnumerable<FaceType> GetImpactedFaceTypes()
+        protected override IEnumerable<FaceType> GetMovingFaceTypes()
         {
             return new[] { FaceType.Front, FaceType.Left, FaceType.Back, FaceType.Right };
-        }
-
-        protected override IEnumerable<Facie> GetImpactedFacies(Face face)
-        {
-            return face.GetRowFacies(CubeLayerType.All);
         }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)

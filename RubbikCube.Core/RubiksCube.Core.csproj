@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Model\Color.cs" />
+    <Compile Include="Model\Rotations\FaceRotation.cs" />
     <Compile Include="Model\Rotations\FrontLayerRotation.cs" />
     <Compile Include="Model\Rotations\FaceLeftRotation.cs" />
     <Compile Include="Model\Rotations\FaceRightRotation.cs" />

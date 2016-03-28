@@ -64,20 +64,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CubeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rotations.feature.cs">
+    <Compile Include="FaceRotations.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Rotations.feature</DependentUpon>
+      <DependentUpon>FaceRotations.feature</DependentUpon>
     </Compile>
     <Compile Include="RotationsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Rotations.feature">
+    <None Include="FaceRotations.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Rotations.feature.cs</LastGenOutput>
+      <LastGenOutput>FaceRotations.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

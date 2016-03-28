@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RubiksCube.Core
 {
-    public static class EnumerableExtensions
+    public static class EnumerableHelper
     {
         public static IEnumerable<T> Clone<T>(this IEnumerable<T> items) where T : ICloneable
         {

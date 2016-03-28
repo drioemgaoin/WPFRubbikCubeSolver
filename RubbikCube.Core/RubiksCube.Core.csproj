@@ -39,15 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="EnumerableHelper.cs" />
+    <Compile Include="Model\AxisType.cs" />
     <Compile Include="Model\Color.cs" />
-    <Compile Include="Model\Rotations\FaceRotation.cs" />
+    <Compile Include="Model\FaceMove.cs" />
+    <Compile Include="Model\LayerMove.cs" />
     <Compile Include="Model\Rotations\FrontLayerRotation.cs" />
     <Compile Include="Model\Rotations\FaceLeftRotation.cs" />
     <Compile Include="Model\Rotations\FaceRightRotation.cs" />
+    <Compile Include="Model\Rotations\RotationInfo.cs" />
+    <Compile Include="Model\Rotations\LeftLayerRotation.cs" />
     <Compile Include="Model\Rotations\RotationFactory.cs" />
     <Compile Include="Model\Rotations\TopLayerRotation.cs" />
-    <Compile Include="Model\Rotations\LeftLayerRotation.cs" />
     <Compile Include="Model\Facie.cs" />
     <Compile Include="Model\Rotations\BottomLayerRotation.cs" />
     <Compile Include="Model\Rotations\Rotation.cs" />
@@ -56,13 +59,16 @@
     <Compile Include="Model\FaceType.cs" />
     <Compile Include="Model\FaciePositionType.cs" />
     <Compile Include="Model\Rotations\RightLayerRotation.cs" />
-    <Compile Include="Model\CubeLayerType.cs" />
+    <Compile Include="Model\LayerType.cs" />
     <Compile Include="Model\FaceFactory.cs" />
     <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Model\Rotations\FaceDownRotation.cs" />
     <Compile Include="Model\Rotations\FaceUpRotation.cs" />
+    <Compile Include="Model\Rotations\XRotation.cs" />
+    <Compile Include="Model\Rotations\YRotation.cs" />
+    <Compile Include="Model\Rotations\ZRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
     <Compile Include="ReflectionHelper.cs" />

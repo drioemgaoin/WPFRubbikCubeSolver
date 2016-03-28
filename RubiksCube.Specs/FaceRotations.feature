@@ -24,10 +24,10 @@ Scenario Outline: Face Rotations
 	| Left      | 4     | White          |
 	| Down      | 4     | White          |
 
-Scenario Outline: Top Face Rotations
+Scenario Outline: Top Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the top face in "<direction>" <times> times
-	Then top row is "<expected_color>"
+	When turns the "First" 'X' layer "<direction>" <times> times
+	Then the "Front" face "First" 'X' layer is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -40,10 +40,10 @@ Scenario Outline: Top Face Rotations
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 
-Scenario Outline: Bottom Face Rotations
+Scenario Outline: Bottom Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the bottom face in "<direction>" <times> times
-	Then bottom row is "<expected_color>"
+	When turns the "Third" 'X' layer "<direction>" <times> times
+	Then the "Front" face "Third" 'X' layer is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -56,10 +56,10 @@ Scenario Outline: Bottom Face Rotations
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 
-Scenario Outline: Left Face Rotations
+Scenario Outline: Left Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the left face in "<direction>" <times> times
-	Then left column is "<expected_color>"
+	When turns the "First" 'Y' layer "<direction>" <times> times
+	Then the "Front" face "First" 'Y' layer is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -72,10 +72,10 @@ Scenario Outline: Left Face Rotations
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 
-Scenario Outline: Right Face Rotations
+Scenario Outline: Right Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the right face in "<direction>" <times> times
-	Then right column is "<expected_color>"
+	When turns the "Third" 'Y' layer "<direction>" <times> times
+	Then the "Front" face "Third" 'Y' layer is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -87,3 +87,4 @@ Scenario Outline: Right Face Rotations
 	| CounterClockwise	| 3     | Orange         |
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
+

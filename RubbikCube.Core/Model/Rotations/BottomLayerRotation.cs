@@ -1,109 +1,63 @@
-﻿using System.Collections.Generic;
-
-namespace RubiksCube.Core.Model.Rotations
+﻿namespace RubiksCube.Core.Model.Rotations
 {
-    public class BottomLayerRotation : Rotation
+    public class BottomLayerRotation : XRotation
     {
-        public BottomLayerRotation(string way, double angle, uint times)
-            : base(way, angle, times)
+        public BottomLayerRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
         {
         }
 
-        public override double[,] GetRotationMatrix(double angle)
-        {
-            return RotationMatrixFactory.CreateXRotationMatrix(angle);
-        }
+        protected override LayerType MovingLayer => LayerType.Third;
 
-        protected override IEnumerable<FaceType> GetMovingFaceTypes()
+        protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            return new[] { FaceType.Front, FaceType.Left, FaceType.Back, FaceType.Right };
-        }
-
-        protected override IEnumerable<Facie> GetMovingFacies(Face face)
-        {
-            return face.GetRowFacies(CubeLayerType.Third);
-        }
-
-        protected override void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation)
-        {
-            var sourceFace = cube.Find(faceType);
-            sourceFace.Remove(facie);
+            cube[faceType].Remove(facie);
 
             switch (faceType)
             {
                 case FaceType.Front:
-                    if (isPositiveRotation)
+                    if (IsClockwise)
                     {
-                        cube.RightFace.Add(facie);
+                        cube[FaceType.Right].Add(facie);
                     }
                     else
                     {
-                        cube.LeftFace.Add(facie);
+                        cube[FaceType.Left].Add(facie);
                     }
                     break;
                 case FaceType.Right:
-                    if (isPositiveRotation)
+                    if (IsClockwise)
                     {
                         FlipPosition(facie);
-                        cube.BackFace.Add(facie);
+                        cube[FaceType.Back].Add(facie);
                     }
                     else
                     {
-                        cube.FrontFace.Add(facie);
+                        cube[FaceType.Front].Add(facie);
                     }
                     break;
                 case FaceType.Back:
-                    if (isPositiveRotation)
+                    if (IsClockwise)
                     {
                         FlipPosition(facie);
-                        cube.LeftFace.Add(facie);
+                        cube[FaceType.Left].Add(facie);
                     }
                     else
                     {
                         FlipPosition(facie);
-                        cube.RightFace.Add(facie);
+                        cube[FaceType.Right].Add(facie);
                     }
                     break;
                 case FaceType.Left:
-                    if (isPositiveRotation)
+                    if (IsClockwise)
                     {
-                        cube.FrontFace.Add(facie);
+                        cube[FaceType.Front].Add(facie);
                     }
                     else
                     {
                         FlipPosition(facie);
-                        cube.BackFace.Add(facie);
+                        cube[FaceType.Back].Add(facie);
                     }
                     break;
-            }
-        }
-
-        // TODO: same method for top/bottom face rotation -> create abstraction
-        private static void FlipPosition(Facie facie)
-        {
-            if (facie.FaciePosition == FaciePositionType.LeftTop)
-            {
-                facie.FaciePosition = FaciePositionType.RightTop;
-            }
-            else if (facie.FaciePosition == FaciePositionType.RightTop)
-            {
-                facie.FaciePosition = FaciePositionType.LeftTop;
-            }
-            else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
-            {
-                facie.FaciePosition = FaciePositionType.RightMiddle;
-            }
-            else if (facie.FaciePosition == FaciePositionType.RightMiddle)
-            {
-                facie.FaciePosition = FaciePositionType.LeftMiddle;
-            }
-            else if (facie.FaciePosition == FaciePositionType.LeftBottom)
-            {
-                facie.FaciePosition = FaciePositionType.RightBottom;
-            }
-            else if (facie.FaciePosition == FaciePositionType.RightBottom)
-            {
-                facie.FaciePosition = FaciePositionType.LeftBottom;
             }
         }
     }

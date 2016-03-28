@@ -7,45 +7,23 @@ namespace RubiksCube.Core.Tests.Model
     public class CubeTests
     {
         [Test]
-        public void GivenNewCube_WhenCreateFrontFace_ShouldInitializeCorrectlyTheNewInstance()
+        public void GivenNewCube_WhenAccessingFaces_ThenFacesAreSet()
         {
-            var cube = new Cube();
-            Assert.That(cube.FrontFace.Type, Is.EqualTo(FaceType.Front));
-        }
+            const int ExpectedFaciesByFace = 9;
 
-        [Test]
-        public void GivenNewCube_WhenCreateLeftFace_ShouldInitializeCorrectlyTheNewInstance()
-        {
             var cube = new Cube();
-            Assert.That(cube.LeftFace.Type, Is.EqualTo(FaceType.Left));
-        }
-
-        [Test]
-        public void GivenNewCube_WhenCreateRightFace_ShouldInitializeCorrectlyTheNewInstance()
-        {
-            var cube = new Cube();
-            Assert.That(cube.RightFace.Type, Is.EqualTo(FaceType.Right));
-        }
-
-        [Test]
-        public void GivenNewCube_WhenCreateBottomFace_ShouldInitializeCorrectlyTheNewInstance()
-        {
-            var cube = new Cube();
-            Assert.That(cube.BottomFace.Type, Is.EqualTo(FaceType.Bottom));
-        }
-
-        [Test]
-        public void GivenNewCube_WhenCreateTopFace_ShouldInitializeCorrectlyTheNewInstance()
-        {
-            var cube = new Cube();
-            Assert.That(cube.TopFace.Type, Is.EqualTo(FaceType.Top));
-        }
-
-        [Test]
-        public void GivenNewCube_WhenCreateBackFace_ShouldInitializeCorrectlyTheNewInstance()
-        {
-            var cube = new Cube();
-            Assert.That(cube.BackFace.Type, Is.EqualTo(FaceType.Back));
-        }
+            Assert.That(cube[FaceType.Front].Type, Is.EqualTo(FaceType.Front));
+            Assert.That(cube[FaceType.Front].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Left].Type, Is.EqualTo(FaceType.Left));
+            Assert.That(cube[FaceType.Left].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Right].Type, Is.EqualTo(FaceType.Right));
+            Assert.That(cube[FaceType.Right].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Back].Type, Is.EqualTo(FaceType.Back));
+            Assert.That(cube[FaceType.Back].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Bottom].Type, Is.EqualTo(FaceType.Bottom));
+            Assert.That(cube[FaceType.Bottom].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Top].Type, Is.EqualTo(FaceType.Top));
+            Assert.That(cube[FaceType.Top].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+        }       
     }
 }

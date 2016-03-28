@@ -29,14 +29,19 @@ namespace RubiksCube.Core.Model
             return new Face(faciesClone, Type);            
         }
 
-        public IList<Facie> GetRowFacies(CubeLayerType layerType)
+        public IList<Facie> GetXLayer(LayerType layerType)
         {
             return Facies.Where(x => IsRowMatch(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetColumnFacies(CubeLayerType layerType)
+        public IList<Facie> GetYLayer(LayerType layerType)
         {
             return Facies.Where(x => IsColumnMatch(x, layerType)).ToArray();
+        }
+
+        public IList<Facie> GetZLayer(LayerType layerType)
+        {
+            return Facies.Where(x => IsColumnMatch(x, layerType) || IsRowMatch(x, layerType)).ToArray();
         }
 
         public void Add(Facie facie)
@@ -53,7 +58,7 @@ namespace RubiksCube.Core.Model
         {
             var buffer = new StringBuilder();
             buffer.AppendLine(Type + "-" + Facies.Count);
-            foreach (var facie in Facies)
+            foreach (var facie in Facies)   
             {
                 buffer.AppendLine("-->" + facie);
             }
@@ -61,16 +66,16 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        private static bool IsRowMatch(Facie facie, CubeLayerType layerType)
+        private static bool IsRowMatch(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Row == layerType || layerType == CubeLayerType.All;
+            return attribute.Row == layerType || layerType == LayerType.All;
         }
 
-        private static bool IsColumnMatch(Facie facie, CubeLayerType layerType)
+        private static bool IsColumnMatch(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Column == layerType || layerType == CubeLayerType.All;
+            return attribute.Column == layerType || layerType == LayerType.All;
         }
     }
 }

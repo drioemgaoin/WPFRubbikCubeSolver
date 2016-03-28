@@ -5,40 +5,35 @@ namespace RubiksCube.Core.Model.Rotations
 {
     public abstract class Rotation
     {
-        public const string Up = "Up";
-        public const string Left = "Left";
-        public const string Right = "Right";
-        public const string Down = "Down";
-        public const string Forward = "Forward";
-        public const string RightWhole = "RightWhole";
-        public const string LeftWhole = "LeftWhole";
-        public const string UpWhole = "UpWhole";
-        public const string DownWhole = "DownWhole";
-
-        public const string CounterClockwise = "CounterClockwise";
-        public const string Clockwise = "Clockwise";
-
-        private readonly double angle;
         private readonly uint times;
 
-        protected Rotation(string way, double angle, uint times)
+        protected Rotation(bool clockwise, double angle, uint times)
         {
-            this.angle = way == CounterClockwise ? angle : -angle;
             this.times = times;
-            Way = way;
 
+            Angle = clockwise ? angle : -angle;
+            IsClockwise = clockwise;
             Movements = new List<List<Facie>>();
-
             RotationMatrixFactory = new RotationMatrixFactory();
         }
 
         public IList<List<Facie>> Movements { get; }
 
-        public string Way { get; }
+        public bool IsClockwise { get; }
+
+        protected double Angle { get; }
+
+        protected abstract LayerType MovingLayer { get; }
+
+        protected abstract IEnumerable<FaceType> MovingFaces { get; }
 
         protected IRotationMatrixFactory RotationMatrixFactory { get; }
 
-        //protected abstract CubeLayerType GetMovingLayer(FaceType faceType);
+        public abstract double[,] GetRotationMatrix(double angle);
+
+        protected abstract IEnumerable<Facie> GetMovingFacies(Face face);
+
+        protected abstract void Move(Cube cube, FaceType faceType, Facie facies);
 
         public void Apply(Cube cube)
         {
@@ -53,11 +48,11 @@ namespace RubiksCube.Core.Model.Rotations
         {
             var facies = new List<Facie>();
 
-            var matrix = GetRotationMatrix(angle);
+            var matrix = GetRotationMatrix(Angle);
             var impactedFacies = new Dictionary<FaceType, IEnumerable<Facie>>();
-            foreach (var faceType in GetMovingFaceTypes())
+            foreach (var faceType in MovingFaces)
             {
-                var face = cube.Find(faceType);
+                var face = cube[faceType];
                 var items = GetMovingFacies(face).ToArray();
                 impactedFacies.Add(faceType, items);
                 facies.AddRange(items);
@@ -68,22 +63,12 @@ namespace RubiksCube.Core.Model.Rotations
                 foreach(var facie in impactedFacie.Value)
                 {
                     facie.PreviousRotation = facie.Rotation;
-                    facie.Rotation = facie.Rotation == null 
-                        ? matrix 
-                        : MatrixHelper.Multiply(facie.Rotation, matrix);
-                    Move(cube, impactedFacie.Key, facie, angle > 0);
+                    facie.Rotation = facie.Rotation == null ? matrix  : MatrixHelper.Multiply(facie.Rotation, matrix);
+                    Move(cube, impactedFacie.Key, facie);
                 }
             }
 
             return facies;
-        }
-
-        public abstract double[, ] GetRotationMatrix(double angle);
-
-        protected abstract IEnumerable<FaceType> GetMovingFaceTypes();
-
-        protected abstract IEnumerable<Facie> GetMovingFacies(Face face);
-
-        protected abstract void Move(Cube cube, FaceType faceType, Facie facie, bool isPositiveRotation);
+        }        
     }
 }

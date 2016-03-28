@@ -5,6 +5,8 @@ namespace RubiksCube.Core.Model
 {
     public class Facie : ICloneable
     {
+        // TODO: Encapsulate members and use methods to implement the behaviour changing the state
+
         public string Key { get; set; }
 
         public FaciePositionType FaciePosition { get; set; }
@@ -31,6 +33,7 @@ namespace RubiksCube.Core.Model
         {
             var buffer = new StringBuilder();
             buffer.AppendLine(FaciePosition + "-" + Color);
+
             return buffer.ToString();
         }
     }

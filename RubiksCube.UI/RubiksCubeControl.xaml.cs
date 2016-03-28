@@ -43,87 +43,97 @@ namespace RubiksCube.UI
             movementEngine.Start();    
         }
 
-        public void RotateRightFace()
+        public void RotateThirdYLayerCounterClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Right, Rotation.CounterClockwise, 1);
+            var info = new RotationInfo(LayerType.Third, AxisType.Y, false);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateRightFaceBackward()
+        public void RotateThirdYLayerClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Right, Rotation.Clockwise, 1);
+            var info = new RotationInfo(LayerType.Third, AxisType.Y, true);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateLeftFace()
+        public void RotateFirstYLayerCounterClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Left, Rotation.CounterClockwise, 1);
+            var info = new RotationInfo(LayerType.First, AxisType.Y, false);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateLeftFaceBackward()
+        public void RotateFirstYLayerClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Left, Rotation.Clockwise, 1);
+            var info = new RotationInfo(LayerType.First, AxisType.Y, true);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateTopFace()
+        public void RotateFirstXLayerCounterClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Up, Rotation.CounterClockwise, 1);
+            var info = new RotationInfo(LayerType.First, AxisType.X, false);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateTopFaceBackward()
+        public void RotateFirstXLayerClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Up, Rotation.Clockwise, 1);
+            var info = new RotationInfo(LayerType.First, AxisType.X, true);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateBottomFace()
+        public void RotateThirdXLayerCounterClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Down, Rotation.CounterClockwise, 1);
+            var info = new RotationInfo(LayerType.Third, AxisType.X, false);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateBottomFaceBackward()
+        public void RotateThirdXLayerClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Down, Rotation.Clockwise, 1);
+            var info = new RotationInfo(LayerType.Third, AxisType.X, true);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateForwardFace()
+        public void RotateFirstZLayerCounterClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Forward, Rotation.CounterClockwise, 1);
+            var info = new RotationInfo(LayerType.Third, AxisType.Z, false);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateForwardFaceBackward()
+        public void RotateFirstZLayerClockwise()
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Forward, Rotation.Clockwise, 1);
+            var info = new RotationInfo(LayerType.First, AxisType.Z, true);
+            var rotation = rotationFactory.CreateLayerRotation(info);
             Rotate(rotation);
         }
 
-        public void RotateLeftWholeFace()
+        public void RotateFaceLeft()
         {
-            var rotation = rotationFactory.CreateFaceRotation(Rotation.LeftWhole, 1);
+            var rotation = rotationFactory.CreateFaceRotation(FaceMove.Left);
             Rotate(rotation);
         }
 
-        public void RotateRightWholeFace()
+        public void RotateFaceRight()
         {
-            var rotation = rotationFactory.CreateFaceRotation(Rotation.RightWhole, 1);
+            var rotation = rotationFactory.CreateFaceRotation(FaceMove.Right);
             Rotate(rotation);
         }
 
-        public void RotateUpWholeFace()
+        public void RotateFaceUp()
         {
-            var rotation = rotationFactory.CreateFaceRotation(Rotation.UpWhole, 1);
+            var rotation = rotationFactory.CreateFaceRotation(FaceMove.Up);
             Rotate(rotation);
         }
 
-        public void RotateDownWholeFace()
+        public void RotateFaceDown()
         {
-            var rotation = rotationFactory.CreateFaceRotation(Rotation.DownWhole, 1);
+            var rotation = rotationFactory.CreateFaceRotation(FaceMove.Down);
             Rotate(rotation);
         }
 
@@ -131,10 +141,10 @@ namespace RubiksCube.UI
         {
             var actions = new Action[]
             {
-                () => RotateRightFace(),
-                () => RotateLeftFace(),
-                () => RotateTopFace(),
-                () => RotateBottomFace(),
+                () => RotateThirdYLayerCounterClockwise(),
+                () => RotateFirstYLayerCounterClockwise(),
+                () => RotateFirstXLayerCounterClockwise(),
+                () => RotateThirdXLayerCounterClockwise(),
             };
 
             var random = new Random();
@@ -154,7 +164,7 @@ namespace RubiksCube.UI
         {
             cube.Rotate(rotation);
 
-            var matrix = rotation.GetRotationMatrix(rotation.Way == Rotation.CounterClockwise ? Angle : -Angle);
+            var matrix = rotation.GetRotationMatrix(rotation.IsClockwise ? Angle : -Angle);
 
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
@@ -191,12 +201,12 @@ namespace RubiksCube.UI
         {
             group.Children.Clear();
 
-            InitializeFace(cube.FrontFace);
-            InitializeFace(cube.LeftFace);
-            InitializeFace(cube.RightFace);
-            InitializeFace(cube.BottomFace);
-            InitializeFace(cube.TopFace);
-            InitializeFace(cube.BackFace);
+            InitializeFace(cube[FaceType.Front]);
+            InitializeFace(cube[FaceType.Left]);
+            InitializeFace(cube[FaceType.Right]);
+            InitializeFace(cube[FaceType.Bottom]);
+            InitializeFace(cube[FaceType.Top]);
+            InitializeFace(cube[FaceType.Back]);
         }
 
         private void InitializeFace(Face face)

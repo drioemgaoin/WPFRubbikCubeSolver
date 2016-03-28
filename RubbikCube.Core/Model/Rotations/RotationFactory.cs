@@ -4,49 +4,76 @@ namespace RubiksCube.Core.Model.Rotations
 {
     public interface IRotationFactory
     {
+        Rotation CreateFaceRotation(string direction);
+
         Rotation CreateFaceRotation(string direction, uint times);
 
-        Rotation CreateLayerRotation(string direction, string way, uint times);
+        Rotation CreateLayerRotation(RotationInfo info);
     }
 
     public class RotationFactory : IRotationFactory
     {
         private const double Angle = Math.PI / 2;
 
+        public Rotation CreateFaceRotation(string directions)
+        {
+            return CreateFaceRotation(directions, 1);
+        }
+
         public Rotation CreateFaceRotation(string direction, uint times)
         {
             switch (direction)
             {
-                case Rotation.LeftWhole:
+                case FaceMove.Left:
                     return new FaceLeftRotation(Angle, times);
-                case Rotation.RightWhole:
+                case FaceMove.Right:
                     return new FaceRightRotation(Angle, times);
-                case Rotation.UpWhole:
+                case FaceMove.Up:
                     return new FaceUpRotation(Angle, times);
-                case Rotation.DownWhole:
+                case FaceMove.Down:
                     return new FaceDownRotation(Angle, times);
             }
 
-            return null;
+            throw new InvalidOperationException(string.Format("'{0}' is not a valid face rotation direction.", direction));
         }
 
-        public Rotation CreateLayerRotation(string direction, string way, uint times)
+        public Rotation CreateLayerRotation(RotationInfo info)
         {
-            switch(direction)
+            if (info.Axis == AxisType.X)
             {
-                case Rotation.Right:
-                    return new RightLayerRotation(way, Angle, times);
-                case Rotation.Left:
-                    return new LeftLayerRotation(way, Angle, times);
-                case Rotation.Up:
-                    return new TopLayerRotation(way, Angle, times);
-                case Rotation.Down:
-                    return new BottomLayerRotation(way, Angle, times);
-                case Rotation.Forward:
-                    return new FrontLayerRotation(way, Angle, times);
+                if (info.Layer == LayerType.First)
+                {
+                    return new TopLayerRotation(info.Clockwise, Angle, info.Times);
+                }
+
+                if (info.Layer == LayerType.Third)
+                {
+                    return new BottomLayerRotation(info.Clockwise, Angle, info.Times);
+                }
             }
 
-            return null;
+            if (info.Axis == AxisType.Y)
+            {
+                if (info.Layer == LayerType.First)
+                {
+                    return new LeftLayerRotation(info.Clockwise, Angle, info.Times);
+                }
+
+                if (info.Layer == LayerType.Third)
+                {
+                    return new RightLayerRotation(info.Clockwise, Angle, info.Times);
+                }
+            }
+
+            if (info.Axis == AxisType.Z)
+            {
+                if (info.Layer == LayerType.Third)
+                {
+                    return new BottomLayerRotation(info.Clockwise, Angle, info.Times);
+                }
+            }            
+
+            throw new InvalidOperationException(string.Format("Layer rotation '{0}' is not implemented.", info));
         }
     }
 }

@@ -8,93 +8,47 @@ namespace RubiksCube.Specs
     [Binding]
     public class RotationsSteps
     {
-        private IRotationFactory rotationFactory;
+        private readonly IRotationFactory factory = new RotationFactory();
         private Cube cube;
 
         [Given(@"a cube with a visible ""(.*)"" face")]
         public void GivenACubeWithAVisableFace(string visibleColor)
         {
-            rotationFactory = new RotationFactory();
             cube = new Cube();
         }
 
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var rotation = rotationFactory.CreateFaceRotation(string.Format("{0}Whole", direction), times);
+            var rotation = factory.CreateFaceRotation(direction, times);
             cube.Rotate(rotation);
         }
 
         [Then(@"the ""(.*)"" face is visible")]
         public void ThenThenTheFaceIsVisible(string visibleColor)
         {
-            foreach (var facie in cube.FrontFace.Facies)
+            foreach (var facie in cube[FaceType.Front].Facies)
             {
                 Assert.AreEqual(visibleColor, facie.Color.ToString());
             }
         }
 
-        [When(@"turns the top face in ""(.*)"" (.*) times")]
-        public void WhenTheTopFaceTurns(string way, uint times)
+        [When(@"turns the ""(.*)"" '(.*)' layer ""(.*)"" (.*) times")]
+        public void WhenTurnsTheLayerTimes(string layer, char axis, string way, uint times)
         {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Up, way, times);
+            var info = new RotationInfo(layer, axis, way, times);
+            var rotation = factory.CreateLayerRotation(info);
+
             cube.Rotate(rotation);
         }
 
-        [Then(@"top row is ""(.*)""")]
-        public void ThenTheFirstRowIsVisible(string visibleColor)
+        [Then(@"the ""(.*)"" face ""(.*)"" '(.*)' layer is ""(.*)""")]
+        public void ThenTheLayerIs(string face, string layer, char axis, string color)
         {
-            foreach (var facie in cube.FrontFace.GetRowFacies(CubeLayerType.First))
+            var facies = cube.GetLayer(face, axis, layer);
+            foreach (var facie in facies)
             {
-                Assert.AreEqual(facie.Color.ToString(), visibleColor);
-            }
-        }
-
-        [When(@"turns the bottom face in ""(.*)"" (.*) times")]
-        public void WhenTheBottomFaceTurns(string way, uint times)
-        {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Down, way, times);
-            cube.Rotate(rotation);
-        }
-
-        [Then(@"bottom row is ""(.*)""")]
-        public void ThenTheThirdRowIsVisible(string visibleColor)
-        {
-            foreach (var facie in cube.FrontFace.GetRowFacies(CubeLayerType.Third))
-            {
-                Assert.AreEqual(facie.Color.ToString(), visibleColor);
-            }
-        }
-
-        [When(@"turns the left face in ""(.*)"" (.*) times")]
-        public void WhenTheLeftFaceTurns(string way, uint times)
-        {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Left, way, times);
-            cube.Rotate(rotation);
-        }
-
-        [Then(@"left column is ""(.*)""")]
-        public void ThenTheLeftColumnIsVisible(string visibleColor)
-        {
-            foreach (var facie in cube.FrontFace.GetColumnFacies(CubeLayerType.First))
-            {
-                Assert.AreEqual(facie.Color.ToString(), visibleColor);
-            }
-        }
-
-        [When(@"turns the right face in ""(.*)"" (.*) times")]
-        public void WhenTheRightFaceTurns(string way, uint times)
-        {
-            var rotation = rotationFactory.CreateLayerRotation(Rotation.Right, way, times);
-            cube.Rotate(rotation);
-        }
-
-        [Then(@"right column is ""(.*)""")]
-        public void ThenTheRightColumnIsVisible(string visibleColor)
-        {
-            foreach (var facie in cube.FrontFace.GetColumnFacies(CubeLayerType.Third))
-            {
-                Assert.AreEqual(facie.Color.ToString(), visibleColor);
+                Assert.AreEqual(color, facie.Color.ToString());
             }
         }
     }

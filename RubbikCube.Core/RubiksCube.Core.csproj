@@ -72,7 +72,6 @@
     <Compile Include="Model\Rotations\XAxis\RightLayerUpRotation.cs" />
     <Compile Include="Model\LayerType.cs" />
     <Compile Include="Model\FaceFactory.cs" />
-    <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Model\Rotations\XAxis\FaceDownRotation.cs" />

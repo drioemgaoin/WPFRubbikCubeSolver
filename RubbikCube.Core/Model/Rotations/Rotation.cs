@@ -13,7 +13,6 @@ namespace RubiksCube.Core.Model.Rotations
 
             Angle = angle;
             Moves = new List<List<Facie>>();
-            RotationMatrixFactory = new RotationMatrixFactory();
         }
 
         public IList<List<Facie>> Moves { get; }
@@ -24,9 +23,7 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected abstract LayerType LayerType { get; }
 
-        protected IRotationMatrixFactory RotationMatrixFactory { get; }
-
-        public abstract double[,] GetRotationMatrix(double angle);
+        public abstract double[,] CreateRotationMatrix(double angle);
 
         protected abstract IEnumerable<Facie> GetMovingFacies(Face face);
 
@@ -45,7 +42,7 @@ namespace RubiksCube.Core.Model.Rotations
         {
             var facies = new List<Facie>();
 
-            var matrix = GetRotationMatrix(Angle);
+            var matrix = CreateRotationMatrix(Angle);
             var movingFacies = new Dictionary<FaceType, IEnumerable<Facie>>();
             foreach (var faceType in MovingFaces)
             {

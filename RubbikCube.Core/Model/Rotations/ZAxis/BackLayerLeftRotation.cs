@@ -4,7 +4,7 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
     public class BackLayerLeftRotation : ZAxisRotation
     {
-        public BackLayerLeftRotation(double angle, uint times) : base(-angle, times)
+        public BackLayerLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 

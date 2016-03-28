@@ -4,7 +4,7 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
     public class FaceLeftRotation : ZAxisRotation
     {
-        public FaceLeftRotation(double angle, uint times) : base(-angle, times)
+        public FaceLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 

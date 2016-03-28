@@ -2,7 +2,7 @@
 {
     public class FaceLeftRotation : YAxisRotation
     {
-        public FaceLeftRotation(double angle, uint times) : base(-angle, times)
+        public FaceLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 

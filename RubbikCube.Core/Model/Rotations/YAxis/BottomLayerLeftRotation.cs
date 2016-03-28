@@ -2,7 +2,7 @@
 {
     public class BottomLayerLeftRotation : YAxisRotation
     {
-        public BottomLayerLeftRotation(double angle, uint times) : base(-angle, times)
+        public BottomLayerLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 

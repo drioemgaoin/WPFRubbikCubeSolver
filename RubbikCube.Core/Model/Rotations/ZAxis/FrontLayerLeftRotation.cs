@@ -2,7 +2,7 @@
 {
     public class FrontLayerLeftRotation : ZAxisRotation
     {
-        public FrontLayerLeftRotation(double angle, uint times) : base(-angle, times)
+        public FrontLayerLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 

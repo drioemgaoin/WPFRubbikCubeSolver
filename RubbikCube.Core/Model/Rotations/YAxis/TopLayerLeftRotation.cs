@@ -2,7 +2,7 @@
 {
     public class TopLayerLeftRotation : YAxisRotation
     {
-        public TopLayerLeftRotation(double angle, uint times) : base(-angle, times)
+        public TopLayerLeftRotation(double angle, uint times) : base(angle, times)
         {
         }
 
@@ -10,7 +10,7 @@
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            switch (faceType)
+            switch (faceType)   
             {
                 case FaceType.Front:
                     cube[FaceType.Left].Add(facie);

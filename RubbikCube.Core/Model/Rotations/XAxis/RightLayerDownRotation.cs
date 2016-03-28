@@ -11,7 +11,7 @@
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
             switch (faceType)
-            {
+            {   
                 case FaceType.Front:
                     FlipPosition(facie);
                     cube[FaceType.Bottom].Add(facie);

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations
+namespace RubiksCube.Core.Model.Rotations.YAxis
 {
-    public class FaceDownRotation : XAxisRotation
+    public class FaceRightRotation : YAxisRotation
     {
-        public FaceDownRotation(double angle, uint times) : base(false, angle, times)
+        public FaceRightRotation(double angle, uint times) : base(angle, times)
         {
         }
 
@@ -20,20 +20,20 @@ namespace RubiksCube.Core.Model.Rotations
             switch (faceType)
             {
                 case FaceType.Front:
-                    FlipPosition(facie);
-                    cube[FaceType.Bottom].Add(facie);
+                    cube[FaceType.Right].Add(facie);
                     break;
-                case FaceType.Top:
-                    cube[FaceType.Front].Add(facie);
+                case FaceType.Right:
+                    FlipPosition(facie);
+                    cube[FaceType.Back].Add(facie);
                     break;
                 case FaceType.Back:
                     FlipPosition(facie);
-                    cube[FaceType.Top].Add(facie);
+                    cube[FaceType.Left].Add(facie);
                     break;
-                case FaceType.Bottom:
-                    cube[FaceType.Back].Add(facie);
+                case FaceType.Left:
+                    cube[FaceType.Front].Add(facie);
                     break;
             }
-        }        
+        }
     }
 }

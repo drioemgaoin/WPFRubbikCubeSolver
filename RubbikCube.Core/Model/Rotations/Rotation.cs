@@ -7,19 +7,16 @@ namespace RubiksCube.Core.Model.Rotations
     {
         private readonly uint times;
 
-        protected Rotation(bool clockwise, double angle, uint times)
+        protected Rotation(double angle, uint times)
         {
             this.times = times;
 
-            Angle = clockwise ? angle : -angle;
-            IsClockwise = clockwise;
+            Angle = angle;
             Movements = new List<List<Facie>>();
             RotationMatrixFactory = new RotationMatrixFactory();
         }
 
         public IList<List<Facie>> Movements { get; }
-
-        public bool IsClockwise { get; }
 
         protected double Angle { get; }
 

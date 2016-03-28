@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations
+namespace RubiksCube.Core.Model.Rotations.XAxis
 {
     public class FaceUpRotation : XAxisRotation
     {
-        public FaceUpRotation(double angle, uint times) : base(true, angle, times)
+        public FaceUpRotation(double angle, uint times) : base(angle, times)
         {
         }
 

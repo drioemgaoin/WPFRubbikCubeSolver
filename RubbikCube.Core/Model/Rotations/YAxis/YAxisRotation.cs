@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations
+namespace RubiksCube.Core.Model.Rotations.YAxis
 {
     public abstract class YAxisRotation : Rotation
     {
-        protected YAxisRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
+        protected YAxisRotation(double angle, uint times) : base(angle, times)
         {
         }
 

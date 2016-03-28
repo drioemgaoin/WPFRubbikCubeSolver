@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations
+namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    public class FaceLeftRotation : YAxisRotation
+    public class FaceDownRotation : XAxisRotation
     {
-        public FaceLeftRotation(double angle, uint times) : base(false, angle, times)
+        public FaceDownRotation(double angle, uint times) : base(angle, times)
         {
         }
 
@@ -15,26 +15,25 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            var sourceFace = cube[faceType];
-            sourceFace.Remove(facie);
+            cube[faceType].Remove(facie);
 
             switch (faceType)
             {
                 case FaceType.Front:
-                    cube[FaceType.Left].Add(facie);
+                    FlipPosition(facie);
+                    cube[FaceType.Bottom].Add(facie);
                     break;
-                case FaceType.Right:
+                case FaceType.Top:
                     cube[FaceType.Front].Add(facie);
                     break;
                 case FaceType.Back:
                     FlipPosition(facie);
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Top].Add(facie);
                     break;
-                case FaceType.Left:
-                    FlipPosition(facie);
+                case FaceType.Bottom:
                     cube[FaceType.Back].Add(facie);
                     break;
             }
-        }
+        }        
     }
 }

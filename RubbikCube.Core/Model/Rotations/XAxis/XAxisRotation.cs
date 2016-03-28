@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations
+namespace RubiksCube.Core.Model.Rotations.XAxis
 {
     public abstract class XAxisRotation : Rotation
     {
-        protected XAxisRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
+        protected XAxisRotation(double angle, uint times) : base(angle, times)
         {
         }
 

@@ -29,12 +29,12 @@ namespace RubiksCube.Core.Model
             return new Face(faciesClone, Type);            
         }
 
-        public IList<Facie> GetXLayer(LayerType layerType)
+        public IList<Facie> GetYLayer(LayerType layerType)
         {
             return Facies.Where(x => IsRowMatch(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetYLayer(LayerType layerType)
+        public IList<Facie> GetXLayer(LayerType layerType)
         {
             return Facies.Where(x => IsColumnMatch(x, layerType)).ToArray();
         }

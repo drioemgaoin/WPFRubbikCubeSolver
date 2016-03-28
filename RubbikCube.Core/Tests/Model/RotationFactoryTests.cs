@@ -1,7 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
-using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core.Tests.Model
@@ -18,13 +17,13 @@ namespace RubiksCube.Core.Tests.Model
         }
 
         [Test]
-        public void GivenAnAngle_WhenRotateX_ShouldReturnTheRightMatrix()
+        public void GivenAngle_WhenCreateRotateYRotationMatrix_ThenRotationsAreSet()
         {
             var angle = fixture.Create<double>();
 
             var subject = fixture.Create<RotationMatrixFactory>();
 
-            var result = subject.CreateXRotationMatrix(angle);
+            var result = subject.CreateYRotationMatrix(angle);
 
             Assert.That(result[0, 0], Is.EqualTo(1));
             Assert.That(result[0, 1], Is.EqualTo(0));
@@ -45,13 +44,13 @@ namespace RubiksCube.Core.Tests.Model
         }
 
         [Test]
-        public void GivenAnAngle_WhenRotateY_ShouldReturnTheRightMatrix()
+        public void GivenAngle_WhenCreateRotateXRotationMatrix_ThenRotationsAreSet()
         {
             var angle = fixture.Create<double>();
 
             var subject = fixture.Create<RotationMatrixFactory>();
 
-            var result = subject.CreateYRotationMatrix(angle);
+            var result = subject.CreateXRotationMatrix(angle);
 
             Assert.That(result[0, 0], Is.EqualTo(Math.Cos(angle)));
             Assert.That(result[0, 1], Is.EqualTo(0));
@@ -72,7 +71,7 @@ namespace RubiksCube.Core.Tests.Model
         }
 
         [Test]
-        public void GivenAnAngle_WhenRotateZ_ShouldReturnTheRightMatrix()
+        public void GivenAngle_WhenCreateRotateZRotationMatrix_ThenRotationsAreSet()
         {
             var angle = fixture.Create<double>();
 

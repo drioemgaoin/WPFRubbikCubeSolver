@@ -39,11 +39,6 @@ namespace RubiksCube.Core.Model
             return Facies.Where(x => IsColumnMatch(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetZLayer(LayerType layerType)
-        {
-            return Facies.Where(x => IsColumnMatch(x, layerType) || IsRowMatch(x, layerType)).ToArray();
-        }
-
         public void Add(Facie facie)
         {
             facies.Add(facie);

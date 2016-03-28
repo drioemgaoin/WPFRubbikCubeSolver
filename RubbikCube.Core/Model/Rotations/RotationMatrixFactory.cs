@@ -11,7 +11,7 @@ namespace RubiksCube.Core.Model.Rotations
 
     public class RotationMatrixFactory : IRotationMatrixFactory
     {
-        public double[,] CreateXRotationMatrix(double angle)
+        public double[,] CreateYRotationMatrix(double angle)
         {
             var matrix = new double[4, 4];
             matrix[0, 0] = 1;
@@ -30,10 +30,11 @@ namespace RubiksCube.Core.Model.Rotations
             matrix[3, 1] = 0;
             matrix[3, 2] = 0;
             matrix[3, 3] = 1;
+
             return matrix;
         }
 
-        public double[,] CreateYRotationMatrix(double angle)
+        public double[,] CreateXRotationMatrix(double angle)
         {
             var matrix = new double[4, 4];
             matrix[0, 0] = Math.Cos(angle);
@@ -52,6 +53,7 @@ namespace RubiksCube.Core.Model.Rotations
             matrix[3, 1] = 0;
             matrix[3, 2] = 0;
             matrix[3, 3] = 1;
+
             return matrix;
         }
 
@@ -74,6 +76,7 @@ namespace RubiksCube.Core.Model.Rotations
             matrix[3, 1] = 0;
             matrix[3, 2] = 0;
             matrix[3, 3] = 1;
+
             return matrix;
         }
     }

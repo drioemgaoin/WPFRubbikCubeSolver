@@ -23,8 +23,6 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected double Angle { get; }
 
-        protected abstract LayerType MovingLayer { get; }
-
         protected abstract IEnumerable<FaceType> MovingFaces { get; }
 
         protected IRotationMatrixFactory RotationMatrixFactory { get; }

@@ -18,8 +18,6 @@ namespace RubiksCube.Specs
                     return cube[faceType].GetXLayer(layerType);
                 case AxisType.Y:
                     return cube[faceType].GetYLayer(layerType);
-                case AxisType.Z:
-                    return cube[faceType].GetZLayer(layerType);
                 default:
                     throw new InvalidOperationException();
             }

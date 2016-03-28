@@ -1,12 +1,17 @@
-﻿namespace RubiksCube.Core.Model.Rotations
+﻿using System.Collections.Generic;
+
+namespace RubiksCube.Core.Model.Rotations
 {
-    public class FaceUpRotation : YRotation
+    public class FaceUpRotation : XAxisRotation
     {
-        public FaceUpRotation(double angle, uint times) : base(false, angle, times)
+        public FaceUpRotation(double angle, uint times) : base(true, angle, times)
         {
         }
 
-        protected override LayerType MovingLayer => LayerType.All;
+        protected override IEnumerable<Facie> GetMovingFacies(Face face)
+        {
+            return face.Facies;
+        }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {

@@ -24,7 +24,7 @@ namespace RubiksCube.Specs
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "FaceRotations.feature"
+#line 1 "Rotations.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]

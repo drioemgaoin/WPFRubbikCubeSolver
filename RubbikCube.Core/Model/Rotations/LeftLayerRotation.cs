@@ -1,12 +1,17 @@
-﻿namespace RubiksCube.Core.Model.Rotations
+﻿using System.Collections.Generic;
+
+namespace RubiksCube.Core.Model.Rotations
 {
-    public class LeftLayerRotation : XRotation
+    public class LeftLayerRotation : XAxisRotation
     {
         public LeftLayerRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
         {
         }
 
-        protected override LayerType MovingLayer => LayerType.First;
+        protected override IEnumerable<Facie> GetMovingFacies(Face face)
+        {
+            return face.GetYLayer(LayerType.First);
+        }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {

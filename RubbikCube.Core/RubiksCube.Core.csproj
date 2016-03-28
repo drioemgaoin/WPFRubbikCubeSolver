@@ -66,9 +66,9 @@
     <Compile Include="MatrixHelper.cs" />
     <Compile Include="Model\Rotations\FaceDownRotation.cs" />
     <Compile Include="Model\Rotations\FaceUpRotation.cs" />
-    <Compile Include="Model\Rotations\XRotation.cs" />
-    <Compile Include="Model\Rotations\YRotation.cs" />
-    <Compile Include="Model\Rotations\ZRotation.cs" />
+    <Compile Include="Model\Rotations\YAxisRotation.cs" />
+    <Compile Include="Model\Rotations\XAxisRotation.cs" />
+    <Compile Include="Model\Rotations\ZAxisRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
     <Compile Include="ReflectionHelper.cs" />

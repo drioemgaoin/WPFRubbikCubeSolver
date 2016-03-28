@@ -2,22 +2,17 @@
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public abstract class XRotation : Rotation
+    public abstract class YAxisRotation : Rotation
     {
-        protected XRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
+        protected YAxisRotation(bool clockwise, double angle, uint times) : base(clockwise, angle, times)
         {
         }
 
         protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Left, FaceType.Back, FaceType.Right };
 
-        protected override IEnumerable<Facie> GetMovingFacies(Face face)
-        {
-            return face.GetXLayer(MovingLayer);
-        }
-
         public override double[,] GetRotationMatrix(double angle)
         {
-            return RotationMatrixFactory.CreateXRotationMatrix(angle);
+            return RotationMatrixFactory.CreateYRotationMatrix(angle);
         }
 
         protected static void FlipPosition(Facie facie)

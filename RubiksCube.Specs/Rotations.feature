@@ -26,17 +26,17 @@ Scenario Outline: Face Rotations
 
 Scenario Outline: Top Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the "First" layer on the 'X' axis "<direction>" <times> times
+	When turns the "First" layer on the 'Y' axis "<direction>" <times> times
 	Then the "Front" face "First" row is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
-	| Clockwise			| 1     | Blue		     |
-	| CounterClockwise	| 1     | Green          |
+	| Clockwise			| 1     | Green		     |
+	| CounterClockwise	| 1     | Blue           |
 	| Clockwise			| 2     | Yellow         |
 	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Green          |
-	| CounterClockwise	| 3     | Blue           |
+	| Clockwise			| 3     | Blue           |
+	| CounterClockwise	| 3     | Green          |
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 
@@ -79,12 +79,12 @@ Scenario Outline: Right Layer Rotations
 	
 	Examples:
 	| direction			| times | expected_color |
-	| Clockwise			| 1     | Orange		 |
-	| CounterClockwise	| 1     | Red			 |
+	| Clockwise			| 1     | Red			 |
+	| CounterClockwise	| 1     | Orange		 |
 	| Clockwise			| 2     | Yellow         |
 	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Red			 |
-	| CounterClockwise	| 3     | Orange         |
+	| Clockwise			| 3     | Orange		 |
+	| CounterClockwise	| 3     | Red	         |
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 

@@ -29,14 +29,14 @@ namespace RubiksCube.Core.Model
             return new Face(faciesClone, Type);            
         }
 
-        public IList<Facie> GetYLayer(LayerType layerType)
+        public IList<Facie> GetRow(LayerType layerType)
         {
-            return Facies.Where(x => IsRowMatch(x, layerType)).ToArray();
+            return Facies.Where(x => IsMatchingRow(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetXLayer(LayerType layerType)
+        public IList<Facie> GetColumn(LayerType layerType)
         {
-            return Facies.Where(x => IsColumnMatch(x, layerType)).ToArray();
+            return Facies.Where(x => IsMatchingColumn(x, layerType)).ToArray();
         }
 
         public void Add(Facie facie)
@@ -61,13 +61,13 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        private static bool IsRowMatch(Facie facie, LayerType layerType)
+        private static bool IsMatchingRow(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
             return attribute.Row == layerType || layerType == LayerType.All;
         }
 
-        private static bool IsColumnMatch(Facie facie, LayerType layerType)
+        private static bool IsMatchingColumn(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
             return attribute.Column == layerType || layerType == LayerType.All;

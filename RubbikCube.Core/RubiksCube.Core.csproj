@@ -47,7 +47,7 @@
     <Compile Include="Model\Rotations\RotationInfoHelper.cs" />
     <Compile Include="Model\Rotations\XAxis\XAxisRotationFactory.cs" />
     <Compile Include="Model\Rotations\YAxis\TopLayerLeftRotation.cs" />
-    <Compile Include="Model\Rotations\YAxis\XAxisRotationFactory.cs" />
+    <Compile Include="Model\Rotations\YAxis\YAxisRotationFactory.cs" />
     <Compile Include="Model\Rotations\ZAxis\BackLayerRightRotation.cs" />
     <Compile Include="Model\Rotations\ZAxis\BackLayerLeftRotation.cs" />
     <Compile Include="Model\Rotations\ZAxis\FaceRightRotation.cs" />

@@ -12,15 +12,17 @@ namespace RubiksCube.Core.Model.Rotations
             this.times = times;
 
             Angle = angle;
-            Movements = new List<List<Facie>>();
+            Moves = new List<List<Facie>>();
             RotationMatrixFactory = new RotationMatrixFactory();
         }
 
-        public IList<List<Facie>> Movements { get; }
+        public IList<List<Facie>> Moves { get; }
 
         protected double Angle { get; }
 
         protected abstract IEnumerable<FaceType> MovingFaces { get; }
+
+        protected abstract LayerType LayerType { get; }
 
         protected IRotationMatrixFactory RotationMatrixFactory { get; }
 
@@ -35,7 +37,7 @@ namespace RubiksCube.Core.Model.Rotations
             for(var i = 0; i < times; i++)
             {
                 var move = ApplyCore(cube).ToList();
-                Movements.Add(move.Clone().ToList());
+                Moves.Add(move.Clone().ToList());
             }
         }
 
@@ -44,24 +46,26 @@ namespace RubiksCube.Core.Model.Rotations
             var facies = new List<Facie>();
 
             var matrix = GetRotationMatrix(Angle);
-            var impactedFacies = new Dictionary<FaceType, IEnumerable<Facie>>();
+            var movingFacies = new Dictionary<FaceType, IEnumerable<Facie>>();
             foreach (var faceType in MovingFaces)
             {
                 var face = cube[faceType];
                 var items = GetMovingFacies(face).ToArray();
-                impactedFacies.Add(faceType, items);
+                movingFacies.Add(faceType, items);
                 facies.AddRange(items);
             }
 
-            foreach(var impactedFacie in impactedFacies)
+            foreach(var face in movingFacies)
             {
-                foreach(var facie in impactedFacie.Value)
+                foreach(var facie in face.Value)
                 {
                     facie.PreviousRotation = facie.Rotation;
                     facie.Rotation = facie.Rotation == null ? matrix  : MatrixHelper.Multiply(facie.Rotation, matrix);
-                    Move(cube, impactedFacie.Key, facie);
+
+                    cube[face.Key].Remove(facie);
+                    Move(cube, face.Key, facie);
                 }
-            }
+            } 
 
             return facies;
         }        

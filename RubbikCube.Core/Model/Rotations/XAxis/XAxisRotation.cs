@@ -10,6 +10,11 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Top, FaceType.Back, FaceType.Bottom };
 
+        protected override IEnumerable<Facie> GetMovingFacies(Face face)
+        {
+            return face.GetColumn(LayerType);
+        }
+
         public override double[,] GetRotationMatrix(double angle)
         {
             return RotationMatrixFactory.CreateXRotationMatrix(angle);

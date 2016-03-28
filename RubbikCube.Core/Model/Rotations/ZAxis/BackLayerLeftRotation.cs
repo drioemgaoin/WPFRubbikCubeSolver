@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
@@ -9,16 +8,11 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
         {
         }
 
-        protected override IEnumerable<Facie> GetMovingFacies(Face face)
-        {
-            throw new NotImplementedException();
-        }
+        protected override LayerType LayerType => LayerType.Third;
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            cube[faceType].Remove(facie);
-
-            throw new NotImplementedException();
+            throw new NotImplementedException("TODO");
         }
     }
 }

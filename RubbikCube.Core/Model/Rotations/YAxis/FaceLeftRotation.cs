@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace RubiksCube.Core.Model.Rotations.YAxis
+﻿namespace RubiksCube.Core.Model.Rotations.YAxis
 {
     public class FaceLeftRotation : YAxisRotation
     {
@@ -8,16 +6,10 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
         {
         }
 
-        protected override IEnumerable<Facie> GetMovingFacies(Face face)
-        {
-            return face.Facies;
-        }
+        protected override LayerType LayerType => LayerType.All;
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            var sourceFace = cube[faceType];
-            sourceFace.Remove(facie);
-
             switch (faceType)
             {
                 case FaceType.Front:

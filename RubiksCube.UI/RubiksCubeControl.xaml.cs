@@ -157,7 +157,7 @@ namespace RubiksCube.UI
 
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
-            foreach (var facies in rotation.Movements)
+            foreach (var facies in rotation.Moves)
             {
                 var animations = new List<FacieAnimation>();
                 var animations1 = new FacieAnimation(center, negateCenter);

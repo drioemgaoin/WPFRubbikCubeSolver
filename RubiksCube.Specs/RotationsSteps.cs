@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations;
 using TechTalk.SpecFlow;
@@ -36,7 +38,7 @@ namespace RubiksCube.Specs
             }
         }
 
-        [When(@"turns the ""(.*)"" '(.*)' layer ""(.*)"" (.*) times")]
+        [When(@"turns the ""(.*)"" layer on the '(.*)' axis ""(.*)"" (.*) times")]
         public void WhenTurnsTheLayerTimes(string layer, char axis, string way, uint times)
         {
             var info = new RotationInfo(layer, axis, way, times);
@@ -45,10 +47,28 @@ namespace RubiksCube.Specs
             cube.Rotate(rotation);
         }
 
-        [Then(@"the ""(.*)"" face ""(.*)"" '(.*)' layer is ""(.*)""")]
-        public void ThenTheLayerIs(string face, string layer, char axis, string color)
+        [Then(@"the ""(.*)"" face ""(.*)"" row is ""(.*)""")]
+        public void ThenTheFaceRowIs(string face, string row, string color)
         {
-            var facies = cube.GetLayer(face, axis, layer);
+            var faceType = (FaceType)Enum.Parse(typeof(FaceType), face);
+            var layerType = (LayerType)Enum.Parse(typeof(LayerType), row);
+            var facies = cube[faceType].GetRow(layerType);
+
+            AssertColorAreEqual(color, facies);
+        }
+
+        [Then(@"the ""(.*)"" face ""(.*)"" column is ""(.*)""")]
+        public void ThenTheFaceColumnIs(string face, string column, string color)
+        {
+            var faceType = (FaceType)Enum.Parse(typeof(FaceType), face);
+            var layerType = (LayerType)Enum.Parse(typeof(LayerType), column);
+            var facies = cube[faceType].GetColumn(layerType);
+
+            AssertColorAreEqual(color, facies);
+        }
+
+        private static void AssertColorAreEqual(string color, IList<Facie> facies)
+        {
             foreach (var facie in facies)
             {
                 Assert.AreEqual(color, facie.Color.ToString());

@@ -26,8 +26,8 @@ Scenario Outline: Face Rotations
 
 Scenario Outline: Top Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the "First" 'X' layer "<direction>" <times> times
-	Then the "Front" face "First" 'X' layer is "<expected_color>"
+	When turns the "First" layer on the 'X' axis "<direction>" <times> times
+	Then the "Front" face "First" row is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -42,24 +42,24 @@ Scenario Outline: Top Layer Rotations
 
 Scenario Outline: Bottom Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the "Third" 'X' layer "<direction>" <times> times
-	Then the "Front" face "Third" 'X' layer is "<expected_color>"
+	When turns the "Third" layer on the 'Y' axis "<direction>" <times> times
+	Then the "Front" face "Third" row is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
-	| Clockwise			| 1     | Blue		     |
-	| CounterClockwise	| 1     | Green          |
+	| Clockwise			| 1     | Green		     |
+	| CounterClockwise	| 1     | Blue           |
 	| Clockwise			| 2     | Yellow         |
 	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Green          |
-	| CounterClockwise	| 3     | Blue           |
+	| Clockwise			| 3     | Blue           |
+	| CounterClockwise	| 3     | Green          |
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 
 Scenario Outline: Left Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the "First" 'Y' layer "<direction>" <times> times
-	Then the "Front" face "First" 'Y' layer is "<expected_color>"
+	When turns the "First" layer on the 'X' axis "<direction>" <times> times
+	Then the "Front" face "First" column is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |
@@ -74,8 +74,8 @@ Scenario Outline: Left Layer Rotations
 
 Scenario Outline: Right Layer Rotations
 	Given a cube with a visible "White" face
-	When turns the "Third" 'Y' layer "<direction>" <times> times
-	Then the "Front" face "Third" 'Y' layer is "<expected_color>"
+	When turns the "Third" layer on the 'X' axis "<direction>" <times> times
+	Then the "Front" face "Third" column is "<expected_color>"
 	
 	Examples:
 	| direction			| times | expected_color |

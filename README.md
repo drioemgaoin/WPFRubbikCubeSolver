@@ -18,17 +18,19 @@ Features
   * Numpad 6: rotate the second row right
   * Numpad 1: rotate the third row left
   * Numpad 3: rotate the third row right
-  * Arrow Left: rotate the current face left
-  * Arrow Right: rotate the current face right
-  * Arrow Up: rotate the current face up
-  * Arrow Down: rotate the current face down
+  * X: X axis rotation
+  * Shift+X: X axis counter-clockwise rotation
+  * Y: Y axis rotation
+  * Shift+Y: Y axis counter-clockwise rotation
+  * Z: Z axis rotation
+  * Shift+Z: Z axis counter-clockwise rotation
   * Q: rotate the first column up
   * Z: rotate the first column down
   * W: rotate the second column up
   * X: rotate the second column down
   * E: rotate the third column up
   * C: rotate the third column down
-  * M: mix up the cube
+  * Ctrl+M: Mixup the cube
 * Mouse rotations (WIP)
 * Random facies scrambling
 * Automatic solving algorithm (WIP)

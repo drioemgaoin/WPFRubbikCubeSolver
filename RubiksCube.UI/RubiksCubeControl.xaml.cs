@@ -41,25 +41,25 @@ namespace RubiksCube.UI
             movementEngine.Start();    
         }
 
-        public void RotateBottomLayerLeft()
+        public void RotateDownLayerLeft()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateBottomLayerRight()
+        public void RotateDownLayerRight()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateTopLayerLeft()
+        public void RotateUpLayerLeft()
         {
             var info = new RotationInfo(LayerType.First, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateTopLayerRight()
+        public void RotateUpLayerRight()
         {
             var info = new RotationInfo(LayerType.First, AxisType.Y, true);
             Rotate(info);
@@ -141,10 +141,10 @@ namespace RubiksCube.UI
         {
             var actions = new Action[]
             {
-                () => RotateTopLayerRight(),
-                () => RotateTopLayerLeft(),
-                () => RotateBottomLayerRight(),
-                () => RotateBottomLayerLeft(),
+                () => RotateUpLayerRight(),
+                () => RotateUpLayerLeft(),
+                () => RotateDownLayerRight(),
+                () => RotateDownLayerLeft(),
                 () => RotateLeftLayerUp(),
                 () => RotateLeftLayerDown(),
                 () => RotateRightLayerUp(),

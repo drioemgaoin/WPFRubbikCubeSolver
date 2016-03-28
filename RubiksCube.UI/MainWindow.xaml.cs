@@ -96,19 +96,19 @@ namespace RubiksCube.UI
         {
             if (Keyboard.IsKeyDown(Key.NumPad7))
             {
-                RubiksCube.RotateTopLayerLeft();
+                RubiksCube.RotateUpLayerLeft();
             }
             else if (Keyboard.IsKeyDown(Key.NumPad1))
             {
-                RubiksCube.RotateTopLayerRight();
+                RubiksCube.RotateUpLayerRight();
             }
             else if (Keyboard.IsKeyDown(Key.NumPad9))
             {
-                RubiksCube.RotateBottomLayerLeft();
+                RubiksCube.RotateDownLayerLeft();
             }
             else if (Keyboard.IsKeyDown(Key.NumPad3))
             {
-                RubiksCube.RotateBottomLayerRight();
+                RubiksCube.RotateDownLayerRight();
             }
             else
             {

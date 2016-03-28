@@ -63,12 +63,12 @@ Scenario Outline: Left Layer Rotations
 	
 	Examples:
 	| direction			| times | expected_color |
-	| Clockwise			| 1     | Orange		 |
-	| CounterClockwise	| 1     | Red			 |
+	| Clockwise			| 1     | Red		     |
+	| CounterClockwise	| 1     | Orange      	 |
 	| Clockwise			| 2     | Yellow         |
 	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Red			 |
-	| CounterClockwise	| 3     | Orange         |
+	| Clockwise			| 3     | Orange	     |
+	| CounterClockwise	| 3     | Red	         |
 	| Clockwise			| 4     | White          |
 	| CounterClockwise	| 4     | White          |
 

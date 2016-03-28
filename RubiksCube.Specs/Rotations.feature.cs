@@ -148,12 +148,12 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Left Layer Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Orange", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
         public virtual void LeftLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)

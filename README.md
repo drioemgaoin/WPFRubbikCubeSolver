@@ -12,25 +12,23 @@ Features
 --  
 * 3D rendering
 * Keyboard controls
-  * Numpad 7: rotate the first row left
-  * Numpad 9: rotate the first row right
-  * Numpad 4: rotate the second row left
-  * Numpad 6: rotate the second row right
-  * Numpad 1: rotate the third row left
-  * Numpad 3: rotate the third row right
+  * Ctrl+M: Mixup the cube
+  * L: rotate the left face
+  * Shift+L: rotate the left face counter-clockwise
+  * R: rotate the left face
+  * Shift+R: rotate the left face counter-clockwise
+  * U: rotate the up face
+  * Shift+U: rotate the up face counter-clockwise
+  * D: rotate the down face
+  * Shift+D: rotate the down face counter-clockwise
+  * F: rotate the front face
+  * Shift+F: rotate the front face counter-clockwise
+  * B: rotate the back face
+  * Shift+B: rotate the back face counter-clockwise
   * X: X axis rotation
   * Shift+X: X axis counter-clockwise rotation
   * Y: Y axis rotation
   * Shift+Y: Y axis counter-clockwise rotation
   * Z: Z axis rotation
   * Shift+Z: Z axis counter-clockwise rotation
-  * Q: rotate the first column up
-  * Z: rotate the first column down
-  * W: rotate the second column up
-  * X: rotate the second column down
-  * E: rotate the third column up
-  * C: rotate the third column down
-  * Ctrl+M: Mixup the cube
-* Mouse rotations (WIP)
-* Random facies scrambling
 * Automatic solving algorithm (WIP)

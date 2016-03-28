@@ -10,8 +10,8 @@ namespace RubiksCube.Core.Tests.Model
         [TestCase(FaceType.Front, Color.White)]
         [TestCase(FaceType.Left, Color.Green)]
         [TestCase(FaceType.Right, Color.Blue)]
-        [TestCase(FaceType.Top, Color.Orange)]
-        [TestCase(FaceType.Bottom, Color.Red)]
+        [TestCase(FaceType.Up, Color.Orange)]
+        [TestCase(FaceType.Down, Color.Red)]
         [TestCase(FaceType.Back, Color.Yellow)]
         public void GivenFactory_WhenCreateFace_ThenReturnsExpectedTypeAndColor(FaceType faceType, Color color)
         {

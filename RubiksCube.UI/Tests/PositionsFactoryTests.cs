@@ -38,7 +38,7 @@ namespace RubiksCube.UI.Tests
         {
             var subject = fixture.Create<PositionsFactory>();
 
-            var positions = subject.CreatePositions(FaceType.Bottom);
+            var positions = subject.CreatePositions(FaceType.Down);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("-1 0 -1  -1 0 0  -1 1 -1  -1 1 0"));
             Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("-1 0 0  -1 0 1  -1 1 0  -1 1 1"));
@@ -92,7 +92,7 @@ namespace RubiksCube.UI.Tests
         {
             var subject = fixture.Create<PositionsFactory>();
 
-            var positions = subject.CreatePositions(FaceType.Top);
+            var positions = subject.CreatePositions(FaceType.Up);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("2 0 0  2 0 -1  2 1 0  2 1 -1"));
             Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("2 0 -1  2 0 -2  2 1 -1  2 1 -2"));

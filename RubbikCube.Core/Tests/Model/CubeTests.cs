@@ -20,10 +20,10 @@ namespace RubiksCube.Core.Tests.Model
             Assert.That(cube[FaceType.Right].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
             Assert.That(cube[FaceType.Back].Type, Is.EqualTo(FaceType.Back));
             Assert.That(cube[FaceType.Back].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
-            Assert.That(cube[FaceType.Bottom].Type, Is.EqualTo(FaceType.Bottom));
-            Assert.That(cube[FaceType.Bottom].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
-            Assert.That(cube[FaceType.Top].Type, Is.EqualTo(FaceType.Top));
-            Assert.That(cube[FaceType.Top].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Down].Type, Is.EqualTo(FaceType.Down));
+            Assert.That(cube[FaceType.Down].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
+            Assert.That(cube[FaceType.Up].Type, Is.EqualTo(FaceType.Up));
+            Assert.That(cube[FaceType.Up].Facies.Count, Is.EqualTo(ExpectedFaciesByFace));
         }       
     }
 }

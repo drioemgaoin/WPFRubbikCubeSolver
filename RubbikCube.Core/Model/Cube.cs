@@ -12,9 +12,9 @@ namespace RubiksCube.Core.Model
         public Cube()
         {
             var faceFactory = new FaceFactory();
-            faces[FaceType.Top] = faceFactory.CreateFace(FaceType.Top);
+            faces[FaceType.Up] = faceFactory.CreateFace(FaceType.Up);
             faces[FaceType.Back] = faceFactory.CreateFace(FaceType.Back);
-            faces[FaceType.Bottom] = faceFactory.CreateFace(FaceType.Bottom);
+            faces[FaceType.Down] = faceFactory.CreateFace(FaceType.Down);
             faces[FaceType.Front] = faceFactory.CreateFace(FaceType.Front);
             faces[FaceType.Left] = faceFactory.CreateFace(FaceType.Left);
             faces[FaceType.Right] = faceFactory.CreateFace(FaceType.Right);

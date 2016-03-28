@@ -15,9 +15,9 @@ namespace RubiksCube.Core.Model
             {
                 case FaceType.Front:
                     return CreateFace(type, Color.White);
-                case FaceType.Top:
+                case FaceType.Up:
                     return CreateFace(type, Color.Orange);
-                case FaceType.Bottom:
+                case FaceType.Down:
                     return CreateFace(type, Color.Red);
                 case FaceType.Left:
                     return CreateFace(type, Color.Green);

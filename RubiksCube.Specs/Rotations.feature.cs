@@ -97,7 +97,7 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Top Layer Rotations")]
+        [NUnit.Framework.DescriptionAttribute("Up Layer Rotations")]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Blue", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
@@ -108,7 +108,7 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
         public virtual void TopLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Top Layer Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Up Layer Rotations", exampleTags);
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 28
@@ -122,7 +122,7 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Bottom Layer Rotations")]
+        [NUnit.Framework.DescriptionAttribute("Down Layer Rotations")]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Blue", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
@@ -133,7 +133,7 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
         public virtual void BottomLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Bottom Layer Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Down Layer Rotations", exampleTags);
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44

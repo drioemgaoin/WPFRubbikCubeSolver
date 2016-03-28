@@ -9,7 +9,7 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Top, FaceType.Back, FaceType.Bottom };
+        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {

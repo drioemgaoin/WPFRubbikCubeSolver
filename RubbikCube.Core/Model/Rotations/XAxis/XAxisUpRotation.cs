@@ -11,16 +11,16 @@
             switch (faceType)
             {
                 case FaceType.Front:
-                    cube[FaceType.Top].Add(facie);
+                    cube[FaceType.Up].Add(facie);
                     break;
-                case FaceType.Top:
+                case FaceType.Up:
                     FlipPosition(facie);
                     cube[FaceType.Back].Add(facie);
                     break;
                 case FaceType.Back:
-                    cube[FaceType.Bottom].Add(facie);
+                    cube[FaceType.Down].Add(facie);
                     break;
-                case FaceType.Bottom:
+                case FaceType.Down:
                     FlipPosition(facie);
                     cube[FaceType.Front].Add(facie);
                     break;

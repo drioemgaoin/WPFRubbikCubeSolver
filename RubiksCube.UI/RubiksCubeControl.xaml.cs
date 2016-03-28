@@ -101,6 +101,18 @@ namespace RubiksCube.UI
             Rotate(info);
         }
 
+        public void RotateBackLayerLeft()
+        {
+            var info = new RotationInfo(LayerType.Third, AxisType.Z, false);
+            Rotate(info);
+        }
+
+        public void RotateBackLayerRight()
+        {
+            var info = new RotationInfo(LayerType.Third, AxisType.Z, true);
+            Rotate(info);
+        }
+
         public void RotateFaceLeft()
         {
             var info = new RotationInfo(LayerType.All, AxisType.Y, false);
@@ -197,8 +209,8 @@ namespace RubiksCube.UI
             InitializeFace(cube[FaceType.Front]);
             InitializeFace(cube[FaceType.Left]);
             InitializeFace(cube[FaceType.Right]);
-            InitializeFace(cube[FaceType.Bottom]);
-            InitializeFace(cube[FaceType.Top]);
+            InitializeFace(cube[FaceType.Down]);
+            InitializeFace(cube[FaceType.Up]);
             InitializeFace(cube[FaceType.Back]);
         }
 

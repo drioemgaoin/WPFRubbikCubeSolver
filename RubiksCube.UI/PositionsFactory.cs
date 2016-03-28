@@ -16,7 +16,7 @@ namespace RubiksCube.UI
             {
                 case FaceType.Front:
                     return CreateFrontPositions();
-                case FaceType.Top:
+                case FaceType.Up:
                     return CreateTopPositions();
                 case FaceType.Back:
                     return CreateBackPositions();
@@ -24,7 +24,7 @@ namespace RubiksCube.UI
                     return CreateLeftPositions();
                 case FaceType.Right:
                     return CreateRightPositions();
-                case FaceType.Bottom:
+                case FaceType.Down:
                     return CreateBottomPositions();
             }
 

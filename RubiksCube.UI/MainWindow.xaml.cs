@@ -76,6 +76,14 @@ namespace RubiksCube.UI
             {
                 RubiksCube.RotateFrontLayerRight();
             }
+            else if (Keyboard.IsKeyDown(Key.T))
+            {
+                RubiksCube.RotateBackLayerLeft();
+            }
+            else if (Keyboard.IsKeyDown(Key.Y))
+            {
+                RubiksCube.RotateBackLayerRight();
+            }
             else
             {
                 return false;

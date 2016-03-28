@@ -19,12 +19,16 @@ namespace RubiksCube.Core.Model.Rotations
             Times = times;
         }
 
-        public RotationInfo(LayerType layer, AxisType axis, bool clockwise)
+        public RotationInfo(LayerType layer, AxisType axis, bool clockwise) : this(layer, axis, clockwise, 1)
+        {
+        }
+
+        public RotationInfo(LayerType layer, AxisType axis, bool clockwise, uint times)
         {
             Layer = layer;
             Axis = axis;
             Clockwise = clockwise;
-            Times = 1;
+            Times = times;
         }
 
         public LayerType Layer { get; }

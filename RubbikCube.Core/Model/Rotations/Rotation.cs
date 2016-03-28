@@ -7,10 +7,11 @@ namespace RubiksCube.Core.Model.Rotations
     {
         private readonly uint times;
 
-        protected Rotation(double angle, uint times)
+        protected Rotation(LayerType layerType, double angle, uint times)
         {
             this.times = times;
 
+            LayerType = layerType;
             Angle = angle;
             Moves = new List<List<Facie>>();
         }
@@ -19,9 +20,9 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected double Angle { get; }
 
-        protected abstract IEnumerable<FaceType> MovingFaces { get; }
+        protected LayerType LayerType { get; }
 
-        protected abstract LayerType LayerType { get; }
+        protected abstract IEnumerable<FaceType> MovingFaces { get; }
 
         public abstract double[,] CreateRotationMatrix(double angle);
 

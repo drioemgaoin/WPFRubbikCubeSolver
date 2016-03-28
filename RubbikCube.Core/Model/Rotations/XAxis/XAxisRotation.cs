@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    public abstract class XAxisRotation : Rotation
+    internal abstract class XAxisRotation : Rotation
     {
-        protected XAxisRotation(double angle, uint times) : base(angle, times)
+        protected XAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 

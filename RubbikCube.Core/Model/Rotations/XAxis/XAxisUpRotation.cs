@@ -1,16 +1,14 @@
 ﻿namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    public class RightLayerUpRotation : XAxisRotation
+    internal class XAxisUpRotation : XAxisRotation
     {
-        public RightLayerUpRotation(double angle, uint times) : base(angle, times)
+        public XAxisUpRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
-        protected override LayerType LayerType => LayerType.Third;
-
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            switch(faceType)
+            switch (faceType)
             {
                 case FaceType.Front:
                     cube[FaceType.Top].Add(facie);
@@ -27,6 +25,6 @@
                     cube[FaceType.Front].Add(facie);
                     break;
             }
-        }        
+        }
     }
 }

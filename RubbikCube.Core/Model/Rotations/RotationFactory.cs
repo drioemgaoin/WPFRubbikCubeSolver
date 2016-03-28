@@ -11,51 +11,18 @@ namespace RubiksCube.Core.Model.Rotations
     {
         private const double Angle = Math.PI / 2;
 
-        protected abstract TRotation CreateFaceCounterClockwiseRotation(double angle, uint times);
+        protected abstract TRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times);
 
-        protected abstract TRotation CreateFaceClockwiseRotation(double angle, uint times);
-
-        protected abstract TRotation CreateThirdLayerCounterClockwiseRotation(double angle, uint times);
-
-        protected abstract TRotation CreateThirdLayerClockwiseRotation(double angle, uint times);
-
-        protected abstract TRotation CreateFirstLayerCounterClockwiseRotation(double angle, uint times);
-
-        protected abstract TRotation CreateFirstLayerClockwiseRotation(double angle, uint times);
+        protected abstract TRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times);
 
         public Rotation CreateRotation(RotationInfo info)
         {
-            if (info.Layer == LayerType.First)
+            if (info.Clockwise)
             {
-                if (info.Clockwise)
-                {
-                    return CreateFirstLayerClockwiseRotation(Angle, info.Times);
-                }
-
-                return CreateFirstLayerCounterClockwiseRotation(-Angle, info.Times);
+                return CreateClockwiseRotation(info.Layer, Angle, info.Times);
             }
 
-            if (info.Layer == LayerType.Third)
-            {
-                if (info.Clockwise)
-                {
-                    return CreateThirdLayerClockwiseRotation(Angle, info.Times);
-                }
-
-                return CreateThirdLayerCounterClockwiseRotation(-Angle, info.Times);
-            }
-
-            if (info.Layer == LayerType.All)
-            {
-                if (info.Clockwise)
-                {
-                    return CreateFaceClockwiseRotation(Angle, info.Times);
-                }
-
-                return CreateFaceCounterClockwiseRotation(-Angle, info.Times);
-            }
-
-            throw new NotImplementedException(info + " is not implemented.");
+            return CreateCounterClockwiseRotation(info.Layer, -Angle, info.Times);
         }        
     }
 }

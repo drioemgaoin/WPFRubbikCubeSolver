@@ -1,12 +1,10 @@
 ﻿namespace RubiksCube.Core.Model.Rotations.YAxis
 {
-    public class BottomLayerRightRotation : YAxisRotation
+    internal class YAxisRightRotation : YAxisRotation
     {
-        public BottomLayerRightRotation(double angle, uint times) : base(angle, times)
+        public YAxisRightRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
-
-        protected override LayerType LayerType => LayerType.Third;
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {

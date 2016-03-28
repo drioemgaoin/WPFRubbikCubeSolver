@@ -1,28 +1,28 @@
-﻿namespace RubiksCube.Core.Model.Rotations.ZAxis
+﻿namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    public class FrontLayerLeftRotation : ZAxisRotation
+    internal class XAxisDownRotation : XAxisRotation
     {
-        public FrontLayerLeftRotation(double angle, uint times) : base(angle, times)
+        public XAxisDownRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
-
-        protected override LayerType LayerType => LayerType.First;
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
             switch (faceType)
             {
-                case FaceType.Left:
+                case FaceType.Front:
+                    FlipPosition(facie);
                     cube[FaceType.Bottom].Add(facie);
                     break;
                 case FaceType.Top:
                     cube[FaceType.Front].Add(facie);
                     break;
-                case FaceType.Right:
+                case FaceType.Back:
+                    FlipPosition(facie);
                     cube[FaceType.Top].Add(facie);
                     break;
                 case FaceType.Bottom:
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Back].Add(facie);
                     break;
             }
         }

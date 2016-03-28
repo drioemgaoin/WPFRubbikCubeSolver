@@ -5,7 +5,7 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
     public abstract class ZAxisRotation : Rotation
     {
-        protected ZAxisRotation(double angle, uint times) : base(angle, times)
+        protected ZAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 

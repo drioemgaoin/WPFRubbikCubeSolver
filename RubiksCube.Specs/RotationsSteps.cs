@@ -8,7 +8,6 @@ namespace RubiksCube.Specs
     [Binding]
     public class RotationsSteps
     {
-        private readonly IRotationFactory factory = new RotationFactory();
         private Cube cube;
 
         [Given(@"a cube with a visible ""(.*)"" face")]
@@ -20,7 +19,11 @@ namespace RubiksCube.Specs
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var rotation = factory.CreateFaceRotation(direction, times);
+            var axis = direction == FaceMove.Down && direction == FaceMove.Up ? AxisType.X : AxisType.Y;
+            var clockwise = direction == FaceMove.Up && direction == FaceMove.Right;
+            var rotationInfo = new RotationInfo(LayerType.All, axis, clockwise);
+            var rotation = rotationInfo.CreateRotation();
+
             cube.Rotate(rotation);
         }
 
@@ -37,7 +40,7 @@ namespace RubiksCube.Specs
         public void WhenTurnsTheLayerTimes(string layer, char axis, string way, uint times)
         {
             var info = new RotationInfo(layer, axis, way, times);
-            var rotation = factory.CreateLayerRotation(info);
+            var rotation = info.CreateRotation();
 
             cube.Rotate(rotation);
         }

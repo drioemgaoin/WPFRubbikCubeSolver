@@ -64,11 +64,11 @@ namespace RubiksCube.UI
             }
             else if (Keyboard.IsKeyDown(Key.E))
             {
-                RubiksCube.RotateFirstZLayerCounterClockwise();
+                RubiksCube.RotateFrontLayerCounterClockwise();
             }
             else if (Keyboard.IsKeyDown(Key.R))
             {
-                RubiksCube.RotateFirstZLayerClockwise();
+                RubiksCube.RotateFrontLayerClockwise();
             }
             else if (Keyboard.IsKeyDown(Key.M))
             {

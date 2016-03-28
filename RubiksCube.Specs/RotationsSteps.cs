@@ -43,7 +43,7 @@ namespace RubiksCube.Specs
         {
             var info = new RotationInfo(layer, axis, way, times);
             var rotation = info.CreateRotation();
-
+                
             cube.Rotate(rotation);
         }
 

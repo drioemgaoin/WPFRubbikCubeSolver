@@ -41,61 +41,61 @@ namespace RubiksCube.UI
             movementEngine.Start();    
         }
 
-        public void RotateThirdYLayerCounterClockwise()
+        public void RotateBottomLayerLeft()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateThirdYLayerClockwise()
+        public void RotateBottomLayerRight()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateFirstYLayerCounterClockwise()
+        public void RotateTopLayerLeft()
         {
             var info = new RotationInfo(LayerType.First, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateFirstYLayerClockwise()
+        public void RotateTopLayerRight()
         {
             var info = new RotationInfo(LayerType.First, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateFirstXLayerCounterClockwise()
+        public void RotateLeftLayerDown()
         {
             var info = new RotationInfo(LayerType.First, AxisType.X, false);
             Rotate(info);
         }
 
-        public void RotateFirstXLayerClockwise()
+        public void RotateLeftLayerUp()
         {
             var info = new RotationInfo(LayerType.First, AxisType.X, true);
             Rotate(info);
         }
 
-        public void RotateThirdXLayerCounterClockwise()
+        public void RotateRightLayerDown()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.X, false);
             Rotate(info);
         }
 
-        public void RotateThirdXLayerClockwise()
+        public void RotateRightLayerUp()
         {
             var info = new RotationInfo(LayerType.Third, AxisType.X, true);
             Rotate(info);
         }
 
-        public void RotateFrontLayerCounterClockwise()
+        public void RotateFrontLayerLeft()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.Z, false);
+            var info = new RotationInfo(LayerType.First, AxisType.Z, false);
             Rotate(info);
         }
 
-        public void RotateFrontLayerClockwise()
+        public void RotateFrontLayerRight()
         {
             var info = new RotationInfo(LayerType.First, AxisType.Z, true);
             Rotate(info);
@@ -129,10 +129,14 @@ namespace RubiksCube.UI
         {
             var actions = new Action[]
             {
-                () => RotateThirdYLayerCounterClockwise(),
-                () => RotateFirstYLayerCounterClockwise(),
-                () => RotateFirstXLayerCounterClockwise(),
-                () => RotateThirdXLayerCounterClockwise()
+                () => RotateTopLayerRight(),
+                () => RotateTopLayerLeft(),
+                () => RotateBottomLayerRight(),
+                () => RotateBottomLayerLeft(),
+                () => RotateLeftLayerUp(),
+                () => RotateLeftLayerDown(),
+                () => RotateRightLayerUp(),
+                () => RotateRightLayerDown()
             };
 
             var random = new Random();

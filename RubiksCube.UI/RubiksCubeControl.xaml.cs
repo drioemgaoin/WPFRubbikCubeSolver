@@ -137,6 +137,18 @@ namespace RubiksCube.UI
             Rotate(info);
         }
 
+        public void RotateUpFaceRight()
+        {
+            var info = new RotationInfo(LayerType.All, AxisType.Z, true);
+            Rotate(info);
+        }
+
+        public void RotateUpFaceLeft()
+        {
+            var info = new RotationInfo(LayerType.All, AxisType.Z, false);
+            Rotate(info);
+        }
+
         public void MixUp()
         {
             var actions = new Action[]

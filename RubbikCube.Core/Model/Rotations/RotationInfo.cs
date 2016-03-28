@@ -15,7 +15,7 @@ namespace RubiksCube.Core.Model.Rotations
 
             Layer = (LayerType)Enum.Parse(typeof(LayerType), layer);
             Axis = (AxisType)Enum.Parse(typeof(AxisType), axis.ToString()); 
-            Clockwise = way == LayerMove.Clockwise;
+            Clockwise = way == Move.Layer.Clockwise;
             Times = times;
         }
 

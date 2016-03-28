@@ -41,29 +41,29 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected static void FlipPosition(Facie facie)
         {
-            if (facie.FaciePosition == FaciePositionType.LeftTop)
+            if (facie.FaciePosition == FaciePositionType.LeftUp)
             {
-                facie.FaciePosition = FaciePositionType.LeftBottom;
+                facie.FaciePosition = FaciePositionType.LeftDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.LeftBottom)
+            else if (facie.FaciePosition == FaciePositionType.LeftDown)
             {
-                facie.FaciePosition = FaciePositionType.LeftTop;
+                facie.FaciePosition = FaciePositionType.LeftUp;
             }
-            else if (facie.FaciePosition == FaciePositionType.MiddleTop)
+            else if (facie.FaciePosition == FaciePositionType.MiddleUp)
             {
-                facie.FaciePosition = FaciePositionType.MiddleBottom;
+                facie.FaciePosition = FaciePositionType.MiddleDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.MiddleBottom)
+            else if (facie.FaciePosition == FaciePositionType.MiddleDown)
             {
-                facie.FaciePosition = FaciePositionType.MiddleTop;
+                facie.FaciePosition = FaciePositionType.MiddleUp;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightTop)
+            else if (facie.FaciePosition == FaciePositionType.RightUp)
             {
-                facie.FaciePosition = FaciePositionType.RightBottom;
+                facie.FaciePosition = FaciePositionType.RightDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightBottom)
+            else if (facie.FaciePosition == FaciePositionType.RightDown)
             {
-                facie.FaciePosition = FaciePositionType.RightTop;
+                facie.FaciePosition = FaciePositionType.RightUp;
             }
         }
     }

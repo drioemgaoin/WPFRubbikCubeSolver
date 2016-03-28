@@ -1,8 +1,8 @@
-﻿namespace RubiksCube.Core.Model.Rotations.ZAxis
+﻿namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    internal class ZAxisLeftRotation : ZAxisRotation
+    internal class XAxisCounterClockwise : XAxisRotation
     {
-        public ZAxisLeftRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public XAxisCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
@@ -10,17 +10,19 @@
         {
             switch (faceType)
             {
-                case FaceType.Left:
+                case FaceType.Front:
+                    FlipPosition(facie);
                     cube[FaceType.Down].Add(facie);
                     break;
                 case FaceType.Up:
                     cube[FaceType.Front].Add(facie);
                     break;
-                case FaceType.Right:
+                case FaceType.Back:
+                    FlipPosition(facie);
                     cube[FaceType.Up].Add(facie);
                     break;
                 case FaceType.Down:
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Back].Add(facie);
                     break;
             }
         }

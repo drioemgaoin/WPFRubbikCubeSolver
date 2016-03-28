@@ -41,13 +41,13 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
 
         protected static void FlipPosition(Facie facie)
         {
-            if (facie.FaciePosition == FaciePositionType.LeftTop)
+            if (facie.FaciePosition == FaciePositionType.LeftUp)
             {
-                facie.FaciePosition = FaciePositionType.RightTop;
+                facie.FaciePosition = FaciePositionType.RightUp;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightTop)
+            else if (facie.FaciePosition == FaciePositionType.RightUp)
             {
-                facie.FaciePosition = FaciePositionType.LeftTop;
+                facie.FaciePosition = FaciePositionType.LeftUp;
             }
             else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
             {
@@ -57,13 +57,13 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
             {
                 facie.FaciePosition = FaciePositionType.LeftMiddle;
             }
-            else if (facie.FaciePosition == FaciePositionType.LeftBottom)
+            else if (facie.FaciePosition == FaciePositionType.LeftDown)
             {
-                facie.FaciePosition = FaciePositionType.RightBottom;
+                facie.FaciePosition = FaciePositionType.RightDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightBottom)
+            else if (facie.FaciePosition == FaciePositionType.RightDown)
             {
-                facie.FaciePosition = FaciePositionType.LeftBottom;
+                facie.FaciePosition = FaciePositionType.LeftDown;
             }
         }
     }

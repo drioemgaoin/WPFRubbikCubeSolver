@@ -9,7 +9,7 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down };
+        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Left, FaceType.Up, FaceType.Right, FaceType.Down };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
@@ -35,19 +35,19 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
             matrix[3, 1] = 0;
             matrix[3, 2] = 0;
             matrix[3, 3] = 1;
-
+                
             return matrix;
         }
 
         protected static void FlipPosition(Facie facie)
         {
-            if (facie.FaciePosition == FaciePositionType.LeftTop)
+            if (facie.FaciePosition == FaciePositionType.LeftUp)
             {
-                facie.FaciePosition = FaciePositionType.RightTop;
+                facie.FaciePosition = FaciePositionType.RightDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightTop)
+            else if (facie.FaciePosition == FaciePositionType.RightDown)
             {
-                facie.FaciePosition = FaciePositionType.LeftTop;
+                facie.FaciePosition = FaciePositionType.LeftUp;
             }
             else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
             {
@@ -57,13 +57,13 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
             {
                 facie.FaciePosition = FaciePositionType.LeftMiddle;
             }
-            else if (facie.FaciePosition == FaciePositionType.LeftBottom)
+            else if (facie.FaciePosition == FaciePositionType.LeftDown)
             {
-                facie.FaciePosition = FaciePositionType.RightBottom;
+                facie.FaciePosition = FaciePositionType.RightUp;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightBottom)
+            else if (facie.FaciePosition == FaciePositionType.RightUp)
             {
-                facie.FaciePosition = FaciePositionType.LeftBottom;
+                facie.FaciePosition = FaciePositionType.LeftDown;
             }
         }
     }

@@ -9,38 +9,38 @@ namespace RubiksCube.UI
         {
             InitializeComponent();
 
-            KeyDown += OnKeyUp;
+            KeyDown += OnKeyDown;
         }
 
-        private void OnKeyUp(object sender, KeyEventArgs e)
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (TryHandleFaceRotations())
+            if (TryHandleFaceRotations(e.Key))
             {
                 return;
             }
 
-            if (TryHandleYAxisRotation())
+            if (TryHandleYAxisRotation(e.Key))
             {
                 return;
             }
 
-            if (TryHandleXAxisRotation())
+            if (TryHandleXAxisRotation(e.Key))
             {
                 return;
             }
 
-            if (TryHandleZAxisRotation())
+            if (TryHandleZAxisRotation(e.Key))
             {
                 return;
             }
 
-            if (Keyboard.IsKeyDown(Key.M))
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) && e.Key == Key.M)
             {
                 RubiksCube.MixUp();
             }
         }
 
-        private bool TryHandleXAxisRotation()
+        private bool TryHandleXAxisRotation(Key key)
         {
             if (Keyboard.IsKeyDown(Key.Q))
             {
@@ -66,7 +66,7 @@ namespace RubiksCube.UI
             return true;
         }
 
-        private bool TryHandleZAxisRotation()
+        private bool TryHandleZAxisRotation(Key key)
         {
             if (Keyboard.IsKeyDown(Key.E))
             {
@@ -92,7 +92,7 @@ namespace RubiksCube.UI
             return true;
         }
 
-        private bool TryHandleYAxisRotation()
+        private bool TryHandleYAxisRotation(Key key)
         {
             if (Keyboard.IsKeyDown(Key.NumPad7))
             {
@@ -118,23 +118,31 @@ namespace RubiksCube.UI
             return true;
         }
 
-        private bool TryHandleFaceRotations()
+        private bool TryHandleFaceRotations(Key key)
         {
-            if (Keyboard.IsKeyDown(Key.Left))
+            if (Keyboard.IsKeyDown(Key.LeftShift) && key == Key.Y)
             {
                 RubiksCube.RotateFaceLeft();
             }
-            else if (Keyboard.IsKeyDown(Key.Right))
+            else if (key == Key.Y)
             {
                 RubiksCube.RotateFaceRight();
             }
-            else if (Keyboard.IsKeyDown(Key.Up))
+            else if (Keyboard.IsKeyDown(Key.LeftShift) && key == Key.X)
+            {
+                RubiksCube.RotateFaceDown();
+            }
+            else if (key == Key.X)
             {
                 RubiksCube.RotateFaceUp();
             }
-            else if (Keyboard.IsKeyDown(Key.Down))
+            else if (Keyboard.IsKeyDown(Key.LeftShift) && key == Key.Z)
             {
-                RubiksCube.RotateFaceDown();
+                RubiksCube.RotateUpFaceLeft();
+            }
+            else if (key == Key.Z)
+            {
+                RubiksCube.RotateUpFaceRight();
             }
             else
             {

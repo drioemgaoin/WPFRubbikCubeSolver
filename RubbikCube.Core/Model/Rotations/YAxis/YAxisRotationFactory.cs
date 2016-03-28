@@ -4,12 +4,12 @@
     {
         protected override YAxisRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times)
         {
-            return new YAxisRightRotation(layerType, angle, times);
+            return new YAxisClockwise(layerType, angle, times);
         }
 
         protected override YAxisRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times)
         {
-            return new YAxisLeftRotation(layerType, angle, times);
+            return new YAxisCounterClockwise(layerType, angle, times);
         }
     }
 }

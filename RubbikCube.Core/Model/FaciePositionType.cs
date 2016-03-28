@@ -2,24 +2,23 @@
 {
     public enum FaciePositionType
     {
-        None = 0,
         [Rotation(LayerType.Second, LayerType.Second)]
         Middle,
         [Rotation(LayerType.First, LayerType.Second)]
-        MiddleTop,
+        MiddleUp,
         [Rotation(LayerType.Third, LayerType.Second)]
-        MiddleBottom,
+        MiddleDown,
         [Rotation(LayerType.Second, LayerType.First)]
         LeftMiddle,
         [Rotation(LayerType.First, LayerType.First)]
-        LeftTop,
+        LeftUp,
         [Rotation(LayerType.Third, LayerType.First)]
-        LeftBottom,
+        LeftDown,
         [Rotation(LayerType.Second, LayerType.Third)]
         RightMiddle,
         [Rotation(LayerType.First, LayerType.Third)]
-        RightTop,
+        RightUp,
         [Rotation(LayerType.Third, LayerType.Third)]
-        RightBottom
+        RightDown
     }
 }

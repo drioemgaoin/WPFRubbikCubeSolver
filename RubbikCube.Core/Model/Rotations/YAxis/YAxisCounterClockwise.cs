@@ -1,8 +1,8 @@
 ﻿namespace RubiksCube.Core.Model.Rotations.YAxis
 {
-    internal class YAxisRightRotation : YAxisRotation
+    internal class YAxisCounterClockwise : YAxisRotation
     {
-        public YAxisRightRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public YAxisCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
@@ -11,18 +11,18 @@
             switch (faceType)
             {
                 case FaceType.Front:
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Left].Add(facie);
                     break;
                 case FaceType.Right:
-                    FlipPosition(facie);
-                    cube[FaceType.Back].Add(facie);
+                    cube[FaceType.Front].Add(facie);
                     break;
                 case FaceType.Back:
                     FlipPosition(facie);
-                    cube[FaceType.Left].Add(facie);
+                    cube[FaceType.Right].Add(facie);
                     break;
                 case FaceType.Left:
-                    cube[FaceType.Front].Add(facie);
+                    FlipPosition(facie);
+                    cube[FaceType.Back].Add(facie);
                     break;
             }
         }

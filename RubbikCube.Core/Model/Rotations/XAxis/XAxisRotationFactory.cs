@@ -4,12 +4,12 @@
     {
         protected override XAxisRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times)
         {
-            return new XAxisUpRotation(layerType, angle, times);
+            return new XAxisClockwise(layerType, angle, times);
         }
 
         protected override XAxisRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times)
         {
-            return new XAxisDownRotation(layerType, angle, times);
+            return new XAxisCounterClockwise(layerType, angle, times);
         }
     }
 }

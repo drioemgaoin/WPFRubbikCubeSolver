@@ -23,14 +23,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Left);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("0 2 0  1 2 0  0 2 -1  1 2 -1"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("1 2 0  2 2 0  1 2 -1  2 2 -1"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("-1 2 0  0 2 0  -1 2 -1  0 2 -1"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("1 2 0  2 2 0  1 2 -1  2 2 -1"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("-1 2 0  0 2 0  -1 2 -1  0 2 -1"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("0 2 1  1 2 1  0 2 0  1 2 0"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("1 2 1  2 2 1  1 2 0  2 2 0"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("-1 2 1  0 2 1  -1 2 0  0 2 0"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("1 2 1  2 2 1  1 2 0  2 2 0"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("-1 2 1  0 2 1  -1 2 0  0 2 0"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("0 2 -1  1 2 -1  0 2 -2  1 2 -2"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("1 2 -1  2 2 -1  1 2 -2  2 2 -2"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("-1 2 -1  0 2 -1  -1 2 -2  0 2 -2"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("1 2 -1  2 2 -1  1 2 -2  2 2 -2"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("-1 2 -1  0 2 -1  -1 2 -2  0 2 -2"));
         }
 
         [Test]
@@ -41,14 +41,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Down);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("-1 0 -1  -1 0 0  -1 1 -1  -1 1 0"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("-1 0 0  -1 0 1  -1 1 0  -1 1 1"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("-1 0 -2  -1 0 -1  -1 1 -2  -1 1 -1"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("-1 0 0  -1 0 1  -1 1 0  -1 1 1"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("-1 0 -2  -1 0 -1  -1 1 -2  -1 1 -1"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("-1 -1 -1  -1 -1 0  -1 0 -1  -1 0 0"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("-1 -1 0  -1 -1 1  -1 0 0  -1 0 1"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("-1 -1 -2  -1 -1 -1  -1 0 -2  -1 0 -1"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("-1 -1 0  -1 -1 1  -1 0 0  -1 0 1"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("-1 -1 -2  -1 -1 -1  -1 0 -2  -1 0 -1"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("-1 1 -1  -1 1 0  -1 2 -1  -1 2 0"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("-1 1 0  -1 1 1  -1 2 0  -1 2 1"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("-1 1 -2  -1 1 -1  -1 2 -2  -1 2 -1"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("-1 1 0  -1 1 1  -1 2 0  -1 2 1"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("-1 1 -2  -1 1 -1  -1 2 -2  -1 2 -1"));
         }
 
         [Test]
@@ -59,14 +59,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Back);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("1 0 -2  0 0 -2  1 1 -2  0 1 -2"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("2 0 -2  1 0 -2  2 1 -2  1 1 -2"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("0 0 -2  -1 0 -2  0 1 -2  -1 1 -2"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("2 0 -2  1 0 -2  2 1 -2  1 1 -2"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("0 0 -2  -1 0 -2  0 1 -2  -1 1 -2"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("1 -1 -2  0 -1 -2  1 0 -2  0 0 -2"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("2 -1 -2  1 -1 -2  2 0 -2  1 0 -2"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("0 -1 -2  -1 -1 -2  0 0 -2  -1 0 -2"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("2 -1 -2  1 -1 -2  2 0 -2  1 0 -2"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("0 -1 -2  -1 -1 -2  0 0 -2  -1 0 -2"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("1 1 -2  0 1 -2  1 2 -2  0 2 -2"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("2 1 -2  1 1 -2  2 2 -2  1 2 -2"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("0 1 -2  -1 1 -2  0 2 -2  -1 2 -2"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("2 1 -2  1 1 -2  2 2 -2  1 2 -2"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("0 1 -2  -1 1 -2  0 2 -2  -1 2 -2"));
         }
 
         [Test]
@@ -77,14 +77,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Right);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("0 -1 -1  1 -1 -1  0 -1 0  1 -1 0"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("1 -1 -1  2 -1 -1  1 -1 0  2 -1 0"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("-1 -1 -1  0 -1 -1  -1 -1 0  0 -1 0"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("1 -1 -1  2 -1 -1  1 -1 0  2 -1 0"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("-1 -1 -1  0 -1 -1  -1 -1 0  0 -1 0"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("0 -1 -2  1 -1 -2  0 -1 -1  1 -1 -1"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("1 -1 -2  2 -1 -2  1 -1 -1  2 -1 -1"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("-1 -1 -2  0 -1 -2  -1 -1 -1  0 -1 -1"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("1 -1 -2  2 -1 -2  1 -1 -1  2 -1 -1"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("-1 -1 -2  0 -1 -2  -1 -1 -1  0 -1 -1"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("0 -1 0  1 -1 0  0 -1 1  1 -1 1"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("1 -1 0  2 -1 0  1 -1 1  2 -1 1"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("-1 -1 0  0 -1 0  -1 -1 1  0 -1 1"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("1 -1 0  2 -1 0  1 -1 1  2 -1 1"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("-1 -1 0  0 -1 0  -1 -1 1  0 -1 1"));
         }
 
         [Test]
@@ -95,14 +95,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Up);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("2 0 0  2 0 -1  2 1 0  2 1 -1"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("2 0 -1  2 0 -2  2 1 -1  2 1 -2"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("2 0 1  2 0 0  2 1 1  2 1 0"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("2 0 -1  2 0 -2  2 1 -1  2 1 -2"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("2 0 1  2 0 0  2 1 1  2 1 0"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("2 -1 0  2 -1 -1  2 0 0  2 0 -1"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("2 -1 -1  2 -1 -2  2 0 -1  2 0 -2"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("2 -1 1  2 -1 0  2 0 1  2 0 0"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("2 -1 -1  2 -1 -2  2 0 -1  2 0 -2"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("2 -1 1  2 -1 0  2 0 1  2 0 0"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("2 1 0  2 1 -1  2 2 0  2 2 -1"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("2 1 -1  2 1 -2  2 2 -1  2 2 -2"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("2 1 1  2 1 0  2 2 1  2 2 0"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("2 1 -1  2 1 -2  2 2 -1  2 2 -2"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("2 1 1  2 1 0  2 2 1  2 2 0"));
         }
 
         [Test]
@@ -113,14 +113,14 @@ namespace RubiksCube.UI.Tests
             var positions = subject.CreatePositions(FaceType.Front);
 
             Assert.That(positions[FaciePositionType.Middle], Is.EqualTo("0 0 1  1 0 1  0 1 1  1 1 1"));
-            Assert.That(positions[FaciePositionType.MiddleTop], Is.EqualTo("1 0 1  2 0 1  1 1 1  2 1 1"));
-            Assert.That(positions[FaciePositionType.MiddleBottom], Is.EqualTo("-1 0 1  0 0 1  -1 1 1  0 1 1"));
+            Assert.That(positions[FaciePositionType.MiddleUp], Is.EqualTo("1 0 1  2 0 1  1 1 1  2 1 1"));
+            Assert.That(positions[FaciePositionType.MiddleDown], Is.EqualTo("-1 0 1  0 0 1  -1 1 1  0 1 1"));
             Assert.That(positions[FaciePositionType.RightMiddle], Is.EqualTo("0 -1 1  1 -1 1  0 0 1  1 0 1"));
-            Assert.That(positions[FaciePositionType.RightTop], Is.EqualTo("1 -1 1  2 -1 1  1 0 1  2 0 1"));
-            Assert.That(positions[FaciePositionType.RightBottom], Is.EqualTo("-1 -1 1  0 -1 1  -1 0 1  0 0 1"));
+            Assert.That(positions[FaciePositionType.RightUp], Is.EqualTo("1 -1 1  2 -1 1  1 0 1  2 0 1"));
+            Assert.That(positions[FaciePositionType.RightDown], Is.EqualTo("-1 -1 1  0 -1 1  -1 0 1  0 0 1"));
             Assert.That(positions[FaciePositionType.LeftMiddle], Is.EqualTo("0 1 1  1 1 1  0 2 1  1 2 1"));
-            Assert.That(positions[FaciePositionType.LeftTop], Is.EqualTo("1 1 1  2 1 1  1 2 1  2 2 1"));
-            Assert.That(positions[FaciePositionType.LeftBottom], Is.EqualTo("-1 1 1  0 1 1  -1 2 1  0 2 1"));
+            Assert.That(positions[FaciePositionType.LeftUp], Is.EqualTo("1 1 1  2 1 1  1 2 1  2 2 1"));
+            Assert.That(positions[FaciePositionType.LeftDown], Is.EqualTo("-1 1 1  0 1 1  -1 2 1  0 2 1"));
         }
     }
 }

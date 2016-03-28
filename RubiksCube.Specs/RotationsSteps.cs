@@ -21,8 +21,8 @@ namespace RubiksCube.Specs
         [When(@"the cube turns ""(.*)"" (.*) times")]
         public void WhenTheCubeTurns(string direction, uint times)
         {
-            var axis = direction == FaceMove.Down || direction == FaceMove.Up ? AxisType.X : AxisType.Y;
-            var clockwise = direction == FaceMove.Up || direction == FaceMove.Right;
+            var axis = direction == Move.Face.Down || direction == Move.Face.Up ? AxisType.X : AxisType.Y;
+            var clockwise = direction == Move.Face.Up || direction == Move.Face.Right;
             var rotationInfo = new RotationInfo(LayerType.All, axis, clockwise, times);
             var rotation = rotationInfo.CreateRotation();
 

@@ -35,14 +35,14 @@ namespace RubiksCube.Core.Model
             var facies = new List<Facie>
             {
                 CreateFacie(faceType, FaciePositionType.Middle, color),
-                CreateFacie(faceType, FaciePositionType.MiddleTop, color),
-                CreateFacie(faceType, FaciePositionType.MiddleBottom, color),
+                CreateFacie(faceType, FaciePositionType.MiddleUp, color),
+                CreateFacie(faceType, FaciePositionType.MiddleDown, color),
                 CreateFacie(faceType, FaciePositionType.RightMiddle, color),
-                CreateFacie(faceType, FaciePositionType.RightTop, color),
-                CreateFacie(faceType, FaciePositionType.RightBottom, color),
+                CreateFacie(faceType, FaciePositionType.RightUp, color),
+                CreateFacie(faceType, FaciePositionType.RightDown, color),
                 CreateFacie(faceType, FaciePositionType.LeftMiddle, color),
-                CreateFacie(faceType, FaciePositionType.LeftTop, color),
-                CreateFacie(faceType, FaciePositionType.LeftBottom, color)
+                CreateFacie(faceType, FaciePositionType.LeftUp, color),
+                CreateFacie(faceType, FaciePositionType.LeftDown, color)
             };
 
             return new Face(facies, faceType);

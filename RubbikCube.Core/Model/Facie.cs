@@ -5,7 +5,7 @@ namespace RubiksCube.Core.Model
 {
     public class Facie : ICloneable
     {
-        private double[,] rotation;
+        // TODO: Encapsulate members and use methods to implement the behaviour changing the state
 
         public string Key { get; set; }
 
@@ -15,21 +15,14 @@ namespace RubiksCube.Core.Model
 
         public double[,] PreviousRotation { get; set; }
 
-        public double[,] Rotation
-        {
-            get { return rotation; }
-            set
-            {
-                rotation = value;
-            }
-        }
+        public double[,] Rotation { get; set; }
 
         public object Clone()
         {
             return new Facie
             {
                 PreviousRotation = PreviousRotation,
-                rotation = Rotation,
+                Rotation = Rotation,
                 Key = Key,
                 FaciePosition = FaciePosition,
                 Color = Color
@@ -40,6 +33,7 @@ namespace RubiksCube.Core.Model
         {
             var buffer = new StringBuilder();
             buffer.AppendLine(FaciePosition + "-" + Color);
+
             return buffer.ToString();
         }
     }

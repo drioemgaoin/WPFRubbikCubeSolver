@@ -53,7 +53,9 @@
   <ItemGroup>
     <Compile Include="Model\CubeTests.cs" />
     <Compile Include="Model\FaceFactoryTests.cs" />
-    <Compile Include="Model\RotationFactoryTests.cs" />
+    <Compile Include="Model\XAxisRotationTests.cs" />
+    <Compile Include="Model\YAxisRotationTests.cs" />
+    <Compile Include="Model\ZAxisRotationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

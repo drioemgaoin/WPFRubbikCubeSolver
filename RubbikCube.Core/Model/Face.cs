@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -7,71 +8,52 @@ namespace RubiksCube.Core.Model
 {
     public class Face : ICloneable
     {
-        public Face()
+        private readonly IList<Facie> facies;
+
+        public Face(IList<Facie> facies, FaceType type)
         {
-            Facies = new List<Facie>();
+            this.facies = facies;
+
+            Facies = new ReadOnlyCollection<Facie>(facies);
+            Type = type;
         }
 
-        public FaceType Type { get; set; }
+        public FaceType Type { get; }
 
-        public IList<Facie> Facies { get; set; }
+        public IReadOnlyCollection<Facie> Facies { get; }
 
         public object Clone()
         {
-            var face = new Face
-            {
-                Type = Type
-            };
+            var faciesClone = Facies.Select(facie => (Facie) facie.Clone()).ToList();
 
-            foreach(var facie in Facies)
-            {
-                face.Facies.Add((Facie)facie.Clone());    
-            }
-
-            return face;
+            return new Face(faciesClone, Type);            
         }
 
-        public IList<RotationType> GetRows(Color color)
+        public IList<Facie> GetRow(LayerType layerType)
         {
-            var rows = new List<RotationType>();
-            if(GetRowFacies(RotationType.First).Any(x => x.Color == color))
-            {
-                rows.Add(RotationType.First);
-            }
-
-            if (GetRowFacies(RotationType.Second).Any(x => x.Color == color))
-            {
-                rows.Add(RotationType.Second);
-            }
-
-            if (GetRowFacies(RotationType.Third).Any(x => x.Color == color))
-            {
-                rows.Add(RotationType.Third);
-            }
-
-            return rows;
+            return Facies.Where(x => IsMatchingRow(x, layerType)).ToArray();
         }
 
-        public IList<Facie> GetRowFacies(RotationType rotation)
+        public IList<Facie> GetColumn(LayerType layerType)
         {
-            return Facies.Where(x => IsRowMatch(x, rotation)).ToArray();
-        }
-
-        public IList<Facie> GetColumnFacies(RotationType rotation)
-        {
-            return Facies.Where(x => IsColumnMatch(x, rotation)).ToArray();
+            return Facies.Where(x => IsMatchingColumn(x, layerType)).ToArray();
         }
 
         public void Add(Facie facie)
         {
-            Facies.Add(facie);
+            facies.Add(facie);
+        }
+
+        public void Remove(Facie facie)
+        {
+            facies.Remove(facie);
         }
 
         public override string ToString()
         {
             var buffer = new StringBuilder();
             buffer.AppendLine(Type + "-" + Facies.Count);
-            foreach (var facie in Facies)
+            foreach (var facie in Facies)   
             {
                 buffer.AppendLine("-->" + facie);
             }
@@ -79,16 +61,16 @@ namespace RubiksCube.Core.Model
             return buffer.ToString();
         }
 
-        private static bool IsRowMatch(Facie facie, RotationType rotationType)
+        private static bool IsMatchingRow(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Row == rotationType || rotationType == RotationType.All;
+            return attribute.Row == layerType || layerType == LayerType.All;
         }
 
-        private static bool IsColumnMatch(Facie facie, RotationType rotationType)
+        private static bool IsMatchingColumn(Facie facie, LayerType layerType)
         {
             var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
-            return attribute.Column == rotationType || rotationType == RotationType.All;
+            return attribute.Column == layerType || layerType == LayerType.All;
         }
     }
 }

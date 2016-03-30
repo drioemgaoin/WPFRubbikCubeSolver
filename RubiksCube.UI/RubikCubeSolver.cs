@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RubiksCube.Core.Model;
+using RubiksCube.Core.Model.Rotations;
 
 namespace RubiksCube.Core
 {
@@ -14,12 +15,12 @@ namespace RubiksCube.Core
 
     public class RotationsArgs : EventArgs
     {
-        public RotationsArgs(IEnumerable<FaceRotation> rotations)
+        public RotationsArgs(IEnumerable<Rotation> rotations)
         {
             Rotations = rotations;
         }
 
-        public IEnumerable<FaceRotation> Rotations { get; private set; }
+        public IEnumerable<Rotation> Rotations { get; private set; }
     }
 
     public class RubiksCubeSolver : IRubiksCubeSolver
@@ -30,7 +31,7 @@ namespace RubiksCube.Core
         {
         }
 
-        private void Notify(IEnumerable<FaceRotation> rotations)
+        private void Notify(IEnumerable<Rotation> rotations)
         {
             var handler = Rotations;
             if (handler != null)

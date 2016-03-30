@@ -1,10 +1,10 @@
 ﻿namespace RubiksCube.Core.Model
 {
-    public enum RotationType
+    public enum LayerType
     {
-        All,
         First,
         Second,
-        Third
+        Third,
+        All
     }
 }

@@ -97,101 +97,101 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Top Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Green", new string[0])]
+        [NUnit.Framework.DescriptionAttribute("Up Layer Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Green", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Blue", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Green", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
-        public virtual void TopFaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        public virtual void TopLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Top Face Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Up Layer Rotations", exampleTags);
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 28
  testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
- testRunner.When(string.Format("turns the top face in \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("turns the \"First\" layer on the \'Y\' axis \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
- testRunner.Then(string.Format("top row is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face \"First\" row is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Bottom Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Green", new string[0])]
+        [NUnit.Framework.DescriptionAttribute("Down Layer Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Green", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Blue", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Green", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
-        public virtual void BottomFaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        public virtual void BottomLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Bottom Face Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Down Layer Rotations", exampleTags);
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44
  testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
- testRunner.When(string.Format("turns the bottom face in \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("turns the \"Third\" layer on the \'Y\' axis \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 46
- testRunner.Then(string.Format("bottom row is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face \"Third\" row is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Left Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.DescriptionAttribute("Left Layer Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Orange", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
-        public virtual void LeftFaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        public virtual void LeftLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Left Face Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Left Layer Rotations", exampleTags);
 #line 59
 this.ScenarioSetup(scenarioInfo);
 #line 60
  testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 61
- testRunner.When(string.Format("turns the left face in \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("turns the \"First\" layer on the \'X\' axis \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 62
- testRunner.Then(string.Format("left column is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face \"First\" column is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Right Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.DescriptionAttribute("Right Layer Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Orange", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
-        public virtual void RightFaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        public virtual void RightLayerRotations(string direction, string times, string expected_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Right Face Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Right Layer Rotations", exampleTags);
 #line 75
 this.ScenarioSetup(scenarioInfo);
 #line 76
  testRunner.Given("a cube with a visible \"White\" face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 77
- testRunner.When(string.Format("turns the right face in \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("turns the \"Third\" layer on the \'X\' axis \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 78
- testRunner.Then(string.Format("right column is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face \"Third\" column is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

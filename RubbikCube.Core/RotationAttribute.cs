@@ -6,14 +6,14 @@ namespace RubiksCube.Core
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class RotationAttribute : Attribute
     {
-        public RotationAttribute(RotationType row, RotationType column)
+        public RotationAttribute(LayerType row, LayerType column)
         {
             Row = row;
             Column = column;
         }
 
-        public RotationType Row { get; private set; }
+        public LayerType Row { get; private set; }
 
-        public RotationType Column { get; private set; }
+        public LayerType Column { get; private set; }
     }
 }

@@ -181,7 +181,7 @@ namespace RubiksCube.UI
             var rotation = rotationInfo.CreateRotation();
             cube.Rotate(rotation);
 
-            var matrix = rotation.CreateMatrix(Angle);
+            var matrix = rotation.CreateMatrix(rotationInfo.Clockwise ? Angle : -Angle);
 
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);

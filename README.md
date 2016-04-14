@@ -15,8 +15,8 @@ Features
   * Ctrl+M: Mixup the cube
   * L: rotate the left face
   * Shift+L: rotate the left face counter-clockwise
-  * R: rotate the left face
-  * Shift+R: rotate the left face counter-clockwise
+  * R: rotate the right face
+  * Shift+R: rotate the right face counter-clockwise
   * U: rotate the up face
   * Shift+U: rotate the up face counter-clockwise
   * D: rotate the down face

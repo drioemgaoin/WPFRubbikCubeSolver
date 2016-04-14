@@ -24,7 +24,7 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected abstract IEnumerable<FaceType> MovingFaces { get; }
 
-        public abstract double[,] CreateRotationMatrix(double angle);
+        public abstract double[,] CreateMatrix(double angle);
 
         protected abstract IEnumerable<Facie> GetMovingFacies(Face face);
 
@@ -43,7 +43,7 @@ namespace RubiksCube.Core.Model.Rotations
         {
             var facies = new List<Facie>();
 
-            var matrix = CreateRotationMatrix(Angle);
+            var matrix = CreateMatrix(Angle);
             var movingFacies = new Dictionary<FaceType, IEnumerable<Facie>>();
             foreach (var faceType in MovingFaces)
             {

@@ -44,6 +44,7 @@
     <Compile Include="Model\Color.cs" />
     <Compile Include="Model\Move.cs" />
     <Compile Include="Model\Rotations\RotationInfoHelper.cs" />
+    <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Model\Rotations\XAxis\XAxisRotationFactory.cs" />
     <Compile Include="Model\Rotations\XAxis\XAxisCounterClockwise.cs" />
     <Compile Include="Model\Rotations\YAxis\YAxisCounterClockwise.cs" />

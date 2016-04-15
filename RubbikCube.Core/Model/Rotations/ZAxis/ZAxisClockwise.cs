@@ -11,19 +11,135 @@
             switch (faceType)
             {
                 case FaceType.Left:
-                    FlipPosition(facie);
-                    cube[FaceType.Up].Add(facie);
-                    break;
-                case FaceType.Up:
-                    FlipPosition(facie);
-                    cube[FaceType.Right].Add(facie);
-                    break;
-                case FaceType.Right:                    
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Down].Add(facie);
                     break;
-                case FaceType.Down:
+                case FaceType.Up:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Left].Add(facie);
                     break;
+                case FaceType.Right:                    
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Up].Add(facie);
+                    break;
+                case FaceType.Down:
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Right].Add(facie);
+                    break;
+            }
+        }
+
+        protected void FlipPosition(Facie facie, FaceType faceType)
+        {
+            if (LayerType == LayerType.First)
+            {
+                if (faceType == FaceType.Up)
+                {
+                    if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightDown;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightMiddle;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightUp;
+                    }
+                }
+                else if (faceType == FaceType.Down)
+                {
+                    if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftMiddle;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftUp;
+                    }
+                }
+                else if (faceType == FaceType.Left)
+                {
+                    if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                    {
+                        facie.FaciePosition = FaciePositionType.MiddleDown;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftDown;
+                    }
+                }
+                else if (faceType == FaceType.Right)
+                {
+                    if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightDown;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                    {
+                        facie.FaciePosition = FaciePositionType.MiddleDown;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftDown;
+                    }
+                }
+            }
+            else
+            {
+                if (faceType == FaceType.Up)
+                {
+                    if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftDown;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftMiddle;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftUp;
+                    }
+                }
+                else if (faceType == FaceType.Down)
+                {
+                    if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightMiddle;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightDown;
+                    }
+                }
+                else if (faceType == FaceType.Left)
+                {
+                    if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                    {
+                        facie.FaciePosition = FaciePositionType.MiddleUp;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightUp;
+                    }
+                }
+                else if (faceType == FaceType.Right)
+                {
+                    if (facie.FaciePosition == FaciePositionType.RightUp)
+                    {
+                        facie.FaciePosition = FaciePositionType.LeftUp;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                    {
+                        facie.FaciePosition = FaciePositionType.MiddleUp;
+                    }
+                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    {
+                        facie.FaciePosition = FaciePositionType.RightUp;
+                    }
+                }
             }
         }
     }

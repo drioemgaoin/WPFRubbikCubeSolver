@@ -12,12 +12,12 @@
     <Viewport3D Name="mainViewport">
         <Viewport3D.Camera>
             <PerspectiveCamera x:Name="camera"
-                    FieldOfView="45"
-                    FarPlaneDistance="150"
+                    FieldOfView="25"
+                    FarPlaneDistance="200"
                     NearPlaneDistance="0"
                     UpDirection="1,0,0"
-                    Position="0 0 10" 
-                    LookDirection="{Binding RelativeSource={RelativeSource Self}, Path=Position, Converter={StaticResource lookBackConverter}}">
+                    Position="10 10 10" 
+                    LookDirection="-10 -10 -10">
             </PerspectiveCamera>
         </Viewport3D.Camera>
         <ModelVisual3D>

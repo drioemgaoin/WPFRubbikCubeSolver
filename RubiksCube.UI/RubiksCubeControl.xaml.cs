@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Core;
@@ -42,109 +41,109 @@ namespace RubiksCube.UI
             movementEngine.Start();
         }
 
-        public void RotateDownLayerLeft()
+        public void RotateDownFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateDownLayerRight()
+        public void RotateDownFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateUpLayerLeft()
+        public void RotateUpFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateUpLayerRight()
+        public void RotateUpFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateLeftLayerDown()
+        public void RotateLeftFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, false);
             Rotate(info);
         }
 
-        public void RotateLeftLayerUp()
+        public void RotateLeftFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, true);
             Rotate(info);
         }
 
-        public void RotateRightLayerDown()
+        public void RotateRightFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, false);
             Rotate(info);
         }
 
-        public void RotateRightLayerUp()
+        public void RotateRightFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, true);
             Rotate(info);
         }
 
-        public void RotateFrontLayerLeft()
+        public void RotateFrontFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, false);
             Rotate(info);
         }
 
-        public void RotateFrontLayerRight()
+        public void RotateFrontFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, true);
             Rotate(info);
         }
 
-        public void RotateBackLayerLeft()
+        public void RotateBackFaceCounterClockwise()
         {
             var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, false);
             Rotate(info);
         }
 
-        public void RotateBackLayerRight()
+        public void RotateBackFaceClockwise()
         {
             var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, true);
             Rotate(info);
         }
 
-        public void RotateFaceLeft()
+        public void RotateCubeOnYAxisCounterClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.Y, false);
             Rotate(info);
         }
 
-        public void RotateFaceRight()
+        public void RotateCubeOnYAxisClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.Y, true);
             Rotate(info);
         }
 
-        public void RotateFaceUp()
+        public void RotateCubeOnXAxisClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.X, true);
             Rotate(info);
         }
 
-        public void RotateFaceDown()
+        public void RotateCubeOnXAxisCounterClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.X, false);
             Rotate(info);
         }
 
-        public void RotateUpFaceRight()
+        public void RotateCubeOnZAxisClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.Z, true);
             Rotate(info);
         }
 
-        public void RotateUpFaceLeft()
+        public void RotateCubeOnZAxisCounterClockwise()
         {
             var info = new RotationInfo(LayerType.All, AxisType.Z, false);
             Rotate(info);
@@ -154,14 +153,14 @@ namespace RubiksCube.UI
         {
             var actions = new Action[]
             {
-                () => RotateUpLayerRight(),
-                () => RotateUpLayerLeft(),
-                () => RotateDownLayerRight(),
-                () => RotateDownLayerLeft(),
-                () => RotateLeftLayerUp(),
-                () => RotateLeftLayerDown(),
-                () => RotateRightLayerUp(),
-                () => RotateRightLayerDown()
+                () => RotateUpFaceClockwise(),
+                () => RotateUpFaceCounterClockwise(),
+                () => RotateDownFaceClockwise(),
+                () => RotateDownFaceCounterClockwise(),
+                () => RotateLeftFaceClockwise(),
+                () => RotateLeftFaceCounterClockwise(),
+                () => RotateRightFaceClockwise(),
+                () => RotateRightFaceCounterClockwise()
             };
 
             var random = new Random();
@@ -219,15 +218,15 @@ namespace RubiksCube.UI
         {
             group.Children.Clear();
 
-            InitializeFace(cube[FaceType.Front]);
-            InitializeFace(cube[FaceType.Left]);
-            InitializeFace(cube[FaceType.Right]);
-            InitializeFace(cube[FaceType.Down]);
-            InitializeFace(cube[FaceType.Up]);
-            InitializeFace(cube[FaceType.Back]);
+            Initialize(cube[FaceType.Front]);
+            Initialize(cube[FaceType.Left]);
+            Initialize(cube[FaceType.Right]);
+            Initialize(cube[FaceType.Down]);
+            Initialize(cube[FaceType.Up]);
+            Initialize(cube[FaceType.Back]);
         }
 
-        private void InitializeFace(Face face)
+        private void Initialize(Face face)
         {
             foreach (var facie in face.Facies)
             {

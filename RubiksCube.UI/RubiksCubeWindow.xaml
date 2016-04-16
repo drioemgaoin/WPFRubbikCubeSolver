@@ -8,5 +8,5 @@
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen">
-    <ui:RubiksCubeControl x:Name="RubiksCube"/>
+    <ui:RubiksCubeControl x:Name="Cube"/>
 </Window> 

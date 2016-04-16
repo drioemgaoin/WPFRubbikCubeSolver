@@ -4,32 +4,24 @@ namespace RubiksCube.Core.Model.Rotations
 {
     public class RotationInfo
     {
-        public RotationInfo(string layer, char axis, string way) : this(layer, axis, way, 1)
+        public RotationInfo(LayerType layer, AxisType axis, bool clockwise) : this(FaceType.None, layer, axis, clockwise, 1)
         {
         }
 
-        public RotationInfo(string layer, char axis, string way, uint times)
-        {
-            Guard.IsNotNullOrWhitespace(layer, "layer");
-            Guard.IsNotNullOrWhitespace(way, "way");
-
-            Layer = (LayerType)Enum.Parse(typeof(LayerType), layer);
-            Axis = (AxisType)Enum.Parse(typeof(AxisType), axis.ToString()); 
-            Clockwise = way == Move.Layer.Clockwise;
-            Times = times;
-        }
-
-        public RotationInfo(LayerType layer, AxisType axis, bool clockwise) : this(layer, axis, clockwise, 1)
+        public RotationInfo(FaceType faceType, LayerType layer, AxisType axis, bool clockwise) : this(faceType, layer, axis, clockwise, 1)
         {
         }
 
-        public RotationInfo(LayerType layer, AxisType axis, bool clockwise, uint times)
+        public RotationInfo(FaceType faceType, LayerType layer, AxisType axis, bool clockwise, uint times)
         {
+            FaceType = faceType;
             Layer = layer;
             Axis = axis;
             Clockwise = clockwise;
             Times = times;
         }
+
+        public FaceType FaceType { get; }
 
         public LayerType Layer { get; }
 
@@ -41,7 +33,7 @@ namespace RubiksCube.Core.Model.Rotations
 
         public override string ToString()
         {
-            return string.Format("Layer: {0}, Axis: {1}, Clockwise: {2}, Times: {3}", Layer, Axis, Clockwise, Times);
+            return String.Format("Layer: {0}, Axis: {1}, Clockwise: {2}, Times: {3}", Layer, Axis, Clockwise, Times);
         }
     }
 }

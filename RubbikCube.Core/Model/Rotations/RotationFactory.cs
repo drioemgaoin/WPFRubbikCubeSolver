@@ -11,18 +11,18 @@ namespace RubiksCube.Core.Model.Rotations
     {
         private const double Angle = Math.PI / 2;
 
-        protected abstract TRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times);
+        protected abstract TRotation CreateClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times);
 
-        protected abstract TRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times);
+        protected abstract TRotation CreateCounterClockwiseRotation(FaceType fceType, LayerType layerType, double angle, uint times);
 
         public Rotation CreateRotation(RotationInfo info)
         {
             if (info.Clockwise)
             {
-                return CreateClockwiseRotation(info.Layer, Angle, info.Times);
+                return CreateClockwiseRotation(info.FaceType, info.Layer, Angle, info.Times);
             }
 
-            return CreateCounterClockwiseRotation(info.Layer, -Angle, info.Times);
+            return CreateCounterClockwiseRotation(info.FaceType, info.Layer, -Angle, info.Times);
         }        
     }
 }

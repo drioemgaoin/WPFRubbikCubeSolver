@@ -30,7 +30,11 @@ namespace RubiksCube.Core.Model
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            buffer.Append(faces.Values.Select(face => face.ToString()));
+            foreach(var face in faces.Values)
+            {
+                buffer.Append(face);
+
+            }
 
             return buffer.ToString();
         }

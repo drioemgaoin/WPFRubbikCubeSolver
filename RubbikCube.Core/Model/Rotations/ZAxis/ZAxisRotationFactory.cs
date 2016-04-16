@@ -2,14 +2,14 @@
 {
     internal class ZAxisRotationFactory : RotationFactory<ZAxisRotation>
     {
-        protected override ZAxisRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override ZAxisRotation CreateClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new ZAxisClockwise(layerType, angle, times);
+            return new ZAxisClockwise(faceType, layerType, angle, times);
         }
 
-        protected override ZAxisRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override ZAxisRotation CreateCounterClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new ZAxisCounterClockwise(layerType, angle, times);
+            return new ZAxisCounterClockwise(faceType, layerType, angle, times);
         }
     }
 }

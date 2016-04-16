@@ -2,7 +2,8 @@
 {
     internal class XAxisClockwise : XAxisRotation
     {
-        public XAxisClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public XAxisClockwise(FaceType faceType, LayerType layerType, double angle, uint times) 
+            : base(faceType, layerType, angle, times)
         {
         }
 
@@ -23,14 +24,6 @@
                 case FaceType.Down:
                     FlipPosition(facie, FaceType.Down);
                     cube[FaceType.Front].Add(facie);
-                    break;
-                case FaceType.Left:
-                    FlipPosition(facie, FaceType.Left);
-                    cube[FaceType.Left].Add(facie);
-                    break;
-                case FaceType.Right:
-                    FlipPosition(facie, FaceType.Right);
-                    cube[FaceType.Right].Add(facie);
                     break;
             }
         }

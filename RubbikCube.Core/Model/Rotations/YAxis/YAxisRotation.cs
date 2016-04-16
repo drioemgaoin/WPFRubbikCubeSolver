@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RubiksCube.Core.Model.Rotations.YAxis
 {
     public abstract class YAxisRotation : Rotation
     {
-        protected YAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        protected YAxisRotation(FaceType faceType, LayerType layerType, double angle, uint times) 
+            : base(faceType, layerType, angle, times)
         {
         }
 
@@ -21,7 +21,7 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
             return RotationMatrixFactory.CreateYAxisRotation(angle);
         }
 
-        protected static void FlipPosition(Facie facie)
+        protected override void FlipPosition(Facie facie, FaceType faceType)
         {
             if (facie.FaciePosition == FaciePositionType.LeftUp)
             {

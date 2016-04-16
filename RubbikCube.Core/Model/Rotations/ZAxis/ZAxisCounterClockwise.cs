@@ -2,7 +2,8 @@
 {
     internal class ZAxisCounterClockwise : ZAxisRotation
     {
-        public ZAxisCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public ZAxisCounterClockwise(FaceType faceType, LayerType layerType, double angle, uint times) 
+            : base(faceType, layerType, angle, times)
         {
         }
 
@@ -29,9 +30,79 @@
             }
         }
 
-        protected void FlipPosition(Facie facie, FaceType faceType)
+        protected override void FlipPosition(Facie facie, FaceType faceType)
         {
-            if (LayerType == LayerType.First)
+            if (faceType == FaceType.Front)
+            {
+                if (facie.FaciePosition == FaciePositionType.LeftUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightUp;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftUp;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                }
+            }
+            else if (faceType == FaceType.Back)
+            {
+                if (facie.FaciePosition == FaciePositionType.LeftUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightUp;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightUp)
+                {
+                    facie.FaciePosition = FaciePositionType.RightDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.RightDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftDown;
+                }
+                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                {
+                    facie.FaciePosition = FaciePositionType.LeftUp;
+                }
+                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                {
+                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                }
+            }
+            else if (LayerType == LayerType.First)
             {
                 if (faceType == FaceType.Up)
                 {

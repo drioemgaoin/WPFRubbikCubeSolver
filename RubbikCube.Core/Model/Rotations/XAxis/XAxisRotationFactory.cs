@@ -2,14 +2,14 @@
 {
     internal class XAxisRotationFactory : RotationFactory<XAxisRotation>
     {
-        protected override XAxisRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override XAxisRotation CreateClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new XAxisClockwise(layerType, angle, times);
+            return new XAxisClockwise(faceType, layerType, angle, times);
         }
 
-        protected override XAxisRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override XAxisRotation CreateCounterClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new XAxisCounterClockwise(layerType, angle, times);
+            return new XAxisCounterClockwise(faceType, layerType, angle, times);
         }
     }
 }

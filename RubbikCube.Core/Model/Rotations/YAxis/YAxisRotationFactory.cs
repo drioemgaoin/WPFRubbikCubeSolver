@@ -2,14 +2,14 @@
 {
     internal class YAxisRotationFactory : RotationFactory<YAxisRotation>
     {
-        protected override YAxisRotation CreateClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override YAxisRotation CreateClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new YAxisClockwise(layerType, angle, times);
+            return new YAxisClockwise(faceType, layerType, angle, times);
         }
 
-        protected override YAxisRotation CreateCounterClockwiseRotation(LayerType layerType, double angle, uint times)
+        protected override YAxisRotation CreateCounterClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new YAxisCounterClockwise(layerType, angle, times);
+            return new YAxisCounterClockwise(faceType, layerType, angle, times);
         }
     }
 }

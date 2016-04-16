@@ -21,7 +21,6 @@ namespace RubiksCube.UI
         private readonly IRubiksCubeSolver cubeSolver;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
-        private bool disposed;
 
         public RubiksCubeControl()
         {
@@ -45,73 +44,73 @@ namespace RubiksCube.UI
 
         public void RotateDownLayerLeft()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.Y, false);
+            var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, false);
             Rotate(info);
         }
 
         public void RotateDownLayerRight()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.Y, true);
+            var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, true);
             Rotate(info);
         }
 
         public void RotateUpLayerLeft()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.Y, false);
+            var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, false);
             Rotate(info);
         }
 
         public void RotateUpLayerRight()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.Y, true);
+            var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, true);
             Rotate(info);
         }
 
         public void RotateLeftLayerDown()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.X, false);
+            var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, false);
             Rotate(info);
         }
 
         public void RotateLeftLayerUp()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.X, true);
+            var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, true);
             Rotate(info);
         }
 
         public void RotateRightLayerDown()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.X, false);
+            var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, false);
             Rotate(info);
         }
 
         public void RotateRightLayerUp()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.X, true);
+            var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, true);
             Rotate(info);
         }
 
         public void RotateFrontLayerLeft()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.Z, false);
+            var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, false);
             Rotate(info);
         }
 
         public void RotateFrontLayerRight()
         {
-            var info = new RotationInfo(LayerType.First, AxisType.Z, true);
+            var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, true);
             Rotate(info);
         }
 
         public void RotateBackLayerLeft()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.Z, false);
+            var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, false);
             Rotate(info);
         }
 
         public void RotateBackLayerRight()
         {
-            var info = new RotationInfo(LayerType.Third, AxisType.Z, true);
+            var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, true);
             Rotate(info);
         }
 
@@ -245,10 +244,6 @@ namespace RubiksCube.UI
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 BorderThickness = new Thickness(0.3)
             };
-
-            var binding = new Binding("FaciePosition");
-            binding.Source = facie;
-            label.SetBinding(Label.ContentProperty, binding);
 
             var positions = positionsFactory.CreatePositions(type);
 

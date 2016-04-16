@@ -2,6 +2,7 @@
 {
     public enum FaceType
     {
+        None,
         Front,
         Back,
         Left,

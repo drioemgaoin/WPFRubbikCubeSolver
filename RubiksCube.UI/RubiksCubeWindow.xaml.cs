@@ -3,13 +3,14 @@ using System.Windows.Input;
 
 namespace RubiksCube.UI
 {
-    public partial class MainWindow : Window
+    public partial class RubiksCubeWindow : Window
     {
-        public MainWindow()
+        public RubiksCubeWindow()
         {
             InitializeComponent();
 
             KeyDown += OnKeyDown;
+            MouseLeftButtonDown += (o, e) => DragMove();
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)

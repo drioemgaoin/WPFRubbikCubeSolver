@@ -13,11 +13,11 @@
         <Viewport3D.Camera>
             <PerspectiveCamera x:Name="camera"
                     FieldOfView="25"
-                    FarPlaneDistance="200"
+                    FarPlaneDistance="100"
                     NearPlaneDistance="0"
                     UpDirection="1,0,0"
-                    Position="10 10 10" 
-                    LookDirection="-10 -10 -10">
+                    Position="7 10 10" 
+                    LookDirection="-7 -10 -10">
             </PerspectiveCamera>
         </Viewport3D.Camera>
         <ModelVisual3D>

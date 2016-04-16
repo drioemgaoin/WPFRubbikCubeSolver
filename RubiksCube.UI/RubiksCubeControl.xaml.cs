@@ -21,6 +21,7 @@ namespace RubiksCube.UI
         private readonly IRubiksCubeSolver cubeSolver;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
+        private bool disposed;
 
         public RubiksCubeControl()
         {
@@ -39,7 +40,7 @@ namespace RubiksCube.UI
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            movementEngine.Start();    
+            movementEngine.Start();
         }
 
         public void RotateDownLayerLeft()
@@ -244,6 +245,10 @@ namespace RubiksCube.UI
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 BorderThickness = new Thickness(0.3)
             };
+
+            var binding = new Binding("FaciePosition");
+            binding.Source = facie;
+            label.SetBinding(Label.ContentProperty, binding);
 
             var positions = positionsFactory.CreatePositions(type);
 

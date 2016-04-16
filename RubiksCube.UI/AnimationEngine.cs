@@ -14,18 +14,21 @@ namespace RubiksCube.UI
         private readonly IList<FacieAnimation> movements;
         private readonly AutoResetEvent movementAvailable;
         private readonly ReaderWriterLockSlim movementLock;
+        private readonly ReaderWriterLockSlim stoppingLock;
         private Thread thread;
+        private bool isStopping;
 
         public AnimationEngine()
         {
             movements = new List<FacieAnimation>();
             movementAvailable = new AutoResetEvent(false);
             movementLock = new ReaderWriterLockSlim();
+            stoppingLock = new ReaderWriterLockSlim();
         }
 
         public void Start()
         {
-            thread = new Thread(Core) { IsBackground = false };
+            thread = new Thread(Core) { IsBackground = true };
             thread.Start();
         }
 
@@ -43,6 +46,19 @@ namespace RubiksCube.UI
         {
             while(true)
             {
+                try
+                {
+                    stoppingLock.EnterReadLock();
+                    if (isStopping)
+                    {
+                        break;
+                    }
+                }
+                finally
+                {
+                    stoppingLock.ExitReadLock();
+                }
+
                 var movement = Pop();
                 if (movement != null)
                 {

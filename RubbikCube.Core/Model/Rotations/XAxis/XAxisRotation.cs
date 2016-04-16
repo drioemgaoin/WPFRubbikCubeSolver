@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RubiksCube.Core.Model.Rotations.XAxis
 {
@@ -9,10 +8,15 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down };
+        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down, FaceType.Left, FaceType.Right };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
+            if (face.Type == FaceType.Left || face.Type == FaceType.Right)
+            {
+                return face.Facies;
+            }
+
             return face.GetColumn(LayerType);
         }
 
@@ -21,7 +25,7 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
             return RotationMatrixFactory.CreateXAxisRotation(angle);
         }
 
-        protected static void FlipPosition(Facie facie)
+        protected virtual void FlipPosition(Facie facie, FaceType faceType)
         {
             if (facie.FaciePosition == FaciePositionType.LeftUp)
             {

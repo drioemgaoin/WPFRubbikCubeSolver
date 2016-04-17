@@ -19,10 +19,10 @@ namespace RubiksCube.Core.Model.Rotations
         {
             if (info.Clockwise)
             {
-                return CreateClockwiseRotation(info.FaceType, info.Layer, Angle, info.Times);
+                return CreateClockwiseRotation(info.Face, info.Layer, Angle, info.Times);
             }
 
-            return CreateCounterClockwiseRotation(info.FaceType, info.Layer, -Angle, info.Times);
+            return CreateCounterClockwiseRotation(info.Face, info.Layer, -Angle, info.Times);
         }        
     }
 }

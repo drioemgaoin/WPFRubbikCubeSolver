@@ -1,31 +1,20 @@
-using System;
-
 namespace RubiksCube.Core.Model.Rotations
 {
-    public class RotationInfo
+    public abstract class RotationInfo 
     {
-        public RotationInfo(LayerType layer, AxisType axis, bool clockwise) : this(FaceType.None, layer, axis, clockwise, 1)
+        protected RotationInfo(bool clockwise) : this(clockwise, 1)
         {
         }
 
-        public RotationInfo(FaceType faceType, LayerType layer, AxisType axis, bool clockwise) : this(faceType, layer, axis, clockwise, 1)
+        protected RotationInfo(bool clockwise, uint times)
         {
-        }
-
-        public RotationInfo(FaceType faceType, LayerType layer, AxisType axis, bool clockwise, uint times)
-        {
-            FaceType = faceType;
-            Layer = layer;
-            Axis = axis;
             Clockwise = clockwise;
             Times = times;
         }
 
-        public FaceType FaceType { get; }
+        public abstract FaceType Face { get; }
 
-        public LayerType Layer { get; }
-
-        public AxisType Axis { get; }
+        public abstract LayerType Layer { get; }
 
         public bool Clockwise { get; }
 
@@ -33,7 +22,7 @@ namespace RubiksCube.Core.Model.Rotations
 
         public override string ToString()
         {
-            return String.Format("Layer: {0}, Axis: {1}, Clockwise: {2}, Times: {3}", Layer, Axis, Clockwise, Times);
+            return string.Format("Face: {0} Layer: {1}, Clockwise: {2}, Times: {3}", Face, Layer, Clockwise, Times);
         }
     }
 }

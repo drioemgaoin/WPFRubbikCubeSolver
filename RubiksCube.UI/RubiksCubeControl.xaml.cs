@@ -8,6 +8,9 @@ using System.Windows.Media.Media3D;
 using RubiksCube.Core;
 using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations;
+using RubiksCube.Core.Model.Rotations.XAxis;
+using RubiksCube.Core.Model.Rotations.YAxis;
+using RubiksCube.Core.Model.Rotations.ZAxis;
 using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
@@ -43,110 +46,92 @@ namespace RubiksCube.UI
 
         public void RotateDownFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, false);
-            Rotate(info);
+            Rotate(new DownFaceRotationInfo(false));
         }
 
         public void RotateDownFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Down, LayerType.Third, AxisType.Y, true);
-            Rotate(info);
+            Rotate(new DownFaceRotationInfo(true));
         }
 
         public void RotateUpFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, false);
-            Rotate(info);
+            Rotate(new UpFaceRotationInfo(false));
         }
 
         public void RotateUpFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Up, LayerType.First, AxisType.Y, true);
-            Rotate(info);
+            Rotate(new UpFaceRotationInfo(true));
         }
 
         public void RotateLeftFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, false);
-            Rotate(info);
+            Rotate(new LeftFaceRotationInfo(false));
         }
 
         public void RotateLeftFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Left, LayerType.First, AxisType.X, true);
-            Rotate(info);
+            Rotate(new LeftFaceRotationInfo(true));
         }
 
         public void RotateRightFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, false);
-            Rotate(info);
+            Rotate(new RightFaceRotationInfo(false));
         }
 
         public void RotateRightFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Right, LayerType.Third, AxisType.X, true);
-            Rotate(info);
+            Rotate(new RightFaceRotationInfo(true));
         }
 
         public void RotateFrontFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, false);
-            Rotate(info);
+            Rotate(new FrontFaceRotationInfo(false));
         }
 
         public void RotateFrontFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Front, LayerType.First, AxisType.Z, true);
-            Rotate(info);
+            Rotate(new FrontFaceRotationInfo(true));
         }
 
         public void RotateBackFaceCounterClockwise()
         {
-            var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, false);
-            Rotate(info);
+            Rotate(new BackFaceRotationInfo(false));
         }
 
         public void RotateBackFaceClockwise()
         {
-            var info = new RotationInfo(FaceType.Back, LayerType.Third, AxisType.Z, true);
-            Rotate(info);
+            Rotate(new BackFaceRotationInfo(true));
         }
 
         public void RotateCubeOnYAxisCounterClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.Y, false);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void RotateCubeOnYAxisClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.Y, true);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void RotateCubeOnXAxisClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.X, true);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void RotateCubeOnXAxisCounterClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.X, false);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void RotateCubeOnZAxisClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.Z, true);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void RotateCubeOnZAxisCounterClockwise()
         {
-            var info = new RotationInfo(LayerType.All, AxisType.Z, false);
-            Rotate(info);
+            throw new NotImplementedException("TODO");
         }
 
         public void MixUp()

@@ -4,12 +4,11 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 {
     internal abstract class XAxisRotation : Rotation
     {
-        protected XAxisRotation(FaceType faceType, LayerType layerType, double angle, uint times) 
-            : base(faceType, layerType, angle, times)
+        protected XAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down };
+        protected override IEnumerable<FaceType> AxisAdjacentFaces => new[] { FaceType.Front, FaceType.Up, FaceType.Back, FaceType.Down };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
@@ -23,15 +22,7 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected override void FlipPosition(Facie facie, FaceType faceType)
         {
-            if (facie.FaciePosition == FaciePositionType.LeftUp)
-            {
-                facie.FaciePosition = FaciePositionType.LeftDown;
-            }
-            else if (facie.FaciePosition == FaciePositionType.LeftDown)
-            {
-                facie.FaciePosition = FaciePositionType.LeftUp;
-            }
-            else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+            if (facie.FaciePosition == FaciePositionType.MiddleUp)
             {
                 facie.FaciePosition = FaciePositionType.MiddleDown;
             }

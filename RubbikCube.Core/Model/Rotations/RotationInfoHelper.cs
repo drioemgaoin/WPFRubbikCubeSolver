@@ -16,13 +16,16 @@ namespace RubiksCube.Core.Model.Rotations
 
         private static IRotationFactory CreateConcreteFactory(RotationInfo info)
         {
-            switch (info.Axis)
+            switch (info.Face)
             {
-                case AxisType.X:
+                case FaceType.Left:
+                case FaceType.Right:
                     return new XAxisRotationFactory();
-                case AxisType.Y:
+                case FaceType.Up:
+                case FaceType.Down:
                     return new YAxisRotationFactory();
-                case AxisType.Z:
+                case FaceType.Back:
+                case FaceType.Front:
                     return new ZAxisRotationFactory();
                 default:
                     throw new InvalidOperationException();

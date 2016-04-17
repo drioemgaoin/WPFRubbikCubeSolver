@@ -4,12 +4,11 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
 {
     public abstract class YAxisRotation : Rotation
     {
-        protected YAxisRotation(FaceType faceType, LayerType layerType, double angle, uint times) 
-            : base(faceType, layerType, angle, times)
+        protected YAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Front, FaceType.Left, FaceType.Back, FaceType.Right };
+        protected override IEnumerable<FaceType> AxisAdjacentFaces => new[] { FaceType.Front, FaceType.Left, FaceType.Back, FaceType.Right };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {

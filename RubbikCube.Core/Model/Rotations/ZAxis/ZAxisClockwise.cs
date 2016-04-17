@@ -1,11 +1,15 @@
-﻿namespace RubiksCube.Core.Model.Rotations.ZAxis
+﻿using System.Collections.Generic;
+
+namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
     internal class ZAxisClockwise : ZAxisRotation
     {
-        public ZAxisClockwise(FaceType faceType, LayerType layerType, double angle, uint times) 
-            : base(faceType, layerType, angle, times)
+        public ZAxisClockwise(FaceType faceType, LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
+            AxisMovingFaces = new[] { faceType };
         }
+
+        protected override IEnumerable<FaceType> AxisMovingFaces { get; }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {

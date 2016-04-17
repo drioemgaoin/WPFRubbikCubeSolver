@@ -1,40 +1,37 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations.YAxis
+namespace RubiksCube.Core.Model.Rotations.XAxis
 {
-    internal class YAxisClockwise : YAxisRotation
+    internal class RightFaceCounterClockwise : XAxisRotation
     {
-        public YAxisClockwise(FaceType faceType, LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public RightFaceCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
-            AxisMovingFaces = new[] { faceType };
         }
 
-        protected override IEnumerable<FaceType> AxisMovingFaces { get; }
+        protected override IEnumerable<FaceType> AxisMovingFaces => new[] { FaceType.Right };
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
             switch (faceType)
             {
                 case FaceType.Front:
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Down].Add(facie);
                     break;
-                case FaceType.Right:
-                    FlipPosition(facie, faceType);
-                    cube[FaceType.Back].Add(facie);
+                case FaceType.Up:
+                    cube[FaceType.Front].Add(facie);
                     break;
                 case FaceType.Back:
-                    FlipPosition(facie, faceType);
-                    cube[FaceType.Left].Add(facie);
+                    cube[FaceType.Up].Add(facie);
                     break;
-                case FaceType.Left:
-                    cube[FaceType.Front].Add(facie);
+                case FaceType.Down:
+                    cube[FaceType.Back].Add(facie);
                     break;
             }
         }
 
         protected override void FlipPosition(Facie facie, FaceType faceType)
         {
-            if (faceType == FaceType.Up)
+            if (faceType == FaceType.Right)
             {
                 if (facie.FaciePosition == FaciePositionType.LeftUp)
                 {
@@ -69,44 +66,27 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                     facie.FaciePosition = FaciePositionType.LeftMiddle;
                 }
             }
-            else if (faceType == FaceType.Down)
+            else if (faceType == FaceType.Front)
             {
-                if (facie.FaciePosition == FaciePositionType.LeftUp)
-                {
-                    facie.FaciePosition = FaciePositionType.LeftDown;
-                }
-                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
-                {
-                    facie.FaciePosition = FaciePositionType.MiddleDown;
-                }
-                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                if (facie.FaciePosition == FaciePositionType.RightUp)
                 {
                     facie.FaciePosition = FaciePositionType.RightDown;
-                }
-                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
-                {
-                    facie.FaciePosition = FaciePositionType.RightMiddle;
                 }
                 else if (facie.FaciePosition == FaciePositionType.RightDown)
                 {
                     facie.FaciePosition = FaciePositionType.RightUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+            }
+            else if (faceType == FaceType.Back)
+            {
+                if (facie.FaciePosition == FaciePositionType.RightDown)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                    facie.FaciePosition = FaciePositionType.RightUp;
                 }
                 else if (facie.FaciePosition == FaciePositionType.RightUp)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftUp;
+                    facie.FaciePosition = FaciePositionType.RightDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
-                {
-                    facie.FaciePosition = FaciePositionType.LeftMiddle;
-                }
-            }
-            else
-            {
-                base.FlipPosition(facie, faceType);
             }
         }
     }

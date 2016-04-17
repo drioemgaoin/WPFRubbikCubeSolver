@@ -191,15 +191,15 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Right Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", new string[0])]
-        public virtual void RightFaceRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Red", "White", "Orange", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Orange", "Yellow", "Red", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", "Red", "White", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", "Red", "White", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", "Yellow", "Red", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", "White", "Orange", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
+        public virtual void RightFaceRotations(string direction, string times, string front_Color, string up_Color, string back_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Right Face Rotations", exampleTags);
 #line 84
@@ -209,7 +209,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 86
  testRunner.When(string.Format("turns the right face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 87
- testRunner.Then(string.Format("the \"Front\" face \"Third\" column is \"{0}\"", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face \"Third\" column is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 88
+  testRunner.And(string.Format("the \"Up\" face \"Third\" column is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 89
+  testRunner.And(string.Format("the \"Back\" face \"Third\" column is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 90
+  testRunner.And(string.Format("the \"Down\" face \"Third\" column is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

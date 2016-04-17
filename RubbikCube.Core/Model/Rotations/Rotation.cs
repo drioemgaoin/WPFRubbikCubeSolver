@@ -63,8 +63,7 @@ namespace RubiksCube.Core.Model.Rotations
                 var faciesRotated = cube[faceType].Facies;
                 foreach (var facie in faciesRotated)
                 {
-                    facie.PreviousRotation = facie.Rotation;
-                    facie.Rotation = facie.Rotation == null ? matrix : MatrixHelper.Multiply(facie.Rotation, matrix);
+                    facie.SetRotation(matrix);
                     FlipPosition(facie, faceType);
                 }
                 facies.AddRange(faciesRotated);
@@ -74,9 +73,7 @@ namespace RubiksCube.Core.Model.Rotations
             {
                 foreach (var facie in face.Value)
                 {
-                    facie.PreviousRotation = facie.Rotation;
-                    facie.Rotation = facie.Rotation == null ? matrix : MatrixHelper.Multiply(facie.Rotation, matrix);
-
+                    facie.SetRotation(matrix);
                     cube[face.Key].Remove(facie);
                     Move(cube, face.Key, facie);
                 }

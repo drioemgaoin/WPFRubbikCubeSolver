@@ -7,11 +7,13 @@ namespace RubiksCube.Core.Model
 {
     public class Facie : ICloneable, INotifyPropertyChanged
     {
-        // TODO: Encapsulate members and use methods to implement the behaviour changing the state
+       private FaciePositionType faciePosition;
 
-        public string Key { get; set; }
+        public Facie(Color color)
+        {
+            Color = color;
+        }
 
-        private FaciePositionType faciePosition;
         public FaciePositionType FaciePosition
         {
             get { return faciePosition; }
@@ -22,21 +24,34 @@ namespace RubiksCube.Core.Model
             }
         }
 
-        public Color Color { get; set; }
+        public Color Color { get; }
 
-        public double[,] PreviousRotation { get; set; }
+        public string Key { get; set; }
 
-        public double[,] Rotation { get; set; }
+        public double[,] PreviousRotation { get; private set; }
+
+        public double[,] Rotation { get; private set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void SetRotation(double[,] matrix)
+        {
+            PreviousRotation = Rotation;
+            Rotation = Rotation == null ? matrix : MatrixHelper.Multiply(Rotation, matrix);
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public object Clone()
         {
-            return new Facie
+            return new Facie(Color)
             {
                 PreviousRotation = PreviousRotation,
                 Rotation = Rotation,
-                Key = Key,
-                FaciePosition = FaciePosition,
-                Color = Color
+                FaciePosition = FaciePosition
             };
         }
 
@@ -46,13 +61,6 @@ namespace RubiksCube.Core.Model
             buffer.AppendLine(FaciePosition + "-" + Color);
 
             return buffer.ToString();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }               
     }
 }

@@ -50,10 +50,9 @@ namespace RubiksCube.Core.Model
 
         private static Facie CreateFacie(FaceType faceType, FaciePositionType faciePositionType, Color color)
         {
-            return new Facie
+            return new Facie(color)
             {
                 Key = string.Format("{0}{1}", faceType, faciePositionType),
-                Color = color,
                 FaciePosition = faciePositionType
             };
         }

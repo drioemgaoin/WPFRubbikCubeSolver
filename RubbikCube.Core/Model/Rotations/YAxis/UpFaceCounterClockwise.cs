@@ -18,9 +18,11 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                     cube[FaceType.Right].Add(facie);
                     break;
                 case FaceType.Right:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Back].Add(facie);
                     break;
                 case FaceType.Back:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Left].Add(facie);
                     break;
                 case FaceType.Left:

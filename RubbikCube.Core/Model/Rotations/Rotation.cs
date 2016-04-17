@@ -79,7 +79,6 @@ namespace RubiksCube.Core.Model.Rotations
 
                     cube[face.Key].Remove(facie);
                     Move(cube, face.Key, facie);
-                    FlipPosition(facie, face.Key);
                 }
             }
 

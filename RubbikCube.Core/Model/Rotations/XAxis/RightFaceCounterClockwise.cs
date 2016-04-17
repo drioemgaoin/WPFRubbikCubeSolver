@@ -15,12 +15,14 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
             switch (faceType)
             {
                 case FaceType.Front:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Down].Add(facie);
                     break;
                 case FaceType.Up:
                     cube[FaceType.Front].Add(facie);
                     break;
                 case FaceType.Back:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Up].Add(facie);
                     break;
                 case FaceType.Down:

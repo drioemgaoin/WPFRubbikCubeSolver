@@ -98,12 +98,12 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Up Face Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Green", "White", "Blue", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Blue", "Yellow", "Green", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Blue", "Yellow", "Green", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Green", "White", "Blue", "Yellow", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", "Green", "White", "Blue", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", "Green", "White", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Blue", "Yellow", "Green", "White", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Green", "White", "Blue", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Green", "White", "Blue", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Blue", "Yellow", "Green", "White", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", "Blue", "Yellow", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", "Blue", "Yellow", "Green", new string[0])]
         public virtual void UpFaceRotations(string direction, string times, string front_Color, string right_Color, string back_Color, string left_Color, string[] exampleTags)

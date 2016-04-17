@@ -34,12 +34,12 @@ Scenario Outline: Up Face Rotations
 	
 	Examples:
 	| direction        | times | front_color | right_color | back_color | left_color |
-	| Clockwise        | 1     | Green       | White       | Blue       | Yellow     |
-	| CounterClockwise | 1     | Blue        | Yellow      | Green      | White      |
+	| Clockwise        | 1     | Blue        | Yellow      | Green      | White      |
+	| CounterClockwise | 1     | Green       | White       | Blue       | Yellow     |
 	| Clockwise        | 2     | Yellow      | Green       | White      | Blue       |
 	| CounterClockwise | 2     | Yellow      | Green       | White      | Blue       |
-	| Clockwise        | 3     | Blue        | Yellow      | Green      | White      |
-	| CounterClockwise | 3     | Green       | White       | Blue       | Yellow     |
+	| Clockwise        | 3     | Green       | White       | Blue       | Yellow     |
+	| CounterClockwise | 3     | Blue        | Yellow      | Green      | White      |
 	| Clockwise        | 4     | White       | Blue        | Yellow     | Green      |
 	| CounterClockwise | 4     | White       | Blue        | Yellow     | Green      |
 

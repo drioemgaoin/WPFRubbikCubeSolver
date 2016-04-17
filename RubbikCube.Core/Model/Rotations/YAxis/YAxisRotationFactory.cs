@@ -1,4 +1,6 @@
-﻿namespace RubiksCube.Core.Model.Rotations.YAxis
+﻿using System;
+
+namespace RubiksCube.Core.Model.Rotations.YAxis
 {
     internal class YAxisRotationFactory : RotationFactory<YAxisRotation>
     {
@@ -16,7 +18,7 @@
         {
             if (faceType == FaceType.Up)
             {
-                return new UpFaceCounterClockwise(layerType, angle, times);
+                return new UpFaceCounterClockwise(layerType, Math.Abs(angle), times);
             }
 
             return new YAxisCounterClockwise(faceType, layerType, angle, times);

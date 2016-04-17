@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations;
@@ -14,10 +15,12 @@ namespace RubiksCube.Specs
     {
         private Cube cube;
 
-        [Given(@"a cube with a visible ""(.*)"" face")]
-        public void GivenACubeWithAVisableFace(string visibleColor)
+        [Given(@"a new cube with a front white face and a top orange face")]
+        public void GivenANewCube()
         {
             cube = new Cube();
+            Assert.IsTrue(cube[FaceType.Front].Facies.All(facie => facie.Color == Color.White));
+            Assert.IsTrue(cube[FaceType.Up].Facies.All(facie => facie.Color == Color.Orange));
         }
 
         [When(@"the cube turns ""(.*)"" (.*) times")]

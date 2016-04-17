@@ -1,7 +1,7 @@
 ﻿Feature: Rotations
 
 Scenario Outline: Cube Rotations
-	Given a cube with a visible "White" face
+	Given a new cube with a front white face and a top orange face
 	When the cube turns "<direction>" <times> times
 	Then the "<expected_color>" face is visible
 	
@@ -25,23 +25,26 @@ Scenario Outline: Cube Rotations
 	| Down      | 4     | White          |
 
 Scenario Outline: Up Face Rotations
-	Given a cube with a visible "White" face
+	Given a new cube with a front white face and a top orange face
 	When turns the up face "<direction>" <times> times
-	Then the "Front" face "First" row is "<expected_color>"
+	Then the "Front" face "First" row is "<front_color>"
+		And the "Right" face "First" row is "<right_color>"
+		And the "Back" face "First" row is "<back_color>"
+		And the "Left" face "First" row is "<left_color>"
 	
 	Examples:
-	| direction			| times | expected_color |
-	| Clockwise			| 1     | Green		     |
-	| CounterClockwise	| 1     | Blue           |
-	| Clockwise			| 2     | Yellow         |
-	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Blue           |
-	| CounterClockwise	| 3     | Green          |
-	| Clockwise			| 4     | White          |
-	| CounterClockwise	| 4     | White          |
+	| direction        | times | front_color | right_color | back_color | left_color |
+	| Clockwise        | 1     | Green       | White       | Blue       | Yellow     |
+	| CounterClockwise | 1     | Blue        | Yellow      | Green      | White      |
+	| Clockwise        | 2     | Yellow      | Green       | White      | Blue       |
+	| CounterClockwise | 2     | Yellow      | Green       | White      | Blue       |
+	| Clockwise        | 3     | Blue        | Yellow      | Green      | White      |
+	| CounterClockwise | 3     | Green       | White       | Blue       | Yellow     |
+	| Clockwise        | 4     | White       | Blue        | Yellow     | Green      |
+	| CounterClockwise | 4     | White       | Blue        | Yellow     | Green      |
 
 Scenario Outline: Down Face Rotations
-	Given a cube with a visible "White" face
+	Given a new cube with a front white face and a top orange face
 	When turns the down face "<direction>" <times> times
 	Then the "Front" face "Third" row is "<front_color>"
 		And the "Right" face "Third" row is "<right_color>"
@@ -60,23 +63,26 @@ Scenario Outline: Down Face Rotations
 	| CounterClockwise | 4     | White       | Blue        | Yellow     | Green      |
 
 Scenario Outline: Left Face Rotations
-	Given a cube with a visible "White" face
+	Given a new cube with a front white face and a top orange face
 	When turns the left face "<direction>" <times> times
-	Then the "Front" face "First" column is "<expected_color>"
+	Then the "Front" face "First" column is "<front_color>"
+		And the "Up" face "First" column is "<up_color>"
+		And the "Back" face "First" column is "<back_color>"
+		And the "Down" face "First" column is "<down_color>"
 	
 	Examples:
-	| direction			| times | expected_color |
-	| Clockwise			| 1     | Orange	     |
-	| CounterClockwise	| 1     | Red       	 |
-	| Clockwise			| 2     | Yellow         |
-	| CounterClockwise	| 2     | Yellow         |
-	| Clockwise			| 3     | Red 		     |
-	| CounterClockwise	| 3     | Orange         |
-	| Clockwise			| 4     | White          |
-	| CounterClockwise	| 4     | White          |
+	| direction        | times | front_color | up_color | back_color | down_color |
+	| Clockwise        | 1     | Orange      | Yellow   | Red        | White      |
+	| CounterClockwise | 1     | Red         | White    | Orange     | Yellow     |
+	| Clockwise        | 2     | Yellow      | Red      | White      | Orange     |
+	| CounterClockwise | 2     | Yellow      | Red      | White      | Orange     |
+	| Clockwise        | 3     | Red         | White    | Orange     | Yellow     |
+	| CounterClockwise | 3     | Orange      | Yellow   | Red        | White      |
+	| Clockwise        | 4     | White       | Orange   | Yellow     | Red        |
+	| CounterClockwise | 4     | White       | Orange   | Yellow     | Red        |
 
 Scenario Outline: Right Face Rotations
-	Given a cube with a visible "White" face
+	Given a new cube with a front white face and a top orange face
 	When turns the right face "<direction>" <times> times
 	Then the "Front" face "Third" column is "<expected_color>"
 	

@@ -1,3 +1,4 @@
+- Fix X, Y and Z cube rotations
 - Refactor Y rotations to use down rotation types
 - Refactor Z rotations to use front and back rotation types
 - Use Cube.Move for AxisMovingFaces as well

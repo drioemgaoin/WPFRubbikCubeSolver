@@ -8,7 +8,7 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
         {
             if (faceType == FaceType.Up)
             {
-                return new UpFaceClockwise(layerType, -angle, times);
+                return new UpFaceClockwise(layerType, angle, times);
             }
 
             return new YAxisClockwise(faceType, layerType, angle, times);
@@ -21,7 +21,12 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                 return new UpFaceCounterClockwise(layerType, Math.Abs(angle), times);
             }
 
-            return new YAxisCounterClockwise(faceType, layerType, angle, times);
+            if (faceType == FaceType.Down)
+            {
+                return new DownFaceCounterClockwise(layerType, -Math.Abs(angle), times);
+            }
+
+            throw new InvalidOperationException();
         }
     }
 }

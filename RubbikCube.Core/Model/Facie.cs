@@ -7,22 +7,12 @@ namespace RubiksCube.Core.Model
 {
     public class Facie : ICloneable, INotifyPropertyChanged
     {
-       private FaciePositionType faciePosition;
-
         public Facie(Color color)
         {
             Color = color;
         }
 
-        public FaciePositionType FaciePosition
-        {
-            get { return faciePosition; }
-            set
-            {
-                faciePosition = value;
-                OnPropertyChanged("FaciePosition");
-            }
-        }
+        public FaciePositionType Position { get; set; }
 
         public Color Color { get; }
 
@@ -40,11 +30,6 @@ namespace RubiksCube.Core.Model
             Rotation = Rotation == null ? matrix : MatrixHelper.Multiply(Rotation, matrix);
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public object Clone()
         {
             return new Facie(Color)
@@ -52,14 +37,14 @@ namespace RubiksCube.Core.Model
                 Key = Key,
                 PreviousRotation = PreviousRotation,
                 Rotation = Rotation,
-                FaciePosition = FaciePosition
+                Position = Position
             };
         }
 
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            buffer.AppendLine(FaciePosition + "-" + Color);
+            buffer.AppendLine(Position + "-" + Color);
 
             return buffer.ToString();
         }               

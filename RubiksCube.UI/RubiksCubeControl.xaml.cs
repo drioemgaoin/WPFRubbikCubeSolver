@@ -223,7 +223,7 @@ namespace RubiksCube.UI
             {
                 Geometry = new MeshGeometry3D
                 {
-                    Positions = CreatePoints(positions, facie.FaciePosition),
+                    Positions = CreatePoints(positions, facie.Position),
                     TriangleIndices = new Int32Collection { 2, 1, 3, 2, 0, 1 },
                     TextureCoordinates = new PointCollection { new Point(-0.5, -0.5), new Point(0.5, -0.5), new Point(-0.5, 0.5), new Point(0.5, 0.5) }
                 },

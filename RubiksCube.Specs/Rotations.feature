@@ -30,7 +30,7 @@ Scenario Outline: Up Face Rotations
 	Then the "Front" face "First" row is "<front_color>"
 		And the "Right" face "First" row is "<right_color>"
 		And the "Back" face "First" row is "<back_color>"
-		And the "Left" face "First" row is "<left_color>"
+		And the "Left" face "First" row is "<left_color"
 	
 	Examples:
 	| direction        | times | front_color | right_color | back_color | left_color |

@@ -70,6 +70,7 @@ namespace RubiksCube.Specs
             var facies = cube[faceType].GetRow(layerType);
 
             AssertColorAreEqual(color, facies);
+            VerifyCubeFaciesIntegrity();
         }
 
         [Then(@"the ""(.*)"" face ""(.*)"" column is ""(.*)""")]
@@ -80,6 +81,30 @@ namespace RubiksCube.Specs
             var facies = cube[faceType].GetColumn(layerType);
 
             AssertColorAreEqual(color, facies);
+            VerifyCubeFaciesIntegrity();
+        }
+
+        public void VerifyCubeFaciesIntegrity()
+        {
+            VerifyFaceIntegrity(FaceType.Front);
+            VerifyFaceIntegrity(FaceType.Back);
+            VerifyFaceIntegrity(FaceType.Left);
+            VerifyFaceIntegrity(FaceType.Right);
+            VerifyFaceIntegrity(FaceType.Up);
+            VerifyFaceIntegrity(FaceType.Down);
+        }
+
+        private void VerifyFaceIntegrity(FaceType faceType)
+        {
+            var facies = cube[faceType].Facies;
+            Assert.AreEqual(9, facies.Count);
+
+            var duplicates = facies.GroupBy(facie => facie.Position)
+                .Where(grouping => grouping.Count() > 1)
+                .Select(grouping => grouping.Key)
+                .ToList();
+
+            Assert.IsEmpty(duplicates, string.Format("{0} facies contain duplicated positions.", Enum.GetName(faceType.GetType(), faceType)));
         }
 
         private static void AssertColorAreEqual(string color, IList<Facie> facies)

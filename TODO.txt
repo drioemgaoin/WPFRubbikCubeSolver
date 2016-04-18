@@ -1,0 +1,4 @@
+- Refactor Y rotations to use down rotation types
+- Refactor Z rotations to use front and back rotation types
+- Use Cube.Move for AxisMovingFaces as well
+- Encapsulate Model.Facie UI access with UIRotation members

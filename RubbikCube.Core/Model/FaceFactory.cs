@@ -53,7 +53,7 @@ namespace RubiksCube.Core.Model
             return new Facie(color)
             {
                 Key = string.Format("{0}{1}", faceType, faciePositionType),
-                FaciePosition = faciePositionType
+                Position = faciePositionType
             };
         }
     }

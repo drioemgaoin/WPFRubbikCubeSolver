@@ -22,21 +22,21 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected override void FlipPosition(Facie facie, FaceType faceType)
         {
-            if (facie.FaciePosition == FaciePositionType.MiddleUp)
+            if (facie.Position == FaciePositionType.MiddleUp)
             {
-                facie.FaciePosition = FaciePositionType.MiddleDown;
+                facie.Position = FaciePositionType.MiddleDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+            else if (facie.Position == FaciePositionType.MiddleDown)
             {
-                facie.FaciePosition = FaciePositionType.MiddleUp;
+                facie.Position = FaciePositionType.MiddleUp;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightUp)
+            else if (facie.Position == FaciePositionType.RightUp)
             {
-                facie.FaciePosition = FaciePositionType.RightDown;
+                facie.Position = FaciePositionType.RightDown;
             }
-            else if (facie.FaciePosition == FaciePositionType.RightDown)
+            else if (facie.Position == FaciePositionType.RightDown)
             {
-                facie.FaciePosition = FaciePositionType.RightUp;
+                facie.Position = FaciePositionType.RightUp;
             }
         }
     }

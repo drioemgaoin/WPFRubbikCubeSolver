@@ -34,37 +34,37 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
         {
             if (faceType == FaceType.Down)
             {
-                if (facie.FaciePosition == FaciePositionType.LeftUp)
+                if (facie.Position == FaciePositionType.LeftUp)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftDown;
+                    facie.Position = FaciePositionType.LeftDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                else if (facie.Position == FaciePositionType.LeftMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleDown;
+                    facie.Position = FaciePositionType.MiddleDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                else if (facie.Position == FaciePositionType.LeftDown)
                 {
-                    facie.FaciePosition = FaciePositionType.RightDown;
+                    facie.Position = FaciePositionType.RightDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                else if (facie.Position == FaciePositionType.MiddleDown)
                 {
-                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                    facie.Position = FaciePositionType.RightMiddle;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightDown)
+                else if (facie.Position == FaciePositionType.RightDown)
                 {
-                    facie.FaciePosition = FaciePositionType.RightUp;
+                    facie.Position = FaciePositionType.RightUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                else if (facie.Position == FaciePositionType.RightMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                    facie.Position = FaciePositionType.MiddleUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightUp)
+                else if (facie.Position == FaciePositionType.RightUp)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftUp;
+                    facie.Position = FaciePositionType.LeftUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                else if (facie.Position == FaciePositionType.MiddleUp)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                    facie.Position = FaciePositionType.LeftMiddle;
                 }
             }
             else

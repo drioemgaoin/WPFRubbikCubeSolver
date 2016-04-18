@@ -2,14 +2,13 @@
 
 namespace RubiksCube.Core.Model.Rotations.YAxis
 {
-    internal class YAxisClockwise : YAxisRotation
+    internal class DownFaceClockwise : YAxisRotation
     {
-        public YAxisClockwise(FaceType faceType, LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public DownFaceClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
-            AxisMovingFaces = new[] { faceType };
         }
 
-        protected override IEnumerable<FaceType> AxisMovingFaces { get; }
+        protected override IEnumerable<FaceType> AxisMovingFaces => new[] { FaceType.Down };
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
@@ -19,9 +18,11 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                     cube[FaceType.Right].Add(facie);
                     break;
                 case FaceType.Right:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Back].Add(facie);
                     break;
                 case FaceType.Back:
+                    FlipPosition(facie, faceType);
                     cube[FaceType.Left].Add(facie);
                     break;
                 case FaceType.Left:
@@ -69,7 +70,14 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
             }
             else
             {
-                base.FlipPosition(facie, faceType);
+                if (facie.Position == FaciePositionType.RightDown)
+                {
+                    facie.Position = FaciePositionType.LeftDown;
+                }
+                else if (facie.Position == FaciePositionType.LeftDown)
+                {
+                    facie.Position = FaciePositionType.RightDown;
+                }
             }
         }
     }

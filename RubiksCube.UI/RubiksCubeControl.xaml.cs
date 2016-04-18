@@ -134,9 +134,9 @@ namespace RubiksCube.UI
         {
             var actions = new Action[]
             {
-                //() => RotateUpFaceClockwise(),
-                //() => RotateUpFaceCounterClockwise(),
-                //() => RotateDownFaceClockwise(),
+                () => RotateUpFaceClockwise(),
+                () => RotateUpFaceCounterClockwise(),
+                () => RotateDownFaceClockwise(),
                 () => RotateDownFaceCounterClockwise(),
 
                 () => RotateLeftFaceClockwise(),

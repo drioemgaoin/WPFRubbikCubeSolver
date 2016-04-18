@@ -8,10 +8,15 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
         {
             if (faceType == FaceType.Up)
             {
-                return new UpFaceClockwise(layerType, angle, times);
+                return new UpFaceClockwise(layerType, -angle, times);
             }
 
-            return new YAxisClockwise(faceType, layerType, angle, times);
+            if (faceType == FaceType.Down)
+            {
+                return new DownFaceClockwise(layerType, angle, times);
+            }
+
+            throw new InvalidOperationException();
         }
 
         protected override YAxisRotation CreateCounterClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)

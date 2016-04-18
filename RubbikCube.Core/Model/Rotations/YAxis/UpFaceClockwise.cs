@@ -22,7 +22,7 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                     break;
                 case FaceType.Back:
                     FlipPosition(facie, faceType);
-                    cube[FaceType.Right].Add(facie);
+                    cube[FaceType.Right].Add(facie);    
                     break;
                 case FaceType.Left:
                     FlipPosition(facie, faceType);
@@ -68,18 +68,7 @@ namespace RubiksCube.Core.Model.Rotations.YAxis
                     facie.Position = FaciePositionType.MiddleUp;
                 }
             }
-            else if (faceType == FaceType.Front)
-            {
-                if (facie.Position == FaciePositionType.RightUp)
-                {
-                    facie.Position = FaciePositionType.LeftUp;
-                }
-                else if (facie.Position == FaciePositionType.LeftUp)
-                {
-                    facie.Position = FaciePositionType.RightUp;
-                }
-            }
-            else if (faceType == FaceType.Back)
+            else
             {
                 if (facie.Position == FaciePositionType.LeftUp)
                 {

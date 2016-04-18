@@ -12,23 +12,7 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            switch (faceType)
-            {
-                case FaceType.Front:
-                    FlipPosition(facie, faceType);
-                    cube[FaceType.Down].Add(facie);
-                    break;
-                case FaceType.Up:
-                    cube[FaceType.Front].Add(facie);
-                    break;
-                case FaceType.Back:
-                    FlipPosition(facie, faceType);
-                    cube[FaceType.Up].Add(facie);
-                    break;
-                case FaceType.Down:
-                    cube[FaceType.Back].Add(facie);
-                    break;
-            }
+            MoveFromFrontToDown(cube, faceType, facie);
         }
 
         protected override void FlipPosition(Facie facie, FaceType faceType)

@@ -122,7 +122,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 32
   testRunner.And(string.Format("the \"Back\" face \"First\" row is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 33
-  testRunner.And("the \"Left\" face \"First\" row is \"<left_color\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the \"Left\" face \"First\" row is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

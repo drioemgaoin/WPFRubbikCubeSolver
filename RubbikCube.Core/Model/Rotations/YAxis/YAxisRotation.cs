@@ -2,7 +2,7 @@
 
 namespace RubiksCube.Core.Model.Rotations.YAxis
 {
-    public abstract class YAxisRotation : Rotation
+    internal abstract class YAxisRotation : Rotation
     {
         protected YAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {

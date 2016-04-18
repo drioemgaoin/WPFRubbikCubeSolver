@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public abstract class Rotation
+    internal abstract class Rotation
     {
         private readonly uint times;
 
@@ -13,12 +13,12 @@ namespace RubiksCube.Core.Model.Rotations
 
             LayerType = layerType;
             Angle = angle;
-            Moves = new List<List<Facie>>();
+            Facies = new List<List<Facie>>();
         }
 
-        public IList<List<Facie>> Moves { get; }
+        public IList<List<Facie>> Facies { get; }
 
-        protected double Angle { get; }
+        public double Angle { get; }
 
         protected LayerType LayerType { get; }
 
@@ -39,9 +39,8 @@ namespace RubiksCube.Core.Model.Rotations
             for(var i = 0; i < times; i++)
             {
                 var move = ApplyCore(cube).ToList();
-                Moves.Add(move.Clone().ToList());
-            }
-            System.Diagnostics.Debug.WriteLine(cube);
+                Facies.Add(move.Clone().ToList());
+            }            
         }
 
         protected virtual IList<Facie> ApplyCore(Cube cube)

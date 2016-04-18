@@ -17,16 +17,12 @@ namespace RubiksCube.UI
 {
     public partial class RubiksCubeControl
     {
-        private const double Angle = Math.PI / 4;
-
         private readonly IPositionsFactory positionsFactory;
-        private readonly IRubiksCubeSolver cubeSolver;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
 
         public RubiksCubeControl()
         {
-            cubeSolver = new RubiksCubeSolver();
             positionsFactory = new PositionsFactory();
             movementEngine = new AnimationEngine();
             cube = new Cube();
@@ -156,17 +152,9 @@ namespace RubiksCube.UI
             }
         }
 
-        public void Resolve()   
-        {
-            cubeSolver.Solve(cube);
-        }
-
         private void Rotate(RotationInfo rotationInfo)
         {
-            var rotation = rotationInfo.CreateRotation();
-            cube.Rotate(rotation);
-
-            var matrix = rotation.CreateMatrix(rotationInfo.Clockwise ? Angle : -Angle);
+            var rotation = cube.Rotate(rotationInfo);
 
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
@@ -180,7 +168,7 @@ namespace RubiksCube.UI
                     var geometry = group.Children.FirstOrDefault(x => x.GetValue(NameProperty).ToString() == facie.Key);
                     if (geometry != null)
                     {
-                        var intermediaryMatrix = facie.PreviousRotation == null ? matrix : MatrixHelper.Multiply(facie.PreviousRotation, matrix);
+                        var intermediaryMatrix = facie.PreviousRotation == null ? rotation.Matrix : MatrixHelper.Multiply(facie.PreviousRotation, rotation.Matrix);
 
                         var previousMatrix3D = facie.PreviousRotation == null ? Matrix3D.Identity : MatrixMapper.Map(facie.PreviousRotation);
                         var newMatrix3D = MatrixMapper.Map(intermediaryMatrix);

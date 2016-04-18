@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
-    public abstract class ZAxisRotation : Rotation
+    internal abstract class ZAxisRotation : Rotation
     {
         protected ZAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {

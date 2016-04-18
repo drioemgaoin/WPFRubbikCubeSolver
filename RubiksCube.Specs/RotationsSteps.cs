@@ -41,35 +41,26 @@ namespace RubiksCube.Specs
         [When(@"turns the left face ""(.*)"" (.*) times")]
         public void WhenTurnsTheLeftFace(string way, uint times)
         {
-            var info = new LeftFaceRotationInfo(way == "Clockwise", times);
-            var rotation = info.CreateRotation();
-            cube.Rotate(rotation);
+            cube.Rotate(new LeftFaceRotationInfo(way == "Clockwise", times));
         }
 
         [When(@"turns the right face ""(.*)"" (.*) times")]
         public void WhenTurnsTheRightFace(string way, uint times)
         {
-            var info = new RightFaceRotationInfo(way == "Clockwise", times);
-            var rotation = info.CreateRotation();
-            cube.Rotate(rotation);
+            cube.Rotate(new RightFaceRotationInfo(way == "Clockwise", times));
         }
 
         [When(@"turns the up face ""(.*)"" (.*) times")]
         public void WhenTurnsTheUpFace(string way, uint times)
         {
-            var info = new UpFaceRotationInfo(way == "Clockwise", times);
-            var rotation = info.CreateRotation();
-            cube.Rotate(rotation);
+            cube.Rotate(new UpFaceRotationInfo(way == "Clockwise", times));
         }
 
         [When(@"turns the down face ""(.*)"" (.*) times")]
         public void WhenTurnsTheDownFace(string way, uint times)
         {
-            var info = new DownFaceRotationInfo(way == "Clockwise", times);
-            var rotation = info.CreateRotation();
-            cube.Rotate(rotation);
+            cube.Rotate(new DownFaceRotationInfo(way == "Clockwise", times));
         }
-
 
         [Then(@"the ""(.*)"" face ""(.*)"" row is ""(.*)""")]
         public void ThenTheFaceRowIs(string face, string row, string color)

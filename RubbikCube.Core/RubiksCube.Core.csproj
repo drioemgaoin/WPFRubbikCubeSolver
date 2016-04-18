@@ -43,7 +43,6 @@
     <Compile Include="Model\AxisType.cs" />
     <Compile Include="Model\Color.cs" />
     <Compile Include="Model\Move.cs" />
-    <Compile Include="Model\Rotations\RotationInfoHelper.cs" />
     <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Model\Rotations\XAxis\CubeClockwise.cs" />
     <Compile Include="Model\Rotations\XAxis\CubeCounterClockwise.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="Model\Rotations\XAxis\XAxisRotation.cs" />
     <Compile Include="Model\Rotations\ZAxis\ZAxisRotation.cs" />
     <Compile Include="Model\Rotations\ZAxis\ZAxisRotationFactory.cs" />
+    <Compile Include="Model\UIRotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotationAttribute.cs" />
     <Compile Include="ReflectionHelper.cs" />

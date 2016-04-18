@@ -49,6 +49,7 @@ namespace RubiksCube.Core.Model
         {
             return new Facie(Color)
             {
+                Key = Key,
                 PreviousRotation = PreviousRotation,
                 Rotation = Rotation,
                 FaciePosition = FaciePosition

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using RubiksCube.Core.Model.Rotations;
 
@@ -8,6 +8,7 @@ namespace RubiksCube.Core.Model
     public class Cube
     {
         private readonly IDictionary<FaceType, Face> faces = new Dictionary<FaceType, Face>();
+        private readonly  RotationFactory rotationFactory = new RotationFactory();
 
         public Cube()
         {
@@ -22,18 +23,20 @@ namespace RubiksCube.Core.Model
 
         public Face this[FaceType type] => faces[type];
 
-        public void Rotate(Rotation rotation)
+        public UIRotation Rotate(RotationInfo rotationInfo)
         {
+            var rotation = rotationFactory.CreateRotation(rotationInfo);
             rotation.Apply(this);
-        }
 
+            return new UIRotation(rotation);
+        }
+        
         public override string ToString()
         {
             var buffer = new StringBuilder();
             foreach(var face in faces.Values)
             {
                 buffer.Append(face);
-
             }
 
             return buffer.ToString();

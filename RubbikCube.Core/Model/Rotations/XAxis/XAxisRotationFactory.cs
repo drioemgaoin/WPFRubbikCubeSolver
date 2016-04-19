@@ -23,12 +23,12 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
         {
             if (faceType == FaceType.Left)
             {
-                return new LeftFaceCounterClockwise(layerType, Math.Abs(angle), times); 
+                return new LeftFaceCounterClockwise(layerType, angle, times); 
             }
 
             if (faceType == FaceType.Right)
             {
-                return new RightFaceCounterClockwise(layerType, -Math.Abs(angle), times);
+                return new RightFaceCounterClockwise(layerType, -angle, times);
             }
 
             throw new InvalidOperationException();

@@ -25,7 +25,7 @@ namespace RubiksCube.Core.Model.Rotations
                 return CreateClockwiseRotation(info.Face, info.Layer, Angle, info.Times);
             }
 
-            return CreateCounterClockwiseRotation(info.Face, info.Layer, -Angle, info.Times);
+            return CreateCounterClockwiseRotation(info.Face, info.Layer, Angle, info.Times);
         }        
     }
 

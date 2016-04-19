@@ -100,3 +100,41 @@ Scenario Outline: Right Face Rotations
 	| Clockwise        | 4     | White       | Orange   | Yellow     | Red        |
 	| CounterClockwise | 4     | White       | Orange   | Yellow     | Red        |
 
+Scenario Outline: Front Face Rotations
+	Given a new cube with a front white face and a top orange face
+	When turns the front face "<direction>" <times> times
+	Then the "Left" face "First" column is "<left_color>"
+		And the "Up" face "First" row is "<up_color>"
+		And the "Right" face "Third" column is "<right_color>"
+		And the "Down" face "Third" row is "<down_color>"
+	
+	Examples:
+	| direction        | times | left_color | up_color | right_color | down_color |
+	| Clockwise        | 1     | Red        | Green    | Orange      | Blue       |
+	| CounterClockwise | 1     | Orange     | Blue     | Red         | Green      |
+	| Clockwise        | 2     | Blue       | Red      | Green       | Orange     |
+	| CounterClockwise | 2     | Blue       | Red      | Green       | Orange     |
+	| Clockwise        | 3     | Orange     | Blue     | Red         | Green      |
+	| CounterClockwise | 3     | Red        | Green    | Orange      | Blue       |
+	| Clockwise        | 4     | White      | Orange   | Yellow      | Red        |
+	| CounterClockwise | 4     | White      | Orange   | Yellow      | Red        |
+
+Scenario Outline: Back Face Rotations
+	Given a new cube with a front white face and a top orange face
+	When turns the back face "<direction>" <times> times
+	Then the "Left" face "Third" row is "<front_color>"
+		And the "Up" face "Third" row is "<up_color>"
+		And the "Right" face "Third" row is "<back_color>"
+		And the "Down" face "Third" row is "<down_color>"
+	
+	Examples:
+	| direction        | times | front_color | up_color | back_color | down_color |
+	| Clockwise        | 1     | Orange      | Blue     | Red        | Green      |
+	| CounterClockwise | 1     | Red         | Green    | Orange     | Blue       |
+	| Clockwise        | 2     | Blue        | Red      | Green      | Orange     |
+	| CounterClockwise | 2     | Blue        | Red      | Green      | Orange     |
+	| Clockwise        | 3     | Red         | Green    | Orange     | Blue       |
+	| CounterClockwise | 3     | Orange      | Blue     | Red        | Green      |
+	| Clockwise        | 4     | White       | Orange   | Yellow     | Red        |
+	| CounterClockwise | 4     | White       | Orange   | Yellow     | Red        |
+

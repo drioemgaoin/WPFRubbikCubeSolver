@@ -6,6 +6,7 @@ using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations;
 using RubiksCube.Core.Model.Rotations.XAxis;
 using RubiksCube.Core.Model.Rotations.YAxis;
+using RubiksCube.Core.Model.Rotations.ZAxis;
 using TechTalk.SpecFlow;
 
 namespace RubiksCube.Specs
@@ -60,6 +61,18 @@ namespace RubiksCube.Specs
         public void WhenTurnsTheDownFace(string way, uint times)
         {
             cube.Rotate(new DownFaceRotationInfo(way == "Clockwise", times));
+        }
+
+        [When(@"turns the front face ""(.*)"" (.*) times")]
+        public void WhenTurnsTheFrontFaceTimes(string way, uint times)
+        {
+            cube.Rotate(new FrontFaceRotationInfo(way == "Clockwise", times));
+        }
+
+        [When(@"turns the back face ""(.*)"" (.*) times")]
+        public void WhenTurnsTheBackFaceTimes(string way, uint times)
+        {
+            cube.Rotate(new BackFaceRotationInfo(way == "Clockwise", times));
         }
 
         [Then(@"the ""(.*)"" face ""(.*)"" row is ""(.*)""")]

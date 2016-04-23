@@ -34,7 +34,7 @@ namespace RubiksCube.Core.Model
         {
             var facies = new List<Facie>
             {
-                CreateFacie(faceType, FaciePositionType.Middle, color),
+                CreateFacie(faceType, FaciePositionType.Center, color),
                 CreateFacie(faceType, FaciePositionType.MiddleUp, color),
                 CreateFacie(faceType, FaciePositionType.MiddleDown, color),
                 CreateFacie(faceType, FaciePositionType.RightMiddle, color),

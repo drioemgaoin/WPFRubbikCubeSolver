@@ -47,12 +47,16 @@ namespace RubiksCube.Core.Model
                 () => Rotate(new BackFaceRotationInfo(false))
             };
 
+            var rotations = new List<UIRotation>();
             var random = new Random();
             for (var i = 0; i < 1000; i++)
             {
                 var index = random.Next(0, actions.Count());
-                yield return actions[index]();
+                var rotation = actions[index]();
+                rotations.Add(rotation);
             }
+
+            return rotations;
         }
 
         public UIRotation Rotate(RotationInfo rotationInfo)

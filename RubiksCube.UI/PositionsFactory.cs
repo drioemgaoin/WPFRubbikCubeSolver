@@ -34,7 +34,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateLeftPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "0 2 0  1 2 0  0 2 -1  1 2 -1";
+            positions[FaciePositionType.Center] = "0 2 0  1 2 0  0 2 -1  1 2 -1";
             positions[FaciePositionType.MiddleUp] = "1 2 0  2 2 0  1 2 -1  2 2 -1";
             positions[FaciePositionType.MiddleDown] = "-1 2 0  0 2 0  -1 2 -1  0 2 -1";
             positions[FaciePositionType.RightMiddle] = "0 2 1  1 2 1  0 2 0  1 2 0";
@@ -49,7 +49,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateDownPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "-1 0 -1  -1 0 0  -1 1 -1  -1 1 0";
+            positions[FaciePositionType.Center] = "-1 0 -1  -1 0 0  -1 1 -1  -1 1 0";
             positions[FaciePositionType.MiddleDown] = "-1 0 0  -1 0 1  -1 1 0  -1 1 1";
             positions[FaciePositionType.MiddleUp] = "-1 0 -2  -1 0 -1  -1 1 -2  -1 1 -1";
             positions[FaciePositionType.RightMiddle] = "-1 -1 -1  -1 -1 0  -1 0 -1  -1 0 0";
@@ -64,7 +64,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateBackPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "1 0 -2  0 0 -2  1 1 -2  0 1 -2";
+            positions[FaciePositionType.Center] = "1 0 -2  0 0 -2  1 1 -2  0 1 -2";
             positions[FaciePositionType.MiddleUp] = "2 0 -2  1 0 -2  2 1 -2  1 1 -2";
             positions[FaciePositionType.MiddleDown] = "0 0 -2  -1 0 -2  0 1 -2  -1 1 -2";
             positions[FaciePositionType.RightMiddle] = "1 -1 -2  0 -1 -2  1 0 -2  0 0 -2";
@@ -79,7 +79,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateRightPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "0 -1 -1  1 -1 -1  0 -1 0  1 -1 0";
+            positions[FaciePositionType.Center] = "0 -1 -1  1 -1 -1  0 -1 0  1 -1 0";
             positions[FaciePositionType.MiddleUp] = "1 -1 -1  2 -1 -1  1 -1 0  2 -1 0";
             positions[FaciePositionType.MiddleDown] = "-1 -1 -1  0 -1 -1  -1 -1 0  0 -1 0";
             positions[FaciePositionType.RightMiddle] = "0 -1 -2  1 -1 -2  0 -1 -1  1 -1 -1";
@@ -94,7 +94,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateUpPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "2 0 0  2 0 -1  2 1 0  2 1 -1";
+            positions[FaciePositionType.Center] = "2 0 0  2 0 -1  2 1 0  2 1 -1";
             positions[FaciePositionType.MiddleUp] = "2 0 -1  2 0 -2  2 1 -1  2 1 -2";
             positions[FaciePositionType.MiddleDown] = "2 0 1  2 0 0  2 1 1  2 1 0";
             positions[FaciePositionType.RightMiddle] = "2 -1 0  2 -1 -1  2 0 0  2 0 -1";
@@ -109,7 +109,7 @@ namespace RubiksCube.UI
         private static IDictionary<FaciePositionType, string> CreateFrontPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
-            positions[FaciePositionType.Middle] = "0 0 1  1 0 1  0 1 1  1 1 1";
+            positions[FaciePositionType.Center] = "0 0 1  1 0 1  0 1 1  1 1 1";
             positions[FaciePositionType.MiddleUp] = "1 0 1  2 0 1  1 1 1  2 1 1";
             positions[FaciePositionType.MiddleDown] = "-1 0 1  0 0 1  -1 1 1  0 1 1";
             positions[FaciePositionType.RightMiddle] = "0 -1 1  1 -1 1  0 0 1  1 0 1";

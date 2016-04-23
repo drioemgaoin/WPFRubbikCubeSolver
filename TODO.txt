@@ -1,4 +1,2 @@
 - Test the validity of facies' to ensure only one facie is set on all cube anchors
-- Refactor Z rotations to use front and back rotation types
-- Use Cube.Move for AxisMovingFaces as well
 - Encapsulate Model.Facie UI access with UIRotation members

@@ -71,6 +71,12 @@
       <DependentUpon>Rotations.feature</DependentUpon>
     </Compile>
     <Compile Include="RotationsSteps.cs" />
+    <Compile Include="Solver.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solver.feature</DependentUpon>
+    </Compile>
+    <Compile Include="SolverSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +84,10 @@
     <None Include="Rotations.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Rotations.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Solver.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Solver.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

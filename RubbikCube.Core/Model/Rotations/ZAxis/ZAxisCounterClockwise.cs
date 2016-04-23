@@ -1,11 +1,15 @@
-﻿namespace RubiksCube.Core.Model.Rotations.ZAxis
+﻿using System.Collections.Generic;
+
+namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
     internal class ZAxisCounterClockwise : ZAxisRotation
     {
-        public ZAxisCounterClockwise(FaceType faceType, LayerType layerType, double angle, uint times) 
-            : base(faceType, layerType, angle, times)
+        public ZAxisCounterClockwise(FaceType faceType, LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
+            AxisMovingFaces = new[] { faceType };
         }
+
+        protected override IEnumerable<FaceType> AxisMovingFaces { get; }
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
@@ -34,126 +38,126 @@
         {
             if (faceType == FaceType.Front)
             {
-                if (facie.FaciePosition == FaciePositionType.LeftUp)
+                if (facie.Position == FaciePositionType.LeftUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightUp;
+                    facie.Position = FaciePositionType.RightUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                else if (facie.Position == FaciePositionType.MiddleUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                    facie.Position = FaciePositionType.RightMiddle;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightUp)
+                else if (facie.Position == FaciePositionType.RightUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightDown;
+                    facie.Position = FaciePositionType.RightDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                else if (facie.Position == FaciePositionType.RightMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleDown;
+                    facie.Position = FaciePositionType.MiddleDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightDown)
+                else if (facie.Position == FaciePositionType.RightDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftDown;
+                    facie.Position = FaciePositionType.LeftDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                else if (facie.Position == FaciePositionType.MiddleDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                    facie.Position = FaciePositionType.LeftMiddle;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                else if (facie.Position == FaciePositionType.LeftDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftUp;
+                    facie.Position = FaciePositionType.LeftUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                else if (facie.Position == FaciePositionType.LeftMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                    facie.Position = FaciePositionType.MiddleUp;
                 }
             }
             else if (faceType == FaceType.Back)
             {
-                if (facie.FaciePosition == FaciePositionType.LeftUp)
+                if (facie.Position == FaciePositionType.LeftUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightUp;
+                    facie.Position = FaciePositionType.RightUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                else if (facie.Position == FaciePositionType.MiddleUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightMiddle;
+                    facie.Position = FaciePositionType.RightMiddle;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightUp)
+                else if (facie.Position == FaciePositionType.RightUp)
                 {
-                    facie.FaciePosition = FaciePositionType.RightDown;
+                    facie.Position = FaciePositionType.RightDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                else if (facie.Position == FaciePositionType.RightMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleDown;
+                    facie.Position = FaciePositionType.MiddleDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.RightDown)
+                else if (facie.Position == FaciePositionType.RightDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftDown;
+                    facie.Position = FaciePositionType.LeftDown;
                 }
-                else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                else if (facie.Position == FaciePositionType.MiddleDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftMiddle;
+                    facie.Position = FaciePositionType.LeftMiddle;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                else if (facie.Position == FaciePositionType.LeftDown)
                 {
-                    facie.FaciePosition = FaciePositionType.LeftUp;
+                    facie.Position = FaciePositionType.LeftUp;
                 }
-                else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                else if (facie.Position == FaciePositionType.LeftMiddle)
                 {
-                    facie.FaciePosition = FaciePositionType.MiddleUp;
+                    facie.Position = FaciePositionType.MiddleUp;
                 }
             }
             else if (LayerType == LayerType.First)
             {
                 if (faceType == FaceType.Up)
                 {
-                    if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    if (facie.Position == FaciePositionType.LeftDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftUp;
+                        facie.Position = FaciePositionType.LeftUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                    else if (facie.Position == FaciePositionType.MiddleDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftMiddle;
+                        facie.Position = FaciePositionType.LeftMiddle;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    else if (facie.Position == FaciePositionType.RightDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftDown;
+                        facie.Position = FaciePositionType.LeftDown;
                     }
                 }
                 else if (faceType == FaceType.Down)
                 {
-                    if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    if (facie.Position == FaciePositionType.LeftDown)
                     {
-                        facie.FaciePosition = FaciePositionType.RightUp;
+                        facie.Position = FaciePositionType.RightUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.MiddleDown)
+                    else if (facie.Position == FaciePositionType.MiddleDown)
                     {
-                        facie.FaciePosition = FaciePositionType.RightMiddle;
+                        facie.Position = FaciePositionType.RightMiddle;
                     }
                 }
                 else if (faceType == FaceType.Left)
                 {
-                    if (facie.FaciePosition == FaciePositionType.RightUp)
+                    if (facie.Position == FaciePositionType.RightUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightDown;
+                        facie.Position = FaciePositionType.RightDown;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                    else if (facie.Position == FaciePositionType.RightMiddle)
                     {
-                        facie.FaciePosition = FaciePositionType.MiddleDown;
+                        facie.Position = FaciePositionType.MiddleDown;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    else if (facie.Position == FaciePositionType.RightDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftDown;
+                        facie.Position = FaciePositionType.LeftDown;
                     }
                 }
                 else if (faceType == FaceType.Right)
                 {
-                    if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                    if (facie.Position == FaciePositionType.LeftMiddle)
                     {
-                        facie.FaciePosition = FaciePositionType.MiddleDown;
+                        facie.Position = FaciePositionType.MiddleDown;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    else if (facie.Position == FaciePositionType.LeftUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightDown;
+                        facie.Position = FaciePositionType.RightDown;
                     }
                 }
             }
@@ -161,54 +165,54 @@
             {
                 if (faceType == FaceType.Up)
                 {
-                    if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    if (facie.Position == FaciePositionType.LeftUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightUp;
+                        facie.Position = FaciePositionType.RightUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                    else if (facie.Position == FaciePositionType.MiddleUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightMiddle;
+                        facie.Position = FaciePositionType.RightMiddle;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightUp)
+                    else if (facie.Position == FaciePositionType.RightUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightDown;
+                        facie.Position = FaciePositionType.RightDown;
                     }
                 }
                 else if (faceType == FaceType.Down)
                 {
-                    if (facie.FaciePosition == FaciePositionType.MiddleUp)
+                    if (facie.Position == FaciePositionType.MiddleUp)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftMiddle;
+                        facie.Position = FaciePositionType.LeftMiddle;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightUp)
+                    else if (facie.Position == FaciePositionType.RightUp)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftDown;
+                        facie.Position = FaciePositionType.LeftDown;
                     }
                 }
                 else if (faceType == FaceType.Left)
                 {
-                    if (facie.FaciePosition == FaciePositionType.LeftUp)
+                    if (facie.Position == FaciePositionType.LeftUp)
                     {
-                        facie.FaciePosition = FaciePositionType.RightUp;
+                        facie.Position = FaciePositionType.RightUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.LeftMiddle)
+                    else if (facie.Position == FaciePositionType.LeftMiddle)
                     {
-                        facie.FaciePosition = FaciePositionType.MiddleUp;
+                        facie.Position = FaciePositionType.MiddleUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.LeftDown)
+                    else if (facie.Position == FaciePositionType.LeftDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftUp;
+                        facie.Position = FaciePositionType.LeftUp;
                     }
                 }
                 else if (faceType == FaceType.Right)
                 {
-                    if (facie.FaciePosition == FaciePositionType.RightMiddle)
+                    if (facie.Position == FaciePositionType.RightMiddle)
                     {
-                        facie.FaciePosition = FaciePositionType.MiddleUp;
+                        facie.Position = FaciePositionType.MiddleUp;
                     }
-                    else if (facie.FaciePosition == FaciePositionType.RightDown)
+                    else if (facie.Position == FaciePositionType.RightDown)
                     {
-                        facie.FaciePosition = FaciePositionType.LeftUp;
+                        facie.Position = FaciePositionType.LeftUp;
                     }
                 }
             }

@@ -1,8 +1,11 @@
 ﻿using System;
+using RubiksCube.Core.Model.Rotations.XAxis;
+using RubiksCube.Core.Model.Rotations.YAxis;
+using RubiksCube.Core.Model.Rotations.ZAxis;
 
 namespace RubiksCube.Core.Model.Rotations
 {
-    public interface IRotationFactory
+    internal interface IRotationFactory
     {
         Rotation CreateRotation(RotationInfo info);
     }
@@ -19,10 +22,35 @@ namespace RubiksCube.Core.Model.Rotations
         {
             if (info.Clockwise)
             {
-                return CreateClockwiseRotation(info.FaceType, info.Layer, Angle, info.Times);
+                return CreateClockwiseRotation(info.Face, info.Layer, Angle, info.Times);
             }
 
-            return CreateCounterClockwiseRotation(info.FaceType, info.Layer, -Angle, info.Times);
+            return CreateCounterClockwiseRotation(info.Face, info.Layer, Angle, info.Times);
         }        
+    }
+
+    internal class RotationFactory
+    {
+        private readonly XAxisRotationFactory xRotationFactory = new XAxisRotationFactory();
+        private readonly YAxisRotationFactory yAxisRotationFactory = new YAxisRotationFactory();
+        private readonly ZAxisRotationFactory zAxisRotationFactory = new ZAxisRotationFactory();
+
+        public Rotation CreateRotation(RotationInfo info)
+        {
+            switch (info.Face)
+            {
+                case FaceType.Left:
+                case FaceType.Right:
+                    return xRotationFactory.CreateRotation(info);
+                case FaceType.Up:
+                case FaceType.Down:
+                    return yAxisRotationFactory.CreateRotation(info);
+                case FaceType.Back:
+                case FaceType.Front:
+                    return zAxisRotationFactory.CreateRotation(info);
+                default:
+                    throw new InvalidOperationException();
+            }
+        }
     }
 }

@@ -63,13 +63,13 @@ namespace RubiksCube.Core.Model
 
         private static bool IsMatchingRow(Facie facie, LayerType layerType)
         {
-            var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
+            var attribute = ReflectionHelper.GetRotationAttribute(facie.Position);
             return attribute.Row == layerType || layerType == LayerType.All;
         }
 
         private static bool IsMatchingColumn(Facie facie, LayerType layerType)
         {
-            var attribute = ReflectionHelper.GetRotationAttribute(facie.FaciePosition);
+            var attribute = ReflectionHelper.GetRotationAttribute(facie.Position);
             return attribute.Column == layerType || layerType == LayerType.All;
         }
     }

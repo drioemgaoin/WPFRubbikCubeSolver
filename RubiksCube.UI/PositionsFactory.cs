@@ -17,7 +17,7 @@ namespace RubiksCube.UI
                 case FaceType.Front:
                     return CreateFrontPositions();
                 case FaceType.Up:
-                    return CreateTopPositions();
+                    return CreateUpPositions();
                 case FaceType.Back:
                     return CreateBackPositions();
                 case FaceType.Left:
@@ -25,7 +25,7 @@ namespace RubiksCube.UI
                 case FaceType.Right:
                     return CreateRightPositions();
                 case FaceType.Down:
-                    return CreateBottomPositions();
+                    return CreateDownPositions();
             }
 
             return new Dictionary<FaciePositionType, string>();
@@ -46,7 +46,7 @@ namespace RubiksCube.UI
             return positions;
         }
 
-        private static IDictionary<FaciePositionType, string> CreateBottomPositions()
+        private static IDictionary<FaciePositionType, string> CreateDownPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
             positions[FaciePositionType.Middle] = "-1 0 -1  -1 0 0  -1 1 -1  -1 1 0";
@@ -91,7 +91,7 @@ namespace RubiksCube.UI
             return positions;
         }
 
-        private static IDictionary<FaciePositionType, string> CreateTopPositions()
+        private static IDictionary<FaciePositionType, string> CreateUpPositions()
         {
             var positions = new Dictionary<FaciePositionType, string>();
             positions[FaciePositionType.Middle] = "2 0 0  2 0 -1  2 1 0  2 1 -1";

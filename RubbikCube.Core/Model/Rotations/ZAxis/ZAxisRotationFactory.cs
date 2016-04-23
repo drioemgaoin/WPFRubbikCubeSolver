@@ -9,7 +9,7 @@
 
         protected override ZAxisRotation CreateCounterClockwiseRotation(FaceType faceType, LayerType layerType, double angle, uint times)
         {
-            return new ZAxisCounterClockwise(faceType, layerType, angle, times);
+            return new ZAxisCounterClockwise(faceType, layerType, -angle, times);
         }
     }
 }

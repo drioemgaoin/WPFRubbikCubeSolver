@@ -3,14 +3,13 @@ using System.Linq;
 
 namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
-    public abstract class ZAxisRotation : Rotation
+    internal abstract class ZAxisRotation : Rotation
     {
-        protected ZAxisRotation(FaceType faceType, LayerType layerType, double angle, uint times) 
-            : base(faceType, layerType, angle, times)
+        protected ZAxisRotation(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
-        protected override IEnumerable<FaceType> MovingFaces => new[] { FaceType.Left, FaceType.Up, FaceType.Right, FaceType.Down };
+        protected override IEnumerable<FaceType> AxisAdjacentFaces => new[] { FaceType.Left, FaceType.Up, FaceType.Right, FaceType.Down };
 
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
@@ -19,25 +18,25 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
                 if (face.Type == FaceType.Right)
                 {
                     return face.Facies.Where(x =>
-                        x.FaciePosition == FaciePositionType.LeftDown ||
-                        x.FaciePosition == FaciePositionType.LeftMiddle ||
-                        x.FaciePosition == FaciePositionType.LeftUp);
+                        x.Position == FaciePositionType.LeftDown ||
+                        x.Position == FaciePositionType.LeftMiddle ||
+                        x.Position == FaciePositionType.LeftUp);
                 }
 
                 if (face.Type == FaceType.Left)
                 {
                     return face.Facies.Where(x =>
-                        x.FaciePosition == FaciePositionType.RightDown ||
-                        x.FaciePosition == FaciePositionType.RightMiddle ||
-                        x.FaciePosition == FaciePositionType.RightUp);
+                        x.Position == FaciePositionType.RightDown ||
+                        x.Position == FaciePositionType.RightMiddle ||
+                        x.Position == FaciePositionType.RightUp);
                 }
 
                 if (face.Type == FaceType.Down || face.Type == FaceType.Up)
                 {
                     return face.Facies.Where(x =>
-                        x.FaciePosition == FaciePositionType.LeftDown ||
-                        x.FaciePosition == FaciePositionType.MiddleDown ||
-                        x.FaciePosition == FaciePositionType.RightDown);
+                        x.Position == FaciePositionType.LeftDown ||
+                        x.Position == FaciePositionType.MiddleDown ||
+                        x.Position == FaciePositionType.RightDown);
                 }
 
                 return face.GetRow(LayerType);
@@ -46,25 +45,25 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
             if (face.Type == FaceType.Right)
             {
                 return face.Facies.Where(x =>
-                    x.FaciePosition == FaciePositionType.RightDown ||
-                    x.FaciePosition == FaciePositionType.RightMiddle ||
-                    x.FaciePosition == FaciePositionType.RightUp);
+                    x.Position == FaciePositionType.RightDown ||
+                    x.Position == FaciePositionType.RightMiddle ||
+                    x.Position == FaciePositionType.RightUp);
             }
 
             if (face.Type == FaceType.Left)
             {
                 return face.Facies.Where(x =>
-                    x.FaciePosition == FaciePositionType.LeftDown ||
-                    x.FaciePosition == FaciePositionType.LeftMiddle ||
-                    x.FaciePosition == FaciePositionType.LeftUp);
+                    x.Position == FaciePositionType.LeftDown ||
+                    x.Position == FaciePositionType.LeftMiddle ||
+                    x.Position == FaciePositionType.LeftUp);
             }
 
             if (face.Type == FaceType.Down || face.Type == FaceType.Up)
             {
                 return face.Facies.Where(x =>
-                    x.FaciePosition == FaciePositionType.LeftUp ||
-                    x.FaciePosition == FaciePositionType.MiddleUp ||
-                    x.FaciePosition == FaciePositionType.RightUp);
+                    x.Position == FaciePositionType.LeftUp ||
+                    x.Position == FaciePositionType.MiddleUp ||
+                    x.Position == FaciePositionType.RightUp);
             }
 
             return face.GetRow(LayerType);

@@ -1,8 +1,0 @@
-﻿<Window x:Class="RubiksCube.UI.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:ui="clr-namespace:RubiksCube.UI"
-        Height="635" Width="585"
-        Background="Transparent">
-    <ui:RubiksCubeControl x:Name="RubiksCube"></ui:RubiksCubeControl>
-</Window> 

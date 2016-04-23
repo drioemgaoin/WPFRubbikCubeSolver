@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using RubiksCube.Core.Model.Rotations;
+using RubiksCube.Core.Model.Rotations.XAxis;
+using RubiksCube.Core.Model.Rotations.YAxis;
+using RubiksCube.Core.Model.Rotations.ZAxis;
 
 namespace RubiksCube.Core.Model
 {
@@ -22,6 +26,34 @@ namespace RubiksCube.Core.Model
         }
 
         public Face this[FaceType type] => faces[type];
+
+        public IEnumerable<UIRotation> MixUp()
+        {
+            var actions = new Func<UIRotation>[]
+            {
+                () => Rotate(new UpFaceRotationInfo(true)),
+                () => Rotate(new UpFaceRotationInfo(false)),
+                () => Rotate(new DownFaceRotationInfo(true)),
+                () => Rotate(new DownFaceRotationInfo(false)),
+
+                () => Rotate(new LeftFaceRotationInfo(true)),
+                () => Rotate(new LeftFaceRotationInfo(false)),
+                () => Rotate(new RightFaceRotationInfo(true)),
+                () => Rotate(new RightFaceRotationInfo(false)),
+
+                () => Rotate(new FrontFaceRotationInfo(true)),
+                () => Rotate(new FrontFaceRotationInfo(false)),
+                () => Rotate(new BackFaceRotationInfo(true)),
+                () => Rotate(new BackFaceRotationInfo(false))
+            };
+
+            var random = new Random();
+            for (var i = 0; i < 200; i++)
+            {
+                var index = random.Next(0, actions.Count());
+                yield return actions[index]();
+            }
+        }
 
         public UIRotation Rotate(RotationInfo rotationInfo)
         {

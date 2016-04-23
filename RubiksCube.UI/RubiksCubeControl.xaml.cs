@@ -7,7 +7,6 @@ using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using RubiksCube.Core;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Model.Rotations;
 using RubiksCube.Core.Model.Rotations.XAxis;
 using RubiksCube.Core.Model.Rotations.YAxis;
 using RubiksCube.Core.Model.Rotations.ZAxis;
@@ -42,126 +41,122 @@ namespace RubiksCube.UI
 
         public void RotateDownFaceCounterClockwise()
         {
-            Rotate(new DownFaceRotationInfo(false));
+            var rotation = cube.Rotate(new DownFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateDownFaceClockwise()
         {
-            Rotate(new DownFaceRotationInfo(true));
+            var rotation = cube.Rotate(new DownFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateUpFaceCounterClockwise()
         {
-            Rotate(new UpFaceRotationInfo(false));
+            var rotation = cube.Rotate(new UpFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateUpFaceClockwise()
         {
-            Rotate(new UpFaceRotationInfo(true));
+            var rotation = cube.Rotate(new UpFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateLeftFaceCounterClockwise()
         {
-            Rotate(new LeftFaceRotationInfo(false));
+            var rotation = cube.Rotate(new LeftFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateLeftFaceClockwise()
         {
-            Rotate(new LeftFaceRotationInfo(true));
+            var rotation = cube.Rotate(new LeftFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateRightFaceCounterClockwise()
         {
-            Rotate(new RightFaceRotationInfo(false));
+            var rotation = cube.Rotate(new RightFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateRightFaceClockwise()
         {
-            Rotate(new RightFaceRotationInfo(true));
+            var rotation = cube.Rotate(new RightFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateFrontFaceCounterClockwise()
         {
-            Rotate(new FrontFaceRotationInfo(false));
+            var rotation = cube.Rotate(new FrontFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateFrontFaceClockwise()
         {
-            Rotate(new FrontFaceRotationInfo(true));
+            var rotation = cube.Rotate(new FrontFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateBackFaceCounterClockwise()
         {
-            Rotate(new BackFaceRotationInfo(false));
+            var rotation = cube.Rotate(new BackFaceRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateBackFaceClockwise()
         {
-            Rotate(new BackFaceRotationInfo(true));
+            var rotation = cube.Rotate(new BackFaceRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnYAxisCounterClockwise()
         {
-            Rotate(new YRotationInfo(false));
+            var rotation = cube.Rotate(new YRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnYAxisClockwise()
         {
-            Rotate(new YRotationInfo(true));
+            var rotation = cube.Rotate(new YRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnXAxisClockwise()
         {
-            Rotate(new XRotationInfo(true));
+            var rotation = cube.Rotate(new XRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnXAxisCounterClockwise()
         {
-            Rotate(new XRotationInfo(false));
+            var rotation = cube.Rotate(new XRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnZAxisClockwise()
         {
-            Rotate(new ZRotationInfo(true));
+            var rotation = cube.Rotate(new ZRotationInfo(true));
+            Rotate(rotation);
         }
 
         public void RotateCubeOnZAxisCounterClockwise()
         {
-            Rotate(new ZRotationInfo(false));
+            var rotation = cube.Rotate(new ZRotationInfo(false));
+            Rotate(rotation);
         }
 
         public void MixUp()
         {
-            var actions = new Action[]
+            foreach(var rotation in cube.MixUp())
             {
-                () => RotateUpFaceClockwise(),
-                () => RotateUpFaceCounterClockwise(),
-                () => RotateDownFaceClockwise(),
-                () => RotateDownFaceCounterClockwise(),
-
-                () => RotateLeftFaceClockwise(),
-                () => RotateLeftFaceCounterClockwise(),
-                () => RotateRightFaceClockwise(),
-                () => RotateRightFaceCounterClockwise(),
-
-                () => RotateFrontFaceClockwise(),
-                () => RotateFrontFaceCounterClockwise(),
-                () => RotateBackFaceClockwise(),
-                () => RotateBackFaceCounterClockwise()
-            };
-
-            var random = new Random();
-            for (var i = 0; i < 50; i++)
-            {
-                var index = random.Next(0, actions.Count());
-                actions[index]();
+                Rotate(rotation);
             }
         }
 
-        private void Rotate(RotationInfo rotationInfo)
+        private void Rotate(UIRotation rotation)
         {
-            var rotation = cube.Rotate(rotationInfo);
-
             var center = GetCenter(false);
             var negateCenter = GetCenter(true);
             foreach (var facies in rotation.Moves)
@@ -222,6 +217,10 @@ namespace RubiksCube.UI
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 BorderThickness = new Thickness(0.3)
             };
+
+            //var binding = new Binding("Position");
+            //binding.Source = facie;
+            //label.SetBinding(Label.ContentProperty, binding);
 
             var positions = positionsFactory.CreatePositions(type);
 

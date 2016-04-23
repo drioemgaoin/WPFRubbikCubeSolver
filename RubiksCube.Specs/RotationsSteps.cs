@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using RubiksCube.Core.Model;
-using RubiksCube.Core.Model.Rotations;
 using RubiksCube.Core.Model.Rotations.XAxis;
 using RubiksCube.Core.Model.Rotations.YAxis;
 using RubiksCube.Core.Model.Rotations.ZAxis;

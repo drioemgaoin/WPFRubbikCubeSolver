@@ -228,8 +228,8 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Blue", "Red", "Green", "Orange", new string[0])]
         [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Orange", "Blue", "Red", "Green", new string[0])]
         [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Red", "Green", "Orange", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "Green", "Orange", "Blue", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "Green", "Orange", "Blue", "Red", new string[0])]
         public virtual void FrontFaceRotations(string direction, string times, string left_Color, string up_Color, string right_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Front Face Rotations", exampleTags);
@@ -240,11 +240,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 105
  testRunner.When(string.Format("turns the front face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 106
- testRunner.Then(string.Format("the \"Left\" face \"First\" column is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Left\" face \"Third\" column is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 107
-  testRunner.And(string.Format("the \"Up\" face \"First\" row is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the \"Up\" face \"Third\" row is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 108
-  testRunner.And(string.Format("the \"Right\" face \"Third\" column is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And(string.Format("the \"Right\" face \"First\" column is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 109
   testRunner.And(string.Format("the \"Down\" face \"Third\" row is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

@@ -149,8 +149,8 @@ Scenario Outline: Front Face Rotations
 	| CounterClockwise | 2     | Blue       | Red      | Green       | Orange     |
 	| Clockwise        | 3     | Orange     | Blue     | Red         | Green      |
 	| CounterClockwise | 3     | Red        | Green    | Orange      | Blue       |
-	| Clockwise        | 4     | Green      | Orange   | Blue		 | Red        |
-	| CounterClockwise | 4     | Green      | Orange   | Blue		 | Red        |
+	| Clockwise        | 4     | Green      | Orange   | Blue        | Red        |
+	| CounterClockwise | 4     | Green      | Orange   | Blue        | Red        |
 
 Scenario Outline: Back Face Rotations
 	Given a new cube with a front white face and a top orange face
@@ -162,14 +162,14 @@ Scenario Outline: Back Face Rotations
 	
 	Examples:
 	| direction        | times | left_color | up_color | right_color | down_color |
-	| Clockwise        | 1     | Orange     | Blue	   | Red		 | Green      |
-	| CounterClockwise | 1     | Red		| Green    | Orange      | Blue       |
+	| Clockwise        | 1     | Orange     | Blue     | Red         | Green      |
+	| CounterClockwise | 1     | Red        | Green    | Orange      | Blue       |
 	| Clockwise        | 2     | Blue       | Red      | Green       | Orange     |
 	| CounterClockwise | 2     | Blue       | Red      | Green       | Orange     |
 	| Clockwise        | 3     | Red        | Green    | Orange      | Blue       |
 	| CounterClockwise | 3     | Orange     | Blue     | Red         | Green      |
-	| Clockwise        | 4     | Green      | Orange   | Blue		 | Red        |
-	| CounterClockwise | 4     | Green      | Orange   | Blue		 | Red        |
+	| Clockwise        | 4     | Green      | Orange   | Blue        | Red        |
+	| CounterClockwise | 4     | Green      | Orange   | Blue        | Red        |
 
 Scenario: Cube Scramble
 	Given a new cube with a front white face and a top orange face

@@ -38,6 +38,25 @@ Scenario Outline: Cube Y Rotations
 	| Clockwise        | 4     | White       | Blue        | Yellow     | Green      |
 	| CounterClockwise | 4     | White       | Blue        | Yellow     | Green      |
 
+Scenario Outline: Cube Z Rotations
+	Given a new cube with a front white face and a top orange face
+	When turns the cube on Z "<direction>" <times> times
+	Then the "Left" face is "<left_color>"
+		And the "Up" face is "<up_color>"
+		And the "Right" face is "<right_color>"
+		And the "Down" face is "<down_color>"
+	
+	Examples:
+	| direction        | times | left_color | up_color | right_color | down_color |
+	| Clockwise        | 1     | Red        | Green    | Orange      | Blue       |
+	| CounterClockwise | 1     | Orange     | Blue     | Red         | Green      |
+	| Clockwise        | 2     | Blue       | Red      | Green       | Orange     |
+	| CounterClockwise | 2     | Blue       | Red      | Green       | Orange     |
+	| Clockwise        | 3     | Orange     | Blue     | Red         | Green      |
+	| CounterClockwise | 3     | Red        | Green    | Orange      | Blue       |
+	| Clockwise        | 4     | Green      | Orange   | Blue		 | Red        |
+	| CounterClockwise | 4     | Green      | Orange   | Blue		 | Red        |
+
 Scenario Outline: Up Face Rotations
 	Given a new cube with a front white face and a top orange face
 	When turns the up face "<direction>" <times> times

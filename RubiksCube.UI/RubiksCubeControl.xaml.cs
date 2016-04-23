@@ -122,12 +122,12 @@ namespace RubiksCube.UI
 
         public void RotateCubeOnZAxisClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new ZRotationInfo(true));
         }
 
         public void RotateCubeOnZAxisCounterClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new ZRotationInfo(false));
         }
 
         public void MixUp()

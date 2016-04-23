@@ -11,9 +11,37 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 
         protected override IEnumerable<FaceType> AxisAdjacentFaces => new[] { FaceType.Left, FaceType.Up, FaceType.Right, FaceType.Down };
 
+        protected void MoveOnRight(Cube cube, FaceType faceType, Facie facie)
+        {
+            switch (faceType)
+            {
+                case FaceType.Left:
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Up].Add(facie);
+                    break;
+                case FaceType.Up:
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Right].Add(facie);
+                    break;
+                case FaceType.Right:
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Down].Add(facie);
+                    break;
+                case FaceType.Down:
+                    FlipPosition(facie, faceType);
+                    cube[FaceType.Left].Add(facie);
+                    break;
+            }
+        }
+
         protected override IEnumerable<Facie> GetMovingFacies(Face face)
         {
-            if(LayerType == LayerType.First)
+            if (LayerType == LayerType.All)
+            {
+                return face.Facies;
+            }
+
+            if (LayerType == LayerType.First)
             {
                 if (face.Type == FaceType.Right)
                 {
@@ -41,7 +69,6 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 
                 return face.GetRow(LayerType);
             }
-
             if (face.Type == FaceType.Right)
             {
                 return face.Facies.Where(x =>

@@ -35,6 +35,12 @@ namespace RubiksCube.Specs
             cube.Rotate(new YRotationInfo(way == "Clockwise", times));
         }
 
+        [When(@"turns the cube on Z ""(.*)"" (.*) times")]
+        public void WhenTheCubeTurnsTheZAxis(string way, uint times)
+        {
+            cube.Rotate(new ZRotationInfo(way == "Clockwise", times));
+        }
+
         [Then(@"the ""(.*)"" face is ""(.*)""")]
         public void ThenTheFaceIs(string face, string color)
         {

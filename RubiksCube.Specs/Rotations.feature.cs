@@ -64,34 +64,63 @@ namespace RubiksCube.Specs
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Cube Rotations")]
-        [NUnit.Framework.TestCaseAttribute("Right", "1", "Green", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Up", "1", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Left", "1", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Down", "1", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Right", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Up", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Left", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Down", "2", "Yellow", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Right", "3", "Blue", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Up", "3", "Orange", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Left", "3", "Green", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Down", "3", "Red", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Right", "4", "White", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Up", "4", "White", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Left", "4", "White", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("Down", "4", "White", new string[0])]
-        public virtual void CubeRotations(string direction, string times, string expected_Color, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Cube X Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Orange", "Yellow", "Red", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Red", "White", "Orange", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", "Red", "White", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", "Red", "White", "Orange", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Red", "White", "Orange", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Orange", "Yellow", "Red", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", "Orange", "Yellow", "Red", new string[0])]
+        public virtual void CubeXRotations(string direction, string times, string front_Color, string up_Color, string back_Color, string down_Color, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cube Rotations", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cube X Rotations", exampleTags);
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.When(string.Format("the cube turns \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("turns the cube on X \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
- testRunner.Then(string.Format("the \"{0}\" face is visible", expected_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the \"Front\" face is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 7
+  testRunner.And(string.Format("the \"Up\" face is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 8
+  testRunner.And(string.Format("the \"Back\" face is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
+  testRunner.And(string.Format("the \"Down\" face is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Cube Y Rotations")]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "1", "Blue", "Yellow", "Green", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "1", "Green", "White", "Blue", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "2", "Yellow", "Green", "White", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "2", "Yellow", "Green", "White", "Blue", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "3", "Green", "White", "Blue", "Yellow", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "3", "Blue", "Yellow", "Green", "White", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Clockwise", "4", "White", "Blue", "Yellow", "Green", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("CounterClockwise", "4", "White", "Blue", "Yellow", "Green", new string[0])]
+        public virtual void CubeYRotations(string direction, string times, string front_Color, string right_Color, string back_Color, string left_Color, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cube Y Rotations", exampleTags);
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 24
+ testRunner.When(string.Format("turns the cube on Y \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 25
+ testRunner.Then(string.Format("the \"Front\" face is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 26
+  testRunner.And(string.Format("the \"Right\" face is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 27
+  testRunner.And(string.Format("the \"Back\" face is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+  testRunner.And(string.Format("the \"Left\" face is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -109,19 +138,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void UpFaceRotations(string direction, string times, string front_Color, string right_Color, string back_Color, string left_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Up Face Rotations", exampleTags);
-#line 27
+#line 41
 this.ScenarioSetup(scenarioInfo);
-#line 28
+#line 42
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
+#line 43
  testRunner.When(string.Format("turns the up face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 30
+#line 44
  testRunner.Then(string.Format("the \"Front\" face \"First\" row is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 31
+#line 45
   testRunner.And(string.Format("the \"Right\" face \"First\" row is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
+#line 46
   testRunner.And(string.Format("the \"Back\" face \"First\" row is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
+#line 47
   testRunner.And(string.Format("the \"Left\" face \"First\" row is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -140,19 +169,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DownFaceRotations(string direction, string times, string front_Color, string right_Color, string back_Color, string left_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Down Face Rotations", exampleTags);
-#line 46
+#line 60
 this.ScenarioSetup(scenarioInfo);
-#line 47
+#line 61
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 48
+#line 62
  testRunner.When(string.Format("turns the down face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 49
+#line 63
  testRunner.Then(string.Format("the \"Front\" face \"Third\" row is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 50
+#line 64
   testRunner.And(string.Format("the \"Right\" face \"Third\" row is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 51
+#line 65
   testRunner.And(string.Format("the \"Back\" face \"Third\" row is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
+#line 66
   testRunner.And(string.Format("the \"Left\" face \"Third\" row is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -171,19 +200,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void LeftFaceRotations(string direction, string times, string front_Color, string up_Color, string back_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Left Face Rotations", exampleTags);
-#line 65
+#line 79
 this.ScenarioSetup(scenarioInfo);
-#line 66
+#line 80
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 67
+#line 81
  testRunner.When(string.Format("turns the left face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 68
+#line 82
  testRunner.Then(string.Format("the \"Front\" face \"First\" column is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 69
+#line 83
   testRunner.And(string.Format("the \"Up\" face \"First\" column is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 70
+#line 84
   testRunner.And(string.Format("the \"Back\" face \"First\" column is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 71
+#line 85
   testRunner.And(string.Format("the \"Down\" face \"First\" column is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -202,19 +231,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RightFaceRotations(string direction, string times, string front_Color, string up_Color, string back_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Right Face Rotations", exampleTags);
-#line 84
+#line 98
 this.ScenarioSetup(scenarioInfo);
-#line 85
+#line 99
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 86
+#line 100
  testRunner.When(string.Format("turns the right face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 87
+#line 101
  testRunner.Then(string.Format("the \"Front\" face \"Third\" column is \"{0}\"", front_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 88
+#line 102
   testRunner.And(string.Format("the \"Up\" face \"Third\" column is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 89
+#line 103
   testRunner.And(string.Format("the \"Back\" face \"Third\" column is \"{0}\"", back_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 90
+#line 104
   testRunner.And(string.Format("the \"Down\" face \"Third\" column is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -233,19 +262,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FrontFaceRotations(string direction, string times, string left_Color, string up_Color, string right_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Front Face Rotations", exampleTags);
-#line 103
+#line 117
 this.ScenarioSetup(scenarioInfo);
-#line 104
+#line 118
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 105
+#line 119
  testRunner.When(string.Format("turns the front face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 106
+#line 120
  testRunner.Then(string.Format("the \"Left\" face \"Third\" column is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 107
+#line 121
   testRunner.And(string.Format("the \"Up\" face \"Third\" row is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 108
+#line 122
   testRunner.And(string.Format("the \"Right\" face \"First\" column is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 109
+#line 123
   testRunner.And(string.Format("the \"Down\" face \"Third\" row is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -264,19 +293,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void BackFaceRotations(string direction, string times, string left_Color, string up_Color, string right_Color, string down_Color, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Back Face Rotations", exampleTags);
-#line 122
+#line 136
 this.ScenarioSetup(scenarioInfo);
-#line 123
+#line 137
  testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 124
+#line 138
  testRunner.When(string.Format("turns the back face \"{0}\" {1} times", direction, times), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 125
+#line 139
  testRunner.Then(string.Format("the \"Left\" face \"First\" column is \"{0}\"", left_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 126
+#line 140
   testRunner.And(string.Format("the \"Up\" face \"First\" row is \"{0}\"", up_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 127
+#line 141
   testRunner.And(string.Format("the \"Right\" face \"Third\" column is \"{0}\"", right_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 128
+#line 142
   testRunner.And(string.Format("the \"Down\" face \"First\" row is \"{0}\"", down_Color), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

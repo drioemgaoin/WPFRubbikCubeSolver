@@ -51,6 +51,7 @@
     <Compile Include="Model\Rotations\XAxis\RightFaceCounterClockwise.cs" />
     <Compile Include="Model\Rotations\XAxis\XAxisRotationFactory.cs" />
     <Compile Include="Model\Rotations\XAxis\LeftFaceRotationInfo.cs" />
+    <Compile Include="Model\Rotations\XAxis\XRotationInfo.cs" />
     <Compile Include="Model\Rotations\YAxis\DownFaceClockwise.cs" />
     <Compile Include="Model\Rotations\YAxis\DownFaceCounterClockwise.cs" />
     <Compile Include="Model\Rotations\YAxis\DownFaceRotationInfo.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Model\Rotations\YAxis\UpFaceCounterClockwise.cs" />
     <Compile Include="Model\Rotations\YAxis\UpFaceRotationInfo.cs" />
     <Compile Include="Model\Rotations\YAxis\YAxisRotationFactory.cs" />
+    <Compile Include="Model\Rotations\YAxis\YRotationInfo.cs" />
     <Compile Include="Model\Rotations\ZAxis\FrontFaceRotationInfo.cs" />
     <Compile Include="Model\Rotations\ZAxis\BackFaceRotationInfo.cs" />
     <Compile Include="Model\Rotations\ZAxis\ZAxisCounterClockwise.cs" />

@@ -1,28 +1,42 @@
 ﻿Feature: Rotations
 
-Scenario Outline: Cube Rotations
+Scenario Outline: Cube X Rotations
 	Given a new cube with a front white face and a top orange face
-	When the cube turns "<direction>" <times> times
-	Then the "<expected_color>" face is visible
+	When turns the cube on X "<direction>" <times> times
+	Then the "Front" face is "<front_color>"
+		And the "Up" face is "<up_color>"
+		And the "Back" face is "<back_color>"
+		And the "Down" face is "<down_color>"
 	
 	Examples:
-	| direction | times | expected_color |
-	| Right     | 1     | Green          |
-	| Up        | 1     | Red            |
-	| Left      | 1     | Blue           |
-	| Down      | 1     | Orange         |
-	| Right     | 2     | Yellow         |
-	| Up        | 2     | Yellow         |
-	| Left      | 2     | Yellow         |
-	| Down      | 2     | Yellow         |
-	| Right     | 3     | Blue           |
-	| Up        | 3     | Orange         |
-	| Left      | 3     | Green          |
-	| Down      | 3     | Red            |
-	| Right     | 4     | White          |
-	| Up        | 4     | White          |
-	| Left      | 4     | White          |
-	| Down      | 4     | White          |
+	| direction        | times | front_color | up_color | back_color | down_color |
+	| Clockwise        | 1     | Orange      | Yellow   | Red        | White      |
+	| CounterClockwise | 1     | Red         | White    | Orange     | Yellow     |
+	| Clockwise        | 2     | Yellow      | Red      | White      | Orange     |
+	| CounterClockwise | 2     | Yellow      | Red      | White      | Orange     |
+	| Clockwise        | 3     | Red         | White    | Orange     | Yellow     |
+	| CounterClockwise | 3     | Orange      | Yellow   | Red        | White      |
+	| Clockwise        | 4     | White       | Orange   | Yellow     | Red        |
+	| CounterClockwise | 4     | White       | Orange   | Yellow     | Red        |
+
+Scenario Outline: Cube Y Rotations
+	Given a new cube with a front white face and a top orange face
+	When turns the cube on Y "<direction>" <times> times
+	Then the "Front" face is "<front_color>"
+		And the "Right" face is "<right_color>"
+		And the "Back" face is "<back_color>"
+		And the "Left" face is "<left_color>"
+	
+	Examples:
+	| direction        | times | front_color | right_color | back_color | left_color |
+	| Clockwise        | 1     | Blue        | Yellow      | Green      | White      |
+	| CounterClockwise | 1     | Green       | White       | Blue       | Yellow     |
+	| Clockwise        | 2     | Yellow      | Green       | White      | Blue       |
+	| CounterClockwise | 2     | Yellow      | Green       | White      | Blue       |
+	| Clockwise        | 3     | Green       | White       | Blue       | Yellow     |
+	| CounterClockwise | 3     | Blue        | Yellow      | Green      | White      |
+	| Clockwise        | 4     | White       | Blue        | Yellow     | Green      |
+	| CounterClockwise | 4     | White       | Blue        | Yellow     | Green      |
 
 Scenario Outline: Up Face Rotations
 	Given a new cube with a front white face and a top orange face

@@ -23,19 +23,23 @@ namespace RubiksCube.Specs
             Assert.IsTrue(cube[FaceType.Up].Facies.All(facie => facie.Color == Color.Orange));
         }
 
-        [When(@"the cube turns ""(.*)"" (.*) times")]
-        public void WhenTheCubeTurns(string direction, uint times)
+        [When(@"turns the cube on X ""(.*)"" (.*) times")]
+        public void WhenTheCubeTurnsTheXAxis(string way, uint times)
         {
-            throw new NotImplementedException("TODO");
+            cube.Rotate(new XRotationInfo(way == "Clockwise", times));
         }
 
-        [Then(@"the ""(.*)"" face is visible")]
-        public void ThenThenTheFaceIsVisible(string visibleColor)
+        [When(@"turns the cube on Y ""(.*)"" (.*) times")]
+        public void WhenTheCubeTurnsTheYAxis(string way, uint times)
         {
-            foreach (var facie in cube[FaceType.Front].Facies)
-            {
-                Assert.AreEqual(visibleColor, facie.Color.ToString());
-            }
+            cube.Rotate(new YRotationInfo(way == "Clockwise", times));
+        }
+
+        [Then(@"the ""(.*)"" face is ""(.*)""")]
+        public void ThenTheFaceIs(string face, string color)
+        {
+            var faceType = (FaceType)Enum.Parse(typeof(FaceType), face);
+            AssertColorAreEqual(color, cube[faceType].Facies.ToList());
         }
 
         [When(@"turns the left face ""(.*)"" (.*) times")]

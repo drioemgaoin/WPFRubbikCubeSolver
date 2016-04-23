@@ -102,22 +102,22 @@ namespace RubiksCube.UI
 
         public void RotateCubeOnYAxisCounterClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new YRotationInfo(false));
         }
 
         public void RotateCubeOnYAxisClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new YRotationInfo(true));
         }
 
         public void RotateCubeOnXAxisClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new XRotationInfo(true));
         }
 
         public void RotateCubeOnXAxisCounterClockwise()
         {
-            throw new NotImplementedException("TODO");
+            Rotate(new XRotationInfo(false));
         }
 
         public void RotateCubeOnZAxisClockwise()

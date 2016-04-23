@@ -60,10 +60,12 @@
     <Compile Include="Model\Rotations\YAxis\UpFaceRotationInfo.cs" />
     <Compile Include="Model\Rotations\YAxis\YAxisRotationFactory.cs" />
     <Compile Include="Model\Rotations\YAxis\YRotationInfo.cs" />
+    <Compile Include="Model\Rotations\ZAxis\BackFaceClockwise.cs" />
+    <Compile Include="Model\Rotations\ZAxis\BackFaceCounterClockwise.cs" />
+    <Compile Include="Model\Rotations\ZAxis\FrontFaceClockwise.cs" />
+    <Compile Include="Model\Rotations\ZAxis\FrontFaceCounterClockwise.cs" />
     <Compile Include="Model\Rotations\ZAxis\FrontFaceRotationInfo.cs" />
     <Compile Include="Model\Rotations\ZAxis\BackFaceRotationInfo.cs" />
-    <Compile Include="Model\Rotations\ZAxis\ZAxisCounterClockwise.cs" />
-    <Compile Include="Model\Rotations\ZAxis\ZAxisClockwise.cs" />
     <Compile Include="Model\Rotations\RotationInfo.cs" />
     <Compile Include="Model\Rotations\RotationFactory.cs" />
     <Compile Include="Model\Facie.cs" />

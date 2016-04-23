@@ -18,14 +18,14 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
                     cube[FaceType.Up].Add(facie);
                     break;
                 case FaceType.Up:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Back].Add(facie);
                     break;
                 case FaceType.Back:
                     cube[FaceType.Down].Add(facie);
                     break;
                 case FaceType.Down:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Front].Add(facie);
                     break;
             }
@@ -36,14 +36,14 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
             switch (faceType)
             {
                 case FaceType.Front:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Down].Add(facie);
                     break;
                 case FaceType.Up:
                     cube[FaceType.Front].Add(facie);
                     break;
                 case FaceType.Back:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Up].Add(facie);
                     break;
                 case FaceType.Down:

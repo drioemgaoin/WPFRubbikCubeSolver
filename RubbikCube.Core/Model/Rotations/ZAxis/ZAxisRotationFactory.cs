@@ -8,12 +8,12 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
         {
             if (faceType == FaceType.Front)
             {
-                return new ZAxisClockwise(faceType, layerType, -angle, times);
+                return new FrontFaceClockwise(layerType, -angle, times);
             }
 
             if (faceType == FaceType.Back)
             {
-                return new ZAxisCounterClockwise(faceType, layerType, angle, times);
+                return new BackFaceClockwise(layerType, angle, times);
             }
 
             throw new InvalidOperationException();
@@ -23,12 +23,12 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
         {
             if (faceType == FaceType.Front)
             {
-                return new ZAxisCounterClockwise(faceType, layerType, angle, times);
+                return new FrontFaceCounterClockwise(layerType, angle, times);
             }
 
             if (faceType == FaceType.Back)
             {
-                return new ZAxisClockwise(faceType, layerType, -angle, times);
+                return new BackFaceCounterClockwise(layerType, -angle, times);
             }
 
             throw new InvalidOperationException();

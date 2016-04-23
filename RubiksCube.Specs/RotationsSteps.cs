@@ -14,6 +14,7 @@ namespace RubiksCube.Specs
     public class RotationsSteps
     {
         private Cube cube;
+        private IEnumerable<UIRotation> actions;
 
         [Given(@"a new cube with a front white face and a top orange face")]
         public void GivenANewCube()
@@ -106,6 +107,21 @@ namespace RubiksCube.Specs
             VerifyCubeFaciesIntegrity();
         }
 
+        [When(@"scramble the cube")]
+        public void WhenScrambleTheCube()
+        {
+            actions = cube.Scramble();
+        }
+
+        [Then(@"the cube has kept its integrity")]
+        public void ThenTheCubeHasKeptItsIntegrity()
+        {
+            foreach (var action in actions)
+            {
+                VerifyCubeFaciesIntegrity();
+            }
+        }
+
         public void VerifyCubeFaciesIntegrity()
         {
             VerifyFaceIntegrity(FaceType.Front);
@@ -126,7 +142,7 @@ namespace RubiksCube.Specs
                 .Select(grouping => grouping.Key)
                 .ToList();
 
-            Assert.IsEmpty(duplicates, string.Format("{0} facies contain duplicated positions.", Enum.GetName(faceType.GetType(), faceType)));
+            Assert.IsEmpty(duplicates, $"{Enum.GetName(faceType.GetType(), faceType)} facies contain duplicated positions.");
         }
 
         private static void AssertColorAreEqual(string color, IList<Facie> facies)

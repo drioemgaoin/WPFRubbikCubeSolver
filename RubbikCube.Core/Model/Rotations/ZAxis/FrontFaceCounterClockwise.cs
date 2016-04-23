@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 
-namespace RubiksCube.Core.Model.Rotations.XAxis
+namespace RubiksCube.Core.Model.Rotations.ZAxis
 {
-    internal class RightFaceCounterClockwise : XAxisRotation
+    internal class FrontFaceCounterClockwise : ZAxisRotation
     {
-        public RightFaceCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
+        public FrontFaceCounterClockwise(LayerType layerType, double angle, uint times) : base(layerType, angle, times)
         {
         }
 
-        protected override IEnumerable<FaceType> AxisMovingFaces => new[] { FaceType.Right };
+        protected override IEnumerable<FaceType> AxisMovingFaces => new[] { FaceType.Front };
 
         protected override void Move(Cube cube, FaceType faceType, Facie facie)
         {
-            MoveFromFrontToDown(cube, faceType, facie);
+            MoveFromUpToLeft(cube, faceType, facie);
         }
 
         protected override void FlipMovingFacePosition(Facie facie)
@@ -53,26 +53,56 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
 
         protected override void FlipAdjacentFacesPosition(Facie facie, FaceType faceType)
         {
-            if (faceType == FaceType.Front)
+            if (faceType == FaceType.Up)
             {
-                if (facie.Position == FaciePositionType.RightUp)
+                if (facie.Position == FaciePositionType.LeftDown)
                 {
                     facie.Position = FaciePositionType.RightDown;
+                }
+                else if (facie.Position == FaciePositionType.MiddleDown)
+                {
+                    facie.Position = FaciePositionType.RightMiddle;
                 }
                 else if (facie.Position == FaciePositionType.RightDown)
                 {
                     facie.Position = FaciePositionType.RightUp;
                 }
             }
-            else if (faceType == FaceType.Back)
+            else if (faceType == FaceType.Down)
             {
-                if (facie.Position == FaciePositionType.RightDown)
+                if (facie.Position == FaciePositionType.MiddleDown)
                 {
-                    facie.Position = FaciePositionType.RightUp;
+                    facie.Position = FaciePositionType.LeftMiddle;
+                }
+                else if (facie.Position == FaciePositionType.RightDown)
+                {
+                    facie.Position = FaciePositionType.LeftUp;
+                }
+            }
+            else if (faceType == FaceType.Left)
+            {
+                if (facie.Position == FaciePositionType.RightMiddle)
+                {
+                    facie.Position = FaciePositionType.MiddleDown;
                 }
                 else if (facie.Position == FaciePositionType.RightUp)
                 {
+                    facie.Position = FaciePositionType.LeftDown;
+                }
+            }
+            else if (faceType == FaceType.Right)
+            {
+                if (facie.Position == FaciePositionType.LeftDown)
+                {
                     facie.Position = FaciePositionType.RightDown;
+                }
+                else if (facie.Position == FaciePositionType.LeftMiddle)
+                {
+                    facie.Position = FaciePositionType.MiddleDown;
+                }
+                else if (facie.Position == FaciePositionType.LeftUp)
+                {
+                    facie.Position = FaciePositionType.LeftDown;
                 }
             }
         }

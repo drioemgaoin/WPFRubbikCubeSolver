@@ -32,7 +32,9 @@ namespace RubiksCube.Core.Model.Rotations
 
         protected abstract void Move(Cube cube, FaceType faceType, Facie facie);
 
-        protected abstract void FlipPosition(Facie facie, FaceType faceType);
+        protected abstract void FlipMovingFacePosition(Facie facie);
+
+        protected abstract void FlipAdjacentFacesPosition(Facie facie, FaceType faceType);
 
         public void Apply(Cube cube)
         {
@@ -63,8 +65,9 @@ namespace RubiksCube.Core.Model.Rotations
                 foreach (var facie in faciesRotated)
                 {
                     facie.SetRotation(matrix);
-                    FlipPosition(facie, faceType);
+                    FlipMovingFacePosition(facie);
                 }
+
                 facies.AddRange(faciesRotated);
             }
 

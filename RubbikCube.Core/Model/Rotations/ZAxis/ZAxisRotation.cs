@@ -11,25 +11,48 @@ namespace RubiksCube.Core.Model.Rotations.ZAxis
 
         protected override IEnumerable<FaceType> AxisAdjacentFaces => new[] { FaceType.Left, FaceType.Up, FaceType.Right, FaceType.Down };
 
-        protected void MoveOnRight(Cube cube, FaceType faceType, Facie facie)
+        protected void MoveFromUpToRight(Cube cube, FaceType faceType, Facie facie)
         {
             switch (faceType)
             {
                 case FaceType.Left:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Up].Add(facie);
                     break;
                 case FaceType.Up:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Right].Add(facie);
                     break;
                 case FaceType.Right:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Down].Add(facie);
                     break;
                 case FaceType.Down:
-                    FlipPosition(facie, faceType);
+                    FlipAdjacentFacesPosition(facie, faceType);
                     cube[FaceType.Left].Add(facie);
+                    break;
+            }
+        }
+
+        protected void MoveFromUpToLeft(Cube cube, FaceType faceType, Facie facie)
+        {
+            switch (faceType)
+            {
+                case FaceType.Left:
+                    FlipAdjacentFacesPosition(facie, faceType);
+                    cube[FaceType.Down].Add(facie);
+                    break;
+                case FaceType.Up:
+                    FlipAdjacentFacesPosition(facie, faceType);
+                    cube[FaceType.Left].Add(facie);
+                    break;
+                case FaceType.Right:
+                    FlipAdjacentFacesPosition(facie, faceType);
+                    cube[FaceType.Up].Add(facie);
+                    break;
+                case FaceType.Down:
+                    FlipAdjacentFacesPosition(facie, faceType);
+                    cube[FaceType.Right].Add(facie);
                     break;
             }
         }

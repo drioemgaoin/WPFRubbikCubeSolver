@@ -15,44 +15,45 @@ namespace RubiksCube.Core.Model.Rotations.XAxis
             MoveFromFrontToDown(cube, faceType, facie);
         }
 
-        protected override void FlipPosition(Facie facie, FaceType faceType)
+        protected override void FlipMovingFacePosition(Facie facie)
         {
-            if (faceType == FaceType.Left)
+            if (facie.Position == FaciePositionType.RightUp)
             {
-                if (facie.Position == FaciePositionType.RightUp)
-                {
-                    facie.Position = FaciePositionType.RightDown;
-                }
-                else if (facie.Position == FaciePositionType.MiddleUp)
-                {
-                    facie.Position = FaciePositionType.RightMiddle;
-                }
-                else if (facie.Position == FaciePositionType.LeftUp)
-                {
-                    facie.Position = FaciePositionType.RightUp;
-                }
-                else if (facie.Position == FaciePositionType.LeftMiddle)
-                {
-                    facie.Position = FaciePositionType.MiddleUp;
-                }
-                else if (facie.Position == FaciePositionType.LeftDown)
-                {
-                    facie.Position = FaciePositionType.LeftUp;
-                }
-                else if (facie.Position == FaciePositionType.MiddleDown)
-                {
-                    facie.Position = FaciePositionType.LeftMiddle;
-                }
-                else if (facie.Position == FaciePositionType.RightDown)
-                {
-                    facie.Position = FaciePositionType.LeftDown;
-                }
-                else if (facie.Position == FaciePositionType.RightMiddle)
-                {
-                    facie.Position = FaciePositionType.MiddleDown;
-                }
+                facie.Position = FaciePositionType.RightDown;
             }
-            else if (faceType == FaceType.Front)
+            else if (facie.Position == FaciePositionType.MiddleUp)
+            {
+                facie.Position = FaciePositionType.RightMiddle;
+            }
+            else if (facie.Position == FaciePositionType.LeftUp)
+            {
+                facie.Position = FaciePositionType.RightUp;
+            }
+            else if (facie.Position == FaciePositionType.LeftMiddle)
+            {
+                facie.Position = FaciePositionType.MiddleUp;
+            }
+            else if (facie.Position == FaciePositionType.LeftDown)
+            {
+                facie.Position = FaciePositionType.LeftUp;
+            }
+            else if (facie.Position == FaciePositionType.MiddleDown)
+            {
+                facie.Position = FaciePositionType.LeftMiddle;
+            }
+            else if (facie.Position == FaciePositionType.RightDown)
+            {
+                facie.Position = FaciePositionType.LeftDown;
+            }
+            else if (facie.Position == FaciePositionType.RightMiddle)
+            {
+                facie.Position = FaciePositionType.MiddleDown;
+            }
+        }
+
+        protected override void FlipAdjacentFacesPosition(Facie facie, FaceType faceType)
+        {
+            if (faceType == FaceType.Front)
             {
                 if (facie.Position == FaciePositionType.LeftUp)
                 {

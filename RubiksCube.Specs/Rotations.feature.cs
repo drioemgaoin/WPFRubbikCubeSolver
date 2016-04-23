@@ -341,6 +341,23 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Cube Scramble")]
+        public virtual void CubeScramble()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cube Scramble", ((string[])(null)));
+#line 174
+this.ScenarioSetup(scenarioInfo);
+#line 175
+ testRunner.Given("a new cube with a front white face and a top orange face", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 176
+ testRunner.When("scramble the cube", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 177
+ testRunner.Then("the cube has kept its integrity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

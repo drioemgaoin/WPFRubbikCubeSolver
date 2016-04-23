@@ -27,7 +27,7 @@ namespace RubiksCube.Core.Model
 
         public Face this[FaceType type] => faces[type];
 
-        public IEnumerable<UIRotation> MixUp()
+        public IEnumerable<UIRotation> Scramble()
         {
             var actions = new Func<UIRotation>[]
             {
@@ -48,7 +48,7 @@ namespace RubiksCube.Core.Model
             };
 
             var random = new Random();
-            for (var i = 0; i < 200; i++)
+            for (var i = 0; i < 1000; i++)
             {
                 var index = random.Next(0, actions.Count());
                 yield return actions[index]();

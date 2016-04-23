@@ -170,3 +170,8 @@ Scenario Outline: Back Face Rotations
 	| CounterClockwise | 3     | Orange     | Blue     | Red         | Green      |
 	| Clockwise        | 4     | Green      | Orange   | Blue		 | Red        |
 	| CounterClockwise | 4     | Green      | Orange   | Blue		 | Red        |
+
+Scenario: Cube Scramble
+	Given a new cube with a front white face and a top orange face
+	When scramble the cube
+	Then the cube has kept its integrity

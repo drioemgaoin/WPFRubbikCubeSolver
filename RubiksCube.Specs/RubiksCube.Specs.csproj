@@ -71,10 +71,10 @@
       <DependentUpon>Rotations.feature</DependentUpon>
     </Compile>
     <Compile Include="RotationsSteps.cs" />
-    <Compile Include="Solver.feature.cs">
+    <Compile Include="FriedRichSolver.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Solver.feature</DependentUpon>
+      <DependentUpon>FriedRichSolver.feature</DependentUpon>
     </Compile>
     <Compile Include="SolverSteps.cs" />
   </ItemGroup>
@@ -85,9 +85,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Rotations.feature.cs</LastGenOutput>
     </None>
-    <None Include="Solver.feature">
+    <None Include="FriedRichSolver.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Solver.feature.cs</LastGenOutput>
+      <LastGenOutput>FriedRichSolver.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

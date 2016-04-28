@@ -1,2 +1,7 @@
-- Test the validity of facies' to ensure only one facie is set on all cube anchors
+- Rename the feature to FriedrichSolver
+- Implement a move interpretor
+- Simplify rotations with ReadOnlyDictionary instances containing all position moves
+- Change the solver scenario to use standard notation
+- Find out how to share step definitions between different features and removed duplication
+- Rename RotationInfo to MoveInfo
 - Encapsulate Model.Facie UI access with UIRotation members

@@ -11,6 +11,7 @@ namespace RubiksCube.Core
     {
         public void Solve(Cube cube)
         {
+            //cube
         }
     }
 }

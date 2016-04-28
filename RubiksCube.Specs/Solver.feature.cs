@@ -82,21 +82,21 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.When("ask the solver to resolve the cube", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("the \"Front\" face facie #2 is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the \"Front\" face \"MiddleUp\" facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
- testRunner.And("the \"Front\" face facie #4 is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Front\" face \"LeftMiddle\" facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And("the \"Front\" face facie #6 is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Front\" face \"RightMiddle\" facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.And("the \"Front\" face facie #8 is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Front\" face \"MiddleDown\" facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.And("the \"Left\" face facie #6 is \"Green\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Left\" face \"RightMiddle\" facie is \"Green\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.And("the \"Right\" face facie #4 is \"Blue\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Right\" face \"LeftMiddle\" facie is \"Blue\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And("the \"Up\" face facie #8 is \"Orange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Up\" face \"MiddleDown\" facie is \"Orange\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.And("the \"Down\" face facie #8 is \"Red\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the \"Down\" face \"MiddleDown\" facie is \"Red\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

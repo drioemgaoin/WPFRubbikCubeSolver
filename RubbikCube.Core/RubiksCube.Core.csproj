@@ -39,9 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Corner.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Model\AxisType.cs" />
     <Compile Include="Model\Color.cs" />
+    <Compile Include="Model\Edge.cs" />
     <Compile Include="Model\Move.cs" />
     <Compile Include="Model\Rotations\RotationMatrixFactory.cs" />
     <Compile Include="Model\Rotations\XAxis\LeftFaceCounterClockwise.cs" />

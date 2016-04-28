@@ -1,15 +1,20 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace RubiksCube.Core.Model
 {
     public class Facie : ICloneable, INotifyPropertyChanged
     {
-        public Facie(Color color)
+        public Facie(Color color) // TODO: remove this overload
         {
             Color = color;
+        }
+
+        public Facie(Color color, FaciePositionType position)
+        {
+            Color = color;
+            Position = position;
         }
 
         public FaciePositionType Position { get; set; }

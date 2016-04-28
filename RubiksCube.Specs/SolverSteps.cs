@@ -41,14 +41,15 @@ namespace RubiksCube.Specs
         {
             solver.Solve(cube);
         }
-        
-        [Then(@"the ""(.*)"" face facie \#(.*) is ""(.*)""")]
-        public void ThenTheFaceFacieIs(string face, int position, string color)
+
+        [Then(@"the ""(.*)"" face ""(.*)"" facie is ""(.*)""")]
+        public void ThenTheFaceFacieIs(string face, string position, string color)
         {
             var faceType = (FaceType)Enum.Parse(typeof(FaceType), face);
-            var facie = cube[faceType].Facies.Single(f => (int)f.Position == position);
-            
+            var faciePositionType = (FaciePositionType)Enum.Parse(typeof(FaciePositionType), position);
             var expectedColor = (Color)Enum.Parse(typeof(Color), color);
+
+            var facie = cube[faceType].Facies.Single(f => f.Position == faciePositionType);
             Assert.AreEqual(expectedColor, facie.Color);
         }
     }

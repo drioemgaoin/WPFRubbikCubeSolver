@@ -80,7 +80,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.And("the \"Front\" center facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.When("ask the solver to resolve the cube", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("ask the solver to resolve the white cross", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
  testRunner.Then("the \"Front\" face \"MiddleUp\" facie is \"White\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13

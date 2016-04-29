@@ -8,7 +8,7 @@ Scenario: White Cross
 	And a scrambled cube 
 	And the "Up" center facie is "Orange"
 	And the "Front" center facie is "White"
-	When ask the solver to resolve the cube
+	When ask the solver to resolve the white cross
 	Then the "Front" face "MiddleUp" facie is "White"
 	And the "Front" face "LeftMiddle" facie is "White"
 	And the "Front" face "RightMiddle" facie is "White"

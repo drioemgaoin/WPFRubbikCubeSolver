@@ -16,7 +16,7 @@ namespace RubiksCube.Specs
         [Given(@"a solver")]
         public void GivenASolver()
         {
-            solver = new RubiksCubeSolver();
+            solver = new FriedrichSolver();
         }
         
         [Given(@"a scrambled cube")]
@@ -36,7 +36,7 @@ namespace RubiksCube.Specs
             Assert.AreEqual(expectedColor, facie.Color);
         }
         
-        [When(@"ask the solver to resolve the cube")]
+        [When(@"ask the solver to resolve the white cross")]
         public void WhenAskTheSolverToResolveTheCube()
         {
             solver.Solve(cube);

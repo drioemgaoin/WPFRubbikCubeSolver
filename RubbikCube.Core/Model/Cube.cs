@@ -12,10 +12,18 @@ namespace RubiksCube.Core.Model
     public class Cube
     {
         private readonly IDictionary<FaceType, Face> faces = new Dictionary<FaceType, Face>();
-        private readonly  RotationFactory rotationFactory = new RotationFactory();
-
+        private readonly RotationFactory rotationFactory = new RotationFactory();
+        private readonly IDictionary<Color, FaceType> faceColors = new Dictionary<Color, FaceType>();
+        
         public Cube()
         {
+            faceColors.Add(Color.Orange, FaceType.Up);
+            faceColors.Add(Color.Red, FaceType.Down);
+            faceColors.Add(Color.Green, FaceType.Left);
+            faceColors.Add(Color.Blue, FaceType.Right);
+            faceColors.Add(Color.Yellow, FaceType.Back);
+            faceColors.Add(Color.White, FaceType.Front);
+
             var faceFactory = new FaceFactory();
             faces[FaceType.Up] = faceFactory.CreateFace(FaceType.Up);
             faces[FaceType.Back] = faceFactory.CreateFace(FaceType.Back);
@@ -23,6 +31,14 @@ namespace RubiksCube.Core.Model
             faces[FaceType.Front] = faceFactory.CreateFace(FaceType.Front);
             faces[FaceType.Left] = faceFactory.CreateFace(FaceType.Left);
             faces[FaceType.Right] = faceFactory.CreateFace(FaceType.Right);
+        }
+
+        public IDictionary<Color, FaceType> FaceColors
+        {
+            get
+            {
+                return faceColors;
+            }
         }
 
         public Face this[FaceType type] => faces[type];

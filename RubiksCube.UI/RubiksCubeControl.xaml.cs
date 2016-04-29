@@ -18,12 +18,15 @@ namespace RubiksCube.UI
     public partial class RubiksCubeControl
     {
         private readonly IPositionsFactory positionsFactory;
+        private readonly IRubiksCubeSolver solver;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
 
         public RubiksCubeControl()
         {
             positionsFactory = new PositionsFactory();
+            solver = new FriedrichSolver();
+            solver.Move += OnMove;
             movementEngine = new AnimationEngine();
             cube = new Cube();
 
@@ -33,6 +36,11 @@ namespace RubiksCube.UI
             Initialize();
 
             Loaded += OnLoaded;
+        }
+
+        private void OnMove(object sender, UIRotation e)
+        {
+            Rotate(e);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)

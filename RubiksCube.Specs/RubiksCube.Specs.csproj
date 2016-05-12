@@ -82,7 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FriedRichSolver.feature</DependentUpon>
     </Compile>
-    <Compile Include="SolverSteps.cs" />
+    <Compile Include="FriedrichSolverSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

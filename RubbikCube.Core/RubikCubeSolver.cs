@@ -9,6 +9,7 @@ namespace RubiksCube.Core
     public interface IRubiksCubeSolver
     {
         event EventHandler<UIRotation> Move;
+
         void Solve(Cube cube);
     }
 
@@ -16,10 +17,6 @@ namespace RubiksCube.Core
     {
         public void Solve(Cube cube)
         {
-            // For each strategy steps
-
-            // For each step get moves from the cube state
-
             WhiteCross(cube);
         }
 

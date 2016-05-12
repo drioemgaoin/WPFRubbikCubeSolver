@@ -5,3 +5,4 @@
 - Introduce an indexer by position on the Face type
 - Rename RotationInfo to MoveInfo
 - Encapsulate Model.Facie UI access with UIRotation members
+- Introduce IoC framework to resolve solver instance in UI

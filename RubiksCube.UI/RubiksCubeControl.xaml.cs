@@ -18,15 +18,12 @@ namespace RubiksCube.UI
     public partial class RubiksCubeControl
     {
         private readonly IPositionsFactory positionsFactory;
-        private readonly IRubiksCubeSolver solver;
         private readonly AnimationEngine movementEngine;
         private readonly Cube cube;
 
         public RubiksCubeControl()
         {
             positionsFactory = new PositionsFactory();
-            solver = new FriedrichSolver();
-            solver.Move += OnMove;
             movementEngine = new AnimationEngine();
             cube = new Cube();
 
@@ -286,6 +283,15 @@ namespace RubiksCube.UI
             }
 
             return center;
+        }
+
+        public void Solve()
+        {
+            var solver = new FriedrichSolver();
+
+            solver.Move += OnMove;
+            solver.Solve(cube);
+            solver.Move -= OnMove;
         }
     }
 }

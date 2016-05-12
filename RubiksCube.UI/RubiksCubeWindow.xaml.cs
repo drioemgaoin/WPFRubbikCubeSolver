@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using RubiksCube.Core;
 
 namespace RubiksCube.UI
 {
@@ -35,9 +36,16 @@ namespace RubiksCube.UI
                 return;
             }
 
-            if (Keyboard.IsKeyDown(Key.LeftCtrl) && e.Key == Key.M)
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
-                Cube.MixUp();
+                if (e.Key == Key.M)
+                {   
+                    Cube.MixUp();
+                }
+                else if(e.Key == Key.S)
+                {
+                    Cube.Solve();
+                }
             }
         }
 

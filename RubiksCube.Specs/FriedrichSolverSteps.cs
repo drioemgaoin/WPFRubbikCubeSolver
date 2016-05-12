@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace RubiksCube.Specs
 {
     [Binding]
-    public class SolverSteps
+    public class FriedrichSolverSteps
     {
         private IRubiksCubeSolver solver;
         private Cube cube;

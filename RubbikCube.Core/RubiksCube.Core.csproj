@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IInterpretor.cs" />
+    <Compile Include="Interpretor.cs" />
     <Compile Include="Model\Corner.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Model\AxisType.cs" />

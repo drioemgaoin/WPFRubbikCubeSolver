@@ -241,7 +241,8 @@ namespace RubiksCube.UI
                 Material = new DiffuseMaterial(new VisualBrush
                 {
                     Visual = label
-                })
+                }),
+                BackMaterial = new DiffuseMaterial(Brushes.Black)
             };
 
             geometry.SetValue(NameProperty, facie.Key);

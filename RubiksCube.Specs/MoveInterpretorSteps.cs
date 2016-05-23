@@ -12,7 +12,7 @@ namespace RubiksCube.Specs
     [Binding]
     public class MoveInterpretorSteps
     {
-        private readonly IInterpretor interpretor = new Interpretor();
+        private readonly IMoveInterpretor moveInterpretor = new MoveInterpretor();
         private ICollection<RotationInfo> rotationsInfos;
         private string moves;
 
@@ -25,16 +25,27 @@ namespace RubiksCube.Specs
         [When(@"interpret moves")]
         public void WhenInterpretMoves()
         {
-            rotationsInfos = interpretor.Interpret(moves);
+            rotationsInfos = moveInterpretor.Interpret(moves);
         }
         
         [Then(@"the list contains a ""(.*)"" ""(.*)"" rotation")]
         public void ThenTheListContainsARotation(string face, string way)
         {
-            var faceType = (FaceType)Enum.Parse(typeof(FaceType), face);
+            AssertRotationsContain(face, way, 1);
+        }
+
+        [Then(@"the list contains a ""(.*)"" twice ""(.*)"" rotation")]
+        public void ThenTheListContainsATwiceRotation(string face, string way)
+        {
+            AssertRotationsContain(face, way, 2);
+        }
+        
+        private void AssertRotationsContain(string face, string way, uint times)
+        {
+            var faceType = (FaceType) Enum.Parse(typeof (FaceType), face);
             var clockwise = way == "Clockwise";
 
-            var actual = rotationsInfos.FirstOrDefault(r => r.Clockwise == clockwise && r.Face == faceType);
+            var actual = rotationsInfos.SingleOrDefault(r => r.Clockwise == clockwise && r.Face == faceType && r.Times == times);
             Assert.IsNotNull(actual);
         }
     }

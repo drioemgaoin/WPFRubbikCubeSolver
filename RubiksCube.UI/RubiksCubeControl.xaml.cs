@@ -223,10 +223,6 @@ namespace RubiksCube.UI
                 BorderThickness = new Thickness(0.3)
             };
 
-            //var binding = new Binding("Position");
-            //binding.Source = facie;
-            //label.SetBinding(Label.ContentProperty, binding);
-
             var positions = positionsFactory.CreatePositions(type);
 
             var geometry = new GeometryModel3D

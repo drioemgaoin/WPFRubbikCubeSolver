@@ -12,7 +12,6 @@ namespace RubiksCube.Specs
     [Binding]
     public class MoveInterpretorSteps
     {
-        private readonly IMoveInterpretor moveInterpretor = new MoveInterpretor();
         private ICollection<RotationInfo> rotationsInfos;
         private string moves;
 
@@ -25,7 +24,7 @@ namespace RubiksCube.Specs
         [When(@"interpret moves")]
         public void WhenInterpretMoves()
         {
-            rotationsInfos = moveInterpretor.Interpret(moves);
+            rotationsInfos = MoveInterpretor.Interpret(moves);
         }
         
         [Then(@"the list contains a ""(.*)"" ""(.*)"" rotation")]

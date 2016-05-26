@@ -34,7 +34,7 @@ namespace RubiksCube.UI
             Loaded += OnLoaded;
         }
 
-        private void OnMove(object sender, UIRotation e)
+        private void OnMoving(object sender, UIRotation e)
         {
             Rotate(e);
         }
@@ -285,9 +285,9 @@ namespace RubiksCube.UI
         {
             var solver = new FriedrichSolver();
 
-            solver.Move += OnMove;
+            solver.Moving += OnMoving;
             solver.Solve(cube);
-            solver.Move -= OnMove;
+            solver.Moving -= OnMoving;
         }
     }
 }

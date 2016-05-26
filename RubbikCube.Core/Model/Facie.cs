@@ -8,7 +8,7 @@ namespace RubiksCube.Core.Model
     {
         public Facie(Color color) // TODO: remove this overload
         {
-            Color = color;
+            Color = color;  
         }
 
         public Facie(Color color, FaciePositionType position)

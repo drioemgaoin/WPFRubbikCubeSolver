@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RubiksCube.Core.Model.Rotations;
 using RubiksCube.Core.Model.Rotations.XAxis;
@@ -7,11 +8,11 @@ using RubiksCube.Core.Model.Rotations.ZAxis;
 
 namespace RubiksCube.Core
 {
-    public class MoveInterpretor : IMoveInterpretor
+    public static class MoveInterpretor
     {
-        private readonly Dictionary<string, RotationInfo> mappings;
+        private static readonly Dictionary<string, RotationInfo> mappings;
 
-        public MoveInterpretor()
+        static MoveInterpretor()
         {
             mappings = new Dictionary<string, RotationInfo>();
             mappings["L"] = new LeftFaceRotationInfo(true);
@@ -40,11 +41,23 @@ namespace RubiksCube.Core
             mappings["D2'"] = new DownFaceRotationInfo(false, 2);
         }
 
-        public ICollection<RotationInfo> Interpret(string algorythm)
+        public static ICollection<RotationInfo> Interpret(string algorythm)
         {
             var moves = algorythm.Split(' ');
 
-            return moves.Select(item => mappings[item]).ToList();
+            return moves.Select(InterpretSingle).ToList();
+        }
+
+        private static RotationInfo InterpretSingle(string move)
+        {
+            try
+            {
+                return mappings[move];
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw new NotSupportedException(string.Format("Move '{0}' is not supported.", move), e);
+            }
         }
     }
 }

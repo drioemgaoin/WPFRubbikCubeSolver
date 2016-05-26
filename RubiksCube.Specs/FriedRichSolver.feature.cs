@@ -24,7 +24,7 @@ namespace RubiksCube.Specs
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "FriedRichSolver.feature"
+#line 1 "FriedrichSolver.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]

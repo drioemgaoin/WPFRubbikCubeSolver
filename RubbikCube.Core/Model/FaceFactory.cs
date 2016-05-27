@@ -45,7 +45,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.White, Color.Red, Color.Blue)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.White);
         }
 
         private static Face CreateOrangeFace(FaceType faceType)
@@ -63,7 +63,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.Orange, Color.Blue, Color.White)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.Orange);
         }
 
         private static Face CreateGreenFace(FaceType faceType)
@@ -81,7 +81,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.Green, Color.Red, Color.White)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.Green);
         }
 
         private static Face CreateBlueFace(FaceType faceType)
@@ -99,7 +99,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.Blue, Color.Red, Color.Yellow)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.Blue);
         }
 
         private static Face CreateYellowFace(FaceType faceType)
@@ -117,7 +117,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.Yellow, Color.Red, Color.Blue)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.Yellow);
         }
 
         private static Face CreateRedFace(FaceType faceType)
@@ -135,7 +135,7 @@ namespace RubiksCube.Core.Model
                 CreateCorner(faceType, FaciePositionType.RightDown, Color.Red, Color.White, Color.Blue)
             };
 
-            return new Face(facies, faceType);
+            return new Face(facies, faceType, Color.Red);
         }
 
         private static Facie CreateEdge(FaceType faceType, FaciePositionType positionType, Color color, Color adjacentColor)

@@ -71,33 +71,58 @@ namespace RubiksCube.Specs
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
- testRunner.Given("the moves \"L L\' R R\' F F\' B B\' U U\' D D\'\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the moves \"L L2 L\' L2\' R R2 R\' R2\' F F2 F\' F2\' B B2 B\' B2\' U U2 U\' U2\' D D2 D\' D2" +
+                    "\'\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
  testRunner.When("interpret moves", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
  testRunner.Then("the list contains a \"Left\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 7
- testRunner.And("the list contains a \"Left\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the list contains a \"Left\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 8
- testRunner.And("the list contains a \"Right\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Left\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("the list contains a \"Right\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Left\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.And("the list contains a \"Front\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Right\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("the list contains a \"Front\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Right\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("the list contains a \"Back\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Right\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.And("the list contains a \"Back\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Right\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And("the list contains a \"Up\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Front\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.And("the list contains a \"Up\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Front\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.And("the list contains a \"Down\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the list contains a \"Front\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
+ testRunner.And("the list contains a \"Front\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 18
+ testRunner.And("the list contains a \"Back\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+ testRunner.And("the list contains a \"Back\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.And("the list contains a \"Back\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.And("the list contains a \"Back\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And("the list contains a \"Up\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+ testRunner.And("the list contains a \"Up\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
+ testRunner.And("the list contains a \"Up\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+ testRunner.And("the list contains a \"Up\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+ testRunner.And("the list contains a \"Down\" \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 27
+ testRunner.And("the list contains a \"Down\" twice \"Clockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
  testRunner.And("the list contains a \"Down\" \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 29
+ testRunner.And("the list contains a \"Down\" twice \"CounterClockwise\" rotation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

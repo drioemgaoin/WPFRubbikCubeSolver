@@ -8,5 +8,7 @@
         }
 
         public Color AdjacentColor { get; }
+
+
     }
 }

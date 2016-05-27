@@ -10,15 +10,18 @@ namespace RubiksCube.Core.Model
     {
         private readonly IList<Facie> facies;
 
-        public Face(IList<Facie> facies, FaceType type)
+        public Face(IList<Facie> facies, FaceType type, Color color)
         {
             this.facies = facies;
 
             Facies = new ReadOnlyCollection<Facie>(facies);
             Type = type;
+            Color = color;
         }
 
         public FaceType Type { get; }
+
+        public Color Color { get; }
 
         public IReadOnlyCollection<Facie> Facies { get; }
 
@@ -26,7 +29,7 @@ namespace RubiksCube.Core.Model
         {
             var faciesClone = Facies.Select(facie => (Facie) facie.Clone()).ToList();
 
-            return new Face(faciesClone, Type);            
+            return new Face(faciesClone, Type, Color);            
         }
 
         public IList<Facie> GetRow(LayerType layerType)

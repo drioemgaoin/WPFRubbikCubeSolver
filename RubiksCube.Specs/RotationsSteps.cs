@@ -110,16 +110,13 @@ namespace RubiksCube.Specs
         [When(@"scramble the cube")]
         public void WhenScrambleTheCube()
         {
-            actions = cube.Scramble();
+            cube.Scramble();
         }
 
         [Then(@"the cube has kept its integrity")]
         public void ThenTheCubeHasKeptItsIntegrity()
         {
-            foreach (var action in actions)
-            {
-                VerifyCubeFaciesIntegrity();
-            }
+            VerifyCubeFaciesIntegrity();
         }
 
         public void VerifyCubeFaciesIntegrity()

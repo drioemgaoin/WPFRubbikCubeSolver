@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCube.Solvers", "Solvers\RubiksCube.Solvers.csproj", "{21F0A67A-17C5-477A-A76B-48C089732C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB660464-0D3C-4DD6-9FC5-9D35E4E12F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21F0A67A-17C5-477A-A76B-48C089732C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21F0A67A-17C5-477A-A76B-48C089732C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21F0A67A-17C5-477A-A76B-48C089732C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21F0A67A-17C5-477A-A76B-48C089732C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

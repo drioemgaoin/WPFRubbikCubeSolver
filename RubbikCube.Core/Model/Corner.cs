@@ -1,6 +1,6 @@
 ﻿namespace RubiksCube.Core.Model
 {
-    internal class Corner : Facie
+    public class Corner : Facie
     {
         public Corner(FaciePositionType position, Color color, Color adjacentColor1, Color adjacentColor2) : base(color, position)
         {

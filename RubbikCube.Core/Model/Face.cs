@@ -66,14 +66,20 @@ namespace RubiksCube.Core.Model
 
         private static bool IsMatchingRow(Facie facie, LayerType layerType)
         {
-            var attribute = ReflectionHelper.GetRotationAttribute(facie.Position);
+            var attribute = GetRotationAttribute(facie.Position);
             return attribute.Row == layerType || layerType == LayerType.All;
         }
 
         private static bool IsMatchingColumn(Facie facie, LayerType layerType)
         {
-            var attribute = ReflectionHelper.GetRotationAttribute(facie.Position);
+            var attribute = GetRotationAttribute(facie.Position);
             return attribute.Column == layerType || layerType == LayerType.All;
+        }
+
+        public static RotationAttribute GetRotationAttribute(Enum value)
+        {
+            var field = typeof(FaciePositionType).GetField(Enum.GetName(typeof(FaciePositionType), value));
+            return (RotationAttribute)Attribute.GetCustomAttribute(field, typeof(RotationAttribute));
         }
     }
 }

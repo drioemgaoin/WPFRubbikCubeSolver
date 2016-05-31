@@ -3,6 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using RubiksCube.Core;
 using RubiksCube.Core.Model;
+using RubiksCube.Solvers;
 using TechTalk.SpecFlow;
 
 namespace RubiksCube.Specs

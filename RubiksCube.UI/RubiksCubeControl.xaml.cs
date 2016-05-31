@@ -10,6 +10,7 @@ using RubiksCube.Core.Model;
 using RubiksCube.Core.Model.Rotations.XAxis;
 using RubiksCube.Core.Model.Rotations.YAxis;
 using RubiksCube.Core.Model.Rotations.ZAxis;
+using RubiksCube.Solvers;
 using Point = System.Windows.Point;
 
 namespace RubiksCube.UI
@@ -25,6 +26,7 @@ namespace RubiksCube.UI
             positionsFactory = new PositionsFactory();
             movementEngine = new AnimationEngine();
             cube = new Cube();
+            cube.Moving += CubeMoving;
 
             DataContext = this;
 
@@ -34,7 +36,7 @@ namespace RubiksCube.UI
             Loaded += OnLoaded;
         }
 
-        private void OnMoving(object sender, UIRotation e)
+        private void CubeMoving(object sender, UIRotation e)
         {
             Rotate(e);
         }
@@ -46,118 +48,97 @@ namespace RubiksCube.UI
 
         public void RotateDownFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new DownFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new DownFaceRotationInfo(false));
         }
 
         public void RotateDownFaceClockwise()
         {
-            var rotation = cube.Rotate(new DownFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new DownFaceRotationInfo(true));
         }
 
         public void RotateUpFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new UpFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new UpFaceRotationInfo(false));
         }
 
         public void RotateUpFaceClockwise()
         {
-            var rotation = cube.Rotate(new UpFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new UpFaceRotationInfo(true));
         }
 
         public void RotateLeftFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new LeftFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new LeftFaceRotationInfo(false));
         }
 
         public void RotateLeftFaceClockwise()
         {
-            var rotation = cube.Rotate(new LeftFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new LeftFaceRotationInfo(true));
         }
 
         public void RotateRightFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new RightFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new RightFaceRotationInfo(false));
         }
 
         public void RotateRightFaceClockwise()
         {
-            var rotation = cube.Rotate(new RightFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new RightFaceRotationInfo(true));            
         }
 
         public void RotateFrontFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new FrontFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new FrontFaceRotationInfo(false));
         }
 
         public void RotateFrontFaceClockwise()
         {
-            var rotation = cube.Rotate(new FrontFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new FrontFaceRotationInfo(true));
         }
 
         public void RotateBackFaceCounterClockwise()
         {
-            var rotation = cube.Rotate(new BackFaceRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new BackFaceRotationInfo(false));
         }
 
         public void RotateBackFaceClockwise()
         {
-            var rotation = cube.Rotate(new BackFaceRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new BackFaceRotationInfo(true));
         }
 
         public void RotateCubeOnYAxisCounterClockwise()
         {
-            var rotation = cube.Rotate(new YRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new YRotationInfo(false));
         }
 
         public void RotateCubeOnYAxisClockwise()
         {
-            var rotation = cube.Rotate(new YRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new YRotationInfo(true));
         }
 
         public void RotateCubeOnXAxisClockwise()
         {
-            var rotation = cube.Rotate(new XRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new XRotationInfo(true));
         }
 
         public void RotateCubeOnXAxisCounterClockwise()
         {
-            var rotation = cube.Rotate(new XRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new XRotationInfo(false));
         }
 
         public void RotateCubeOnZAxisClockwise()
         {
-            var rotation = cube.Rotate(new ZRotationInfo(true));
-            Rotate(rotation);
+            cube.Rotate(new ZRotationInfo(true));
         }
 
         public void RotateCubeOnZAxisCounterClockwise()
         {
-            var rotation = cube.Rotate(new ZRotationInfo(false));
-            Rotate(rotation);
+            cube.Rotate(new ZRotationInfo(false));
         }
 
         public void MixUp()
         {
-            foreach(var rotation in cube.Scramble())
-            {
-                Rotate(rotation);
-            }
+            cube.Scramble();
         }
 
         private void Rotate(UIRotation rotation)
@@ -284,10 +265,7 @@ namespace RubiksCube.UI
         public void Solve()
         {
             var solver = new FriedrichSolver();
-
-            solver.Moving += OnMoving;
             solver.Solve(cube);
-            solver.Moving -= OnMoving;
         }
     }
 }
